@@ -1,0 +1,64 @@
+// Margin
+$margin-standard: 8px;
+
+// Padding
+$padding-standard: 12px;
+
+// Font Sizes
+$font-size-extra-large: 1.8rem;
+$font-size-large: 1.4rem;
+$font-size-medium: 1rem;
+$font-size-small: 0.8rem;
+$font-size-extra-small: 0.5rem;
+
+// Page Sizing
+$max-page-content-width: 1280px;
+
+// Border Radius
+$card-border-radius: 6px;
+
+// Colors
+$card-background: #ffffff;
+
+// OTHERS
+
+// Element Sizing
+$site-header-height: 50px;
+
+// Colors
+$background-color: #c6c5b9;
+$primary-color: #62929e;
+$secondary-color: #4a6d7c;
+$dark-color: #475657;
+$off-color: #5e5e35;
+
+// Spacing
+
+$xs-size: 0.7rem;
+$s-size: 1.2rem;
+$m-size: 1.6rem;
+$ml-size: 2.4rem;
+$l-size: 3.2rem;
+$xl-size: 4.8rem;
+
+// Screen Size Breakpoints
+
+$breakpoints: (
+   "xsmall": 280px,
+   "small": 480px,
+   "medium": 768px,
+   "large": 1080px,
+   "xlarge": 1280px
+);
+
+// Z Layers
+
+$z-index: (
+   modal: 200,
+   navigation: 100,
+   footer: 90
+);
+
+// z-index: map-get($z-index, navigation);
+
+// $standard-border-radius: 1.2rem;

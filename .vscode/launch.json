@@ -1,0 +1,40 @@
+{
+   // Use IntelliSense to learn about possible attributes.
+   // Hover to view descriptions of existing attributes.
+   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+   "version": "0.2.0",
+   "configurations": [
+      {
+         "type": "chrome",
+         "request": "launch",
+         "name": "Launch Chrome against localhost",
+         "url": "http://localhost:3000",
+         "webRoot": "${workspaceFolder}",
+         "skipFiles": ["node_modules/**/*.*"]
+      },
+      {
+         "type": "node",
+         "request": "launch",
+         "name": "Launch Debug Server",
+         "protocol": "inspector",
+         "args": ["${workspaceRoot}/server/index.ts", "-P", "config/tsconfig.json"],
+         "cwd": "${workspaceRoot}",
+         "envFile": "${workspaceFolder}/.env",
+         "runtimeArgs": ["-r", "ts-node/register"],
+         "internalConsoleOptions": "openOnSessionStart",
+         "preLaunchTask": "FixTSConfig"
+      },
+      {
+         "type": "node",
+         "request": "launch",
+         "name": "Debug Current File",
+         "protocol": "inspector",
+         "args": ["${relativeFile}", "-P", "config/tsconfig.json"],
+         "cwd": "${workspaceRoot}",
+         "envFile": "${workspaceFolder}/.env",
+         "runtimeArgs": ["-r", "ts-node/register"],
+         "internalConsoleOptions": "openOnSessionStart",
+         "preLaunchTask": "FixTSConfig"
+      }
+   ]
+}

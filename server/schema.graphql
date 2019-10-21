@@ -1,0 +1,89 @@
+# import ApartmentCreateInput, ApartmentUpdateInput, UserOrderByInput, ApartmentOrderByInput  from './generated/prisma.graphql'
+
+type Query {
+   users: [User!]
+   apartment(id: String): Apartment
+   apartments(
+      query: String
+      first: Int
+      skip: Int
+      after: String
+      orderBy: ApartmentOrderByInput
+   ): [Apartment!]
+   apartmentsCount: Int
+   #comments(first: Int, skip: Int, after: String, orderBy: CommentOrderByInput): [Comment!]!
+   me: User
+}
+
+type Mutation {
+   login(data: LoginUserInput!): AuthPayload!
+   createUser(data: CreateUserInput!): AuthPayload!
+   deleteUser(userId: String!): User
+   updateUser(data: UpdateUserInput!): User
+   createApartment(data: ApartmentCreateInput!): Apartment!
+   deleteApartment(id: ID!): Apartment!
+   updateApartment(id: ID!, data: ApartmentUpdateInput!): Apartment!
+   #createComment(data: CreateCommentInput!): Comment!
+   #deleteComment(id: ID!): Comment!
+   #updateComment(id: ID!, data: UpdateCommentInput!): Comment!
+}
+
+type AuthPayload {
+   token: String!
+   user: User!
+}
+
+input CreateUserInput {
+   username: String!
+   password: String!
+}
+
+input LoginUserInput {
+   username: String!
+   password: String!
+}
+
+input UpdateUserInput {
+   username: String
+   password: String
+}
+
+# input CreateCommentInput {
+#    text: String!
+#    post: ID!
+# }
+
+# input UpdateCommentInput {
+#    text: String
+# }
+
+type User {
+   id: ID!
+   username: String!
+   updatedAt: String!
+   createdAt: String!
+}
+
+type Apartment {
+   id: ID!
+   apt: Int!
+   name: String!
+   age: String!
+   mostLonely: String
+   lonelinessMeans: String
+   firstTime: String
+   lastTime: String
+   published: Boolean
+   # comments: [Comment!]!
+   updatedAt: DateTime!
+   createdAt: DateTime!
+}
+
+# type Comment {
+#    id: ID!
+#    text: String!
+#    author: User!
+#    post: Post!
+#    updatedAt: String!
+#    createdAt: String!
+# }

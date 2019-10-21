@@ -1,0 +1,8 @@
+{
+   "presets": ["next/babel", "@babel/preset-env", "@babel/preset-react"],
+   "plugins": [
+      ["css-modules-transform", {}, "css-modules-transform"],
+      ["@babel/plugin-proposal-class-properties", {}, "class-properties"],
+      ["@babel/plugin-proposal-object-rest-spread", {}, "object-rest-spread"]
+   ]
+}

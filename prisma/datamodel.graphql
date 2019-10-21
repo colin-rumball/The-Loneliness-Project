@@ -1,0 +1,32 @@
+type User {
+   id: ID! @id
+   username: String! @unique
+   password: String!
+   updatedAt: DateTime! @updatedAt
+   createdAt: DateTime! @createdAt
+}
+
+type Apartment {
+   id: ID! @id
+   apt: Int! @unique
+   name: String!
+   age: String!
+   mostLonely: String
+   lonelinessMeans: String
+   firstTime: String
+   lastTime: String
+   published: Boolean!
+   author: User @relation(name: "ApartmentToUser", onDelete: SET_NULL)
+   # comments: [Comment!]! @relation(name: "CommentToApartment", onDelete: CASCADE)
+   updatedAt: DateTime! @updatedAt
+   createdAt: DateTime! @createdAt
+}
+
+# type Comment {
+#    id: ID! @id
+#    title: String!
+#    body: String!
+#    apartment: Apartment! @relation(name: "CommentToApartment", onDelete: SET_NULL)
+#    updatedAt: DateTime! @updatedAt
+#    createdAt: DateTime! @createdAt
+# }

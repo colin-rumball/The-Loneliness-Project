@@ -1,0 +1,17 @@
+@import "./../../../styles/abstracts/variables";
+@import "./../../../styles/abstracts/mixins";
+
+.pd-sidebar-controller {
+   position: relative;
+   padding: 0 $padding-standard;
+   font-size: 30px;
+   cursor: pointer;
+
+   @include respond-to(medium) {
+      display: none;
+   }
+
+   &:hover {
+      color: silver;
+   }
+}

@@ -1,0 +1,20 @@
+.site-header {
+   margin-bottom: 20px;
+   .nav-menu {
+      height: $site-header-height;
+
+      .header {
+         // font-size: $font-size-extra-large;
+         font-family: "Montserrat";
+      }
+
+      .item.nav-item {
+         // font-size: $font-size-large;
+         font-family: "Oswald";
+      }
+
+      .item.nav-button {
+         font-size: $font-size-small;
+      }
+   }
+}

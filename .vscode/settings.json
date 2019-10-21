@@ -1,0 +1,13 @@
+{
+   "files.exclude": {
+      "**/.next": true,
+      "**/out": true,
+      "**/android": true,
+      "**/plugins": true,
+      "**/typings": true,
+      "**/www": true
+   },
+   "workbench.colorCustomizations": {
+      "terminalCursor.foreground": "#88ffff"
+   }
+}

@@ -1,0 +1,115 @@
+* {
+   box-sizing: border-box;
+}
+
+html {
+   // font-size: 62.5%; // Causes rem to equal 1
+   font-size: 18px;
+}
+
+body {
+   color: #263238;
+   font-family: "Montserrat";
+   background-color: rgb(228, 231, 238);
+   // line-height: 1.6;
+   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+   margin: 0;
+}
+
+// button {
+//    cursor: pointer;
+
+//    &.large {
+//       font-size: $font-size-large;
+//       width: auto;
+//       padding: $s-size;
+//    }
+
+//    &.solo {
+//       background: white;
+//       font-size: $font-size-extra-large;
+//       line-height: $font-size-extra-large;
+//       width: auto;
+//       padding: 25px 80px;
+//       margin: 10px 10px;
+//       transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out, padding 0.2s,
+//          margin 0.2s;
+//       color: black;
+//       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(grey, 0.4);
+//       &:hover,
+//       &:active {
+//          background: black;
+//          color: white;
+//          padding: 35px 90px;
+//          margin: 0;
+//          box-shadow: none;
+//       }
+
+//       &.alt {
+//          &:hover,
+//          &:active {
+//             background: white;
+//             color: black;
+//             padding: 35px 90px;
+//             margin: 0;
+//             box-shadow: none;
+//          }
+//       }
+
+//       &.hidden {
+//          opacity: 0;
+//          user-select: none;
+//          pointer-events: none;
+//       }
+//    }
+// }
+
+// button:disabled {
+//    cursor: default;
+// }
+
+// img {
+//    max-width: 100%;
+//    height: auto;
+// }
+
+.general-page-transition-enter {
+   opacity: 0;
+   transform: translate(0, 30px);
+}
+.general-page-transition-enter-active {
+   opacity: 1;
+   transform: translate(0, 0);
+   transition: all 500ms;
+}
+.general-page-transition-exit {
+   opacity: 1;
+}
+.general-page-transition-exit-active {
+   opacity: 0;
+   transition: opacity 500ms;
+}
+
+// .hidden {
+//    display: none;
+// }
+
+// .invisible {
+//    opacity: 0;
+// }
+
+.version-number {
+   position: static;
+   pointer-events: none;
+   user-select: none;
+   left: $s-size;
+   bottom: $s-size;
+   z-index: 10;
+}

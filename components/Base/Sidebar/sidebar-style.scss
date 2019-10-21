@@ -1,0 +1,49 @@
+@import "./../../../styles/abstracts/variables";
+
+.pd-sidebar-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 100vh;
+   background: rgba(0, 0, 0, 0.7);
+   opacity: 0;
+   transition: opacity 0.4s ease;
+   pointer-events: none;
+   z-index: 3;
+
+   &.visible {
+      opacity: 1;
+      pointer-events: all;
+   }
+}
+
+.pd-sidebar {
+   position: fixed;
+   display: flex;
+   flex-direction: column;
+
+   top: 0;
+
+   height: 100vh;
+   max-width: 80%;
+   background: #eeeeee;
+   border: 1px solid #eeeeee;
+
+   transform: translateX(-100%);
+   transition: transform 0.4s ease;
+   opacity: 0;
+   pointer-events: none;
+
+   z-index: 4;
+
+   &.open {
+      pointer-events: all;
+      opacity: 1;
+      transform: translateX(0);
+   }
+
+   .pd-sidebar-content {
+      flex-grow: 1;
+   }
+}
