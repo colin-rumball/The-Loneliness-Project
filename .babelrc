@@ -1,7 +1,32 @@
 {
    "presets": ["next/babel", "@babel/preset-env", "@babel/preset-react"],
+   "env": {
+      "development": {
+         "plugins": [
+            [
+               "babel-plugin-styled-components",
+               { "ssr": true, "displayName": true, "preprocess": false }
+            ]
+         ],
+         "presets": ["next/babel"]
+      },
+      "production": {
+         "plugins": [
+            [
+               "babel-plugin-styled-components",
+               { "ssr": true, "displayName": true, "preprocess": false }
+            ]
+         ],
+         "presets": ["next/babel"]
+      }
+   },
    "plugins": [
       ["css-modules-transform", {}, "css-modules-transform"],
+      [
+         "babel-plugin-styled-components",
+         { "ssr": true, "displayName": true, "preprocess": false },
+         "styled-components"
+      ],
       ["@babel/plugin-proposal-class-properties", {}, "class-properties"],
       ["@babel/plugin-proposal-object-rest-spread", {}, "object-rest-spread"]
    ]

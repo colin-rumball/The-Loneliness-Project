@@ -38,23 +38,23 @@ const seed = async () => {
          username: "admin"
       });
    }
-   // console.log("Reading json");
-   // const file = readFileSync(`${__dirname}/db.json`, { encoding: "utf8" });
-   // console.log("Seeding database");
-   // const apartments: [ApartmentData] = JSON.parse(file);
-   // for (const apartment of apartments) {
-   //    await prisma.createApartment({
-   //       author: { connect: { id: adminUser.id } },
-   //       apt: Number.parseInt(apartment.apt.$numberInt),
-   //       age: apartment.age,
-   //       name: apartment.name,
-   //       lastTime: apartment.last_time,
-   //       lonelinessMeans: apartment.loneliness_means,
-   //       mostLonely: apartment.most_lonely,
-   //       firstTime: apartment.first_time,
-   //       published: apartment.published ? apartment.published : false
-   //    });
-   // }
+   console.log("Reading json");
+   const file = readFileSync(`${__dirname}/db.json`, { encoding: "utf8" });
+   console.log("Seeding database");
+   const apartments: [ApartmentData] = JSON.parse(file);
+   for (const apartment of apartments) {
+      await prisma.createApartment({
+         author: { connect: { id: adminUser.id } },
+         apt: Number.parseInt(apartment.apt.$numberInt),
+         age: apartment.age,
+         name: apartment.name,
+         lastTime: apartment.last_time,
+         lonelinessMeans: apartment.loneliness_means,
+         mostLonely: apartment.most_lonely,
+         firstTime: apartment.first_time,
+         published: apartment.published ? apartment.published : false
+      });
+   }
 };
 
 seed();

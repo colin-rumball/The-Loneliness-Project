@@ -1,10 +1,41 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 class MyDocument extends Document {
    static async getInitialProps(ctx) {
-      const initialProps = await Document.getInitialProps(ctx);
-      return { ...initialProps };
+      // Create an instance of ServerStyleSheet
+      const sheet = new ServerStyleSheet();
+
+      const originalRenderPage = ctx.renderPage;
+      try {
+         ctx.renderPage = () =>
+            originalRenderPage({
+               enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+            });
+         const initialProps = await Document.getInitialProps(ctx);
+
+         return {
+            ...initialProps,
+            styles: (
+               <>
+                  {initialProps.styles}
+                  {sheet.getStyleElement()}
+               </>
+            )
+         };
+      } finally {
+         sheet.seal();
+      }
+
+      // // Step 2: Retrieve styles from components in the page
+      // const page = renderPage(App => props => sheet.collectStyles(<App {...props} />));
+
+      // // Step 3: Extract the styles as <style> tags
+      // const styleTags = sheet.getStyleElement();
+      // const initialProps = await Document.getInitialProps(ctx);
+      // console.log("TCL: MyDocument -> getInitialProps -> initialProps", initialProps);
+      // return { ...initialProps, styleTags };
    }
 
    render() {
@@ -12,11 +43,11 @@ class MyDocument extends Document {
          <Html>
             <Head>
                <link
-                  href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Oswald:300&display=swap"
+                  href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:400,700&display=swap"
                   rel="stylesheet"
                />
                <link
-                  href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:800|Playfair+Display:400|Permanent+Marker&display=swap"
+                  href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap"
                   rel="stylesheet"
                />
             </Head>
@@ -24,6 +55,7 @@ class MyDocument extends Document {
                <Main />
                <NextScript />
             </body>
+            <link href="/static/swal.css" rel="stylesheet" />
          </Html>
       );
    }

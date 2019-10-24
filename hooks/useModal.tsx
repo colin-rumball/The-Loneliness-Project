@@ -3,6 +3,8 @@ import withReactContent from "sweetalert2-react-content";
 import { useCallback } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import ReactDOMServer from "react-dom/server";
+import { ThemeProvider } from "styled-components";
+import MainTheme from "../styles/themes/MainTheme";
 
 const ModalManager = withReactContent(Swal);
 
@@ -73,7 +75,13 @@ const defaultPushModalProps: SweetAlertOptions = {
    showCloseButton: true,
    closeButtonHtml: ReactDOMServer.renderToStaticMarkup(
       <span
-         style={{ color: "#000", fontSize: "20px", position: "absolute", top: "5px", right: "5px" }}
+         style={{
+            color: "#fff",
+            fontSize: "20px",
+            position: "absolute",
+            top: "9px",
+            right: "13px"
+         }}
       >
          <FaWindowClose />
       </span>
@@ -98,6 +106,11 @@ const useModal = () => {
          ...defaultPushModalProps,
          ...options
       };
+
+      if (modalOptions.html !== null) {
+         modalOptions.html = <ThemeProvider theme={MainTheme}>{modalOptions.html}</ThemeProvider>;
+      }
+
       if (!ModalManager.isVisible()) {
          ModalManager.queue([modalOptions]);
       } else {

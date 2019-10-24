@@ -1,0 +1,81 @@
+- start readme
+
+redux
+easter egg
+
+private:
+- get users
+
+- create user
+- delete user
+- change password
+- create story
+- update story
+- delete story
+
+
+public:
+- story query selectors
+- get number of apartments
+- get several(15) apartments numbers and images
+- get apartment details
+
+- login
+
+
+
+logging in scripts should be more apparent. and don't log empty strings in run command.
+
+add cancel to env selection
+
+
+
+
+
+
+
+
+
+-Files to change when copying boilerplate
+config.xml
+now.json
+package.json
+package-lock.json
+README.md
+
+
+
+After Trivia todo:
+-token security
+-sweet alert
+-better styling and style variables
+
+
+
+ENV VARS
+-next.config.js determines what env vars go to the client, now.json determines which env vars go to the backend (env) and the next.js (and others) build processes(build.env).
+
+
+When starting a new project:
+- Create tool to fork easier:
+Go to parent folder of repo folder and run these in cmd:
+git clone https://github.com/colin-rumball/Boilerplate NEW_REPO_NAME
+cd NEW_REPO_NAME
+git remote set-url origin https://github.com/userName/NEW_REPO_NAME
+git remote add upstream https://github.com/colin-rumball/Boilerplate
+git push origin master
+git push --all
+
+- To get updates from boilerplate:
+git fetch upstream
+
+- Then merge them from upstream/master into master of NEW_REPO_NAME.
+- Then merge master of NEW_REPO_NAME into Development branch to work.
+
+test ionic with ios
+vectors
+apollo extension
+apollo client local resolvers and local state management.
+nextjs ssr requesting data with get data from tree.
+nextjs and Now doubling static assets
+react transitions

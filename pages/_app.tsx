@@ -1,21 +1,10 @@
 import React from "react";
 import App, { Container as NextAppContainer } from "next/app";
 import { ApolloProvider } from "@apollo/react-hooks";
-import SiteHeader from "./../containers/SiteHeader";
-import { PusherProvider } from "../lib/pusher/PusherProvider";
 import withApolloClient from "../lib/apollo/withApolloClient";
-import PageContainer from "../components/Base/PageContainer/PageContainer";
-import NavigationMenu, { MenuDirection } from "../components/Base/NavigationMenu/NavigationMenu";
-import NavigationMenuItem from "../components/Base/NavigationMenu/NavigationMenuItem";
-import PageHeader from "../components/Base/PageHeader/PageHeader";
-import Sidebar from "../components/Base/Sidebar/Sidebar";
-import SidebarController from "../components/Base/SidebarController/SidebarController";
-import { FaBars } from "react-icons/fa";
-import SidebarNavItem from "../components/SidebarNavItem";
-import Avatar from "../components/Avatar";
-import SideNavigation from "../containers/SideNavigation";
+import { ThemeProvider } from "styled-components";
+import MainTheme from "../styles/themes/MainTheme";
 import "./../styles/main.scss";
-import "react-grid-layout/css/styles.css";
 
 class MyApp extends App {
    // static async getInitialProps({ Component, ctx }) {
@@ -32,23 +21,9 @@ class MyApp extends App {
       return (
          <NextAppContainer>
             <ApolloProvider client={apolloClient}>
-               <PusherProvider>
-                  <PageContainer
-                     header={
-                        <PageHeader
-                           left={
-                              <SidebarController
-                                 controller={<FaBars />}
-                                 sidebar={<SideNavigation />}
-                              />
-                           }
-                        />
-                     }
-                     left={<SideNavigation />}
-                  >
-                     <Component {...pageProps} key={router.route} />
-                  </PageContainer>
-               </PusherProvider>
+               <ThemeProvider theme={MainTheme}>
+                  <Component {...pageProps} key={router.route} />
+               </ThemeProvider>
             </ApolloProvider>
          </NextAppContainer>
       );
