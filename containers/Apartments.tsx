@@ -26,6 +26,7 @@ const Apartments: React.FC = () => {
          flex-wrap: wrap;
          width: 100%;
          padding-top: 400px;
+         min-height: 100vh;
 
          .apartment-container {
             flex-basis: 33%;

@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import { useRouter } from "next/router";
-import LoginModal from "./../containers/modals/LoginModal";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
