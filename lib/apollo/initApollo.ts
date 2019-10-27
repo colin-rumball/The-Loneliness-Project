@@ -20,31 +20,31 @@ function create(initialState) {
 
    const httpLink = new HttpLink({
       uri: graphQLEndpoint, // Server URL (must be absolute)
-      credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
+      credentials: "include", // Additional fetch() options like `credentials` or `headers`
       // headers: {
       //    authorization: typeof localStorage !== "undefined" ? localStorage.getItem("token") : ""
       // },
       fetch: fetch
    });
 
-   const authMiddleware = new ApolloLink((operation, forward) => {
-      // add the authorization to the headers
-      const token = typeof localStorage !== "undefined" ? localStorage.getItem("token") : "";
-      if (token) {
-         operation.setContext({
-            headers: {
-               authorization: "Bearer " + token
-            }
-         });
-      }
+   // const authMiddleware = new ApolloLink((operation, forward) => {
+   //    // add the authorization to the headers
+   //    const token = typeof localStorage !== "undefined" ? localStorage.getItem("token") : "";
+   //    if (token) {
+   //       operation.setContext({
+   //          headers: {
+   //             authorization: "Bearer " + token
+   //          }
+   //       });
+   //    }
 
-      return forward(operation);
-   });
+   //    return forward(operation);
+   // });
 
    return new ApolloClient({
       connectToDevTools: isBrowser,
       ssrMode: !isBrowser, // Disables forceFetch on the server (so queries are only run once)
-      link: concat(authMiddleware, httpLink),
+      link: httpLink, //concat(authMiddleware, httpLink),
       cache: new InMemoryCache().restore(initialState || {})
    });
 }

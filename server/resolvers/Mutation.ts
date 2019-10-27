@@ -21,17 +21,20 @@ const Mutation = {
          throw new Error("Unable to login");
       }
 
-      const [refreshToken, options] = generateRefreshToken(user.id);
-      response.cookie("refresh_token", refreshToken, options);
+      const [token, options] = generateToken(user.id);
+      response.cookie("token", token, options);
 
-      return {
-         user,
-         token: generateToken(user.id)
-      };
+      return user;
+   },
+   async logout(parent, args, { user, response }: ResolveContext, info) {
+      const [token, options] = generateToken(user.id);
+      response.cookie("token", "", options);
+
+      return user;
    },
    async createUser(parent, args, { user, response, prisma }: ResolveContext, info) {
       if (!user) {
-         throw new Error("Authentication Required.");
+         throw new Error("Authentication Required");
       }
 
       if (!args.data.password || !args.data.username) {
@@ -44,19 +47,14 @@ const Mutation = {
          password
       });
 
-      const [refreshToken, options] = generateRefreshToken(newUser.id);
-      response.cookie("refresh_token", refreshToken, options);
+      const [token, options] = generateToken(user.id);
+      response.cookie("token", token, options);
 
-      const token = generateToken(newUser.id);
-
-      return {
-         user: newUser,
-         token
-      };
+      return newUser;
    },
    async deleteUser(parent, args, { prisma, response, user }: ResolveContext, info) {
       if (!user) {
-         throw new Error("Authentication Required.");
+         throw new Error("Authentication Required");
       }
 
       const userExists = await prisma.$exists.user({
@@ -73,7 +71,7 @@ const Mutation = {
    },
    async updateUser(parent, args, { prisma, request, user }: ResolveContext, info) {
       if (!user) {
-         throw new Error("Authentication Required.");
+         throw new Error("Authentication Required");
       }
 
       args.data.username =
@@ -101,7 +99,7 @@ const Mutation = {
       info
    ) {
       if (!user) {
-         throw new Error("Authentication Required.");
+         throw new Error("Authentication Required");
       }
 
       return prisma.createApartment({
@@ -118,7 +116,7 @@ const Mutation = {
    },
    async deleteApartment(parent, args, { prisma, response, user }: ResolveContext, info) {
       if (!user) {
-         throw new Error("Authentication Required.");
+         throw new Error("Authentication Required");
       }
 
       const apartmentExists = await prisma.$exists.apartment({
@@ -140,7 +138,7 @@ const Mutation = {
       info
    ) {
       if (!user) {
-         throw new Error("Authentication Required.");
+         throw new Error("Authentication Required");
       }
 
       const apartmentExists = await prisma.$exists.apartment({

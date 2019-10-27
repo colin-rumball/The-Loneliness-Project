@@ -8,13 +8,14 @@ import ApartmentDetailsModal from "./modals/ApartmentDetailsModal";
 const Apartments: React.FC = () => {
    const { pushModal } = useModal();
    const { data, loading, called } = useQuery(APARTMENTS_OVERVIEW, {
-      variables: { query: "", first: 15 },
-      onCompleted(data) {}
+      variables: { query: "", first: 15 }
    });
 
-   const [getDetails, { data: d, loading: l, called: c }] = useLazyQuery(APARTMENT_DETAILED, {
+   const [getDetails, {}] = useLazyQuery(APARTMENT_DETAILED, {
       onCompleted(data) {
-         pushModal({ html: <ApartmentDetailsModal {...data.apartment} /> });
+         if (data) {
+            pushModal({ html: <ApartmentDetailsModal {...data.apartment} /> });
+         }
       }
    });
 
@@ -55,6 +56,7 @@ const Apartments: React.FC = () => {
       <StyledApartments>
          {called &&
             !loading &&
+            data &&
             data.apartments.map(apartment => {
                return (
                   <div className="apartment-container" key={apartment.id}>

@@ -14,21 +14,27 @@ const pathToSchema = join(
 const extractUserMiddleware = async (resolve, root, args, context, info) => {
    const req = context.request;
 
-   if (req) {
-      const authorizationHeader = req.headers && req.headers.authorization;
+   if (req && req.cookies) {
+      const authorizationCookie = req.cookies.token;
 
       if (
-         typeof authorizationHeader == "string" &&
-         authorizationHeader != null &&
-         authorizationHeader != "null"
+         typeof authorizationCookie == "string" &&
+         authorizationCookie != null &&
+         authorizationCookie != "null"
       ) {
-         const token = authorizationHeader.replace("Bearer ", "");
+         const token = authorizationCookie.replace("Bearer ", "");
          if (token != "") {
-            const decoded = jwt.verify(token, process.env.SECRET_PD_JWT_SECRET);
+            try {
+               const decoded = jwt.verify(token, process.env.SECRET_PD_JWT_SECRET);
 
-            if (decoded && decoded.userId) {
-               const user = await prisma.user({ id: decoded.userId });
-               context.user = user;
+               if (decoded && decoded.userId) {
+                  const user = await prisma.user({ id: decoded.userId });
+                  context.user = user;
+               }
+            } catch (err) {
+               if (err.name !== "TokenExpiredError") {
+                  console.log("TCL: extractUserMiddleware -> err", err);
+               }
             }
          }
       }

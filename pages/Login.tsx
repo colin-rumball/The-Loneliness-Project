@@ -20,8 +20,13 @@ const Login: React.FC = () => {
    const StyledLoginPage = useMemo(
       () => styled.div`
          display: flex;
+         flex-direction: column;
          justify-content: center;
+         align-items: center;
          width: 100%;
+         background-color: ${({ theme }) => theme.Tan};
+         height: 100%;
+         min-height: 100vh;
       `,
       []
    );

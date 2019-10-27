@@ -16,8 +16,9 @@ type Query {
 }
 
 type Mutation {
-   login(data: LoginUserInput!): AuthPayload!
-   createUser(data: CreateUserInput!): AuthPayload!
+   login(data: LoginUserInput!): User!
+   logout: User
+   createUser(data: CreateUserInput!): User!
    deleteUser(userId: String!): User
    updateUser(data: UpdateUserInput!): User
    createApartment(data: ApartmentCreateInput!): Apartment!
@@ -26,11 +27,6 @@ type Mutation {
    #createComment(data: CreateCommentInput!): Comment!
    #deleteComment(id: ID!): Comment!
    #updateComment(id: ID!, data: UpdateCommentInput!): Comment!
-}
-
-type AuthPayload {
-   token: String!
-   user: User!
 }
 
 input CreateUserInput {

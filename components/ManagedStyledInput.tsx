@@ -10,6 +10,7 @@ interface ManagedStyledInputProps {
    error?: string;
    name: string;
    placeholder?: string;
+   autoComplete?: "off" | "on";
    onChange(event);
 }
 
@@ -20,6 +21,7 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
    error,
    name,
    placeholder,
+   autoComplete,
    onChange
 }) => {
    const StyledInputWithIcon = useMemo(
@@ -27,7 +29,8 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
          width: 100%;
          height: 30px;
          position: relative;
-         margin: 15px 5px;
+         padding: 0 5px;
+         margin: 15px 0;
 
          .icon {
             position: absolute;
@@ -35,7 +38,6 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
             top: 6px;
             left: 12px;
             color: ${props => props.color};
-            opacity: ${props => props.opacity};
             z-index: 3;
             user-select: none;
             pointer-events: none;
@@ -49,6 +51,8 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
             padding-left: 35px;
             width: 100%;
             height: 100%;
+            font-size: 20px;
+            color: ${({ theme }) => theme.Tan};
             border-bottom: ${props => props.border};
 
             &::placeholder {
@@ -61,7 +65,6 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
          &:focus-within {
             .icon {
                color: ${props => props.color};
-               opacity: ${props => (props.opacity > 0.8 ? props.opacity : 0.8)};
             }
 
             input {
@@ -69,7 +72,7 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
 
                &::placeholder {
                   color: ${props => props.color};
-                  opacity: ${props => (props.opacity > 0.8 ? props.opacity : 0.8)};
+                  opacity: 0.3;
                }
             }
          }
@@ -77,25 +80,20 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
       []
    );
 
-   const opacity = useMemo(() => {
-      if (value || error) return 1.0;
-      return 0.5;
+   const color = useMemo(() => {
+      return error ? MainTheme.Red : MainTheme.Tan;
    }, [value, error]);
 
    const border = useMemo(() => {
-      let borderColor = error ? MainTheme.Red : MainTheme.DarkGrey;
-      borderColor += opacity === 1.0 ? "FF" : "80";
+      let borderColor = error ? MainTheme.Red : MainTheme.Tan;
       return `2px solid ${borderColor}`;
-   }, [error, opacity]);
+   }, [error]);
 
    return (
-      <StyledInputWithIcon
-         color={error ? MainTheme.Red : MainTheme.DarkGrey}
-         opacity={opacity}
-         border={border}
-      >
+      <StyledInputWithIcon color={color} border={border}>
          <Icon className="icon" />
          <input
+            autoComplete={autoComplete}
             type={type || "text"}
             name={name}
             placeholder={placeholder}

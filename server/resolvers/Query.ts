@@ -2,9 +2,9 @@ import { ResolveContext } from "../serverUtils/constants";
 import { ApartmentWhereInput, ApartmentOrderByInput } from "../generated/prisma-client";
 
 const Query = {
-   async users(parent, args, { user, prisma }: ResolveContext, info) {
+   async users(parent, args, { user, request, prisma }: ResolveContext, info) {
       if (!user) {
-         return null;
+         throw new Error("Authentication Required");
       }
 
       const opArgs: any = {

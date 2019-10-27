@@ -11,7 +11,7 @@ const debug = process.env.PD_LOCAL_DEVELOPMENT ? true : false;
 const playground = targetStage === "development" ? graphQLEndpoint : false;
 
 const corsOptions = {
-   origin: "*",
+   origin: "http://localhost:3000",
    credentials: true
 };
 
