@@ -118,8 +118,13 @@ const useModal = () => {
       }
    }, []);
 
+   const closeTopModal = useCallback(() => {
+      ModalManager.close();
+   }, []);
+
    return {
-      pushModal
+      pushModal,
+      closeTopModal
    };
 };
 
