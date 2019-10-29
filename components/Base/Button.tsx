@@ -13,6 +13,7 @@ export interface ButtonProps {
    onClick?: MouseEventHandler<Element>;
    disabled?: boolean;
    className?: string;
+   type?: string;
    style?: CSSProperties;
 }
 
@@ -23,6 +24,7 @@ const defaultButtonProps: ButtonProps = {
    onClick: () => {},
    disabled: false,
    className: undefined,
+   type: "button",
    style: {}
 };
 
@@ -30,7 +32,7 @@ const defaultButtonProps: ButtonProps = {
  * Buttons are clickable items used to perform an action.
  */
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
-   const { text, id, tabIndex, onClick, disabled, className, style } = {
+   const { text, id, tabIndex, onClick, disabled, className, type, style } = {
       ...defaultButtonProps,
       ...props
    };
@@ -82,6 +84,7 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
          disabled={disabled}
          tabIndex={tabIndex}
          onClick={onClick}
+         type={type}
       >
          {text}
       </StyledButton>

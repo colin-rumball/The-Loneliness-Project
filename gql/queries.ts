@@ -20,6 +20,7 @@ export const APARTMENT_DETAILED = gql`
          lonelinessMeans
          firstTime
          lastTime
+         published
       }
    }
 `;
@@ -35,6 +36,7 @@ export const APARTMENTS_OVERVIEW = gql`
       apartments(query: $query, first: $first, skip: $skip, after: $after, orderBy: $orderBy) {
          id
          apt
+         published
       }
    }
 `;

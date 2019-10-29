@@ -6,7 +6,8 @@ const MainTheme = {
    LightGrey: "#777777",
    Grey: "#555555",
    DarkGrey: "#222222",
-   Red: "#c02828"
+   Red: "#c02828",
+   Green: "#2ec958"
 };
 
 const modal = {};

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { USERS } from "../gql/queries";
 import useGQLErrorHandler from "../hooks/useGQLErrorHandler";
-import { FaTimes, FaPlusSquare } from "react-icons/fa";
+import { FaTimes, FaPlusSquare, FaTimesCircle } from "react-icons/fa";
 import Card from "../components/Base/Card";
 import useModal from "../hooks/useModal";
 import AddUserModal from "./modals/AddUserModal";
@@ -14,9 +14,6 @@ import MainTheme from "../styles/themes/MainTheme";
 const UserList: React.FC = () => {
    const { pushModal } = useModal();
    const { data, loading } = useQuery(USERS, {
-      onCompleted(data) {
-         console.log("TCL: {} -> data", data);
-      },
       onError: useGQLErrorHandler
    });
 
@@ -24,6 +21,14 @@ const UserList: React.FC = () => {
       () => styled.table`
          width: 100%;
          text-align: center;
+         tr {
+            &:nth-child(1n + 2) {
+               border-bottom: ${({ theme }) => `${theme.LightGrey} 1px solid`};
+            }
+            td {
+               padding: 10px;
+            }
+         }
       `,
       []
    );
@@ -33,7 +38,7 @@ const UserList: React.FC = () => {
          color: ${({ theme }) => theme.Grey};
          &:hover {
             cursor: pointer;
-            color: ${({ theme }) => theme.DarkGrey};
+            color: ${({ theme }) => theme.LightBlue};
             transition: color 0.3s;
          }
       `,
@@ -41,7 +46,7 @@ const UserList: React.FC = () => {
    );
 
    const StyledRemoveIcon = useMemo(
-      () => styled(FaTimes)`
+      () => styled(FaTimesCircle)`
          color: ${({ theme }) => theme.Grey};
          &:hover {
             cursor: pointer;
