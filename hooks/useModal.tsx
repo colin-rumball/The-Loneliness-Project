@@ -76,11 +76,11 @@ const defaultPushModalProps: SweetAlertOptions = {
    closeButtonHtml: ReactDOMServer.renderToStaticMarkup(
       <span
          style={{
-            color: "#fff",
+            color: MainTheme.LightGrey,
             fontSize: "20px",
             position: "absolute",
             top: "9px",
-            right: "13px"
+            right: "16px"
          }}
       >
          <FaWindowClose />

@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from "react";
 import styled from "styled-components";
-import { useQuery, useLazyQuery } from "@apollo/react-hooks";
+import { useQuery, useLazyQuery, useMutation } from "@apollo/react-hooks";
 import { APARTMENTS_OVERVIEW, APARTMENT_DETAILED } from "../gql/queries";
 import useGQLErrorHandler from "../hooks/useGQLErrorHandler";
 import { FaEdit, FaPlusSquare, FaTimes, FaCheck } from "react-icons/fa";
@@ -8,12 +8,47 @@ import useModal from "../hooks/useModal";
 import Card from "../components/Base/Card";
 import EditApartmentModal from "./modals/EditApartmentModal";
 import MainTheme from "../styles/themes/MainTheme";
+import { CREATE_APARTMENT, UPDATE_APARTMENT } from "../gql/mutations";
 
 const ApartmentList: React.FC = () => {
-   const { pushModal } = useModal();
-   const { data, loading } = useQuery(APARTMENTS_OVERVIEW, {
+   const { pushModal, closeTopModal } = useModal();
+   const { refetch, data, loading } = useQuery(APARTMENTS_OVERVIEW, {
+      variables: { orderBy: "apt_DESC" },
       onError: useGQLErrorHandler
    });
+
+   const [createApartment, {}] = useMutation(CREATE_APARTMENT, {});
+   const [updateApartment, {}] = useMutation(UPDATE_APARTMENT, {});
+
+   const extractApartmentData = useCallback(
+      ({ apt, name, age, mostLonely, lonelinessMeans, firstTime, lastTime, published }) => ({
+         apt,
+         name,
+         age,
+         mostLonely,
+         lonelinessMeans,
+         firstTime,
+         lastTime,
+         published
+      }),
+      []
+   );
+
+   const onCreateNewApartment = useCallback(async (id, data) => {
+      const strippedData = extractApartmentData(data);
+      strippedData.apt = Number.parseInt(strippedData.apt);
+      await createApartment({ variables: { data: strippedData } });
+      closeTopModal();
+      refetch();
+   }, []);
+
+   const onUpdateApartment = useCallback(async (id, data) => {
+      const strippedData = extractApartmentData(data);
+      strippedData.apt = Number.parseInt(strippedData.apt);
+      await updateApartment({ variables: { id, data: strippedData } });
+      closeTopModal();
+      refetch();
+   }, []);
 
    const [getApartmentDetails, {}] = useLazyQuery(APARTMENT_DETAILED, {
       onCompleted(data) {
@@ -23,6 +58,7 @@ const ApartmentList: React.FC = () => {
                   <EditApartmentModal
                      modalTitle="Edit Apartment Details"
                      buttonText="Submit"
+                     onFormSubmit={onUpdateApartment}
                      {...data.apartment}
                   />
                )
@@ -107,7 +143,11 @@ const ApartmentList: React.FC = () => {
                   onClick={() =>
                      pushModal({
                         html: (
-                           <EditApartmentModal modalTitle="Create Apartment" buttonText="Create" />
+                           <EditApartmentModal
+                              onFormSubmit={onCreateNewApartment}
+                              modalTitle="Create Apartment"
+                              buttonText="Create"
+                           />
                         )
                      })
                   }

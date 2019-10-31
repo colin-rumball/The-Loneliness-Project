@@ -1,11 +1,12 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { Formik, Form, useField } from "formik";
+import { Formik, Form, useFormikContext } from "formik";
 import * as Yup from "yup";
 import TextInput from "../../components/Forms/TextInput";
 import Checkbox from "../../components/Forms/Checkbox";
 import TextArea from "../../components/Forms/TextArea";
 import Button from "../../components/Base/Button";
+import SubmitButton from "../../components/Forms/SubmitButton";
 
 interface EditApartmentModalProps {
    id?: string;
@@ -21,6 +22,7 @@ interface EditApartmentModalProps {
    updateAt?: string;
    modalTitle: string;
    buttonText: string;
+   onFormSubmit?(id: string, values);
 }
 
 const EditApartmentModalDefaultProps: EditApartmentModalProps = {
@@ -53,7 +55,8 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = props => {
       createdAt,
       updateAt,
       modalTitle,
-      buttonText
+      buttonText,
+      onFormSubmit
    } = { ...EditApartmentModalDefaultProps, ...props };
 
    const StyledEditApartmentModal = useMemo(
@@ -65,7 +68,7 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = props => {
          min-height: 50vh;
          max-height: 90vh;
          padding: 20px;
-         margin-bottom: 30px;
+         margin: 30px 0;
          overflow: auto;
       `,
       []
@@ -113,11 +116,8 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = props => {
                name: Yup.string().required("Required"),
                age: Yup.string().required("Required")
             })}
-            onSubmit={(values, { setSubmitting }) => {
-               setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  setSubmitting(false);
-               }, 400);
+            onSubmit={async (values, { setSubmitting }) => {
+               await onFormSubmit(values.id, values);
             }}
          >
             <StyledForm>
@@ -151,7 +151,7 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = props => {
 
                <Checkbox name="published">Published</Checkbox>
 
-               <Button type="submit" text={buttonText} />
+               <SubmitButton text={buttonText} />
             </StyledForm>
          </Formik>
       </StyledEditApartmentModal>

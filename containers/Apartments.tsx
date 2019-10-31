@@ -8,7 +8,7 @@ import ApartmentDetailsModal from "./modals/ApartmentDetailsModal";
 const Apartments: React.FC = () => {
    const { pushModal } = useModal();
    const { data, loading, called } = useQuery(APARTMENTS_OVERVIEW, {
-      variables: { query: "", first: 15 }
+      variables: { query: "", first: 15, orderBy: "apt_DESC" }
    });
 
    const [getDetails, {}] = useLazyQuery(APARTMENT_DETAILED, {
