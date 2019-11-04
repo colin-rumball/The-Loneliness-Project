@@ -1,0 +1,62 @@
+[
+	{
+		"press": "https://www.buzzfeed.com/annaborges/the-loneliness-project/",
+		"src": "press-buzzfeed.png",
+		"alt": "BuzzFeed"
+	},
+	{
+		"press": "http://www.cbc.ca/news/canada/toronto/programs/metromorning/the-loneliness-project-1.4343268",
+		"src": "press-cbc-metromorning.png",
+		"alt": "CBC | Metro Morning"
+	},
+	{
+		"press": "https://thewalrus.ca/the-science-of-loneliness/",
+		"src": "press-thewalrus.png",
+		"alt": "The Walrus"
+	},
+	{
+		"press": "http://www.cbc.ca/radio/spark/367-loneliness-algorithms-war-and-peace-1.4348316/online-is-the-loneliest-number-1.4348566",
+		"src": "press-spark.png",
+		"alt": "CBC | Spark"
+	},
+	{
+		"press": "https://globalnews.ca/news/3798918/loneliness-project-canada/",
+		"src": "press-globalnews.png",
+		"alt": "Global News"
+	},
+	{
+		"press": "https://www.thestar.com/life/2017/10/26/loneliness-project-brings-us-together-in-our-isolation.html",
+		"src": "press-torontostar.png",
+		"alt": "Toronto Star"
+	},
+	{
+		"press": "https://www.creativeboom.com/inspiration/graphic-designer-tackles-issue-of-wide-spread-loneliness-in-moving-campaign/",
+		"src": "press-creativeboom.png",
+		"alt": "Creative Boom"
+	},
+	{
+		"press": "http://stimulantonline.ca/2017/10/11/lonely-together/",
+		"src": "press-stimulant@2x.png",
+		"alt": "Stimulant"
+	},
+	{
+		"press": "http://www.rcinet.ca/en/2017/10/16/the-loneliness-project-helps-seeks-to-ease-the-hurt-in-gentle-fashion/",
+		"src": "press-radiocanada.png",
+		"alt": "Radio Canada"
+	},
+	{
+		"press": "http://www.howdesign.com/design-creativity/top-10-sites-for-designers/top-10-websites-for-designers-december-2017/",
+		"src": "press-how.png",
+		"alt": "HOW"
+	},
+	{
+		"press": "http://www.konbini.com/fr/tendances-2/the-loneliness-project-marissa-korda/",
+		"src": "press-konbini.png",
+		"alt": "Konbini"
+	},
+	{
+		"press": "https://www.itsnicethat.com/articles/best-of-the-web-271017",
+		"src": "press-itsnicethat.png",
+		"alt": "It's Nice That"
+	}
+]
