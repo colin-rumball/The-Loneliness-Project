@@ -82,6 +82,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({}) => {
                   type="email"
                   name="email"
                   value={email}
+                  autoComplete="off"
                   onChange={e => {
                      setEmail(e.target.value);
                   }}

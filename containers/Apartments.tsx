@@ -29,21 +29,71 @@ const Apartments: React.FC = () => {
          padding-top: 400px;
          min-height: 100vh;
 
-         .apartment-container {
+         .roof {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
             flex-basis: 33%;
             padding: 0 40px;
             z-index: 99;
 
-            .apartment {
-               color: #fff;
-               text-align: center;
-               padding: 100px 0;
-               background: #0b1928;
-               user-select: none;
+            &.left {
+               transform: translateY(17%);
+               img {
+                  margin-left: -2%;
+                  width: 104.9%;
+               }
+            }
 
+            &.center {
+               img {
+                  margin-left: -2.1%;
+                  width: 104.8%;
+               }
+            }
+
+            &.right {
+               transform: translateY(17%);
+               img {
+                  margin-left: -4%;
+                  width: 108.2%;
+               }
+            }
+         }
+
+         .apartment-container {
+            position: relative;
+            flex-basis: 33%;
+            padding: 0 40px;
+            z-index: 99;
+
+            &:nth-child(3n),
+            &:nth-child(3n + 1) {
+               transform: translateY(10.5%);
+            }
+
+            .apartment {
+               position: relative;
+               /* color: #fff; */
+               /* text-align: center; */
+               /* padding: 100px 0; */
+               /* background: #0b1928; */
+               /* user-select: none; */
+               pointer-events: none;
+               max-width: 100%;
+               min-height: 100%;
+            }
+
+            .backer {
+               position: absolute;
+               top: 5px;
+               left: 45px;
+               right: 45px;
+               bottom: 5px;
+               background: #0b1928;
                &:hover {
                   cursor: pointer;
-                  color: #000;
+                  /* color: #000; */
                   background: #f5d297;
                }
             }
@@ -52,23 +102,72 @@ const Apartments: React.FC = () => {
       []
    );
 
+   const StyledStoreFront = useMemo(
+      () => styled.div`
+         display: flex;
+         flex-direction: column;
+         flex-basis: 33%;
+         padding: 0 40px;
+         z-index: 99;
+
+         .left {
+            margin-left: -3px;
+            width: 101.5%;
+            transform: translateY(11%);
+         }
+
+         .center {
+            margin-left: -5px;
+            width: 104.5%;
+         }
+
+         .right {
+            margin-left: -3px;
+            width: 101.5%;
+            transform: translateY(11%);
+         }
+      `,
+      []
+   );
+
    return (
       <StyledApartments>
+         <div className="roof left">
+            <img src="/static/apartments/roof_3.png" alt="apartment-roof-3" />
+         </div>
+         <div className="roof center">
+            <img src="/static/apartments/roof_2.png" alt="apartment-roof-2" />
+         </div>
+         <div className="roof right">
+            <img src="/static/apartments/roof_1.png" alt="apartment-roof-1" />
+         </div>
          {called &&
             !loading &&
             data &&
             data.apartments.map(apartment => {
                return (
                   <div className="apartment-container" key={apartment.id}>
-                     <div
+                     <div className="backer"></div>
+                     <img
+                        src="/static/apartments/storey_284.png"
                         onClick={() => getDetails({ variables: { id: apartment.id } })}
                         className="apartment"
-                     >
-                        {apartment.apt}
-                     </div>
+                     />
+
+                     {/* {apartment.apt} */}
+                     {/* </div> */}
                   </div>
                );
             })}
+         <StyledStoreFront>
+            <img className="left" src="/static/apartments/store_3.png" alt="store 3" />
+         </StyledStoreFront>
+         <StyledStoreFront>
+            <img className="center" src="/static/apartments/store_2.png" alt="store 2" />
+         </StyledStoreFront>
+         <StyledStoreFront>
+            <img className="right" src="/static/apartments/store_1.png" alt="store 1" />
+         </StyledStoreFront>
       </StyledApartments>
    );
 };
