@@ -50,6 +50,7 @@ class MyDocument extends Document {
                   href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap"
                   rel="stylesheet"
                />
+               <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
             </Head>
             <body>
                <Main />

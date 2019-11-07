@@ -34,6 +34,8 @@ const LogoHeader: React.FC = () => {
          align-items: center;
          width: 100%;
          padding-top: 70px;
+         user-select: none;
+         pointer-events: none;
          /* left: 12vw; */
          /* padding: 70px 12vw 0 12vw; */
          opacity: ${props => props.opactiy};

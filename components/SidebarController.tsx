@@ -2,7 +2,8 @@ import React, { useState, useCallback, useRef, useMemo } from "react";
 import classnames from "classnames";
 import ScrollLock, { TouchScrollable } from "react-scrolllock";
 import styled from "styled-components";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
+import AboutSection from "../containers/AboutSection";
 
 export interface SidebarControllerProps {
    controller?: Object;
@@ -11,7 +12,6 @@ export interface SidebarControllerProps {
 
 const SidebarController: React.FC<SidebarControllerProps> = ({ controller, sidebar }) => {
    const [isOpen, setIsOpen] = useState(false);
-   const cn = classnames("pd-sidebar-controller");
 
    const onControllerClicked = useCallback(() => {
       setIsOpen(true);
@@ -26,32 +26,50 @@ const SidebarController: React.FC<SidebarControllerProps> = ({ controller, sideb
          position: fixed;
          left: 60px;
          top: 60px;
-         font-size: 30px;
+         font-size: 28px;
          cursor: pointer;
-         z-index: 2;
+         z-index: 99;
+         color: ${({ theme }) => theme.Tan};
+         transition: color 0.3s ease, transform 0.1s ease, opacity 0.3s ease;
+
+         &:hover {
+            color: #fff;
+         }
+
+         &:active {
+            transform: scale(0.95);
+         }
       `,
       []
    );
 
-   return (
-      <StyledSidebarController>
-         <FaBars />
-      </StyledSidebarController>
-   );
-
-   return (
-      <>
-         <StyledSidebarController onClick={onControllerClicked} className={cn}>
-            {controller}
+   if (!isOpen) {
+      return (
+         <StyledSidebarController
+            onClick={() => {
+               setIsOpen(true);
+            }}
+         >
+            <FaBars />
          </StyledSidebarController>
-         <ScrollLock isActive={isOpen} />
-         <TouchScrollable>
-            {/* <Sidebar open={isOpen} onCloseRequested={onCloseRequested}>
-               {sidebar}
-            </Sidebar> */}
-         </TouchScrollable>
-      </>
-   );
+      );
+   } else {
+      return (
+         <>
+            <StyledSidebarController
+               onClick={() => {
+                  setIsOpen(false);
+               }}
+            >
+               <FaTimes />
+            </StyledSidebarController>
+            <ScrollLock isActive={true} />
+            <TouchScrollable>
+               <AboutSection />
+            </TouchScrollable>
+         </>
+      );
+   }
 };
 
 export default SidebarController;

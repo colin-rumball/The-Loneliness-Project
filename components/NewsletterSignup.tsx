@@ -2,9 +2,16 @@ import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import TextInput from "./Forms/TextInput";
 
-interface NewsletterSignupProps {}
+interface NewsletterSignupProps {
+   showHeader?: boolean;
+}
 
-const NewsletterSignup: React.FC<NewsletterSignupProps> = ({}) => {
+const NewsletterSignupDefaultProps: NewsletterSignupProps = {
+   showHeader: true
+};
+
+const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
+   const { showHeader } = { ...NewsletterSignupDefaultProps, ...props };
    const [error, setError] = useState("");
    const [email, setEmail] = useState("");
 
@@ -14,8 +21,9 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({}) => {
          text-align: center;
          color: ${({ theme }) => theme.Tan};
          opacity: 0.9;
-         font-family: "lato", sans-serif;
-         font-size: 28px;
+         font-weight: 100;
+         /* font-family: "lato", sans-serif; */
+         font-size: 33px;
          margin-bottom: 30px;
       `,
       []
@@ -25,12 +33,14 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({}) => {
       () => styled.div`
          width: 100%;
          padding: 0 40px;
-         max-width: 600px;
+         display: flex;
+         justify-content: center;
 
          .container {
             display: flex;
             flex-wrap: nowrap;
             justify-content: center;
+            max-width: 600px;
             width: 100%;
             border-bottom: ${({ theme }) => `1px solid ${theme.Tan}`};
 
@@ -75,7 +85,9 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({}) => {
 
    return (
       <>
-         <StyledNewsletterHeader>Weekly Stories in your Inbox</StyledNewsletterHeader>
+         {showHeader && (
+            <StyledNewsletterHeader>Weekly Stories in your Inbox</StyledNewsletterHeader>
+         )}
          <StyledNewletterInput>
             <div className="container">
                <input

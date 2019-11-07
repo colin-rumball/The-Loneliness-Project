@@ -34,11 +34,11 @@ const Apartments: React.FC = () => {
             flex-direction: column;
             justify-content: flex-end;
             flex-basis: 33%;
-            padding: 0 40px;
-            z-index: 99;
+            z-index: 40;
 
             &.left {
                transform: translateY(17%);
+               padding: 0 20px 0 40px;
                img {
                   margin-left: -2%;
                   width: 104.9%;
@@ -46,6 +46,7 @@ const Apartments: React.FC = () => {
             }
 
             &.center {
+               padding: 0 20px 0 20px;
                img {
                   margin-left: -2.1%;
                   width: 104.8%;
@@ -53,6 +54,7 @@ const Apartments: React.FC = () => {
             }
 
             &.right {
+               padding: 0 40px 0 20px;
                transform: translateY(17%);
                img {
                   margin-left: -4%;
@@ -64,21 +66,21 @@ const Apartments: React.FC = () => {
          .apartment-container {
             position: relative;
             flex-basis: 33%;
-            padding: 0 40px;
-            z-index: 99;
+            padding: 0 20px;
+            z-index: 40;
 
-            &:nth-child(3n),
+            &:nth-child(3n) {
+               transform: translateY(10.5%);
+               padding: 0 40px 0 20px;
+            }
+
             &:nth-child(3n + 1) {
                transform: translateY(10.5%);
+               padding: 0 20px 0 40px;
             }
 
             .apartment {
                position: relative;
-               /* color: #fff; */
-               /* text-align: center; */
-               /* padding: 100px 0; */
-               /* background: #0b1928; */
-               /* user-select: none; */
                pointer-events: none;
                max-width: 100%;
                min-height: 100%;
@@ -90,10 +92,11 @@ const Apartments: React.FC = () => {
                left: 45px;
                right: 45px;
                bottom: 5px;
-               background: #0b1928;
+               background: #85c0d0;
+               transition: background 0.4s ease;
+
                &:hover {
                   cursor: pointer;
-                  /* color: #000; */
                   background: #f5d297;
                }
             }
@@ -107,24 +110,26 @@ const Apartments: React.FC = () => {
          display: flex;
          flex-direction: column;
          flex-basis: 33%;
-         padding: 0 40px;
-         z-index: 99;
+         z-index: 40;
 
          .left {
             margin-left: -3px;
             width: 101.5%;
             transform: translateY(11%);
+            padding: 0 20px 0 40px;
          }
 
          .center {
             margin-left: -5px;
             width: 104.5%;
+            padding: 0 20px;
          }
 
          .right {
             margin-left: -3px;
             width: 101.5%;
             transform: translateY(11%);
+            padding: 0 40px 0 20px;
          }
       `,
       []

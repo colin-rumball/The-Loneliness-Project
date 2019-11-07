@@ -39,6 +39,7 @@ const PressFeatures: React.FC<PressFeaturesProps> = ({}) => {
             justify-content: center;
             align-items: center;
             transition: transform 0.3s ease, opacity 0.3s ease;
+            min-height: 80px;
 
             &:hover {
                transform: scale(1.1);

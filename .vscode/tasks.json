@@ -1,135 +1,175 @@
 {
    "version": "2.0.0",
    "tasks": [
-      {
-         "label": "CreateNowDevEnv",
-         "command": "ts-node",
-         "args": [
-            "-P",
-            "${workspaceFolder}/config/tsconfig.json",
-            "${workspaceFolder}/scripts/RunCreateEnv.ts",
-            "--target=Development",
-            "--debug=true"
-         ],
-         "type": "shell",
-         "options": {
-            "statusbar": "hide"
-         }
-      },
-      {
-         "label": "CreateLocalDebugEnv",
-         "command": "ts-node",
-         "args": [
-            "-P",
-            "${workspaceFolder}/config/tsconfig.json",
-            "${workspaceFolder}/scripts/RunCreateEnv.ts",
-            "--target=Development",
-            "--debug=true",
-            "--local=true"
-         ],
-         "type": "shell",
-         "options": {
-            "statusbar": "hide"
-         }
-      },
-      {
-         "label": "CreateTestEnv",
-         "command": "ts-node",
-         "args": [
-            "-P",
-            "${workspaceFolder}/config/tsconfig.json",
-            "${workspaceFolder}/scripts/RunCreateEnv.ts",
-            "--target=Test"
-         ],
-         "type": "shell",
-         "options": {
-            "statusbar": "hide"
-         }
-      },
-      {
-         "label": "FixTSConfig",
-         "command": "ts-node",
-         "args": [
-            "-P",
-            "${workspaceFolder}/config/tsconfig.json",
-            "${workspaceFolder}/scripts/RunFixTSConfig.ts"
-         ],
-         "type": "shell",
-         "options": {
-            "statusbar": "hide"
-         }
-      },
-      {
-         "label": "Now Dev",
-         "type": "shell",
-         "command": "npm",
-         "args": ["run", "now:dev"],
-         "dependsOn": ["CreateNowDevEnv"],
-         "promptOnClose": true,
-         "dependsOrder": "sequence",
-         "options": {
-            "statusbar": "hide"
-         }
-      },
-      {
-         "label": "Local Client Debug",
-         "type": "shell",
-         "command": "npm",
-         "args": ["run", "now:local:dev"],
-         "dependsOn": ["CreateLocalDebugEnv"],
-         "promptOnClose": true,
-         "dependsOrder": "sequence"
-      },
-      {
-         "label": "Start Local Server",
-         "type": "shell",
-         "command": "npm",
-         "args": ["run", "server:local"],
-         "dependsOn": ["CreateLocalDebugEnv"],
-         "promptOnClose": true,
-         "dependsOrder": "sequence"
-      },
-      {
-         "label": "Prisma Deploy",
-         "type": "shell",
-         "command": "npm",
-         "args": ["run", "prisma:deploy"],
-         "dependsOn": [""],
-         "promptOnClose": true,
-         "dependsOrder": "sequence"
-      },
-      {
-         "label": "Build GQL Schema",
-         "type": "shell",
-         "command": "npm",
-         "args": ["run", "build:GQLSchema"],
-         "dependsOn": [""],
-         "promptOnClose": true,
-         "dependsOrder": "sequence"
-      },
-      {
-         "label": "Deploy New Build",
-         "type": "shell",
-         "command": "npm",
-         "args": ["run", "now:deploy"]
-      },
-      {
-         "label": "Build Ionic",
-         "type": "shell",
-         "command": "npm",
-         "args": ["run", "ionic:build"],
-         "dependsOn": [""],
-         "promptOnClose": true,
-         "dependsOrder": "sequence"
-      },
-      {
-         "label": "Run All Tests",
-         "type": "shell",
-         "command": "npm",
-         "args": ["run", "test:all"],
-         "dependsOn": ["CreateTestEnv"],
-         "promptOnClose": true,
-         "dependsOrder": "sequence"
-      }
-   ]
+		{
+			"label": "CreateNowDevEnv",
+			"command": "ts-node",
+			"args": [
+				"-P",
+				"${workspaceFolder}/config/tsconfig.json",
+				"${workspaceFolder}/scripts/RunCreateEnv.ts",
+				"--target=Development",
+				"--debug=true"
+			],
+			"type": "shell",
+			"options": {
+				"statusbar": "hide"
+			}
+		},
+		{
+			"label": "CreateLocalDebugEnv",
+			"command": "ts-node",
+			"args": [
+				"-P",
+				"${workspaceFolder}/config/tsconfig.json",
+				"${workspaceFolder}/scripts/RunCreateEnv.ts",
+				"--target=Development",
+				"--debug=true",
+				"--local=true"
+			],
+			"type": "shell",
+			"options": {
+				"statusbar": "hide"
+			}
+		},
+		{
+			"label": "CreateTestEnv",
+			"command": "ts-node",
+			"args": [
+				"-P",
+				"${workspaceFolder}/config/tsconfig.json",
+				"${workspaceFolder}/scripts/RunCreateEnv.ts",
+				"--target=Test"
+			],
+			"type": "shell",
+			"options": {
+				"statusbar": "hide"
+			}
+		},
+		{
+			"label": "FixTSConfig",
+			"command": "ts-node",
+			"args": [
+				"-P",
+				"${workspaceFolder}/config/tsconfig.json",
+				"${workspaceFolder}/scripts/RunFixTSConfig.ts"
+			],
+			"type": "shell",
+			"options": {
+				"statusbar": "hide"
+			}
+		},
+		{
+			"label": "Now Dev",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"now:dev"
+			],
+			"dependsOn": [
+				"CreateNowDevEnv"
+			],
+			"promptOnClose": true,
+			"dependsOrder": "sequence",
+			"options": {
+				"statusbar": "hide"
+			}
+		},
+		{
+			"label": "Local Client Debug",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"now:local:dev"
+			],
+			"dependsOn": [
+				"CreateLocalDebugEnv"
+			],
+			"promptOnClose": true,
+			"dependsOrder": "sequence",
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Local Server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"server:local"
+			],
+			"dependsOn": [
+				"CreateLocalDebugEnv"
+			],
+			"promptOnClose": true,
+			"dependsOrder": "sequence",
+			"problemMatcher": []
+		},
+		{
+			"label": "Prisma Deploy",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"prisma:deploy"
+			],
+			"dependsOn": [
+				""
+			],
+			"promptOnClose": true,
+			"dependsOrder": "sequence"
+		},
+		{
+			"label": "Build GQL Schema",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:GQLSchema"
+			],
+			"dependsOn": [
+				""
+			],
+			"promptOnClose": true,
+			"dependsOrder": "sequence"
+		},
+		{
+			"label": "Deploy New Build",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"now:deploy"
+			]
+		},
+		{
+			"label": "Build Ionic",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"ionic:build"
+			],
+			"dependsOn": [
+				""
+			],
+			"promptOnClose": true,
+			"dependsOrder": "sequence"
+		},
+		{
+			"label": "Run All Tests",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"test:all"
+			],
+			"dependsOn": [
+				"CreateTestEnv"
+			],
+			"promptOnClose": true,
+			"dependsOrder": "sequence"
+		}
+	]
 }
