@@ -13,7 +13,7 @@ const LogoHeader: React.FC = () => {
       return Math.min(Math.max(1.0 - (winScroll / height - 0) / (0.2 - 0), 0.0), 1.0);
    }, []);
 
-   const [opactiy, setOpacity] = useState(1.0);
+   const [opactiy, setOpacity] = useState(getOpacityAmount());
 
    const onScroll = useCallback(() => {
       setOpacity(getOpacityAmount());

@@ -55,6 +55,9 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
             }
 
             button {
+               font-family: "lato", sans-serif;
+               font-size: 16px;
+               letter-spacing: 1px;
                cursor: pointer;
                background: transparent;
                border: none;
