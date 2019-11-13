@@ -25,6 +25,22 @@ export const APARTMENT_DETAILED = gql`
    }
 `;
 
+export const APARTMENT_BY_NUMBER = gql`
+   query ApartmentByNumber($apt: Int) {
+      apartmentByNumber(apt: $apt) {
+         id
+         apt
+         name
+         age
+         mostLonely
+         lonelinessMeans
+         firstTime
+         lastTime
+         published
+      }
+   }
+`;
+
 export const APARTMENTS_OVERVIEW = gql`
    query Apartments(
       $query: String

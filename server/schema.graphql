@@ -3,6 +3,7 @@
 type Query {
    users: [User!]
    apartment(id: String): Apartment
+   apartmentByNumber(apt: Int): Apartment
    apartments(
       query: String
       first: Int

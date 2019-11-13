@@ -132,7 +132,8 @@
 				""
 			],
 			"promptOnClose": true,
-			"dependsOrder": "sequence"
+			"dependsOrder": "sequence",
+			"problemMatcher": []
 		},
 		{
 			"label": "Deploy New Build",

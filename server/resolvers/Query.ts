@@ -21,6 +21,11 @@ const Query = {
          id: args.id
       });
    },
+   async apartmentByNumber(parent, args, { prisma }: ResolveContext, info) {
+      return prisma.apartment({
+         apt: args.apt
+      });
+   },
    async apartments(parent, args, { user, prisma }: ResolveContext, info) {
       const opArgs: {
          where?: ApartmentWhereInput;

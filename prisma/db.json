@@ -1,6 +1,189 @@
 [
 	{
 		"_id": {
+			"$oid": "5dc19e61ef20e977fc9b8be4"
+		},
+		"apt": {
+			"$numberInt": "300"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Child of the ’50s",
+		"age": "65",
+		"most_lonely": "I’m too old to put a specific on that but think my first Christmas away from family would be near the top. I could hardly make the call home and not cry. But I see it now as just a stepping stone to growing up. Life will send more difficult times than a Christmas away from family. You will find you are not alone at facing sad lonely times. That’s when it’s time to reach out. Find the lonely. Create your own special time. Make a new memory. You don’t have to conform to society’s normal expectation and tradition. Change the expectation and tradition. Don’t focus on yourself and the loneliness will lessen. Look outward and you’ll find what or who was meant to brighten your day. Find your purpose and you won’t have time for loneliness. Be kind to yourself. Buy yourself your favourite birthday cake, light the candles, sing the song and eat the whole thing! Because you can. Because you’re alive.",
+		"loneliness_means": "It’s missing something or feeling disconnected from what the world says should be a busy exciting fun time. I’ve felt lonely in a room of happy partying people. I am not good at watching frivolous stupidity. Guess I’m a loner who is never lonely. I visit archives and never want to leave because I discover things that excite me. I can have great conversations with strangers in odd places and feel connected. Loneliness is so different for everyone. I don’t need people around me. I do need a few I can connect with for specific interests and projects. That sustains me. ",
+		"first_time": "At a party. It wasn’t my scene. The conversation was mind-numbing. Would have preferred to be at home with a good book.",
+		"last_time": "Holidays. Memories of what was can make it a very lonely time."
+	},
+	{
+		"_id": {
+			"$oid": "5dc19dfdef20e977fc9b3a8d"
+		},
+		"apt": {
+			"$numberInt": "299"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Anonymous",
+		"age": "52",
+		"most_lonely": "Later in life I wound up in a leadership role with more than forty employees and several direct reports at the company where I worked. It was a high profile position that involved public speaking, television appearances, attending galas, and meeting upon meeting. I was inundated with people coming and going from my office. I had a narcissistic boss who was emotionally abusive. I realized that I was the buffer for all these wonderfully talented people but I couldn’t really talk about how difficult the experience was for me with anyone at the office. When things became really challenging, I would take long walks, stay in the washroom for longer periods of time, or I would get sick and stay home from work. Even though I had this highly public job, I was utterly lonely.",
+		"loneliness_means": "Feeling disconnected and isolated in that disconnection. More than anything loneliness for me is about feeling alone in a crowd; a certain kind of sadness with not finding my tribe; an inability to relate to the popular values presented in mainstream media in North America; not being able to find a place of comfort and safety outside of my own home; a disappointment and disconnect with the mainstream ways of the world.",
+		"first_time": "At a birthday party when I was 6 or 7 year old. All of the other kids were playing games, yelling, and making noise — generally having a fun time I suppose. But I just wasn’t up to joining in. I knew that, generally speaking, I was more at ease in quiet, one-on-one situations where a real connection can be shared between friends. Unable to join in the fun, I retreated to a quiet room to play alone until my mom came to pick me up.",
+		"last_time": "Last night at 3:00 am. As usual I could not get to sleep easily. My sister, who I am currently living with, fell asleep before me and I suddenly felt entirely alone in the darkness of the night. I looked out the window to see other apartment buildings with a few scattered lights turned on and wondered who else might be awake with me. Even though they were visible and across the street, they were so far away."
+	},
+	{
+		"_id": {
+			"$oid": "5dc19dab8a40fcaef4168d92"
+		},
+		"apt": {
+			"$numberInt": "298"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Maisa",
+		"age": "28",
+		"most_lonely": "My loneliness comes in waves. I feel very lonely when I think about my niece back home, and how I’ve only met her once, and haven’t seen her in person in two years. I feel lonely that she gets to hang up on me whenever she likes on FaceTime because I’m not truly physically a person to her. And that can also be a little bit funny. \n\nI feel lonely the most around the holidays because I have to spend it with other people’s families. I am so grateful that I have somewhere to go, but at the same time, I get exhausted having to adopt other people’s lives, customs, etc. My mind is always somewhere else around the holidays. I have definitely cried in bathrooms after Christmas dinner. \n\nI feel lonely when I hear people talking about immigrants in a particular way, because I am an immigrant, even though I don’t look like what people perceive an immigrant to be. I feel lonely that my partner doesn’t like my country’s cuisine. I feel lonely when I want to greet people with a warm hug and kisses on their cheeks, but Canadians don’t really like being touched. I feel lonely when nobody asks me about Brazil, or asks how my family is doing.",
+		"loneliness_means": "Not being able to relate to others, physically being away from familiar people, sounds, language, food.",
+		"first_time": "When people kept forgetting that I was foreign. My English is flawless, and so it’s hard to discern that I am from a different country. I feel lonely each time I have to remind my close friends and my partner of 7 years that I had a different experience than they did. They forget. They just forget, and will start to tell stories and say \"you know?\" and truly, I don’t know a lot of the time. I don’t know the TV shows they are referring to, the old movies, the places, the regular Canadian experiences they had.",
+		"last_time": "The last time I felt lonely was a few days ago. It was dusk and I decided to go for a walk around the new neighbourhood I just moved into. It’s a residential area, with calm streets, beautiful houses and little parks. I like to look at each house and see what kind of lives are being lived in it. I could smell food being made inside homes, and I could hear kids playing in the backyard. I realized how badly I crave family life, and miss my family who lives all the way in Brazil. \n\nI felt lonely because there is always a dissonance to what I am experiencing. I never lived in big Canadian houses growing up. They look like the movies. \n\nI never walked my golden retriever in a park. I never ran unsupervised with my friends, freely, around the neighbourhood. \n\nInstead of bemoaning how badly I miss Brazil - the music, the warmth, the colours and trees, and most importantly, my language - I am here now. I am trying to let go of my old life (kicking and screaming) and build a Canadian life. It feels like the loneliest thing in the world to do. I don’t know anybody else who is doing it. I have one foot here, and one foot there all the time. And I wonder if when I am walking around my neighbourhood, standing outside somebody’s house trying to negotiate all of this...whether anyone inside can understand what it feels like."
+	},
+	{
+		"_id": {
+			"$oid": "5dc04b4438cd112adb040c58"
+		},
+		"apt": {
+			"$numberInt": "297"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Lily",
+		"age": "25",
+		"most_lonely": "I’m not sure if there was one specific time, but to me the feeling of loneliness has encompassed my 20s. It’s the feeling that everyone else around me knows exactly what they want out of their lives - the type of partner they want, the career they’re pursuing. I’ve never felt clear about who I am and as a result it has been difficult to define what I want out of my time on this planet. It can be very isolating and, well, lonely to feel that everyone around you is moving forward while you remain cemented to where you are. Loneliness to me is not knowing which direction to step, and watching those around me walk miles ahead without looking back. While I’m happy for them, I just wish I could keep up.",
+		"loneliness_means": "Feeling left behind.",
+		"first_time": "Middle school.",
+		"last_time": "When was the last time I didn’t?"
+	},
+	{
+		"_id": {
+			"$oid": "5dc19f848a40fcaef4184620"
+		},
+		"apt": {
+			"$numberInt": "296"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Chloe",
+		"age": "15",
+		"most_lonely": "Some nights when my depression gets bad, I badly need someone to talk to, and the first time I had a full on wave of depression was the first time I realized I had no one to talk to about it. No one I knew was I comfortable to share it with, and my parents were definitely out of the picture. I was forced to internalize it, and the next day when I went to school I expected people to notice that I was not alright, and that I needed someone to talk to and didn’t know who to reach out to. No one noticed. I realized then that it didn’t matter how I felt on the inside and how well I knew myself if everyone I know sees me as a bright and happy girl. If I’m the only person that actually knows who I am, how does anyone really know me at all? Are we really the people we know ourselves to be if everyone else has a different image of us? Do I exist outside of their main image of me?",
+		"loneliness_means": "Being the person people see you as instead of the person you know you are.",
+		"first_time": "When I was really upset and really needed to talk to someone, but realized that I didn’t have anyone to confide in.",
+		"last_time": "Every time I’m by myself with my thoughts."
+	},
+	{
+		"_id": {
+			"$oid": "5dc04bfcffcae05aae45235f"
+		},
+		"apt": {
+			"$numberInt": "295"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "K",
+		"age": "48",
+		"most_lonely": "Whenever I am tired after work, or sick, and want nothing more than to get into pajamas and be comfortable - but then I realize that there is no food in the house or no cold medicine, and there is no one there I can ask \"hey, can you do me a favor and go get Sudafed\", and I have to get back out of my pajamas and trudge out to the market to get it myself. Whenever that happens, I always feel that there is no one who has my back at the little moments when I need it; I do have friends I know would help when I have a genuine crisis, but it‘s someone having your back in the mundane moments that REALLY matters.",
+		"loneliness_means": "Your life doesn't have a witness. Others are indifferent to you, and aren't interested in knowing you on a deeper level.",
+		"first_time": "",
+		"last_time": "I threw a holiday party, and only a fraction of the people I invited showed up."
+	},
+	{
+		"_id": {
+			"$oid": "5dc04edbe9469a200e7d6937"
+		},
+		"apt": {
+			"$numberInt": "294"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Leigh",
+		"age": "47",
+		"most_lonely": "Last summer was kind of hard. Both my kids are now married and their military lives have taken them far away. My husband was in and out of town all spring / summer doing military training. My best friend got a new boyfriend and stopped doing our usual routines (going to our favorite sandwich shop, doing carpentry projects, hiking, and just getting into mischief). \n\nMy husband and I found land closer to his work that is actually within a series of small neighborhoods, with people who have similar interests/hobbies. We‘re in the process of buying it and starting a new chapter where we can actually KNOW people we live around. Everyone there seems very nice and relatable. But it‘s also been hard to think about moving from the home I raised my children, and moving away from my best friend.\n\nI‘ve been having a really hard time with nostalgia. Music from my youth, thinking about being a child again... and wondering if there will be fun times to be had and memories to be made when I look back on this time in 20 years from now. ",
+		"loneliness_means": "I work from home running a tech related businesses. Some weeks 2-3 days will go by without seeing another human, well, except my husband. My husband is military and during the year he'll be gone for training exercises. He also has quite a long daily commute to his 9-5 job. My husband is an introvert so I try not to dump my loneliness on him too much. Since I moved to this rural town (no 'neighborhood') 18 years ago I really have not been able to make friends, mostly due to religious and political differences, and my specific hobby interests I'm sure. All of my life I've only ever had one or two good friends at any given time. This makes going through life transitions a bit difficult, especially when a transition removes a friend from your daily life.",
+		"first_time": "I guess I've always craved to have and be around friends, people you share common interests, and create memories and a support web with. But loneliness really hit me when my kids grew up and moved out/away. Empty nest syndrome is no joke. Around that time is when my boss retired and I took over the business and started working from home. It's been about 4 years now and the loneliness of my youth has returned with a vengeance. It's starting to affect my work/business.",
+		"last_time": "Monday - Friday, 8AM - 5PM"
+	},
+	{
+		"_id": {
+			"$oid": "5dc0524038cd112adb0aea09"
+		},
+		"apt": {
+			"$numberInt": "293"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Megan",
+		"age": "25",
+		"most_lonely": "I was in Boston for a summer internship. I knew two people there from back home who were going to school. One of them was one of my best friends. We had known each other since Kindergarten. I was so depressed and lonely being in a new city by myself with my boyfriend back in California and my family in Colorado. I would go to work and basically come right back home to an empty house. I explored the city a lot on my own but it only did so much. I wanted to see my friend so badly, but she didn‘t have time for me. She had school and her own life there, and I felt like she didn‘t even care that I was in the same city as her, even though we hadn‘t seen each other in a year. \n\nOne day she finally told me she didn‘t want to see me. She said she couldn‘t be friends with someone who made her feel guilty for not spending time with them. That was not my intention at all, I just really needed a friend at that time. I suffer from depression normally and being isolated in a new city was making it worse. I haven't seen or really talked to her since. \n\nTo make matters worse, right before the holidays another one of my best friends from elementary school back home told me she couldn't be friends with someone who didn't support our president (Trump!) and blocked my phone number and me on all outlets of social media. She was one of the only friends I had left that still lived in my hometown. Now being home for the holidays is just a lonely reminder that I will never have those friendships that I cherished so much again.",
+		"loneliness_means": "Feeling like no one is thinking of you or wants to be around you",
+		"first_time": "When my friends in college started hanging out with each other without me there, after I had introduced them.",
+		"last_time": "Today"
+	},
+	{
+		"_id": {
+			"$oid": "5dc0515606ffba5bae64fec7"
+		},
+		"apt": {
+			"$numberInt": "292"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Ella",
+		"age": "17",
+		"most_lonely": "As I sit alone, in the upstairs spare room of my parents house, I come to terms of just how lost I feel. It has been two years since my family and I have moved almost 3,000 miles away from my old \"home\", and even though moving is second nature to me, tonight, the feelings I have encountered are nothing short than devastating. Mixed with seasonal depression, homesickness, and the stress a future I have yet to figure out and stabilize – I attempt to complete the endless amounts of worksheets and forms to pass my high school classes, as well as college classes I dual enrolled in. I am already behind. \n\nTonight is also Halloween. The fact alone, that I have done nothing at all to celebrate my favorite holiday, nor acknowledge its existence this year, due to my work load and unrelenting stress leaves me upset. In such a state that it‘s painful to continue on working. I can barely recall any months past August of this year; it ends up in becoming a blur of me counting down hours until the next deadline, and consuming unhealthy amounts of caffeine and sugar to keep my body awake.\n\nMaybe the worst part about it is my entire family is out celebrating with their friends. They are out trick or treating, partying, and conversing with people they know and love while I‘m left crying all over the couch because I don‘t have a single friend in the entire state. But maybe that‘s just selfish.\n \nMy best friends, who live now very far away from me, are partying too. They have a group chat open and keep sending me photos of how much fun they are having, making me sick to my stomach. Eventually it got so painful I had to silence the messages and put my phone on the other side of the room. Deep somewhere, I wonder if they even care about me anymore, or if they keep up appearances because I try to remain friends with them. \n\nBut somehow – writing all of this down makes me feel better. And for that, I have you to thank.",
+		"loneliness_means": "Feeling undeniably empty and unwanted – by others, and by yourself.",
+		"first_time": "",
+		"last_time": ""
+	},
+	{
+		"_id": {
+			"$oid": "5dc04dcce9469a200e7ca6cf"
+		},
+		"apt": {
+			"$numberInt": "291"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Anonymous",
+		"age": "27",
+		"most_lonely": "Ever since I got married and came to live in another country. It has not been easy. I feel really alone. The people in this country are very friendly but they are not looking for friends. It’s very hard to find a group of friends here. That, and the language barrier. I haven’t felt this lonely in my life. I often think it was not worth to get married, he’s a good person and tries his best but it’s not enough.",
+		"loneliness_means": "",
+		"first_time": "",
+		"last_time": "Every single day",
+		"published": true
+	},
+	{
+		"_id": {
+			"$oid": "5dc04cb238cd112adb057bd5"
+		},
+		"apt": {
+			"$numberInt": "290"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Emily",
+		"age": "23",
+		"most_lonely": "After college, I moved to a different state for work, where I had literally no family or friends prior to moving. I had such high hopes of making a fresh start for myself and finally meeting my \"squad\", that \"Friends\"-esque type family that you build for yourself and aren‘t born into. Well, finding that is easier said than done, but I felt that I had found that with my coworkers. We‘re all around the same age and enjoy spending time with one another. However, as time goes on, I‘ve found that we‘re drifting apart and don‘t really connect the same way we used to. We used to all go to lunch together, and would round everyone up so we could all eat together in the break room. Recently though, I looked up from my computer and realized that I was all alone in the office. It was 11:30, and everyone had gone to lunch without me, and never told me that they were leaving. I felt so abandoned and isolated, that it triggered my loneliness again and I‘ve been struggling to cope since. I've found that being left out of group conversations, jokes, etc. is a big trigger for me, and so even though this incident was small, it felt so deliberate, that I've been wondering why my \"squad\" has decided that I'm not important enough to them to include on a regular basis anymore. What did I do wrong? Why don't I warrant their interaction, companionship and camaraderie? Thankfully, I have a wonderful best friend that lives in the same city as I do now, and my family (my parents in particular) are the people I'm closest to in the world, so I know that I can pick up the phone, day or night, and talk to the people who love me more than anything else in the world. I'm so incredibly grateful for this, but I long to have the \"squad goals\" that everyone else my age seems to have. Then that leads to feeling guilty for not being appreciative enough of the people that I do have in my life, causing a vicious cycle of loneliness, guilt and despair.",
+		"loneliness_means": "Isolation. Even when I'm in a room full of people I know, the isolation I feel can be overwhelming. You know when you're with two other people and the three of you can't all fit on the sidewalk together, so someone has to be the one to walk alone in the back? That's been me. My whole life. That feeling of intentional isolation swallows me up and it's a hole that I can stay in for weeks at a time.",
+		"first_time": "When I was in college, I sat on my bed, and just bawled my eyes out for hours begging a deity I don't even think I believe in, to give me just one friend. I wrote in a notebook over and over and over, \"Please, just one. Please, just one. Please, just one,\" for pages and pages as I sobbed, because I had nothing else to do. I don't have any friendships that have lasted years and years, because inevitably, the people I considered my closest friends have treated me in ways that had severe negative impacts on my mental health and fractured our relationships beyond repair, so I've had to sever ties with them. I only made one friend the entire time I was in college, because I transferred to so many different schools, that by the time I was somewhere for longer than a semester, everyone had already established friend groups that I just couldn't penetrate and belong to. So I begged the universe for \"just one friend\". I found them, thankfully, but honestly, the connection I have with them isn't very deep, but I have so few people in my life, I feel compelled to maintain my relationship with them, even though we live on different sides of the country and can go months without speaking.",
+		"last_time": "I've felt lonely off and on since I was 19, but the older I get, the more intense these feelings become.",
+		"published": true
+	},
+	{
+		"_id": {
+			"$oid": "5dc04ae2e9469a200e7a956c"
+		},
+		"apt": {
+			"$numberInt": "289"
+		},
+		"owner_id": "59d52b184fdd1fc5457eb8dd",
+		"name": "Tessa",
+		"age": "16",
+		"most_lonely": "I went to a party that my two friends were hosting. I got a haircut the day before, and even though my hair was short, I really liked it. I walked in the door, and everyone went, \"Your hair!\" Some people said nice things, but most people just commented on how short it was. I went to go surprise my best friend, and she turned around and couldn’t stop laughing. She told me it was the worst haircut I’ve EVER had, and that I looked like a guy. I felt my gut shrivel up a bit, but I brushed it off, pretending not to care.\n\nLater on at the party, there was music playing. Half the people were dancing, and the other half were sitting on the side and judging (including my best friend). I got sick sitting on the side, so I got up to dance. A couple of my new friends dancing hyped me up, and then I saw my best friend laughing at me. \nI was actually making an attempt to dance, so I kept doing it, but no one was paying attention to me, and I felt just really alone. I called my parents to pick me up. \n\nI’m still \"friends\" with my best friend, but I don’t know what to do. She’s nice to me most of the time, but she just has these mean things she does. I can’t ditch her because she’s one of my only friends, and the oldest, and my parents love her. \n\nI wish I could just be me.",
+		"loneliness_means": "",
+		"first_time": "",
+		"last_time": "",
+		"published": true
+	},
+	{
+		"_id": {
 			"$oid": "5d9ffd634d0f7b1c07030381"
 		},
 		"apt": {
@@ -9,10 +192,11 @@
 		"owner_id": "59d52b184fdd1fc5457eb8dd",
 		"name": "Annie",
 		"age": "Middle",
-		"most_lonely": "I feel lonely now that I realize the person I loved the most in the world was not who they said they were. I put a lot of myself into a relationship that was hampered by addiction. It is hard to realize that someone cares more about chemicals or substances that another person. Grief is really a lonely place. Once an addict is \"outed‘ all the focus is on trying to help them, but that doesn't solve the loneliness inside when you realize that all of your dreams for the future aren't ever going to work out. Addiction is also really socially isolating. It is hard to admit what you are going through to others and people can be so judgemental and tell you you should have seen the signs. By the time it falls apart you can be so alone that it feels like there is no-one left to turn to for help. Self-help meetings are okay, but everyone is so caught up in their own sadness that it can be too upsetting to go and make you feel worse.",
+		"most_lonely": "I feel lonely now that I realize the person I loved the most in the world was not who they said they were. I put a lot of myself into a relationship that was hampered by addiction. It is hard to realize that someone cares more about chemicals or substances than another person. Grief is really a lonely place. Once an addict is \"outed‘ all the focus is on trying to help them, but that doesn‘t solve the loneliness inside when you realize that all of your dreams for the future aren‘t ever going to work out. Addiction is also really socially isolating. It is hard to admit what you are going through to others and people can be so judgemental and tell you you should have seen the signs. By the time it falls apart you can be so alone that it feels like there is no-one left to turn to for help. Self-help meetings are okay, but everyone is so caught up in their own sadness that it can be too upsetting to go and make you feel worse.",
 		"loneliness_means": "Feeling adrift and untethered, as if you could just blow away in a strong wind and no one would notice that you were gone.",
 		"first_time": "When I was young and I realized my cat couldn't come to school with me.",
-		"last_time": "Today."
+		"last_time": "Today.",
+		"published": true
 	},
 	{
 		"_id": {
@@ -24,10 +208,11 @@
 		"owner_id": "59d52b184fdd1fc5457eb8dd",
 		"name": "Wendy",
 		"age": "47",
-		"most_lonely": "I created a network on the sunshine coast for women who felt lonely.  As a result of that I was at a 60th Birthday Party and everyone who was at that party the host had met through the group.  It was a great night, lots of laughing and dancing.  I was the only one who‘s partner didn't come along, and I sat at the back of the room watching, feeling very proud but also so lonely.",
+		"most_lonely": "I created a network on the sunshine coast for women who felt lonely.  As a result of that I was at a 60th Birthday Party and everyone who was at that party the host had met through the group.  It was a great night, lots of laughing and dancing.  I was the only one who‘s partner didn‘t come along, and I sat at the back of the room watching, feeling very proud but also so lonely.",
 		"loneliness_means": "Feeling like you have no connection to anyone in the room",
 		"first_time": "I made a meal for the family, we ate together, then everyone got up and I was left sitting at the table alone, and to clear up.",
-		"last_time": "At a 60th birthday party"
+		"last_time": "At a 60th birthday party",
+		"published": true
 	},
 	{
 		"_id": {
@@ -42,7 +227,8 @@
 		"most_lonely": "My best friend who was practically my sister started ignoring me. I still don’t know why. I’ve tried reaching out and letting her know how hurt I am and how much she means to me. She hasn’t acknowledged how I feel or explained herself. I know she might be going through her own stuff, but the lack of the most basic acknowledgment still has me feeling anxious, angry, helpless, taken advantage of, and worthless. She was the closest friend I had. If she could do this to me, my other friends could too. This made me feel so alone and paranoid.",
 		"loneliness_means": "Experiencing a numb feeling in your mind and limbs but a suffocating feeling in your throat and chest",
 		"first_time": "Crying on a bench by myself at recess when I fell on the pavement. I was all scratched up and bleeding. None of the other kids asked if I was okay. They didn’t even realize I was there. I spent that recess alone and in pain.",
-		"last_time": "Today"
+		"last_time": "Today",
+		"published": true
 	},
 	{
 		"_id": {
@@ -54,10 +240,11 @@
 		"owner_id": "59d52b184fdd1fc5457eb8dd",
 		"name": "Evan",
 		"age": "20",
-		"most_lonely": "I‘ve never been in a relationship with anyone. Hell, I've never even kissed anyone. There have been a couple of girls who I've liked, but none of them were ever interested in me. Whenever I hear other guys my age talk about girls, they're always talking about sex. How they would like to try a threesome, or anal or god-knows-what. I would just want to have somebody to hug me. Someone to hold hands with when we walk, someone to talk to endlessly, someone to go to concerts and festivals with me. I want someone to sleep with, literally. Stare at the stars and falling asleep in each others arms. \n\nIt all seemed so hopeful 2 weeks ago. I matched with this girl via Tinder. She was everything I ever hoped for. Kind, super pretty, lived relatively nearby and (at least via text) super nice to talk to. We chatted for about 2 months before she finally agreed to go on a date with me. Everything was set, location, date, time, you name it. I had made countless preparations, bought her flowers, practiced how to fold crane birds in case she went to the bathroom during our date, thought about jokes to tell her, printed out a staple of funny question cards we could ask each other in case there would fall an awkward silence. I had even washed my shoes, or at least made an effort to. But the day that it all would happen she texted me. She wanted to cancel the date since she felt like she wasn't ready yet to start a (new) relationship. I felt so sad, broken and alone. I had been looking forward to this for god-knows-how-long. I replied as kind and understanding as I could, which she really appreciated, but she had already made up her mind. We have kept contact since then, and I've tried to arrange a second date. This time just as friends though. It might happen sometime next week. I remain hopeful, I can't wait to see her and talk to her in real life sometime. Even if we would become \"only friends\" I'd still be super happy.  ",
+		"most_lonely": "I‘ve never been in a relationship with anyone. Hell, I‘ve never even kissed anyone. There have been a couple of girls who I‘ve liked, but none of them were ever interested in me. Whenever I hear other guys my age talk about girls, they‘re always talking about sex. How they would like to try a threesome, or anal or god-knows-what. I would just want to have somebody to hug me. Someone to hold hands with when we walk, someone to talk to endlessly, someone to go to concerts and festivals with me. I want someone to sleep with, literally. Stare at the stars and falling asleep in each others arms. \n\nIt all seemed so hopeful 2 weeks ago. I matched with this girl via Tinder. She was everything I ever hoped for. Kind, super pretty, lived relatively nearby and (at least via text) super nice to talk to. We chatted for about 2 months before she finally agreed to go on a date with me. Everything was set, location, date, time, you name it. I had made countless preparations, bought her flowers, practiced how to fold crane birds in case she went to the bathroom during our date, thought about jokes to tell her, printed out a staple of funny question cards we could ask each other in case there would fall an awkward silence. I had even washed my shoes, or at least made an effort to. But the day that it all would happen she texted me. She wanted to cancel the date since she felt like she wasn't ready yet to start a (new) relationship. I felt so sad, broken and alone. I had been looking forward to this for god-knows-how-long. I replied as kind and understanding as I could, which she really appreciated, but she had already made up her mind. We have kept contact since then, and I've tried to arrange a second date. This time just as friends though. It might happen sometime next week. I remain hopeful, I can't wait to see her and talk to her in real life sometime. Even if we would become \"only friends\" I'd still be super happy.  ",
 		"loneliness_means": "Sending out all the love you've got, but receiving none back. ",
 		"first_time": "In the 3rd year of high-school. I had a crush on a girl in my class, but realized there was no way she'd ever love me.",
-		"last_time": "2 weeks ago. My date got cancelled."
+		"last_time": "2 weeks ago. My date got cancelled.",
+		"published": true
 	},
 	{
 		"_id": {
@@ -69,10 +256,11 @@
 		"owner_id": "59d52b184fdd1fc5457eb8dd",
 		"name": "Lilah",
 		"age": "16",
-		"most_lonely": "I’m in a city which allows for so much adventure and experience. So many people to meet and things to do. I’m surrounded by opportunities. And yet I’m lonely. I feel so alone. I‘m young and I know I have a future ahead of me but right now I'm living in hell. I'm being told that I'm living 'the best years of my life' but if this is what I'll feel for the next 70 years, then I don't want to experience the rest. It’s scary to feel this isolated, so removed from your own life. I can't name when I felt the most lonely because it's not predictable or constant. I never know when my mind is going to sabotage me and am never prepared so the feeling is always the same; miserable and agonising. I think I’m only starting to starting to realise it’s not solely a feeling, it’s a living. It’s a part of my life and myself and it's a part of human nature. I know I'm not alone in my feelings but still, I feel lonely.\n\nP.S. I'm only sad so when I say I don't want to experience the rest of my life I don't meant that in a literal sense. I am in fact looking forward to growing up and hopefully growing away from this loneliness.\n\nP.P.S. Thank you for what you are doing, sharing my thoughts makes me feel less lonely and the possibility of someone reading them and understanding what I'm saying makes everything a lot better.",
+		"most_lonely": "I’m in a city which allows for so much adventure and experience. So many people to meet and things to do. I’m surrounded by opportunities. And yet I’m lonely. I feel so alone. I‘m young and I know I have a future ahead of me but right now I‘m living in hell. I‘m being told that I‘m living 'the best years of my life' but if this is what I'll feel for the next 70 years, then I don't want to experience the rest. It’s scary to feel this isolated, so removed from your own life. I can't name when I felt the most lonely because it's not predictable or constant. I never know when my mind is going to sabotage me and am never prepared so the feeling is always the same; miserable and agonising. I think I’m only starting to starting to realise it’s not solely a feeling, it’s a living. It’s a part of my life and myself and it's a part of human nature. I know I'm not alone in my feelings but still, I feel lonely.\n\nP.S. I'm only sad so when I say I don't want to experience the rest of my life I don't meant that in a literal sense. I am in fact looking forward to growing up and hopefully growing away from this loneliness.\n\nP.P.S. Thank you for what you are doing, sharing my thoughts makes me feel less lonely and the possibility of someone reading them and understanding what I'm saying makes everything a lot better.",
 		"loneliness_means": "I imagine my loneliness to be an all consuming blanket of selfishness, insecurity, pain and isolation. It surrounds me and traps me, always lingering long enough to become uncomfortable. For me though, it isn’t a single emotion, I never suddenly realise I'm feeling lonely, it's not like that. After a major earthquake, the smaller tremors that follow are often just as dangerous - the shaking of already vulnerable and fragile land can only cause more damage. Similarly the emotions that follow loneliness are as overwhelming as the isolation, but I think in a sense they have a greater impact because they help contribute to loneliness, they help its significance in my life grow. It's as if rather than competing with each other, they join together to create something seemingly impossible to overcome.",
 		"first_time": "",
-		"last_time": "The short answer? now, but really, I feel lonely often. There is the 4pm lonely and there is the 2am lonely. They're different, but they hurt the same."
+		"last_time": "The short answer? now, but really, I feel lonely often. There is the 4pm lonely and there is the 2am lonely. They're different, but they hurt the same.",
+		"published": true
 	},
 	{
 		"_id": {
@@ -84,10 +272,11 @@
 		"owner_id": "59d52b184fdd1fc5457eb8dd",
 		"name": "Jacob",
 		"age": "30",
-		"most_lonely": "My wife and I used to watch a lot of TV and movies together. It‘s been a struggle to get her to watch anything anymore with me. Finally I did get her to sit down and watch something we had been wanting to watch for a long time. A cringe worthy moment came that made me laugh and I turned to my wife and said \"Can you believe they did that?\" She's on her phone and after a long pause she just says \"Uh huh.\" She doesn't stop or even look up. At that moment I wished I had someone to share that moment with. I realized I had no one else and the thought of finding someone terrified me.",
+		"most_lonely": "My wife and I used to watch a lot of TV and movies together. It‘s been a struggle to get her to watch anything anymore with me. Finally I did get her to sit down and watch something we had been wanting to watch for a long time. A cringe worthy moment came that made me laugh and I turned to my wife and said \"Can you believe they did that?\" She‘s on her phone and after a long pause she just says \"Uh huh.\" She doesn‘t stop or even look up. At that moment I wished I had someone to share that moment with. I realized I had no one else and the thought of finding someone terrified me.",
 		"loneliness_means": "It is being unable to share a moment of emotion with another person. This moment can be anything from meeting someone for the first time, experiencing something together, or sharing something meaningful with another person.",
 		"first_time": "I've been lonely for years, but I never realized it until college when I lost my small group of close friends and couldn't make more. By that point I was even too afraid to talk to the friends I already had because of my anxiety. Eventually those relationships died too leaving me completely alone. \n\nEventually I met my wife, we had kids, and I got through school and got a good job. I always thought that would fix my loneliness but it never did. While I'm surrounded by people, I'm isolated. My wife spends all her time on social media, hardly ever giving me her undivided attention. Work is just endless, meaningless, small talk. The kids are too young to have any meaningful adult connection with, when I'm not spending every waking second taking care of them. My wife isn't much help because she is glued to her phone all day. I thought i wasn't lonely for a long time, but recently I realized I'm lonelier than ever.",
-		"last_time": "Last week"
+		"last_time": "Last week",
+		"published": true
 	},
 	{
 		"_id": {
@@ -102,7 +291,8 @@
 		"most_lonely": "For me loneliness isn’t an emotion that fluctuates so much as something that feels like a permanent part of my being. I learned at a young age that I could only count on myself for emotional support and that reaching out for help or appearing vulnerable is a bad thing (rationally I know this isn’t true and I’m in the process of unlearning some very bad habits and coping mechanisms but it’s not easy). I spent most of my life framing my loneliness as something empowering - I was completely self sufficient and didn’t need anyone’s help for anything, desperate to ignore the innate yearning for intimate human connection. I’m quite social and I have good friends but I’ve never been in a truly intimate relationship. The loneliness has become so much a part of me that, even though I recognize it’s sad and harmful, the idea of not being lonely is scary and confounding.",
 		"loneliness_means": "A sometimes empowering but mostly very sad security blanket.",
 		"first_time": "Probably around puberty when I needed more complex emotional support than my parents were able to provide.",
-		"last_time": "Any time I think about it the loneliness is there. I’m pretty good at distracting myself from it but loneliness is a constant presence in my life."
+		"last_time": "Any time I think about it the loneliness is there. I’m pretty good at distracting myself from it but loneliness is a constant presence in my life.",
+		"published": true
 	},
 	{
 		"_id": {
@@ -117,7 +307,8 @@
 		"most_lonely": "",
 		"loneliness_means": "Feeling lonely when surrounded by others. Typically, when I’m lonely, I want to be with others when I’m by myself, but then wish I was by myself when I am with people. It’s the feeling of being lonely in a crowd, with my loneliness almost emphasized by the lack of loneliness I see around me.\n\nPhysiologically, loneliness feels like a pit in my stomach. It feels like nausea and hunger at the same time.\n\nFunny story: One time, I thought I was having what I call a \"lonely day\" (when I wake up and feel lonely with no real reason for it) because I felt that pit in my stomach. Turns out I actually just had a stomach flu.",
 		"first_time": "When I was around 6 years old. My mom died when I was very young (I don’t remember her), and I started to understand what that meant around the age of 6. I felt like I was the only kid in the whole world whose mom had died, and for years I carried that loneliness with me.",
-		"last_time": "Right now, actually. Which is probably why I’m submitting this. I’m currently in the middle of a bed bug scare (have marks on my body that may be bites, but could also be hives). I’ve checked my mattress, took apart my bed frame, and searched my couch and found nothing. I’m getting a professional inspection done in 5 days. In the meantime, I’m staying at my partner’s and have washed all of my clothing I brought with me to make sure I haven’t brought anything unwanted with me.\n\nDespite all this, two of my co-workers (who I also think of as friends) messaged me last night requesting I don’t come in to work today in case I pass the problem along. I am in grad school, so just deciding to not go in is a doable thing for me. I understand that bed bugs are terrifying and see where they are coming from, but on the other hand, if there was a risk of me spreading them, the damage would have been done as I was in for the past three days. \n\nI am already terrified of what I might find out during the inspection, and now I feel like a pariah on top of that. I know it’s not about me, it’s about my situation, but to be told that I’m basically diseased and that me not being around would be less stressful is so incredibly isolating. I don’t know what to even say to them when I see them next week. I am incredibly upset and angry, and I can’t even tell if my reaction is valid or not. But I also know I feel incredibly lonely in this moment."
+		"last_time": "Right now, actually. Which is probably why I’m submitting this. I’m currently in the middle of a bed bug scare (have marks on my body that may be bites, but could also be hives). I’ve checked my mattress, took apart my bed frame, and searched my couch and found nothing. I’m getting a professional inspection done in 5 days. In the meantime, I’m staying at my partner’s and have washed all of my clothing I brought with me to make sure I haven’t brought anything unwanted with me.\n\nDespite all this, two of my co-workers (who I also think of as friends) messaged me last night requesting I don’t come in to work today in case I pass the problem along. I am in grad school, so just deciding to not go in is a doable thing for me. I understand that bed bugs are terrifying and see where they are coming from, but on the other hand, if there was a risk of me spreading them, the damage would have been done as I was in for the past three days. \n\nI am already terrified of what I might find out during the inspection, and now I feel like a pariah on top of that. I know it’s not about me, it’s about my situation, but to be told that I’m basically diseased and that me not being around would be less stressful is so incredibly isolating. I don’t know what to even say to them when I see them next week. I am incredibly upset and angry, and I can’t even tell if my reaction is valid or not. But I also know I feel incredibly lonely in this moment.",
+		"published": true
 	},
 	{
 		"_id": {
@@ -132,7 +323,8 @@
 		"most_lonely": "I was in the hospital for a surgery. My boyfriend at the time didn’t visit because he couldn’t be bothered, and my friends all said they were too busy to show up. That night, I saw them on someone’s Snapchat story at a party. What stung the most however, was me knowing that had they been in my position, I would’ve crossed mountains to come running with \"get well\" cards, flowers and whatever else they would’ve wanted. I’ve done such things countless times before after all. Yet, I couldn’t even get so much as a visit. The only person who showed up was my mother, who raised me on her own. It made me want to never do a kind thing for anyone ever again.",
 		"loneliness_means": "Having a phone full of contacts, while feeling that there’s not a single person you can talk to.",
 		"first_time": "Father’s day when I was around 5. I was making a card for him, and just when I was about to draw a picture of him, my mother and I holding hands, I remembered that I didn’t even know what he looked like. They’re divorced with him living interstate, and I’d only ever talked to him on the phone. That day, I waited until 7PM for my mother to pick me up from work, after watching all of my classmates run into their father’s arms.",
-		"last_time": "A week ago, coming home from school at around 4PM. \n\nWhen I walked into my front yard, I could see that all of the blinds were shut, which is usually a pretty solid indication that my mother has been day drinking. Sometimes, I check the bins in front of our house for empty bottles of white wine, and that day, I saw a myriad of them which only confirmed my suspicions. \n\nAnyway, I let myself in without hearing so much as a \"Welcome home,\" went to my room, took off my bag and collapsed in my bed. It was when I was browsing my phone for any notifications that I may have overlooked, it hit me that I hadn’t said a word out loud, all day. There had been nobody to talk to after all considering I had a falling out with the ringleader of my friendship group a few weeks back. Next, came the realisation that nobody had said a word to me.\n\nI felt like a ghost."
+		"last_time": "A week ago, coming home from school at around 4PM. \n\nWhen I walked into my front yard, I could see that all of the blinds were shut, which is usually a pretty solid indication that my mother has been day drinking. Sometimes, I check the bins in front of our house for empty bottles of white wine, and that day, I saw a myriad of them which only confirmed my suspicions. \n\nAnyway, I let myself in without hearing so much as a \"Welcome home,\" went to my room, took off my bag and collapsed in my bed. It was when I was browsing my phone for any notifications that I may have overlooked, it hit me that I hadn’t said a word out loud, all day. There had been nobody to talk to after all considering I had a falling out with the ringleader of my friendship group a few weeks back. Next, came the realisation that nobody had said a word to me.\n\nI felt like a ghost.",
+		"published": true
 	},
 	{
 		"_id": {

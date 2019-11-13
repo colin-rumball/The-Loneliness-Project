@@ -14,7 +14,7 @@ import StyledApartment from "./StyledApartments/StyledApartment";
 const Apartments: React.FC = () => {
    const { pushModal } = useModal();
    const [apartments, setApartments] = useState([]);
-   const [getApartments, {}] = useLazyQuery(APARTMENTS_OVERVIEW, {
+   const [getApartments, { loading, client }] = useLazyQuery(APARTMENTS_OVERVIEW, {
       onCompleted(data) {
          setApartments([...apartments, ...data.apartments]);
       }
@@ -26,16 +26,8 @@ const Apartments: React.FC = () => {
       });
    }, []);
 
-   const [getDetails, {}] = useLazyQuery(APARTMENT_DETAILED, {
-      onCompleted(data) {
-         if (data) {
-            pushModal({ html: <ApartmentDetailsModal {...data.apartment} /> });
-         }
-      }
-   });
-
    return (
-      <StyledApartmentsContainer>
+      <StyledApartmentsContainer loading={loading}>
          {apartments.length == 0 ? (
             <Spinner />
          ) : (
@@ -60,8 +52,17 @@ const Apartments: React.FC = () => {
                      return (
                         <StyledApartment
                            key={apartment.id}
-                           image="/static/apartments/storey_284.png"
-                           onClick={() => getDetails({ variables: { id: apartment.id } })}
+                           image={`/static/apartments/storey_${apartment.apt}.png`}
+                           onClick={() =>
+                              pushModal({
+                                 html: (
+                                    <ApartmentDetailsModal
+                                       apt={apartment.apt}
+                                       apolloClient={client}
+                                    />
+                                 )
+                              })
+                           }
                         />
                      );
                   })}
