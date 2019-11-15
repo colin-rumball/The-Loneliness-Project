@@ -1,9 +1,18 @@
 .swal2-popup {
    width: auto;
    max-width: 70vw;
-   min-width: 440px;
+   /* min-width: 440px; */
    padding: 0;
    border-radius: 22px;
+}
+
+.swal2-close {
+   color: #777777;
+}
+
+.swal2-close:hover {
+   color: #777777;
+   cursor: default;
 }
 
 @media (min-width: 1286px) {

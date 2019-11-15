@@ -16,7 +16,9 @@ const Apartments: React.FC = () => {
    const [apartments, setApartments] = useState([]);
    const [getApartments, { loading, client }] = useLazyQuery(APARTMENTS_OVERVIEW, {
       onCompleted(data) {
-         setApartments([...apartments, ...data.apartments]);
+         if (data && data.apartments) {
+            setApartments([...apartments, ...data.apartments]);
+         }
       }
    });
 
@@ -29,7 +31,7 @@ const Apartments: React.FC = () => {
    return (
       <StyledApartmentsContainer loading={loading}>
          {apartments.length == 0 ? (
-            <Spinner />
+            <Spinner overlay={true} />
          ) : (
             <>
                <StyledApartmentRoof

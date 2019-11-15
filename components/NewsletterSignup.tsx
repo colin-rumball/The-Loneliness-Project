@@ -38,11 +38,20 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
 
          .container {
             display: flex;
+            flex-direction: column;
             flex-wrap: nowrap;
             justify-content: center;
+            align-items: stretch;
             max-width: 600px;
             width: 100%;
             border-bottom: ${({ theme }) => `1px solid ${theme.Tan}`};
+
+            @media (min-width: 768px) {
+            }
+
+            @media (min-width: 1286px) {
+               flex-direction: row;
+            }
 
             input {
                flex-grow: 1;

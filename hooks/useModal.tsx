@@ -1,4 +1,5 @@
 import Swal, { SweetAlertOptions, SweetAlertCustomClass } from "sweetalert2";
+import styled from "styled-components";
 import withReactContent from "sweetalert2-react-content";
 import { useCallback } from "react";
 import { FaWindowClose } from "react-icons/fa";
@@ -55,6 +56,23 @@ export interface ModalOptions extends SweetAlertOptions {
    customContainerClass?: string;
 }
 
+const StyledModalCloseButton = styled.div`
+   color: ${({ theme }) => theme.LightGrey};
+   font-size: 20px;
+   position: absolute;
+   top: 9px;
+   right: 16px;
+   opacity: 0.9;
+   transition: opacity 0.3s ease, transform 0.3s ease;
+
+   &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      opacity: 1;
+      color: #fff;
+   }
+`;
+
 const defaultPushModalProps: SweetAlertOptions = {
    type: null,
    title: null,
@@ -74,17 +92,9 @@ const defaultPushModalProps: SweetAlertOptions = {
    onAfterClose: () => {},
    showCloseButton: true,
    closeButtonHtml: ReactDOMServer.renderToStaticMarkup(
-      <span
-         style={{
-            color: MainTheme.LightGrey,
-            fontSize: "20px",
-            position: "absolute",
-            top: "9px",
-            right: "16px"
-         }}
-      >
+      <StyledModalCloseButton>
          <FaWindowClose />
-      </span>
+      </StyledModalCloseButton>
    ),
    showConfirmButton: false,
    showCancelButton: false,

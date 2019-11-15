@@ -15,11 +15,12 @@ const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
          position: relative;
          display: flex;
          flex-direction: row;
-         justify-content: center;
+         /* justify-content: center; */
          flex-wrap: wrap;
          width: 100%;
          padding: 400px 5% 0 5%;
          min-height: 100vh;
+         z-index: 40;
 
          animation: ${props => (!props.showingSpinner ? "fadeIn 2s ease-in 0.4s both" : null)};
 

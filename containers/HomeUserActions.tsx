@@ -13,23 +13,59 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
    const StyledHomeUserActions = useMemo(
       () => styled.div`
          display: flex;
+         flex-direction: column;
          flex-wrap: nowrap;
          justify-content: space-evenly;
          align-items: center;
          width: 100%;
          padding: 60px 40px;
          background-color: ${({ theme }) => theme.LightBlue};
+
+         @media (min-width: 768px) {
+            flex-direction: row;
+         }
+
+         @media (min-width: 1286px) {
+            flex-direction: row;
+         }
       `,
       []
    );
 
    const StyledNewletterAndSocial = useMemo(
       () => styled.div`
+         order: 2;
          display: flex;
+         flex-grow: 1;
          flex-direction: column;
          align-items: center;
          width: 100%;
+         min-width: 360px;
          height: 100%;
+      `,
+      []
+   );
+
+   const StyledButton = useMemo(
+      () => styled.div`
+         display: flex;
+         justify-content: center;
+         order: 3;
+         width: 100%;
+         margin: 10px 5px;
+
+         button,
+         a {
+            width: 100%;
+            max-width: 300px;
+         }
+
+         @media (min-width: 768px) {
+            order: ${props => props.order};
+         }
+
+         @media (min-width: 1286px) {
+         }
       `,
       []
    );
@@ -54,9 +90,11 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
 
    return (
       <StyledHomeUserActions>
-         <a href="https://goo.gl/forms/yBwn2gFgvxyO0nTf2" target="_blank">
-            <Button text="SUBMIT YOUR STORY" onClick={() => {}} />
-         </a>
+         <StyledButton order={1}>
+            <a href="https://goo.gl/forms/yBwn2gFgvxyO0nTf2" target="_blank">
+               <Button text="SUBMIT YOUR STORY" onClick={() => {}} />
+            </a>
+         </StyledButton>
          <StyledNewletterAndSocial>
             <NewsletterSignup />
             <SocialMedia />
@@ -68,12 +106,14 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
                / Programmed by Colin Rumball
             </StyledCredits>
          </StyledNewletterAndSocial>
-         <Button
-            text="TALK TO SOMEONE"
-            onClick={() => {
-               pushModal({ html: <TalkToSomeoneModal /> });
-            }}
-         />
+         <StyledButton order={3}>
+            <Button
+               text="TALK TO SOMEONE"
+               onClick={() => {
+                  pushModal({ html: <TalkToSomeoneModal /> });
+               }}
+            />
+         </StyledButton>
       </StyledHomeUserActions>
    );
 };
