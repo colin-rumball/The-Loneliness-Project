@@ -1,123 +1,71 @@
-import React, { useMemo, useCallback } from "react";
-import styled from "styled-components";
+import React from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { USERS } from "../gql/queries";
 import useGQLErrorHandler from "../hooks/useGQLErrorHandler";
-import { FaTimes, FaPlusSquare, FaTimesCircle } from "react-icons/fa";
-import Card from "../components/Base/Card";
+import { FaTimes } from "react-icons/fa";
 import useModal from "../hooks/useModal";
 import AddUserModal from "./modals/AddUserModal";
-import { CREATE_USER, DELETE_USER } from "../gql/mutations";
+import { DELETE_USER } from "../gql/mutations";
 import ConfirmationModal from "./modals/ConfirmationModal";
-import MainTheme from "../styles/themes/MainTheme";
+import FlexibleTable from "../components/Base/FlexibleTable";
+import StyledIcon from "../components/Styled/StyledIcon";
+import useCurrentTheme from "../hooks/useCurrentTheme";
 
 const UserList: React.FC = () => {
    const { pushModal } = useModal();
-   const { data, loading } = useQuery(USERS, {
+   const theme = useCurrentTheme();
+
+   const { data, loading: loadingUserList, refetch, client } = useQuery(USERS, {
       onError: useGQLErrorHandler
    });
 
-   const StyledUserList = useMemo(
-      () => styled.table`
-         width: 100%;
-         text-align: center;
-         tr {
-            &:nth-child(1n + 2) {
-               border-bottom: ${({ theme }) => `${theme.LightGrey} 1px solid`};
-            }
-            td {
-               padding: 10px;
-            }
-         }
-      `,
-      []
-   );
-
-   const StyledAddIcon = useMemo(
-      () => styled(FaPlusSquare)`
-         color: ${({ theme }) => theme.Grey};
-         &:hover {
-            cursor: pointer;
-            color: ${({ theme }) => theme.LightBlue};
-            transition: color 0.3s;
-         }
-      `,
-      []
-   );
-
-   const StyledRemoveIcon = useMemo(
-      () => styled(FaTimesCircle)`
-         color: ${({ theme }) => theme.Grey};
-         &:hover {
-            cursor: pointer;
-            color: ${({ theme }) => theme.Red};
-            transition: color 0.3s;
-         }
-      `,
-      []
-   );
-
-   const [createUser, { loading: creatingUser }] = useMutation(CREATE_USER);
    const [deleteUser, { loading: deletingUser }] = useMutation(DELETE_USER);
 
-   const onCreateUser = useCallback((username, password) => {
-      createUser({ variables: { data: { username, password } } });
-   }, []);
-
-   if (loading) return <>Loading</>;
-
    return (
-      <Card
+      <FlexibleTable
+         loading={loadingUserList || deletingUser}
          header={{
-            text: "Users",
-            actions: [
-               <StyledAddIcon
-                  onClick={() =>
-                     pushModal({
-                        html: <AddUserModal onCreateUser={onCreateUser} creating={creatingUser} />
-                     })
-                  }
-               />
-            ]
+            title: "Users",
+            showAddButton: true,
+            onAddButtonClicked: () =>
+               pushModal({
+                  onClose: () => refetch(),
+                  html: <AddUserModal apolloClient={client} />
+               })
          }}
-      >
-         <StyledUserList>
-            <tbody>
-               <tr>
-                  <th>Name</th>
-                  <th>ID</th>
-                  <th>Remove</th>
-               </tr>
-
-               {data &&
-                  data.users &&
-                  data.users.map(user => (
-                     <tr key={user.id}>
-                        <td>{user.username}</td>
-                        <td>{user.id}</td>
-                        <td>
-                           <StyledRemoveIcon
-                              onClick={() =>
-                                 pushModal({
-                                    showCloseButton: false,
-                                    background: MainTheme.LightBlue,
-                                    html: (
-                                       <ConfirmationModal
-                                          onContinueClicked={() =>
-                                             deleteUser({ variables: { userId: user.id } })
-                                          }
-                                          message={`Are you sure you'd like to delete the user "${user.username}"?`}
-                                       />
-                                    )
-                                 })
-                              }
-                           />
-                        </td>
-                     </tr>
-                  ))}
-            </tbody>
-         </StyledUserList>
-      </Card>
+         body={{
+            TableHeaders: ["Name", "ID", "Remove"],
+            TableRows:
+               data &&
+               data.users &&
+               data.users.map(user => ({
+                  id: user.id,
+                  cells: [
+                     user.username,
+                     user.id,
+                     <StyledIcon
+                        icon={FaTimes}
+                        hovercolor={theme.VARIABLES.COLORS.Red}
+                        onClick={() =>
+                           pushModal({
+                              showCloseButton: false,
+                              onClose: () => refetch(),
+                              html: (
+                                 <ConfirmationModal
+                                    onContinueClicked={async () => {
+                                       await deleteUser({ variables: { userId: user.id } });
+                                       refetch();
+                                    }}
+                                    message={`Are you sure you'd like to delete the user "${user.username}"?`}
+                                 />
+                              )
+                           })
+                        }
+                     />
+                  ]
+               }))
+         }}
+      />
    );
 };
 

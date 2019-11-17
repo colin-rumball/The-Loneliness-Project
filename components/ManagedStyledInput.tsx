@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { IconType } from "react-icons/lib/cjs";
-import MainTheme from "../styles/themes/MainTheme";
+import DefaultTheme from "../styles/themes/DefaultTheme";
 
 interface ManagedStyledInputProps {
    type?: string;
@@ -81,11 +81,13 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
    );
 
    const color = useMemo(() => {
-      return error ? MainTheme.Red : MainTheme.Tan;
+      return error ? DefaultTheme.VARIABLES.COLORS.Red : DefaultTheme.VARIABLES.COLORS.Tan;
    }, [value, error]);
 
    const border = useMemo(() => {
-      let borderColor = error ? MainTheme.Red : MainTheme.Tan;
+      let borderColor = error
+         ? DefaultTheme.VARIABLES.COLORS.Red
+         : DefaultTheme.VARIABLES.COLORS.Tan;
       return `2px solid ${borderColor}`;
    }, [error]);
 

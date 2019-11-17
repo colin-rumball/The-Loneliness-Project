@@ -1,9 +1,14 @@
 import "@babel/polyfill/noConflict";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import multer from "multer";
 import server from "./server";
+import fs from "fs";
+import { join } from "path";
 
 const graphQLEndpoint = "/graphql";
+
+const upload = multer();
 
 const port = process.env.PORT || 4000;
 const targetStage = process.env.PD_STAGING_ENVIRONMENT;
@@ -18,6 +23,19 @@ const corsOptions = {
 server.express.use(cors(corsOptions));
 
 server.express.use(cookieParser());
+
+server.express.post("/upload", upload.any(), (req, res) => {
+   const files = req["files"];
+   if (files && files.length > 0) {
+      fs.writeFileSync(
+         join(__dirname, "..", "static", "apartments", files[0].originalname),
+         files[0].buffer
+      );
+      res.sendStatus(200);
+   } else {
+      res.sendStatus(400);
+   }
+});
 
 server.start(
    {

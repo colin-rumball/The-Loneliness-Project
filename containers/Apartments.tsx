@@ -31,7 +31,7 @@ const Apartments: React.FC = () => {
    return (
       <StyledApartmentsContainer loading={loading}>
          {apartments.length == 0 ? (
-            <Spinner overlay={true} />
+            <Spinner />
          ) : (
             <>
                <StyledApartmentRoof

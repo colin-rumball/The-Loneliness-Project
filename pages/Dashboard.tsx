@@ -10,7 +10,6 @@ import { LOGOUT } from "../gql/mutations";
 import UserList from "../containers/UserList";
 import Card from "../components/Base/Card";
 import ApartmentList from "../containers/ApartmentList";
-import FlexTable from "../components/Base/FlexTable";
 
 const Dashboard: React.FC = () => {
    const router = useRouter();

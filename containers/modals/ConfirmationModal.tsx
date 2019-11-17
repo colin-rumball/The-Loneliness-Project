@@ -1,32 +1,36 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo, useCallback, useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Base/Button";
 import useModal from "../../hooks/useModal";
+import Spinner from "../../components/Spinner";
+import ModalBase, { ModalBaseProps } from "./ModalBase";
 
-interface ConfirmationModalProps {
+interface ConfirmationModalProps extends ModalBaseProps {
    message: string;
-   onContinueClicked?();
+   onContinueClicked?(): Promise<any>;
    onCancelClicked?();
 }
 
 const confirmationModalDefaultProps: ConfirmationModalProps = {
    message: "",
-   onContinueClicked: () => {},
-   onCancelClicked: () => {}
+   onContinueClicked: async () => {},
+   onCancelClicked: async () => {}
 };
 
 const ConfirmationModal: React.FC<ConfirmationModalProps> = props => {
-   const { closeTopModal } = useModal();
-   const { message, onContinueClicked, onCancelClicked } = {
+   const { message, onContinueClicked, onCancelClicked, ...rest } = {
       ...confirmationModalDefaultProps,
       ...props
    };
+
+   const [showSpinner, setShowSpinner] = useState(false);
+   const { closeTopModal } = useModal();
 
    const StyledConfirmationModal = useMemo(
       () => styled.div`
          display: flex;
          flex-direction: column;
-         padding: 40px 30px 30px 20px;
+         padding: 20px;
       `,
       []
    );
@@ -34,8 +38,6 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = props => {
    const StyledConfirmationMessage = useMemo(
       () => styled.div`
          font-size: 24px;
-         color: #fff;
-         padding: 20px;
       `,
       []
    );
@@ -49,19 +51,23 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = props => {
       []
    );
 
-   const onButtonClicked = useCallback(cb => {
+   const onButtonClicked = useCallback(async cb => {
+      setShowSpinner(true);
+      await cb();
+      setShowSpinner(false);
       closeTopModal();
-      cb();
    }, []);
 
    return (
-      <StyledConfirmationModal>
-         <StyledConfirmationMessage>{message}</StyledConfirmationMessage>
-         <StyledConfirmationButtons>
-            <Button text="CONTINUE" onClick={() => onButtonClicked(onContinueClicked)} />
-            <Button text="CANCEL" onClick={() => onButtonClicked(onCancelClicked)} />
-         </StyledConfirmationButtons>
-      </StyledConfirmationModal>
+      <ModalBase showSpinner={showSpinner} {...rest}>
+         <StyledConfirmationModal>
+            <StyledConfirmationMessage>{message}</StyledConfirmationMessage>
+            <StyledConfirmationButtons>
+               <Button text="CONTINUE" onClick={() => onButtonClicked(onContinueClicked)} />
+               <Button text="CANCEL" onClick={() => onButtonClicked(onCancelClicked)} />
+            </StyledConfirmationButtons>
+         </StyledConfirmationModal>
+      </ModalBase>
    );
 };
 

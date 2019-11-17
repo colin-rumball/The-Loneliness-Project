@@ -5,7 +5,7 @@ import { useCallback } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import ReactDOMServer from "react-dom/server";
 import { ThemeProvider } from "styled-components";
-import MainTheme from "../styles/themes/MainTheme";
+import DefaultTheme from "../styles/themes/DefaultTheme";
 
 const ModalManager = withReactContent(Swal);
 
@@ -118,7 +118,9 @@ const useModal = () => {
       };
 
       if (modalOptions.html !== null) {
-         modalOptions.html = <ThemeProvider theme={MainTheme}>{modalOptions.html}</ThemeProvider>;
+         modalOptions.html = (
+            <ThemeProvider theme={DefaultTheme}>{modalOptions.html}</ThemeProvider>
+         );
       }
 
       if (!ModalManager.isVisible()) {

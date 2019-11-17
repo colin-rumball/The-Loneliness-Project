@@ -144,7 +144,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
       <StyledDetailsModal>
          <div className="top-color" />
          {loading ? (
-            <Spinner overlay={true} />
+            <Spinner />
          ) : (
             <div className="apartment-modal-details">
                <div className="details-header">

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import { Formik, Form, useFormikContext } from "formik";
 import * as Yup from "yup";
@@ -7,8 +7,15 @@ import Checkbox from "../../components/Forms/Checkbox";
 import TextArea from "../../components/Forms/TextArea";
 import Button from "../../components/Base/Button";
 import SubmitButton from "../../components/Forms/SubmitButton";
+import { useQuery } from "@apollo/react-hooks";
+import { APARTMENT_DETAILED } from "../../gql/queries";
+import useGQLErrorHandler from "../../hooks/useGQLErrorHandler";
+import ModalBase, { ModalBaseProps } from "./ModalBase";
+import OverlayedSpinner from "../OverlayedSpinner";
+import Spinner from "../../components/Spinner";
+import ApartmentImage from "../../components/ApartmentImage";
 
-interface EditApartmentModalProps {
+interface EditApartmentModalProps extends ModalBaseProps {
    id?: string;
    apt?: number;
    name?: string;
@@ -20,8 +27,8 @@ interface EditApartmentModalProps {
    published?: boolean;
    createdAt?: string;
    updateAt?: string;
-   modalTitle: string;
-   buttonText: string;
+   modalTitle?: string;
+   buttonText?: string;
    onFormSubmit?(id: string, values);
 }
 
@@ -41,7 +48,10 @@ const EditApartmentModalDefaultProps: EditApartmentModalProps = {
    buttonText: ""
 };
 
-const EditApartmentModal: React.FC<EditApartmentModalProps> = props => {
+const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, ...props }) => {
+   const [uploading, setUploading] = useState(false);
+   const [queriedData, setQueriedData] = useState();
+   const [currentImage, setCurrentImage] = useState();
    const {
       id,
       apt,
@@ -57,7 +67,18 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = props => {
       modalTitle,
       buttonText,
       onFormSubmit
-   } = { ...EditApartmentModalDefaultProps, ...props };
+   } = { ...EditApartmentModalDefaultProps, ...props, ...(queriedData as EditApartmentModalProps) };
+
+   const { loading } = useQuery(APARTMENT_DETAILED, {
+      client: apolloClient,
+      variables: { id },
+      onCompleted(data) {
+         if (data && data.apartment) {
+            setQueriedData(data.apartment);
+         }
+      },
+      onError: useGQLErrorHandler
+   });
 
    const StyledEditApartmentModal = useMemo(
       () => styled.div`
@@ -92,10 +113,14 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = props => {
       []
    );
 
+   if (loading) return <></>;
+
    return (
-      <StyledEditApartmentModal>
+      <ModalBase showSpinner={loading || uploading} {...props}>
+         {/* <StyledEditApartmentModal> */}
          <h2>{modalTitle}</h2>
          <Formik
+            enableReinitialize={true}
             initialValues={{
                id,
                apt,
@@ -117,11 +142,24 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = props => {
                age: Yup.string().required("Required")
             })}
             onSubmit={async (values, { setSubmitting }) => {
+               setUploading(true);
+               const data = new FormData();
+               data.append("file", currentImage);
+               await fetch("http://localhost:4000/upload", {
+                  method: "POST",
+                  body: data
+               });
+               setUploading(false);
                await onFormSubmit(values.id, values);
             }}
          >
             <StyledForm>
                <TextInput label="ID" name="id" type="text" disabled />
+               <ApartmentImage
+                  originalImage={`/static/apartments/storey_${apt}.png`}
+                  currentImage={currentImage}
+                  setCurrentImage={setCurrentImage}
+               />
                <StyledSection>
                   <TextInput label="Name" name="name" type="text" placeholder="Jane Doe" />
                   <TextInput label="Apartment Number" name="apt" type="text" placeholder="999" />
@@ -154,7 +192,8 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = props => {
                <SubmitButton text={buttonText} />
             </StyledForm>
          </Formik>
-      </StyledEditApartmentModal>
+         {/* </StyledEditApartmentModal> */}
+      </ModalBase>
    );
 };
 

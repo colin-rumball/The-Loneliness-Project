@@ -7,18 +7,18 @@ import { FaEdit, FaPlusSquare, FaTimes, FaCheck } from "react-icons/fa";
 import useModal from "../hooks/useModal";
 import Card from "../components/Base/Card";
 import EditApartmentModal from "./modals/EditApartmentModal";
-import MainTheme from "../styles/themes/MainTheme";
 import { CREATE_APARTMENT, UPDATE_APARTMENT } from "../gql/mutations";
+import FlexibleTable from "../components/Base/FlexibleTable";
+import Spinner from "../components/Spinner";
+import StyledIcon from "../components/Styled/StyledIcon";
+import useCurrentTheme from "../hooks/useCurrentTheme";
 
 const ApartmentList: React.FC = () => {
    const { pushModal, closeTopModal } = useModal();
-   const { refetch, data, loading } = useQuery(APARTMENTS_OVERVIEW, {
+   const { refetch, data, loading, client } = useQuery(APARTMENTS_OVERVIEW, {
       variables: { orderBy: "apt_DESC" },
       onError: useGQLErrorHandler
    });
-
-   const [createApartment, {}] = useMutation(CREATE_APARTMENT, {});
-   const [updateApartment, {}] = useMutation(UPDATE_APARTMENT, {});
 
    const extractApartmentData = useCallback(
       ({ apt, name, age, mostLonely, lonelinessMeans, firstTime, lastTime, published }) => ({
@@ -34,6 +34,8 @@ const ApartmentList: React.FC = () => {
       []
    );
 
+   // Create Apartment
+   const [createApartment, {}] = useMutation(CREATE_APARTMENT, {});
    const onCreateNewApartment = useCallback(async (id, data) => {
       const strippedData = extractApartmentData(data);
       strippedData.apt = Number.parseInt(strippedData.apt);
@@ -42,6 +44,8 @@ const ApartmentList: React.FC = () => {
       refetch();
    }, []);
 
+   // Update Apartment
+   const [updateApartment, {}] = useMutation(UPDATE_APARTMENT, {});
    const onUpdateApartment = useCallback(async (id, data) => {
       const strippedData = extractApartmentData(data);
       strippedData.apt = Number.parseInt(strippedData.apt);
@@ -50,137 +54,57 @@ const ApartmentList: React.FC = () => {
       refetch();
    }, []);
 
-   const [getApartmentDetails, {}] = useLazyQuery(APARTMENT_DETAILED, {
-      onCompleted(data) {
-         if (data) {
-            pushModal({
-               html: (
-                  <EditApartmentModal
-                     modalTitle="Edit Apartment Details"
-                     buttonText="Submit"
-                     onFormSubmit={onUpdateApartment}
-                     {...data.apartment}
-                  />
-               )
-            });
-         }
-      },
-      onError: useGQLErrorHandler
-   });
-
-   const onApartmentClicked = useCallback(async id => {
-      try {
-         getApartmentDetails({ variables: { id } });
-      } catch (err) {
-         console.log("TCL: err", err);
-      }
-   }, []);
-
-   const StyledApartmentList = useMemo(
-      () => styled.table`
-         width: 100%;
-         border-collapse: collapse;
-         text-align: center;
-         tr {
-            &:nth-child(1n + 2) {
-               border-bottom: ${({ theme }) => `${theme.LightGrey} 1px solid`};
-               color: ${({ theme }) => theme.LightGrey};
-               opacity: 0.95;
-               transition: all 0.3s;
-               &:hover {
-                  cursor: pointer;
-                  background-color: ${({ theme }) => theme.LightBlue};
-                  opacity: 1;
-                  color: ${({ theme }) => theme.DarkGrey};
-                  td {
-                     color: ${({ theme }) => theme.Tan};
-                  }
-               }
-            }
-            td {
-               padding: 10px;
-            }
-         }
-      `,
-      []
-   );
-
-   const StyledPublishedIcon = useMemo(
-      () => styled(FaCheck)`
-         color: ${({ theme }) => theme.Green};
-      `,
-      []
-   );
-
-   const StyledUnpublishedIcon = useMemo(
-      () => styled(FaTimes)`
-         color: ${({ theme }) => theme.Red};
-      `,
-      []
-   );
-
-   const StyledAddIcon = useMemo(
-      () => styled(FaPlusSquare)`
-         color: ${({ theme }) => theme.Grey};
-         transition: all 0.2s ease;
-         &:hover {
-            cursor: pointer;
-            color: ${({ theme }) => theme.LightBlue};
-            transition: color 0.3s;
-         }
-      `,
-      []
-   );
-
-   if (loading) return <>Loading</>;
+   const { VARIABLES } = useCurrentTheme();
 
    return (
-      <Card
+      <FlexibleTable
+         loading={loading}
          header={{
-            text: "Apartments",
-            actions: [
-               <StyledAddIcon
-                  onClick={() =>
+            title: "Apartments",
+            showAddButton: true,
+            onAddButtonClicked: () =>
+               pushModal({
+                  html: (
+                     <EditApartmentModal
+                        apolloClient={client}
+                        onFormSubmit={onCreateNewApartment}
+                        modalTitle="Create Apartment"
+                        buttonText="Create"
+                     />
+                  )
+               })
+         }}
+         body={{
+            TableHeaders: ["Published", "Apt Number", "ID"],
+            TableRows:
+               data &&
+               data.apartments &&
+               data.apartments.map(apartment => ({
+                  id: apartment.id,
+                  onClick: () =>
                      pushModal({
                         html: (
                            <EditApartmentModal
-                              onFormSubmit={onCreateNewApartment}
-                              modalTitle="Create Apartment"
-                              buttonText="Create"
+                              apolloClient={client}
+                              modalTitle="Edit Apartment Details"
+                              buttonText="Submit"
+                              onFormSubmit={onUpdateApartment}
+                              id={apartment.id}
                            />
                         )
-                     })
-                  }
-               />
-            ]
+                     }),
+                  cells: [
+                     apartment.published ? (
+                        <StyledIcon icon={FaCheck} color={VARIABLES.COLORS.Green} />
+                     ) : (
+                        <StyledIcon icon={FaTimes} color={VARIABLES.COLORS.Red} />
+                     ),
+                     apartment.apt,
+                     apartment.id
+                  ]
+               }))
          }}
-      >
-         <StyledApartmentList>
-            <tbody>
-               <tr>
-                  <th>Published</th>
-                  <th>Apt Number</th>
-                  <th>ID</th>
-               </tr>
-
-               {data &&
-                  data.apartments &&
-                  data.apartments.map(apartment => (
-                     <tr key={apartment.id} onClick={() => onApartmentClicked(apartment.id)}>
-                        <td>
-                           {apartment.published ? (
-                              <StyledPublishedIcon />
-                           ) : (
-                              <StyledUnpublishedIcon />
-                           )}
-                        </td>
-                        <td>{apartment.apt}</td>
-                        <td>{apartment.id}</td>
-                     </tr>
-                  ))}
-            </tbody>
-         </StyledApartmentList>
-      </Card>
+      />
    );
 };
 
