@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import TextInput from "./Forms/TextInput";
+import { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 interface NewsletterSignupProps {
    showHeader?: boolean;
@@ -19,7 +20,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
       () => styled.div`
          width: 100%;
          text-align: center;
-         color: ${({ theme }) => theme.Tan};
+         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          opacity: 0.9;
          font-weight: 100;
          /* font-family: "lato", sans-serif; */
@@ -44,7 +45,8 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
             align-items: stretch;
             max-width: 600px;
             width: 100%;
-            border-bottom: ${({ theme }) => `1px solid ${theme.Tan}`};
+            border-bottom: ${({ theme }: ThemeContainer) =>
+               `1px solid ${theme.VARIABLES.COLORS.Tan}`};
 
             @media (min-width: 768px) {
             }
@@ -58,7 +60,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
                background: transparent;
                border: none;
 
-               color: ${({ theme }) => theme.Tan};
+               color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
                font-size: 16px;
                padding: 10px 6px;
             }
@@ -73,7 +75,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
                padding: 10px 0;
                margin: 0;
                height: 100%;
-               color: ${({ theme }) => theme.Tan};
+               color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
             }
          }
       `,
@@ -85,7 +87,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
          width: 100%;
          padding: 20px 40px;
          text-align: center;
-         color: ${({ theme }) => theme.Tan};
+         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          opacity: 0.9;
          font-family: "lato", sans-serif;
          margin-top: 20px;

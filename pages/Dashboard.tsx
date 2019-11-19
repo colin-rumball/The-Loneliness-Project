@@ -10,6 +10,7 @@ import { LOGOUT } from "../gql/mutations";
 import UserList from "../containers/UserList";
 import Card from "../components/Base/Card";
 import ApartmentList from "../containers/ApartmentList";
+import { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 const Dashboard: React.FC = () => {
    const router = useRouter();
@@ -22,7 +23,7 @@ const Dashboard: React.FC = () => {
          width: 100%;
          height: 100%;
          min-height: 100vh;
-         background-color: ${({ theme }) => theme.Tan};
+         background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
       `,
       []
    );

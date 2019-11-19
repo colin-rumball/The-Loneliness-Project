@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Arrows from "../../components/Arrows";
 import { useQuery } from "@apollo/react-hooks";
 import { APARTMENT_DETAILED, APARTMENT_BY_NUMBER } from "../../gql/queries";
-import { ModalBaseProps } from "./ModalBase";
+import ModalBase, { ModalBaseProps } from "./ModalBase";
 import Spinner from "../../components/Spinner";
 import StyledApartmentDetails from "./styled/StyledApartmentDetails";
 
@@ -25,16 +25,19 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
    }, []);
 
    const aparmentData = loading ? {} : data.apartmentByNumber;
-   const currentApartmentNumber = !loading && aparmentData.apt;
 
    return (
-      <StyledApartmentDetails loading={loading} {...aparmentData}>
-         <Arrows
-            currentApt={currentApartmentNumber}
-            onLeftArrowClicked={onArrowClicked}
-            onRightArrowClicked={onArrowClicked}
-         />
-      </StyledApartmentDetails>
+      <ModalBase showSpinner={loading}>
+         {loading ? (
+            <></>
+         ) : (
+            <StyledApartmentDetails
+               onLeftArrowClicked={onArrowClicked}
+               onRightArrowClicked={onArrowClicked}
+               {...aparmentData}
+            />
+         )}
+      </ModalBase>
    );
 };
 

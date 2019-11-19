@@ -1,5 +1,6 @@
 import React, { CSSProperties, MouseEventHandler, useMemo } from "react";
 import styled from "styled-components";
+import { ThemeContainer } from "../../styles/themes/DefaultTheme";
 
 export enum ButtonVariant {
    DEFAULT = "default"
@@ -56,8 +57,8 @@ const ClickableIcon: React.FC<ButtonProps> = (props: ButtonProps) => {
          padding: 14px 0;
 
          &:hover {
-            border-color: ${({ theme }) => theme.Tan};
-            color: ${({ theme }) => theme.Tan};
+            border-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
             transition: color 0.2s ease, border-color 0.2s ease;
          }
 

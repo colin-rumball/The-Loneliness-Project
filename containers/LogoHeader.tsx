@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback, useState, useMemo } from "react";
 import Logo from "../components/Logo";
 import styled from "styled-components";
+import { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 const LogoHeader: React.FC = () => {
    const getOpacityAmount = useCallback(() => {
@@ -20,6 +21,7 @@ const LogoHeader: React.FC = () => {
    }, []);
 
    useEffect(() => {
+      setOpacity(getOpacityAmount());
       window.addEventListener("scroll", onScroll);
       return () => {
          window.removeEventListener("scroll", onScroll);
@@ -40,10 +42,10 @@ const LogoHeader: React.FC = () => {
          /* padding: 70px 12vw 0 12vw; */
          opacity: ${props => props.opactiy};
          transition: opacity 0.2s ease;
-         z-index: 1;
+         z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MID_GROUND};
 
          .slogan {
-            color: ${props => props.theme.Tan};
+            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
             font-size: 19px;
             font-weight: 500;
             line-height: 23px;

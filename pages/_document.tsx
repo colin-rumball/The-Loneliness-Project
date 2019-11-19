@@ -42,7 +42,6 @@ class MyDocument extends Document {
       return (
          <Html>
             <Head>
-               <title>The Loneliness Project</title>
                <link
                   href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:400,700&display=swap"
                   rel="stylesheet"

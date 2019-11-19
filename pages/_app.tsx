@@ -5,6 +5,7 @@ import withApolloClient from "../lib/apollo/withApolloClient";
 import { ThemeProvider } from "styled-components";
 import DefaultTheme from "../styles/themes/DefaultTheme";
 import "./../styles/main.scss";
+import Head from "next/head";
 
 class MyApp extends App {
    // static async getInitialProps({ Component, ctx }) {
@@ -19,13 +20,18 @@ class MyApp extends App {
    render() {
       const { Component, pageProps, router, apolloClient } = this.props as any;
       return (
-         <NextAppContainer>
-            <ApolloProvider client={apolloClient}>
-               <ThemeProvider theme={DefaultTheme}>
-                  <Component {...pageProps} key={router.route} />
-               </ThemeProvider>
-            </ApolloProvider>
-         </NextAppContainer>
+         <>
+            <Head>
+               <title>The Loneliness Project</title>
+            </Head>
+            <NextAppContainer>
+               <ApolloProvider client={apolloClient}>
+                  <ThemeProvider theme={DefaultTheme}>
+                     <Component {...pageProps} key={router.route} />
+                  </ThemeProvider>
+               </ApolloProvider>
+            </NextAppContainer>
+         </>
       );
    }
 }

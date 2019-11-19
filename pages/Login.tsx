@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { LOGIN } from "../gql/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
+import { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 const Login: React.FC = () => {
    const router = useRouter();
@@ -24,7 +25,7 @@ const Login: React.FC = () => {
          justify-content: center;
          align-items: center;
          width: 100%;
-         background-color: ${({ theme }) => theme.Tan};
+         background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          height: 100%;
          min-height: 100vh;
       `,

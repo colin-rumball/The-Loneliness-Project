@@ -1,5 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import { ThemeContainer } from "../../styles/themes/DefaultTheme";
+import Spinner from "../../components/Spinner";
 
 interface StyledApartmentsContainerProps {
    loading: Boolean;
@@ -20,7 +22,7 @@ const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
          width: 100%;
          padding: 400px 5% 0 5%;
          min-height: 100vh;
-         z-index: 40;
+         z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND};
 
          animation: ${props => (!props.showingSpinner ? "fadeIn 2s ease-in 0.4s both" : null)};
 
@@ -36,8 +38,24 @@ const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
       []
    );
 
+   const StyledSpinnerContainer = useMemo(
+      () => styled.div`
+         padding-top: 100px;
+         width: 100%;
+      `,
+      []
+   );
+
    return (
-      <StyledApartmentsContainer showingSpinner={loading}>{children}</StyledApartmentsContainer>
+      <StyledApartmentsContainer showingSpinner={loading}>
+         {loading ? (
+            <StyledSpinnerContainer>
+               <Spinner />
+            </StyledSpinnerContainer>
+         ) : (
+            children
+         )}
+      </StyledApartmentsContainer>
    );
 };
 

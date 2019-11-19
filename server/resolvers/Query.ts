@@ -40,10 +40,10 @@ const Query = {
          skip: args.skip,
          after: args.after,
          orderBy: args.orderBy,
-         where: !!user
+         where: !user
             ? {}
             : {
-                 published: true
+                 published: args.published
               }
       };
 

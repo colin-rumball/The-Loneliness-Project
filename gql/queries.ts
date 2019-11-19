@@ -48,8 +48,16 @@ export const APARTMENTS_OVERVIEW = gql`
       $skip: Int
       $after: String
       $orderBy: ApartmentOrderByInput
+      $published: Boolean
    ) {
-      apartments(query: $query, first: $first, skip: $skip, after: $after, orderBy: $orderBy) {
+      apartments(
+         query: $query
+         first: $first
+         skip: $skip
+         after: $after
+         orderBy: $orderBy
+         published: $published
+      ) {
          id
          apt
          published

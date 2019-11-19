@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { IconType } from "react-icons/lib/cjs";
-import DefaultTheme from "../styles/themes/DefaultTheme";
+import DefaultTheme, { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 interface ManagedStyledInputProps {
    type?: string;
@@ -52,7 +52,7 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
             width: 100%;
             height: 100%;
             font-size: 20px;
-            color: ${({ theme }) => theme.Tan};
+            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
             border-bottom: ${props => props.border};
 
             &::placeholder {

@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import pressFeatures from "./../static/press.json";
+import { ThemeContainer } from "../styles/themes/DefaultTheme/index.js";
 
 interface PressFeaturesProps {}
 
@@ -10,7 +11,7 @@ const PressFeatures: React.FC<PressFeaturesProps> = ({}) => {
          width: 100%;
          padding: 20px 40px;
          text-align: center;
-         color: ${({ theme }) => theme.Tan};
+         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          opacity: 0.9;
          font-family: "lato", sans-serif;
          margin-top: 20px;

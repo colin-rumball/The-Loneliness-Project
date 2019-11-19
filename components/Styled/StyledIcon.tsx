@@ -19,11 +19,11 @@ const StyledIconDefaultProps: StyledIconProps = {
 };
 
 const StyledIcon: React.FC<StyledIconProps> = props => {
-   const { icon, ...rest } = { ...StyledIconDefaultProps, ...props };
+   const { icon, color: staticColor, ...rest } = { ...StyledIconDefaultProps, ...props };
 
    const StyledAddIcon = useMemo(
       () => styled(icon)`
-         color: ${({ theme, color = theme.ICON_STYLES.COLOR_DEFAULT }) => color};
+         color: ${({ theme, staticcolor = theme.ICON_STYLES.COLOR_DEFAULT }) => staticcolor};
          font-size: ${({ theme, size = theme.ICON_STYLES.SIZE_M }: ThemeContainer) => size};
          transition: color 0.3s ease, transform 0.3s ease;
 
@@ -31,17 +31,17 @@ const StyledIcon: React.FC<StyledIconProps> = props => {
             cursor: ${props => (props.onClick ? "pointer" : "default")};
             color: ${({
                theme,
-               color = theme.ICON_STYLES.COLOR_DEFAULT,
+               staticcolor = theme.ICON_STYLES.COLOR_DEFAULT,
                hovercolor = theme.ICON_STYLES.COLOR_HOVER,
                onClick
-            }) => (onClick ? hovercolor : color)};
+            }) => (onClick ? hovercolor : staticcolor)};
             transform: ${props => (props.onClick ? "scale(1.1)" : "scale(1)")};
          }
       `,
       [icon]
    );
 
-   return <StyledAddIcon {...rest} />;
+   return <StyledAddIcon staticcolor={staticColor} {...rest} />;
 };
 
 export default StyledIcon;

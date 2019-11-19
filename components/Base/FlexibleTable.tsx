@@ -95,17 +95,17 @@ const FlexibleTable: React.FC<FlexibleTableProps> = props => {
             <StyledFlexibleTable>
                <tbody>
                   <tr>
-                     {body.TableHeaders.map(header => (
-                        <th key={header as string}>{header}</th>
-                     ))}
+                     {body.TableHeaders &&
+                        body.TableHeaders.map(header => <th key={header as string}>{header}</th>)}
                   </tr>
-                  {body.TableRows.map((row: FlexibleTableRow) => (
-                     <StyledFlexibleRow key={row.id} onClick={row.onClick}>
-                        {row.cells.map(cell => (
-                           <td key={cell as string}>{cell}</td>
-                        ))}
-                     </StyledFlexibleRow>
-                  ))}
+                  {body.TableRows &&
+                     body.TableRows.map((row: FlexibleTableRow) => (
+                        <StyledFlexibleRow key={row.id} onClick={row.onClick}>
+                           {row.cells.map(cell => (
+                              <td key={cell as string}>{cell}</td>
+                           ))}
+                        </StyledFlexibleRow>
+                     ))}
                </tbody>
             </StyledFlexibleTable>
          )}

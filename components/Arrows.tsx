@@ -34,12 +34,14 @@ const Arrows: React.FC<ArrowsProps> = props => {
          right: -50px;
          top: 0;
          bottom: 0;
+         pointer-events: none;
 
          .arrow {
             font-size: 30px;
             color: #fff;
             opacity: 0.7;
             transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: auto;
 
             &:hover {
                cursor: pointer;

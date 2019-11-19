@@ -19,9 +19,18 @@ export interface Colors {
    Green: string;
 }
 
+export interface Layers {
+   MODAL: number;
+   ON_TOP: number;
+   FOREGROUND: number;
+   MID_GROUND: number;
+   BACKGROUND: number;
+}
+
 export interface Variables {
    FONT_SIZES: FontSizes;
    COLORS: Colors;
+   LAYERS: Layers;
 }
 
 export const FONT_SIZES: FontSizes = {
@@ -45,9 +54,18 @@ export const COLORS: Colors = {
    Green: "#2ec958"
 };
 
+export const LAYERS: Layers = {
+   MODAL: 60,
+   ON_TOP: 40,
+   FOREGROUND: 20,
+   MID_GROUND: 10,
+   BACKGROUND: -10
+};
+
 const VARIABLES: Variables = {
    FONT_SIZES,
-   COLORS
+   COLORS,
+   LAYERS
 };
 
 export default VARIABLES;

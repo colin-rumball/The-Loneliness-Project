@@ -1,23 +1,11 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import { ThemeContainer } from "../../styles/themes/DefaultTheme";
+import ModalBase from "./ModalBase";
 
 interface TalkToSomeoneModalProps {}
 
 const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
-   const StyledModal = useMemo(
-      () => styled.div`
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         height: 700px;
-         min-height: 50vh;
-         max-height: 90vh;
-         overflow-y: auto;
-         padding: 20px 40px;
-      `,
-      []
-   );
-
    const StyledHeader = useMemo(
       () => styled.div`
          font-size: 44px;
@@ -43,6 +31,7 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
       () => styled.div`
          width: 100%;
          height: 100%;
+         min-height: 50vh;
          display: flex;
          flex-direction: column;
          justify-content: space-evenly;
@@ -56,13 +45,13 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
       () => styled.div`
          text-align: center;
 
-         div {
+         .text {
             font-size: 16px;
             a {
                font-family: "lato", sans-serif;
                font-size: 17px;
                text-decoration: none;
-               color: ${({ theme }) => theme.Grey};
+               color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Grey};
                font-weight: 600;
                letter-spacing: 1px;
             }
@@ -72,39 +61,39 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
    );
 
    return (
-      <StyledModal>
+      <ModalBase>
          <StyledHeader>Need to talk to someone?</StyledHeader>
          <StyledSubheader>IT’S OKAY. SOMETIMES WE ALL DO.</StyledSubheader>
          <StyledSectionsContainer>
             <StyledSection>
-               <div>
+               <div className="text">
                   <a href="https://www.hopeline-nc.org/" target="_blank">
                      HOPELINE HOTLINE
                   </a>
                </div>
-               <div>Trained listeners available for those in crisis.</div>
-               <div>1 877 235 4525</div>
+               <div className="text">Trained listeners available for those in crisis.</div>
+               <div className="text">1 877 235 4525</div>
             </StyledSection>
             <StyledSection>
-               <div>
+               <div className="text">
                   <a href="https://suicidepreventionlifeline.org/" target="_blank">
                      NATIONAL SUICIDE PREVENTION LIFELINE
                   </a>
                </div>
-               <div>Free and confidential support and resources.</div>
-               <div>1 800 273 8255</div>
+               <div className="text">Free and confidential support and resources.</div>
+               <div className="text">1 800 273 8255</div>
             </StyledSection>
             <StyledSection>
-               <div>
+               <div className="text">
                   <a href="https://kidshelpphone.ca/" target="_blank">
                      KIDS HELP PHONE
                   </a>
                </div>
-               <div>For teens and kids. No problem too small.</div>
-               <div>1 800 668 6868</div>
+               <div className="text">For teens and kids. No problem too small.</div>
+               <div className="text">1 800 668 6868</div>
             </StyledSection>
          </StyledSectionsContainer>
-      </StyledModal>
+      </ModalBase>
    );
 };
 

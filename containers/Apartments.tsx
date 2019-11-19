@@ -14,7 +14,7 @@ import StyledApartment from "./StyledApartments/StyledApartment";
 const Apartments: React.FC = () => {
    const { pushModal } = useModal();
    const [apartments, setApartments] = useState([]);
-   const [getApartments, { loading, client }] = useLazyQuery(APARTMENTS_OVERVIEW, {
+   const [getApartments, { client }] = useLazyQuery(APARTMENTS_OVERVIEW, {
       onCompleted(data) {
          if (data && data.apartments) {
             setApartments([...apartments, ...data.apartments]);
@@ -24,81 +24,59 @@ const Apartments: React.FC = () => {
 
    useEffect(() => {
       getApartments({
-         variables: { query: "", first: 15, orderBy: "apt_DESC", skip: 0 }
+         variables: { query: "", first: 15, orderBy: "apt_DESC", skip: 0, published: true }
       });
    }, []);
 
    return (
-      <StyledApartmentsContainer loading={loading}>
-         {apartments.length == 0 ? (
-            <Spinner />
-         ) : (
-            <>
-               <StyledApartmentRoof
-                  position="left"
-                  image="/static/apartments/roof_3.png"
-                  alt="apartment-roof-3"
-               />
-               <StyledApartmentRoof
-                  position="center"
-                  image="/static/apartments/roof_2.png"
-                  alt="apartment-roof-2"
-               />
-               <StyledApartmentRoof
-                  position="right"
-                  image="/static/apartments/roof_1.png"
-                  alt="apartment-roof-1"
-               />
-               {apartments.length > 0 &&
-                  apartments.map(apartment => {
-                     return (
-                        <StyledApartment
-                           key={apartment.id}
-                           image={`/static/apartments/storey_${apartment.apt}.png`}
-                           onClick={() =>
-                              pushModal({
-                                 html: (
-                                    <ApartmentDetailsModal
-                                       apt={apartment.apt}
-                                       apolloClient={client}
-                                    />
-                                 )
-                              })
-                           }
-                        />
-                     );
-                  })}
-               <StyledStoreFront
-                  position="left"
-                  image="/static/apartments/store_1.png"
-                  alt="store 1"
-               />
-               <StyledStoreFront
-                  position="center"
-                  image="/static/apartments/store_2.png"
-                  alt="store 2"
-               />
-               <StyledStoreFront
-                  position="right"
-                  image="/static/apartments/store_3.png"
-                  alt="store 3"
-               />
-               <StyledShowMore
-                  onClick={async () => {
-                     getApartments({
-                        variables: {
-                           query: "",
-                           first: 15,
-                           orderBy: "apt_DESC",
-                           skip: apartments.length
-                        }
-                     });
-                  }}
-               />
-            </>
-         )}
+      <StyledApartmentsContainer loading={apartments.length == 0}>
+         <StyledApartmentRoof
+            position="left"
+            image="/static/apartments/roof_3.png"
+            alt="apartment-roof-3"
+         />
+         <StyledApartmentRoof
+            position="center"
+            image="/static/apartments/roof_2.png"
+            alt="apartment-roof-2"
+         />
+         <StyledApartmentRoof
+            position="right"
+            image="/static/apartments/roof_1.png"
+            alt="apartment-roof-1"
+         />
+         {apartments.length > 0 &&
+            apartments.map(apartment => {
+               return (
+                  <StyledApartment
+                     key={apartment.id}
+                     image={`/static/apartments/storey_${apartment.apt}.png`}
+                     onClick={() =>
+                        pushModal({
+                           html: <ApartmentDetailsModal apt={apartment.apt} apolloClient={client} />
+                        })
+                     }
+                  />
+               );
+            })}
+         <StyledStoreFront position="left" image="/static/apartments/store_1.png" alt="store 1" />
+         <StyledStoreFront position="center" image="/static/apartments/store_2.png" alt="store 2" />
+         <StyledStoreFront position="right" image="/static/apartments/store_3.png" alt="store 3" />
+         <StyledShowMore
+            onClick={async () => {
+               getApartments({
+                  variables: {
+                     query: "",
+                     first: 15,
+                     orderBy: "apt_DESC",
+                     skip: apartments.length,
+                     published: true
+                  }
+               });
+            }}
+         />
       </StyledApartmentsContainer>
    );
 };
-// query: $query, first: $first, skip: $skip, after: $after, orderBy: $orderBy
+
 export default Apartments;

@@ -10,6 +10,7 @@ type Query {
       skip: Int
       after: String
       orderBy: ApartmentOrderByInput
+      published: Boolean
    ): [Apartment!]
    apartmentsCount: Int
    #comments(first: Int, skip: Int, after: String, orderBy: CommentOrderByInput): [Comment!]!

@@ -1,9 +1,8 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import Spinner from "../../../components/Spinner";
+import Arrows from "../../../components/Arrows";
 
 interface StyledApartmentDetailsProps {
-   loading?: boolean;
    apt: number;
    name: string;
    age: string;
@@ -11,36 +10,47 @@ interface StyledApartmentDetailsProps {
    lonelinessMeans: string;
    firstTime: string;
    lastTime: string;
-   children?: Object;
+   onLeftArrowClicked?(apt: number);
+   onRightArrowClicked?(apt: number);
+   showLeftArrow?: boolean;
+   showRightArrow?: boolean;
 }
 
 const StyledApartmentDetailsDefaultProps: StyledApartmentDetailsProps = {
-   loading: true,
    apt: 1,
-   name: "NAME",
-   age: "AGE",
-   mostLonely: "MOST_LONELY",
-   lonelinessMeans: "LONELINESS_MEANS",
-   firstTime: "FIRST_TIME",
-   lastTime: "LAST_TIME",
-   children: undefined
+   name: "",
+   age: "",
+   mostLonely: "",
+   lonelinessMeans: "",
+   firstTime: "",
+   lastTime: "",
+   onLeftArrowClicked: () => {},
+   onRightArrowClicked: () => {},
+   showLeftArrow: true,
+   showRightArrow: true
 };
 
 const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
-   const { loading, apt, name, age, mostLonely, lonelinessMeans, firstTime, lastTime, children } = {
+   const {
+      apt,
+      name,
+      age,
+      mostLonely,
+      lonelinessMeans,
+      firstTime,
+      lastTime,
+      onLeftArrowClicked,
+      onRightArrowClicked,
+      showLeftArrow,
+      showRightArrow
+   } = {
       ...StyledApartmentDetailsDefaultProps,
       ...props
    };
 
-   const StyledDetailsModal = useMemo(
+   const StyledApartmentDetails = useMemo(
       () => styled.div`
-         display: flex;
-         flex-direction: column;
-         height: 700px;
-         min-height: 50vh;
-         max-height: 90vh;
-         overflow-y: hidden;
-
+         overflow-x: hidden;
          .top-color {
             width: 100%;
             min-height: 40px;
@@ -141,55 +151,57 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
    );
 
    return (
-      <StyledDetailsModal>
+      <StyledApartmentDetails>
+         <Arrows
+            currentApt={apt}
+            onLeftArrowClicked={onLeftArrowClicked}
+            onRightArrowClicked={onRightArrowClicked}
+            showLeftArrow={showLeftArrow}
+            showRightArrow={showRightArrow}
+         />
          <div className="top-color" />
-         {loading ? (
-            <Spinner />
-         ) : (
-            <div className="apartment-modal-details">
-               <div className="details-header">
-                  <span className="apt-owner-name">{name}</span>
-                  <span className="details-header-divider">/</span>
-                  <span className="apt-owner-age">AGE {age}</span>
-                  <span className="apt-number">APT. {apt}</span>
-               </div>
-               <div className="line"></div>
-               {lastTime && (
-                  <>
-                     <div className="apartment-modal-details__question">
-                        LAST TIME I FELT LONELY WAS...
-                     </div>
-                     <div className="apartment-modal-details__answer">{lastTime}</div>
-                  </>
-               )}
-               {lonelinessMeans && (
-                  <>
-                     <div className="apartment-modal-details__question">
-                        TO ME, LONELINESS MEANS...
-                     </div>
-                     <div className="apartment-modal-details__answer">{lonelinessMeans}</div>
-                  </>
-               )}
-               {firstTime && (
-                  <>
-                     <div className="apartment-modal-details__question">
-                        ONE OF THE FIRST TIMES I REALIZED I WAS LONELY WAS...
-                     </div>
-                     <div className="apartment-modal-details__answer">{firstTime}</div>
-                  </>
-               )}
-               {mostLonely && (
-                  <>
-                     <div className="apartment-modal-details__question">
-                        TELL ME THE STORY OF THE TIME YOU FELT THE MOST LONELY.
-                     </div>
-                     <div className="apartment-modal-details__answer">{mostLonely}</div>
-                  </>
-               )}
+         <div className="apartment-modal-details">
+            <div className="details-header">
+               <span className="apt-owner-name">{name}</span>
+               <span className="details-header-divider">/</span>
+               <span className="apt-owner-age">AGE {age}</span>
+               <span className="apt-number">APT. {apt}</span>
             </div>
-         )}
-         {children}
-      </StyledDetailsModal>
+            <div className="line"></div>
+            {lastTime && (
+               <>
+                  <div className="apartment-modal-details__question">
+                     LAST TIME I FELT LONELY WAS...
+                  </div>
+                  <div className="apartment-modal-details__answer">{lastTime}</div>
+               </>
+            )}
+            {lonelinessMeans && (
+               <>
+                  <div className="apartment-modal-details__question">
+                     TO ME, LONELINESS MEANS...
+                  </div>
+                  <div className="apartment-modal-details__answer">{lonelinessMeans}</div>
+               </>
+            )}
+            {firstTime && (
+               <>
+                  <div className="apartment-modal-details__question">
+                     ONE OF THE FIRST TIMES I REALIZED I WAS LONELY WAS...
+                  </div>
+                  <div className="apartment-modal-details__answer">{firstTime}</div>
+               </>
+            )}
+            {mostLonely && (
+               <>
+                  <div className="apartment-modal-details__question">
+                     TELL ME THE STORY OF THE TIME YOU FELT THE MOST LONELY.
+                  </div>
+                  <div className="apartment-modal-details__answer">{mostLonely}</div>
+               </>
+            )}
+         </div>
+      </StyledApartmentDetails>
    );
 };
 

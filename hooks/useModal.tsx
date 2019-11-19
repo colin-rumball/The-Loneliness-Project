@@ -5,7 +5,7 @@ import { useCallback } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import ReactDOMServer from "react-dom/server";
 import { ThemeProvider } from "styled-components";
-import DefaultTheme from "../styles/themes/DefaultTheme";
+import DefaultTheme, { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 const ModalManager = withReactContent(Swal);
 
@@ -57,7 +57,7 @@ export interface ModalOptions extends SweetAlertOptions {
 }
 
 const StyledModalCloseButton = styled.div`
-   color: ${({ theme }) => theme.LightGrey};
+   color: ${DefaultTheme.VARIABLES.COLORS.Grey};
    font-size: 20px;
    position: absolute;
    top: 9px;
@@ -69,7 +69,7 @@ const StyledModalCloseButton = styled.div`
       cursor: pointer;
       transform: scale(1.1);
       opacity: 1;
-      color: #fff;
+      color: ${DefaultTheme.VARIABLES.COLORS.DarkGrey};
    }
 `;
 

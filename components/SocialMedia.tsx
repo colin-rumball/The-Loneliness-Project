@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { FaFacebookF, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa";
+import { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 interface SocialMediaProps {}
 
@@ -19,7 +20,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({}) => {
    const StyledSocialIcon = useMemo(
       () => styled.a`
          font-size: 28px;
-         color: ${({ theme }) => theme.Tan};
+         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          margin: 0 15px;
 
          &:hover {

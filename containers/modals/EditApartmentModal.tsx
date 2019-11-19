@@ -49,7 +49,7 @@ const EditApartmentModalDefaultProps: EditApartmentModalProps = {
 };
 
 const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, ...props }) => {
-   const [uploading, setUploading] = useState(false);
+   const [updating, setUpdating] = useState(false);
    const [queriedData, setQueriedData] = useState();
    const [currentImage, setCurrentImage] = useState();
    const {
@@ -80,21 +80,6 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, .
       onError: useGQLErrorHandler
    });
 
-   const StyledEditApartmentModal = useMemo(
-      () => styled.div`
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         height: 700px;
-         min-height: 50vh;
-         max-height: 90vh;
-         padding: 20px;
-         margin: 30px 0;
-         overflow: auto;
-      `,
-      []
-   );
-
    const StyledForm = useMemo(
       () => styled(Form)`
          display: flex;
@@ -113,11 +98,8 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, .
       []
    );
 
-   if (loading) return <></>;
-
    return (
-      <ModalBase showSpinner={loading || uploading} {...props}>
-         {/* <StyledEditApartmentModal> */}
+      <ModalBase showSpinner={loading || updating} {...props}>
          <h2>{modalTitle}</h2>
          <Formik
             enableReinitialize={true}
@@ -142,24 +124,34 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, .
                age: Yup.string().required("Required")
             })}
             onSubmit={async (values, { setSubmitting }) => {
-               setUploading(true);
-               const data = new FormData();
-               data.append("file", currentImage);
-               await fetch("http://localhost:4000/upload", {
-                  method: "POST",
-                  body: data
-               });
-               setUploading(false);
+               setUpdating(true);
+
+               // Upload the new image if provided
+               if (currentImage) {
+                  const data = new FormData();
+                  data.append("file", currentImage);
+                  const endpoint =
+                     process.env.PD_LOCAL_DEVELOPMENT && process.env.PD_USE_LOCAL_SERVER
+                        ? "http://localhost:4000/upload"
+                        : "/upload";
+                  await fetch(endpoint, {
+                     method: "POST",
+                     body: data
+                  });
+               }
+
                await onFormSubmit(values.id, values);
             }}
          >
             <StyledForm>
                <TextInput label="ID" name="id" type="text" disabled />
-               <ApartmentImage
-                  originalImage={`/static/apartments/storey_${apt}.png`}
-                  currentImage={currentImage}
-                  setCurrentImage={setCurrentImage}
-               />
+               {apt != 0 && (
+                  <ApartmentImage
+                     originalImage={`/static/apartments/storey_${apt}.png`}
+                     currentImage={currentImage}
+                     setCurrentImage={setCurrentImage}
+                  />
+               )}
                <StyledSection>
                   <TextInput label="Name" name="name" type="text" placeholder="Jane Doe" />
                   <TextInput label="Apartment Number" name="apt" type="text" placeholder="999" />
@@ -192,7 +184,6 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, .
                <SubmitButton text={buttonText} />
             </StyledForm>
          </Formik>
-         {/* </StyledEditApartmentModal> */}
       </ModalBase>
    );
 };

@@ -5,6 +5,7 @@ import NewsletterSignup from "../components/NewsletterSignup";
 import SocialMedia from "../components/SocialMedia";
 import TalkToSomeoneModal from "./modals/TalkToSomeoneModal";
 import useModal from "../hooks/useModal";
+import { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 interface HomeUserActionsProps {}
 
@@ -19,7 +20,7 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
          align-items: center;
          width: 100%;
          padding: 60px 40px;
-         background-color: ${({ theme }) => theme.LightBlue};
+         background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
 
          @media (min-width: 768px) {
             flex-direction: row;
@@ -74,10 +75,10 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
       () => styled.div`
          width: 100%;
          text-align: center;
-         color: ${({ theme }) => theme.Tan};
+         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          opacity: 0.5;
          a {
-            color: ${({ theme }) => theme.Tan};
+            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
             text-decoration: none;
 
             &:hover {

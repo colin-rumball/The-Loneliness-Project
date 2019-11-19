@@ -4,6 +4,7 @@ import ScrollLock, { TouchScrollable } from "react-scrolllock";
 import NewsletterSignup from "../components/NewsletterSignup";
 import PressFeatures from "./PressFeatures";
 import SocialMedia from "../components/SocialMedia";
+import { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 interface AboutSectionProps {}
 
@@ -18,13 +19,23 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
          overflow: auto;
          padding: 20px 60px;
          padding-top: 18%;
-         color: ${({ theme }) => theme.Tan};
-         z-index: 50;
-         background-color: ${({ theme }) => theme.LightBlue};
+         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+         z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
+         background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
+         animation: fadeIn 0.3s ease-in both;
+
+         @keyframes fadeIn {
+            from {
+               opacity: 0;
+            }
+            to {
+               opacity: 1;
+            }
+         }
 
          .icon {
             width: 50px;
-            fill: ${({ theme }) => theme.Tan};
+            fill: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          }
 
          .about-title {
@@ -48,7 +59,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
             }
 
             a {
-               color: ${({ theme }) => theme.Tan};
+               color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
             }
          }
       `,
