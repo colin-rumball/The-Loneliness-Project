@@ -17,7 +17,7 @@ const LogoHeader: React.FC = () => {
    const [opactiy, setOpacity] = useState(getOpacityAmount());
 
    const onScroll = useCallback(() => {
-      setOpacity(getOpacityAmount());
+      // setOpacity(getOpacityAmount());
    }, []);
 
    useEffect(() => {

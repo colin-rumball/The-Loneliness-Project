@@ -25,7 +25,7 @@ const Login: React.FC = () => {
          justify-content: center;
          align-items: center;
          width: 100%;
-         background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+         background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
          height: 100%;
          min-height: 100vh;
       `,

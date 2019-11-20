@@ -48,7 +48,6 @@ const UserForm: React.FC<UserFormProps> = ({ title, onFormSubmit }) => {
          flex-direction: column;
          justify-content: space-evenly;
          align-items: center;
-         height: 100%;
 
          .form-title {
             font-family: "lato", sans-serif;

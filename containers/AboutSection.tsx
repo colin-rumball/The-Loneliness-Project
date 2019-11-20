@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import ScrollLock, { TouchScrollable } from "react-scrolllock";
 import NewsletterSignup from "../components/NewsletterSignup";
 import PressFeatures from "./PressFeatures";
 import SocialMedia from "../components/SocialMedia";

@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import { ThemeContainer } from "../../styles/themes/DefaultTheme";
 
 interface StyledApartmentRoofProps {
    position: "left" | "center" | "right";
@@ -17,11 +18,8 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
    const { position, image, alt } = { ...StyledShowMoreDefaultProps, ...props };
    const StyledApartmentRoof = useMemo(
       () => styled.div`
-         display: flex;
-         flex-direction: column;
-         justify-content: flex-end;
          flex-basis: 100%;
-         z-index: 40;
+         padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.ROOF_PADDING}`};
 
          @media (min-width: 768px) {
             flex-basis: 50%;
@@ -31,14 +29,24 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
             flex-basis: 33%;
          }
 
+         .image-container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+         }
+
          &.left {
-            transform: translateY(17%);
-            padding-right: 2.5%;
+            /* transform: translateY(17%); */
+            /* padding-right: 2.5%; */
             display: none;
+            transform: translateY(12%);
 
             .roof-image {
-               margin-left: -2%;
-               width: 104.9%;
+               /* margin-left: -2%; */
+               /* width: 104.9%; */
+               width: 100%;
             }
 
             @media (min-width: 768px) {
@@ -51,13 +59,14 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
          }
 
          &.center {
-            padding: 0 2.5%;
+            /* padding: 0 2.5%; */
             display: block;
 
             .roof-image {
-               margin-left: -2.1%;
-               width: 104.8%;
-               height: 100%;
+               /* margin-left: -2.1%; */
+               width: 100%;
+               /* width: 104.8%; */
+               /* height: 100%; */
             }
 
             @media (min-width: 768px) {
@@ -70,13 +79,15 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
          }
 
          &.right {
-            padding-left: 2.5%;
-            transform: translateY(17%);
+            /* padding-left: 2.5%; */
+            /* transform: translateY(17%); */
             display: none;
+            transform: translateY(12%);
 
             .roof-image {
-               margin-left: -4%;
-               width: 108.2%;
+               /* margin-left: -4%; */
+               /* width: 108.2%; */
+               width: 100%;
             }
 
             @media (min-width: 768px) {
@@ -93,7 +104,9 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
 
    return (
       <StyledApartmentRoof className={position}>
-         <img className="roof-image" src={image} alt={alt} />
+         <div className="image-container">
+            <img className="roof-image" src={image} alt={alt} />
+         </div>
       </StyledApartmentRoof>
    );
 };

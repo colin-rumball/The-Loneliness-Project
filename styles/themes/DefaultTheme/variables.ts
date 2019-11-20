@@ -59,7 +59,7 @@ export const LAYERS: Layers = {
    ON_TOP: 40,
    FOREGROUND: 20,
    MID_GROUND: 10,
-   BACKGROUND: -10
+   BACKGROUND: 1
 };
 
 const VARIABLES: Variables = {

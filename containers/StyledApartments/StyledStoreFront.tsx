@@ -1,11 +1,13 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import StyledCat from "./StyledCat";
+import StyledCross from "./StyledCross";
+import { ThemeContainer } from "../../styles/themes/DefaultTheme";
 
 interface StyledStoreFrontProps {
    position: "left" | "center" | "right";
    image: string;
    alt: string;
-   children?: object;
 }
 
 const StyledStoreFrontDefaultProps: StyledStoreFrontProps = {
@@ -15,32 +17,42 @@ const StyledStoreFrontDefaultProps: StyledStoreFrontProps = {
 };
 
 const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
-   const { position, image, alt, children } = { ...StyledStoreFrontDefaultProps, ...props };
+   const { position, image, alt } = { ...StyledStoreFrontDefaultProps, ...props };
    const StyledStoreFront = useMemo(
       () => styled.div`
-         display: flex;
-         flex-direction: column;
          flex-basis: 100%;
-         z-index: 40;
-         padding: 0 2.5%;
+         padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.STORE_PADDING}`};
+
+         @media (min-width: 768px) {
+            flex-basis: 50%;
+         }
+
+         @media (min-width: 1286px) {
+            flex-basis: 33%;
+         }
+
+         .image-container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+         }
 
          &.left {
-            padding: 0 2.5% 0 0;
-            transform: translateY(2%);
             display: none;
 
             .store-front-image {
-               transform: translateX(-0.8%);
-               width: 101.6%;
+               /* transform: translateX(-0.8%); */
+               /* width: 101.6%; */
+               width: 100%;
             }
 
             @media (min-width: 768px) {
-               flex-basis: 50%;
                display: block;
             }
 
             @media (min-width: 1286px) {
-               flex-basis: 33%;
                display: block;
             }
          }
@@ -49,38 +61,35 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
             display: block;
 
             @media (min-width: 768px) {
-               flex-basis: 50%;
                display: none;
             }
 
             @media (min-width: 1286px) {
-               flex-basis: 33%;
                display: block;
             }
 
             .store-front-image {
-               transform: translateX(-2%);
-               width: 104%;
+               /* transform: translateX(-2%); */
+               /* width: 104%; */
+               width: 100%;
+               height: 100%;
             }
          }
 
          &.right {
-            padding: 0 0 0 2.5%;
-            transform: translateY(2%);
             display: none;
 
             .store-front-image {
-               transform: translateX(-0.8%);
-               width: 101.6%;
+               /* transform: translateX(-0.8%); */
+               /* width: 101.6%; */
+               width: 100%;
             }
 
             @media (min-width: 768px) {
-               flex-basis: 50%;
                display: block;
             }
 
             @media (min-width: 1286px) {
-               flex-basis: 33%;
                display: block;
             }
          }
@@ -88,10 +97,25 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
       []
    );
 
+   const FlareComponent = useMemo(() => {
+      switch (position) {
+         case "left":
+            return <StyledCat />;
+         case "center":
+            return <></>;
+         case "right":
+            return <StyledCross />;
+         default:
+            return <></>;
+      }
+   }, [position]);
+
    return (
       <StyledStoreFront className={position}>
-         <img className="store-front-image" src={image} alt={alt} />
-         {children}
+         <div className="image-container">
+            <img className="store-front-image" src={image} alt={alt} />
+         </div>
+         {/* {FlareComponent} */}
       </StyledStoreFront>
    );
 };

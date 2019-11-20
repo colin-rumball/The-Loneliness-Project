@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import { ThemeContainer } from "../../styles/themes/DefaultTheme";
 
 interface StyledApartmentProps {
    image: string;
@@ -17,8 +18,7 @@ const StyledApartment: React.FC<StyledApartmentProps> = props => {
       () => styled.div`
          position: relative;
          flex-basis: 100%;
-         padding: 0 2.5%;
-         z-index: 40;
+         padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.UNIT_PADDING}`};
 
          @media (min-width: 768px) {
             flex-basis: 50%;
@@ -29,16 +29,20 @@ const StyledApartment: React.FC<StyledApartmentProps> = props => {
          }
 
          &:nth-child(3n) {
+            /* Right Apartments */
+            transform: translateY(8.4%);
             @media (min-width: 1286px) {
-               padding: 0 0 0 2.5%;
-               transform: translateY(10.5%);
+               /* padding: 0 0 0 2.5%; */
+               /* transform: translateY(10.5%); */
             }
          }
 
          &:nth-child(3n + 1) {
+            /* Left Apartments */
+            transform: translateY(8.4%);
             @media (min-width: 1286px) {
-               padding: 0 2.5% 0 0;
-               transform: translateY(10.5%);
+               /* padding: 0 2.5% 0 0; */
+               /* transform: translateY(10.5%); */
             }
          }
 
@@ -52,8 +56,8 @@ const StyledApartment: React.FC<StyledApartmentProps> = props => {
          .backer {
             position: absolute;
             top: 10%;
-            left: 10%;
-            right: 10%;
+            left: 14%;
+            right: 14%;
             bottom: 10%;
             background: #85c0d0;
             transition: background 0.4s ease;

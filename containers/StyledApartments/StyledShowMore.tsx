@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import { ThemeContainer } from "../../styles/themes/DefaultTheme";
 
 interface StyledShowMoreProps {
    onClick?();
@@ -15,10 +16,10 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
       () => styled.div`
          position: absolute;
          right: 0;
-         margin-right: 2.5%;
-         bottom: 15%;
-         z-index: 41;
-         width: 3.5%;
+         margin-right: 6%;
+         bottom: 80vh;
+         width: 3%;
+         z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND};
 
          .load-more-image {
             width: 100%;

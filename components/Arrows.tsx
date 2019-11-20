@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import StyledIcon from "./Styled/StyledIcon";
 
 interface ArrowsProps {
    currentApt: number;
@@ -35,35 +36,37 @@ const Arrows: React.FC<ArrowsProps> = props => {
          top: 0;
          bottom: 0;
          pointer-events: none;
-
-         .arrow {
-            font-size: 30px;
-            color: #fff;
-            opacity: 0.7;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            pointer-events: auto;
-
-            &:hover {
-               cursor: pointer;
-               opacity: 1;
-               transform: scale(1.1);
-            }
-
-            &:active {
-               transform: scale(0.9);
-            }
-         }
       `,
       []
    );
+
+   const StyledArrowIcon = useMemo(
+      () => styled.div`
+         pointer-events: ${props => (props.showArrow ? "auto" : "none")};
+         opacity: ${props => (props.showArrow ? "1" : "0")};
+      `,
+      []
+   );
+
    return (
       <StyledArrows>
-         {showLeftArrow && (
-            <FaArrowLeft onClick={() => onLeftArrowClicked(currentApt + 1)} className="arrow" />
-         )}
-         {showRightArrow && (
-            <FaArrowRight onClick={() => onRightArrowClicked(currentApt - 1)} className="arrow" />
-         )}
+         <StyledArrowIcon showArrow={showLeftArrow}>
+            <StyledIcon
+               icon={FaArrowLeft}
+               onClick={() => onLeftArrowClicked(currentApt + 1)}
+               color={"#fff"}
+               size={"30px"}
+            />
+         </StyledArrowIcon>
+
+         <StyledArrowIcon showArrow={showRightArrow}>
+            <StyledIcon
+               icon={FaArrowRight}
+               onClick={() => onRightArrowClicked(currentApt - 1)}
+               color={"#fff"}
+               size={"30px"}
+            />
+         </StyledArrowIcon>
       </StyledArrows>
    );
 };

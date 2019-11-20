@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { IconType } from "react-icons/lib/cjs";
-import DefaultTheme, { ThemeContainer } from "../styles/themes/DefaultTheme";
+import useCurrentTheme from "../hooks/useCurrentTheme";
+import { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 interface ManagedStyledInputProps {
    type?: string;
@@ -24,6 +25,7 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
    autoComplete,
    onChange
 }) => {
+   const currentTheme = useCurrentTheme();
    const StyledInputWithIcon = useMemo(
       () => styled.span`
          width: 100%;
@@ -81,15 +83,15 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
    );
 
    const color = useMemo(() => {
-      return error ? DefaultTheme.VARIABLES.COLORS.Red : DefaultTheme.VARIABLES.COLORS.Tan;
-   }, [value, error]);
+      return error ? currentTheme.VARIABLES.COLORS.Red : currentTheme.VARIABLES.COLORS.Tan;
+   }, [currentTheme, value, error]);
 
    const border = useMemo(() => {
       let borderColor = error
-         ? DefaultTheme.VARIABLES.COLORS.Red
-         : DefaultTheme.VARIABLES.COLORS.Tan;
+         ? currentTheme.VARIABLES.COLORS.Red
+         : currentTheme.VARIABLES.COLORS.Tan;
       return `2px solid ${borderColor}`;
-   }, [error]);
+   }, [currentTheme, error]);
 
    return (
       <StyledInputWithIcon color={color} border={border}>

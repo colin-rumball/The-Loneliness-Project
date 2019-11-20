@@ -8,11 +8,13 @@ import Spinner from "../../components/Spinner";
 import StyledApartmentDetails from "./styled/StyledApartmentDetails";
 
 interface ApartmentDetailsModalProps extends ModalBaseProps {
+   apartmentsStart: number;
    apt: number;
 }
 
 const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
    apt: originalApartmentNum,
+   apartmentsStart,
    apolloClient
 }) => {
    const { data, loading, refetch } = useQuery(APARTMENT_BY_NUMBER, {
@@ -34,6 +36,8 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
             <StyledApartmentDetails
                onLeftArrowClicked={onArrowClicked}
                onRightArrowClicked={onArrowClicked}
+               showLeftArrow={apartmentsStart != aparmentData.apt}
+               showRightArrow={aparmentData.apt > 1}
                {...aparmentData}
             />
          )}
