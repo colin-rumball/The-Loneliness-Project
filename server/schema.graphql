@@ -14,7 +14,7 @@ type Query {
    ): [Apartment!]
    apartmentsCount: Int
    #comments(first: Int, skip: Int, after: String, orderBy: CommentOrderByInput): [Comment!]!
-   me: User
+   me: MeData
 }
 
 type Mutation {
@@ -54,6 +54,11 @@ input UpdateUserInput {
 # input UpdateCommentInput {
 #    text: String
 # }
+
+type MeData {
+   user: User!
+   expiryDate: String!
+}
 
 type User {
    id: ID!

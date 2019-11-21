@@ -2,6 +2,7 @@ import React, { useEffect, useCallback, useState, useMemo } from "react";
 import Logo from "../components/Logo";
 import styled from "styled-components";
 import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import useDebounce from "../hooks/useDebounce";
 
 const LogoHeader: React.FC = () => {
    const getOpacityAmount = useCallback(() => {
@@ -11,13 +12,12 @@ const LogoHeader: React.FC = () => {
 
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 
-      return Math.min(Math.max(1.0 - (winScroll / height - 0) / (0.2 - 0), 0.0), 1.0);
+      return Math.min(Math.max(1.0 - (winScroll / height - 0) / 0.15, 0.0), 1.0);
    }, []);
-
-   const [opactiy, setOpacity] = useState(getOpacityAmount());
+   const [opactiy, setOpacity] = useDebounce(getOpacityAmount(), 50);
 
    const onScroll = useCallback(() => {
-      // setOpacity(getOpacityAmount());
+      setOpacity(getOpacityAmount());
    }, []);
 
    useEffect(() => {
@@ -38,8 +38,6 @@ const LogoHeader: React.FC = () => {
          padding-top: 70px;
          user-select: none;
          pointer-events: none;
-         /* left: 12vw; */
-         /* padding: 70px 12vw 0 12vw; */
          opacity: ${props => props.opactiy};
          transition: opacity 0.2s ease;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MID_GROUND};

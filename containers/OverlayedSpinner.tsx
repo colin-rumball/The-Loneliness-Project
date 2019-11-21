@@ -35,6 +35,7 @@ const OverlayedSpinner: React.FC<OverlayedSpinnerProps> = props => {
 
    const StyledContent = useMemo(
       () => styled.div`
+         position: relative;
          filter: ${props => (props.blur ? "blur(4px)" : "none")};
          height: 100%;
          width: 100%;

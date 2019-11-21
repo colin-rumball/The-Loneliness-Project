@@ -4,6 +4,7 @@ import hashPassword from "../serverUtils/hashPassword";
 import generateToken from "../serverUtils/generateToken";
 import { ApartmentCreateInput, ApartmentUpdateInput } from "../generated/prisma-client";
 import generateRefreshToken from "../serverUtils/generateRefreshToken";
+import { AuthenticationError } from "../../gql/errors";
 
 const Mutation = {
    async login(parent, { data }, { response, prisma }: ResolveContext, info) {
@@ -34,7 +35,7 @@ const Mutation = {
    },
    async createUser(parent, args, { user, response, prisma }: ResolveContext, info) {
       if (!user) {
-         throw new Error("Authentication Required");
+         throw new AuthenticationError();
       }
 
       if (!args.data.password || !args.data.username) {
@@ -54,7 +55,7 @@ const Mutation = {
    },
    async deleteUser(parent, args, { prisma, response, user }: ResolveContext, info) {
       if (!user) {
-         throw new Error("Authentication Required");
+         throw new AuthenticationError();
       }
 
       const userExists = await prisma.$exists.user({
@@ -71,7 +72,7 @@ const Mutation = {
    },
    async updateUser(parent, args, { prisma, request, user }: ResolveContext, info) {
       if (!user) {
-         throw new Error("Authentication Required");
+         throw new AuthenticationError();
       }
 
       args.data.username =
@@ -99,7 +100,7 @@ const Mutation = {
       info
    ) {
       if (!user) {
-         throw new Error("Authentication Required");
+         throw new AuthenticationError();
       }
 
       return prisma.createApartment({
@@ -116,7 +117,7 @@ const Mutation = {
    },
    async deleteApartment(parent, args, { prisma, response, user }: ResolveContext, info) {
       if (!user) {
-         throw new Error("Authentication Required");
+         throw new AuthenticationError();
       }
 
       const apartmentExists = await prisma.$exists.apartment({
@@ -138,7 +139,7 @@ const Mutation = {
       info
    ) {
       if (!user) {
-         throw new Error("Authentication Required");
+         throw new AuthenticationError();
       }
 
       const apartmentExists = await prisma.$exists.apartment({

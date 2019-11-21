@@ -1,10 +1,12 @@
 import { ResolveContext } from "../serverUtils/constants";
 import { ApartmentWhereInput, ApartmentOrderByInput } from "../generated/prisma-client";
+import { AuthenticationError } from "../../gql/errors";
+import extractDecodedToken from "../serverUtils/extractDecodedToken";
 
 const Query = {
    async users(parent, args, { user, request, prisma }: ResolveContext, info) {
       if (!user) {
-         throw new Error("Authentication Required");
+         throw new AuthenticationError();
       }
 
       const opArgs: any = {
@@ -41,7 +43,7 @@ const Query = {
          after: args.after,
          orderBy: args.orderBy,
          where: !user
-            ? {}
+            ? { published: true }
             : {
                  published: args.published
               }
@@ -75,14 +77,17 @@ const Query = {
          .aggregate()
          .count();
    },
-   me(parent, args, { prisma, request, user }: ResolveContext, info) {
+   async me(parent, args, { prisma, request, response, user }: ResolveContext, info) {
       if (!user) {
          return null;
       }
 
-      return prisma.user({
-         id: user.id
-      });
+      const token = extractDecodedToken(request);
+
+      return {
+         expiryDate: token.expiryDate,
+         user
+      };
    }
 };
 

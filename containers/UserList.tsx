@@ -13,10 +13,11 @@ import useCurrentTheme from "../hooks/useCurrentTheme";
 
 const UserList: React.FC = () => {
    const { pushModal } = useModal();
+   const { onError } = useGQLErrorHandler();
    const theme = useCurrentTheme();
 
    const { data, loading: loadingUserList, refetch, client } = useQuery(USERS, {
-      onError: useGQLErrorHandler
+      onError
    });
 
    const [deleteUser, { loading: deletingUser }] = useMutation(DELETE_USER);
@@ -29,8 +30,7 @@ const UserList: React.FC = () => {
             showAddButton: true,
             onAddButtonClicked: () =>
                pushModal({
-                  onClose: () => refetch(),
-                  html: <AddUserModal apolloClient={client} />
+                  html: <AddUserModal onNewUserCreated={() => refetch()} apolloClient={client} />
                })
          }}
          body={{
@@ -49,7 +49,6 @@ const UserList: React.FC = () => {
                         onClick={() =>
                            pushModal({
                               showCloseButton: false,
-                              onClose: () => refetch(),
                               html: (
                                  <ConfirmationModal
                                     onContinueClicked={async () => {

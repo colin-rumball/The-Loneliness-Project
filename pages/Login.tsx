@@ -5,16 +5,25 @@ import { LOGIN } from "../gql/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
 import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import Spinner from "../components/Spinner";
+import useModal from "../hooks/useModal";
+import MessageModal from "../containers/modals/MessageModal";
 
 const Login: React.FC = () => {
    const router = useRouter();
-   const [login, {}] = useMutation(LOGIN, {
-      onCompleted({ login }) {
-         localStorage.setItem("token", login.token);
-         router.replace("/Dashboard");
+   const { pushModal } = useModal();
+   const [login, { data }] = useMutation(LOGIN, {
+      onCompleted(data) {
+         if (data && data.login) {
+            setTimeout(() => {
+               router.replace("/Dashboard");
+            }, 1500);
+         }
       },
       onError(err) {
-         console.log("GraphQLError during login:", err);
+         pushModal({
+            html: <MessageModal message="Unable to login with provided username and password." />
+         });
       }
    });
 
@@ -34,12 +43,16 @@ const Login: React.FC = () => {
 
    return (
       <StyledLoginPage>
-         <UserForm
-            title="Login"
-            onFormSubmit={(username, password) => {
-               login({ variables: { data: { username, password } } });
-            }}
-         />
+         {data && data.login ? (
+            <Spinner />
+         ) : (
+            <UserForm
+               title="Login"
+               onFormSubmit={(username, password) => {
+                  login({ variables: { data: { username, password } } });
+               }}
+            />
+         )}
       </StyledLoginPage>
    );
 };

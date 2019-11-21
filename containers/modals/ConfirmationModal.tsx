@@ -29,7 +29,10 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = props => {
       () => styled.div`
          display: flex;
          flex-direction: column;
-         padding: 20px;
+         justify-content: center;
+         height: 100%;
+         min-height: 270px;
+         min-width: 460px;
       `,
       []
    );
@@ -44,8 +47,9 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = props => {
    const StyledConfirmationButtons = useMemo(
       () => styled.div`
          display: flex;
-         justify-content: space-evenly;
-         padding-top: 20px;
+         justify-content: space-between;
+         padding-top: 30px;
+         width: 100%;
       `,
       []
    );

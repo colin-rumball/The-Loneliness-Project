@@ -34,7 +34,7 @@ const ModalBase: React.FC<ModalBaseProps> = props => {
    );
    return (
       <StyledModalBase>
-         <OverlayedSpinner show={showSpinner} children={children} />
+         {showSpinner ? <OverlayedSpinner show={showSpinner} children={children} /> : children}
       </StyledModalBase>
    );
 };

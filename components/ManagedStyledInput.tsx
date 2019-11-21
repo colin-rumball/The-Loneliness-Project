@@ -5,6 +5,7 @@ import useCurrentTheme from "../hooks/useCurrentTheme";
 import { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 interface ManagedStyledInputProps {
+   inverted?: boolean;
    type?: string;
    Icon?: IconType;
    value?: string;
@@ -15,16 +16,23 @@ interface ManagedStyledInputProps {
    onChange(event);
 }
 
-const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
-   type,
-   Icon,
-   value,
-   error,
-   name,
-   placeholder,
-   autoComplete,
-   onChange
-}) => {
+const DefaultManagedStyledInputProps: ManagedStyledInputProps = {
+   inverted: false,
+   type: "text",
+   Icon: null,
+   value: "",
+   error: undefined,
+   name: "",
+   placeholder: "",
+   autoComplete: "on",
+   onChange: () => {}
+};
+
+const ManagedStyledInput: React.FC<ManagedStyledInputProps> = props => {
+   const { inverted, type, Icon, value, error, name, placeholder, autoComplete, onChange } = {
+      ...DefaultManagedStyledInputProps,
+      ...props
+   };
    const currentTheme = useCurrentTheme();
    const StyledInputWithIcon = useMemo(
       () => styled.span`
@@ -54,7 +62,7 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
             width: 100%;
             height: 100%;
             font-size: 20px;
-            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+            color: ${props => props.color};
             border-bottom: ${props => props.border};
 
             &::placeholder {
@@ -83,12 +91,18 @@ const ManagedStyledInput: React.FC<ManagedStyledInputProps> = ({
    );
 
    const color = useMemo(() => {
-      return error ? currentTheme.VARIABLES.COLORS.Red : currentTheme.VARIABLES.COLORS.Tan;
-   }, [currentTheme, value, error]);
+      return error
+         ? currentTheme.VARIABLES.COLORS.Red
+         : inverted
+         ? currentTheme.VARIABLES.COLORS.DarkBlue
+         : currentTheme.VARIABLES.COLORS.Tan;
+   }, [inverted, currentTheme, value, error]);
 
    const border = useMemo(() => {
       let borderColor = error
          ? currentTheme.VARIABLES.COLORS.Red
+         : inverted
+         ? currentTheme.VARIABLES.COLORS.DarkBlue
          : currentTheme.VARIABLES.COLORS.Tan;
       return `2px solid ${borderColor}`;
    }, [currentTheme, error]);

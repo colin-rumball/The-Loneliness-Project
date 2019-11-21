@@ -21,16 +21,19 @@ const UserForm: React.FC<UserFormProps> = ({ title, onFormSubmit }) => {
 
    const internalOnFormSubmit = useCallback(
       event => {
-         console.log("TCL: event", event);
          event.preventDefault();
 
          // Validation
          if (!username) {
-            return setUsernameError("Username must not be blank");
+            return setUsernameError("Username must not be blank.");
          }
 
          if (!password) {
-            return setPasswordError("Password must not be blank");
+            return setPasswordError("Password must not be blank.");
+         }
+
+         if (password.length < 8) {
+            return setPasswordError("Password must be 8 characters or longer.");
          }
 
          // Reset error messages
@@ -53,10 +56,18 @@ const UserForm: React.FC<UserFormProps> = ({ title, onFormSubmit }) => {
             font-family: "lato", sans-serif;
             font-size: 40px;
             font-weight: 100;
-            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.DarkBlue};
             margin: 0 0 20px 0;
             padding: 0;
          }
+      `,
+      []
+   );
+
+   const StyledErrorMessage = useMemo(
+      () => styled.form`
+         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Red};
+         padding: 10px 0;
       `,
       []
    );
@@ -66,6 +77,7 @@ const UserForm: React.FC<UserFormProps> = ({ title, onFormSubmit }) => {
          <div className="form-title">{title}</div>
          {/* USERNAME */}
          <ManagedStyledInput
+            inverted={true}
             Icon={FaUser}
             value={username}
             error={usernameError}
@@ -79,6 +91,7 @@ const UserForm: React.FC<UserFormProps> = ({ title, onFormSubmit }) => {
          />
          {/* PASSWORD */}
          <ManagedStyledInput
+            inverted={true}
             type="password"
             Icon={FaLock}
             value={password}
@@ -90,6 +103,7 @@ const UserForm: React.FC<UserFormProps> = ({ title, onFormSubmit }) => {
                setPassword(event.target.value);
             }}
          />
+         <StyledErrorMessage>{usernameError || passwordError}</StyledErrorMessage>
          {/* LOGIN BUTTON */}
          <Button type="submit" className="login-button" text={title.toUpperCase()} />
       </StyledLoginForm>

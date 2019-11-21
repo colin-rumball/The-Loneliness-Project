@@ -4,6 +4,7 @@ import { prisma } from "./generated/prisma-client";
 // import Pusher from "pusher";
 import { join } from "path";
 import jwt from "jsonwebtoken";
+import extractDecodedToken from "./serverUtils/extractDecodedToken";
 
 const pathToSchema = join(
    __dirname,
@@ -12,31 +13,15 @@ const pathToSchema = join(
 );
 
 const extractUserMiddleware = async (resolve, root, args, context, info) => {
-   const req = context.request;
-
-   if (req && req.cookies) {
-      const authorizationCookie = req.cookies.token;
-
-      if (
-         typeof authorizationCookie == "string" &&
-         authorizationCookie != null &&
-         authorizationCookie != "null"
-      ) {
-         const token = authorizationCookie.replace("Bearer ", "");
-         if (token != "") {
-            try {
-               const decoded = jwt.verify(token, process.env.SECRET_PD_JWT_SECRET);
-
-               if (decoded && decoded.userId) {
-                  const user = await prisma.user({ id: decoded.userId });
-                  context.user = user;
-               }
-            } catch (err) {
-               if (err.name !== "TokenExpiredError") {
-                  console.log("TCL: extractUserMiddleware -> err", err);
-               }
-            }
-         }
+   try {
+      const token = extractDecodedToken(context.request);
+      if (token && token.userId) {
+         const user = await prisma.user({ id: token.userId });
+         context.user = user;
+      }
+   } catch (err) {
+      if (err.name !== "TokenExpiredError") {
+         console.log("TCL: extractUserMiddleware -> err", err);
       }
    }
    const result = await resolve(root, args, context, info);

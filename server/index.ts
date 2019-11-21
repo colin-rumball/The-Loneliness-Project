@@ -1,6 +1,7 @@
 import "@babel/polyfill/noConflict";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { formatError } from "apollo-errors";
 import multer from "multer";
 import server from "./server";
 import fs from "fs";
@@ -40,6 +41,7 @@ server.express.post("/upload", upload.any(), (req, res) => {
 server.start(
    {
       port,
+      formatError,
       endpoint: graphQLEndpoint,
       playground,
       cors: false,

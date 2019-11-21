@@ -74,8 +74,11 @@ export const APARTMENT_COUNT = gql`
 export const ME = gql`
    query Me {
       me {
-         id
-         username
+         user {
+            id
+            username
+         }
+         expiryDate
       }
    }
 `;
