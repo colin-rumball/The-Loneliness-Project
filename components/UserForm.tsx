@@ -8,10 +8,11 @@ import { ThemeContainer } from "../styles/themes/DefaultTheme";
 
 interface UserFormProps {
    title: string;
+   inverted: boolean;
    onFormSubmit(username: string, password: string);
 }
 
-const UserForm: React.FC<UserFormProps> = ({ title, onFormSubmit }) => {
+const UserForm: React.FC<UserFormProps> = ({ title, inverted, onFormSubmit }) => {
    // Username states
    const [username, setUsername] = useState("");
    const [usernameError, setUsernameError] = useState("");
@@ -56,7 +57,8 @@ const UserForm: React.FC<UserFormProps> = ({ title, onFormSubmit }) => {
             font-family: "lato", sans-serif;
             font-size: 40px;
             font-weight: 100;
-            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.DarkBlue};
+            color: ${({ theme, inverted }: ThemeContainer) =>
+               inverted ? theme.VARIABLES.COLORS.DarkBlue : theme.VARIABLES.COLORS.Tan};
             margin: 0 0 20px 0;
             padding: 0;
          }
@@ -73,11 +75,11 @@ const UserForm: React.FC<UserFormProps> = ({ title, onFormSubmit }) => {
    );
 
    return (
-      <StyledLoginForm onSubmit={internalOnFormSubmit}>
+      <StyledLoginForm inverted={inverted} onSubmit={internalOnFormSubmit}>
          <div className="form-title">{title}</div>
          {/* USERNAME */}
          <ManagedStyledInput
-            inverted={true}
+            inverted={inverted}
             Icon={FaUser}
             value={username}
             error={usernameError}
@@ -91,7 +93,7 @@ const UserForm: React.FC<UserFormProps> = ({ title, onFormSubmit }) => {
          />
          {/* PASSWORD */}
          <ManagedStyledInput
-            inverted={true}
+            inverted={inverted}
             type="password"
             Icon={FaLock}
             value={password}

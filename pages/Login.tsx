@@ -12,7 +12,7 @@ import MessageModal from "../containers/modals/MessageModal";
 const Login: React.FC = () => {
    const router = useRouter();
    const { pushModal } = useModal();
-   const [login, { data }] = useMutation(LOGIN, {
+   const [login, { data, loading }] = useMutation(LOGIN, {
       onCompleted(data) {
          if (data && data.login) {
             setTimeout(() => {
@@ -43,10 +43,11 @@ const Login: React.FC = () => {
 
    return (
       <StyledLoginPage>
-         {data && data.login ? (
+         {loading || (data && data.login) ? (
             <Spinner />
          ) : (
             <UserForm
+               inverted={false}
                title="Login"
                onFormSubmit={(username, password) => {
                   login({ variables: { data: { username, password } } });

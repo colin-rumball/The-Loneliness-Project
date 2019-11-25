@@ -24,7 +24,7 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ apolloClient, onNewUserCrea
 
    return (
       <ModalBase showSpinner={creatingUser} {...rest}>
-         <UserForm onFormSubmit={onCreateUser} title={"Add New User"} />
+         <UserForm onFormSubmit={onCreateUser} inverted={true} title={"Add New User"} />
       </ModalBase>
    );
 };
