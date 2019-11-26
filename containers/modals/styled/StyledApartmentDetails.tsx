@@ -1,6 +1,7 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useCallback } from "react";
 import styled from "styled-components";
 import Arrows from "../../../components/Arrows";
+import { useRouter } from "next/router";
 
 interface StyledApartmentDetailsProps {
    apt: number;

@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { ApolloClient } from "apollo-boost";
 import OverlayedSpinner from "../OverlayedSpinner";
 import { ThemeContainer } from "../../styles/themes/DefaultTheme";
+import { NextRouter } from "next/router";
 
 export interface ModalBaseProps {
    apolloClient?: ApolloClient<any>;
+   router?: NextRouter;
    showSpinner?: boolean;
 }
 

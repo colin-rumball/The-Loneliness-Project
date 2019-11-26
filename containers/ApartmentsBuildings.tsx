@@ -1,10 +1,9 @@
 import React, { useMemo, useState, useEffect } from "react";
 import styled from "styled-components";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
-import { APARTMENTS_OVERVIEW, APARTMENT_DETAILED } from "../gql/queries";
+import { APARTMENTS_OVERVIEW } from "../gql/queries";
 import useModal from "../hooks/useModal";
 import ApartmentDetailsModal from "./modals/ApartmentDetailsModal";
-import Spinner from "../components/Spinner";
 import StyledApartmentsContainer from "./StyledApartments/StyledApartmentsContainer";
 import StyledStoreFront from "./StyledApartments/StyledStoreFront";
 import StyledShowMore from "./StyledApartments/StyledShowMore";
@@ -62,6 +61,7 @@ const ApartmentBuildings: React.FC = () => {
                            pushModal({
                               html: (
                                  <ApartmentDetailsModal
+                                    router={router}
                                     apartmentsStart={apartments[0].apt}
                                     apt={apartment.apt}
                                     apolloClient={client}
