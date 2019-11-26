@@ -16,7 +16,7 @@ const Login: React.FC = () => {
       onCompleted(data) {
          if (data && data.login) {
             setTimeout(() => {
-               router.replace("/Dashboard");
+               router.replace("/dashboard");
             }, 1500);
          }
       },

@@ -9,7 +9,7 @@ const useGQLErrorHandler = () => {
    const onError = useCallback(
       (err: any) => {
          if (err.graphQLErrors.some(e => e.name == ErrorNames.AUTHENTICATION_REQUIRED)) {
-            // router.replace("/Login");
+            // router.replace("/login");
          } else {
             console.log("TCL: useGQLErrorHandler -> err", err);
          }

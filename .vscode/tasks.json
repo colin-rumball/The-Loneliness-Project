@@ -118,7 +118,8 @@
 				""
 			],
 			"promptOnClose": true,
-			"dependsOrder": "sequence"
+			"dependsOrder": "sequence",
+			"problemMatcher": []
 		},
 		{
 			"label": "Build GQL Schema",

@@ -18,7 +18,7 @@ const Dashboard: React.FC = () => {
    const { data, loading } = useQuery(ME, {
       onCompleted(data) {
          if (!data || !data.me) {
-            router.replace("/Login");
+            router.replace("/login");
          }
       }
    });
