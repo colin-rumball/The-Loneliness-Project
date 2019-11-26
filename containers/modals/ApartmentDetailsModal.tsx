@@ -9,12 +9,14 @@ import StyledApartmentDetails from "./styled/StyledApartmentDetails";
 
 interface ApartmentDetailsModalProps extends ModalBaseProps {
    apartmentsStart: number;
+   hideArrows?: boolean;
    apt: number;
 }
 
 const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
    apt: originalApartmentNum,
    apartmentsStart,
+   hideArrows,
    apolloClient
 }) => {
    const { data, loading, refetch } = useQuery(APARTMENT_BY_NUMBER, {
@@ -36,8 +38,8 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
             <StyledApartmentDetails
                onLeftArrowClicked={onArrowClicked}
                onRightArrowClicked={onArrowClicked}
-               showLeftArrow={apartmentsStart != aparmentData.apt}
-               showRightArrow={aparmentData.apt > 1}
+               showLeftArrow={!hideArrows && apartmentsStart != aparmentData.apt}
+               showRightArrow={!hideArrows && aparmentData.apt > 1}
                {...aparmentData}
             />
          )}

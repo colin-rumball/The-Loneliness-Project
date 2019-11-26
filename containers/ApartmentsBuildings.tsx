@@ -10,8 +10,10 @@ import StyledStoreFront from "./StyledApartments/StyledStoreFront";
 import StyledShowMore from "./StyledApartments/StyledShowMore";
 import StyledApartmentRoof from "./StyledApartments/StyledApartmentRoof";
 import StyledApartment from "./StyledApartments/StyledApartment";
+import { useRouter } from "next/router";
 
 const ApartmentBuildings: React.FC = () => {
+   const router = useRouter();
    const { pushModal } = useModal();
    const [apartments, setApartments] = useState([]);
    const [getApartments, { client }] = useLazyQuery(APARTMENTS_OVERVIEW, {
@@ -52,7 +54,11 @@ const ApartmentBuildings: React.FC = () => {
                      <StyledApartment
                         key={apartment.id}
                         image={`/static/apartments/storey_${apartment.apt}.png`}
-                        onClick={() =>
+                        onClick={() => {
+                           const href = `/?a=${apartment.apt}`;
+                           router.replace(href, href, {
+                              shallow: true
+                           });
                            pushModal({
                               html: (
                                  <ApartmentDetailsModal
@@ -61,8 +67,8 @@ const ApartmentBuildings: React.FC = () => {
                                     apolloClient={client}
                                  />
                               )
-                           })
-                        }
+                           });
+                        }}
                      />
                   );
                })}

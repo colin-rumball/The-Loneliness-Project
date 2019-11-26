@@ -27,7 +27,7 @@ class MyApp extends App {
             <NextAppContainer>
                <ApolloProvider client={apolloClient}>
                   <ThemeProvider theme={DefaultTheme}>
-                     <Component {...pageProps} key={router.route} />
+                     <Component {...pageProps} key={router.route} apolloClient={apolloClient} />
                   </ThemeProvider>
                </ApolloProvider>
             </NextAppContainer>
