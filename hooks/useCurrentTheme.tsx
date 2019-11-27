@@ -1,4 +1,5 @@
-import DefaultTheme, { Theme } from "../styles/themes/DefaultTheme";
+import DefaultTheme from "../themes/DefaultTheme";
+import { Theme } from "../themes/common";
 
 const useCurrentTheme = (): Theme => {
    return DefaultTheme;

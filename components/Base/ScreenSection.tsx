@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { FlexProps } from "../../helpers/withFlex";
+import { FlexProps, withFlex } from "../../helpers/withFlex";
 
 export interface SectionProps extends FlexProps {
    children?: Object;
@@ -12,4 +12,4 @@ const ScreenSection = (props: SectionProps) => {
    // return <FlexibleComponent {...props} className={"pd-screen-section " + props.className} />;
 };
 
-export default ScreenSection;
+export default withFlex(ScreenSection);

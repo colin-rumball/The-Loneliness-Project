@@ -12,10 +12,6 @@
 			"use": "@now/static"
 		},
 		{
-			"src": "/functions/*.ts",
-			"use": "@now/node"
-		},
-		{
 			"src": "package.json",
 			"use": "@now/next"
 		}
@@ -28,10 +24,6 @@
 		{
 			"src": "/static/(.*)",
 			"dest": "/static/$1"
-		},
-		{
-			"src": "/functions/(.*)",
-			"dest": "/functions/$1"
 		}
 	]
 }

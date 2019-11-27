@@ -5,7 +5,7 @@ import { useCallback } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import ReactDOMServer from "react-dom/server";
 import { ThemeProvider } from "styled-components";
-import DefaultTheme, { ThemeContainer } from "../styles/themes/DefaultTheme";
+import DefaultTheme from "../themes/DefaultTheme";
 
 const ModalManager = withReactContent(Swal);
 

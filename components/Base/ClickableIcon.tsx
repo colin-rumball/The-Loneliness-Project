@@ -1,6 +1,6 @@
 import React, { CSSProperties, MouseEventHandler, useMemo } from "react";
 import styled from "styled-components";
-import { ThemeContainer } from "../../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../../themes/common";
 
 export enum ButtonVariant {
    DEFAULT = "default"

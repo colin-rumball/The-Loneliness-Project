@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import StyledCat from "./StyledCat";
 import StyledCross from "./StyledCross";
-import { ThemeContainer } from "../../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../../themes/common";
 
 interface StyledStoreFrontProps {
    position: "left" | "center" | "right";

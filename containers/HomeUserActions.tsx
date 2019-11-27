@@ -5,7 +5,7 @@ import NewsletterSignup from "../components/NewsletterSignup";
 import SocialMedia from "../components/SocialMedia";
 import TalkToSomeoneModal from "./modals/TalkToSomeoneModal";
 import useModal from "../hooks/useModal";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 
 interface HomeUserActionsProps {}
 

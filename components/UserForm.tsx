@@ -4,7 +4,7 @@ import { FaUser, FaLock } from "react-icons/fa";
 import styled from "styled-components";
 import ManagedStyledInput from "./ManagedStyledInput";
 import Button from "./Base/Button";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 
 interface UserFormProps {
    title: string;

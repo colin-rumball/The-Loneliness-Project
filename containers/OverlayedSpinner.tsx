@@ -1,8 +1,6 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
-import { SpinnerProps } from "../components/Base/Spinner/Spinner";
-import Spinner from "../components/Spinner";
+import Spinner, { SpinnerProps } from "../components/Spinner";
 
 interface OverlayedSpinnerProps extends SpinnerProps {
    show?: boolean;

@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import pressFeatures from "./../static/press.json";
-import { ThemeContainer } from "../styles/themes/DefaultTheme/index.js";
+import { ThemeContainer } from "../themes/common.js";
 
 interface PressFeaturesProps {}
 

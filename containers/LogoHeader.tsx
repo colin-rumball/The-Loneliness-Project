@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useState, useMemo } from "react";
 import Logo from "../components/Logo";
 import styled from "styled-components";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 import useDebounce from "../hooks/useDebounce";
 
 const LogoHeader: React.FC = () => {

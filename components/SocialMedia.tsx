@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { FaFacebookF, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 
 interface SocialMediaProps {}
 

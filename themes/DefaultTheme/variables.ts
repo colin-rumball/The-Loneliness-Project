@@ -1,37 +1,4 @@
-export interface FontSizes {
-   XS: string;
-   S: string;
-   M: string;
-   L: string;
-   XL: string;
-   XXL: string;
-}
-
-export interface Colors {
-   Tan: string;
-   LightBlue: string;
-   Blue: string;
-   DarkBlue: string;
-   LightGrey: string;
-   Grey: string;
-   DarkGrey: string;
-   Red: string;
-   Green: string;
-}
-
-export interface Layers {
-   MODAL: number;
-   ON_TOP: number;
-   FOREGROUND: number;
-   MID_GROUND: number;
-   BACKGROUND: number;
-}
-
-export interface Variables {
-   FONT_SIZES: FontSizes;
-   COLORS: Colors;
-   LAYERS: Layers;
-}
+import { FontSizes, Colors, Layers, Variables } from "../common";
 
 export const FONT_SIZES: FontSizes = {
    XS: "0.5rem",
@@ -61,6 +28,14 @@ export const LAYERS: Layers = {
    MID_GROUND: 10,
    BACKGROUND: 1
 };
+
+// $breakpoints: (
+//    "xsmall": 280px,
+//    "small": 480px,
+//    "medium": 768px,
+//    "large": 1080px,
+//    "xlarge": 1280px
+// );
 
 const VARIABLES: Variables = {
    FONT_SIZES,

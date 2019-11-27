@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Card from "./Card";
 import StyledIcon from "../Styled/StyledIcon";
 import { FaPlusSquare, FaPlus } from "react-icons/fa";
-import { ThemeContainer } from "../../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../../themes/common";
 import Spinner from "../Spinner";
 
 interface FlexibleTableHeaderProps {

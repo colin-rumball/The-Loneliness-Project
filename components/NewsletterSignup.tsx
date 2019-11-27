@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import TextInput from "./Forms/TextInput";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 
 interface NewsletterSignupProps {
    showHeader?: boolean;

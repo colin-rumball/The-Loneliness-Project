@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { IconType } from "react-icons/lib/cjs";
 import useCurrentTheme from "../hooks/useCurrentTheme";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 
 interface ManagedStyledInputProps {
    inverted?: boolean;

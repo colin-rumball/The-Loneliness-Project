@@ -3,7 +3,7 @@ import ScrollLock, { TouchScrollable } from "react-scrolllock";
 import styled from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
 import AboutSection from "../containers/AboutSection";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 import StyledIcon from "./Styled/StyledIcon";
 import useCurrentTheme from "../hooks/useCurrentTheme";
 

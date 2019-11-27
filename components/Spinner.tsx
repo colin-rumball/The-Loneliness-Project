@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 
-interface SpinnerProps {
+export interface SpinnerProps {
    inverted?: boolean;
    children?: Object;
 }

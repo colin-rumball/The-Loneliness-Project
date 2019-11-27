@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import StyledIcon from "./Styled/StyledIcon";
 import { FaEdit } from "react-icons/fa";
+import ScreenSection from "./Base/ScreenSection";
 
 interface ApartmentImageProps {
    originalImage: string;

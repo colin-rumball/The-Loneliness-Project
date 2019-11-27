@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { ThemeContainer } from "../../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../../themes/common";
 import Spinner from "../../components/Spinner";
 
 interface StyledApartmentsContainerProps {

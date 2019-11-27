@@ -3,7 +3,7 @@ import styled from "styled-components";
 import NewsletterSignup from "../components/NewsletterSignup";
 import PressFeatures from "./PressFeatures";
 import SocialMedia from "../components/SocialMedia";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 
 interface AboutSectionProps {}
 
@@ -17,7 +17,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
          bottom: 0;
          overflow: auto;
          padding: 20px 60px;
-         padding-top: 18%;
+         padding-top: 15vh;
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
          background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};

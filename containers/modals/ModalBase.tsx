@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ApolloClient } from "apollo-boost";
 import OverlayedSpinner from "../OverlayedSpinner";
-import { ThemeContainer } from "../../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../../themes/common";
 import { NextRouter } from "next/router";
 
 export interface ModalBaseProps {

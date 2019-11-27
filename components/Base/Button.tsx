@@ -1,6 +1,6 @@
 import React, { CSSProperties, MouseEventHandler, useMemo } from "react";
 import styled from "styled-components";
-import { ThemeContainer } from "../../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../../themes/common";
 
 export enum ButtonVariant {
    DEFAULT = "default"
@@ -40,6 +40,7 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
 
    const StyledButton = useMemo(
       () => styled.button`
+         font-family: "lato", sans-serif;
          cursor: pointer;
          border: none;
          outline: none;

@@ -6,7 +6,7 @@ import { ME } from "../gql/queries";
 import { LOGOUT } from "../gql/mutations";
 import UserList from "../containers/UserList";
 import ApartmentList from "../containers/ApartmentList";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 import useModal from "../hooks/useModal";
 import ConfirmationModal from "../containers/modals/ConfirmationModal";
 

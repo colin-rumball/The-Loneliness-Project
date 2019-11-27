@@ -3,8 +3,7 @@ import App, { Container as NextAppContainer } from "next/app";
 import { ApolloProvider } from "@apollo/react-hooks";
 import withApolloClient from "../lib/apollo/withApolloClient";
 import { ThemeProvider } from "styled-components";
-import DefaultTheme from "../styles/themes/DefaultTheme";
-import "./../styles/main.scss";
+import DefaultTheme from "../themes/DefaultTheme";
 import Head from "next/head";
 
 class MyApp extends App {

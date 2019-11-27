@@ -7,7 +7,6 @@
 		"now:cert": "now certs issue TheLonelinessProject.colinrumball.com",
 		"now:alias": "now alias",
 		"now:dev": "now dev --local-config=./debugNow.json",
-		"now:local:dev": "concurrently \"ts-node -P config/tsconfig.json scripts/WatchForSassChanges.ts\" \"now dev --local-config=./debugNow.json\"",
 		"test:all": "dotenv-load jest -i",
 		"build:GQLSchema": "ts-node -P config/tsconfig.json scripts/RunBuildGraphQLSchema.ts",
 		"prisma:deploy": "ts-node -P config/tsconfig.json scripts/RunDeployToPrisma.ts && ts-node -P config/tsconfig.json scripts/RunSeedPrisma.ts",

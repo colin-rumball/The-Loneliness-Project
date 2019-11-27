@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { LOGIN } from "../gql/mutations";
 import { useMutation } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
-import { ThemeContainer } from "../styles/themes/DefaultTheme";
+import { ThemeContainer } from "../themes/common";
 import Spinner from "../components/Spinner";
 import useModal from "../hooks/useModal";
 import MessageModal from "../containers/modals/MessageModal";

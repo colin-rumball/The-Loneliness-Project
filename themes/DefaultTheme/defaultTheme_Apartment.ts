@@ -1,10 +1,5 @@
 import { FONT_SIZES, COLORS } from "./variables";
-
-export interface ApartmentStyles {
-   STORE_PADDING: string;
-   UNIT_PADDING: string;
-   ROOF_PADDING: string;
-}
+import { ApartmentStyles } from "../common";
 
 const APARTMENT_STYLES: ApartmentStyles = {
    STORE_PADDING: "3%",
