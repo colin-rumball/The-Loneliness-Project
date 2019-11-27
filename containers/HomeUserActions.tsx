@@ -104,7 +104,7 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
                <a href="http://marissakorda.com/" target="_blank">
                   Marissa Korda
                </a>{" "}
-               / Programmed by Colin Rumball
+               / Developed by Colin Rumball
             </StyledCredits>
          </StyledNewletterAndSocial>
          <StyledButton order={3}>

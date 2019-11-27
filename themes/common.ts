@@ -47,7 +47,12 @@ export interface ApartmentStyles {
    ROOF_PADDING: string;
 }
 
+export interface Animations {
+   [x: string]: any;
+}
+
 export interface Theme {
+   ANIMATIONS: Animations;
    VARIABLES: Variables;
    ICON_STYLES: IconStyles;
    APARTMENT_STYLES: ApartmentStyles;

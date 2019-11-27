@@ -1,17 +1,27 @@
 import { keyframes } from "styled-components";
+import { Animations } from "../common";
 
-export interface Animations {}
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+const FadeIn = keyframes`
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 `;
 
-const ANIMATIONS: Animations = {};
+const FadeOut = keyframes`
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+`;
+
+const ANIMATIONS: Animations = {
+   FadeIn,
+   FadeOut
+};
 
 export default ANIMATIONS;

@@ -57,10 +57,11 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
          min-width: 200px;
          padding: 14px 0;
 
+         transition: color 0.3s ease, border-color 0.3s ease;
+
          &:hover {
             border-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
             color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-            transition: color 0.2s ease, border-color 0.2s ease;
          }
 
          &:active {

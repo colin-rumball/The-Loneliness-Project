@@ -14,6 +14,7 @@ export interface SidebarControllerProps {
 
 const SidebarController: React.FC<SidebarControllerProps> = ({ controller, sidebar }) => {
    const currentTheme = useCurrentTheme();
+   const [show, setShow] = useState(false);
    const [isOpen, setIsOpen] = useState(false);
 
    const StyledSidebarController = useMemo(
@@ -34,25 +35,33 @@ const SidebarController: React.FC<SidebarControllerProps> = ({ controller, sideb
                size={"36px"}
                color={currentTheme.VARIABLES.COLORS.Tan}
                hovercolor={"#fff"}
-               onClick={() => setIsOpen(true)}
+               onClick={() => {
+                  setIsOpen(true);
+                  setShow(true);
+               }}
             />
          </StyledSidebarController>
       );
    } else {
       return (
          <>
-            <StyledSidebarController onClick={() => setIsOpen(false)}>
+            <StyledSidebarController>
                <StyledIcon
                   icon={FaTimes}
                   size={"36px"}
                   color={currentTheme.VARIABLES.COLORS.Tan}
                   hovercolor={"#fff"}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                     setTimeout(() => {
+                        setIsOpen(false);
+                     }, 550);
+                     setShow(false);
+                  }}
                />
             </StyledSidebarController>
             <ScrollLock isActive={true} />
             <TouchScrollable>
-               <AboutSection />
+               <AboutSection show={show} />
             </TouchScrollable>
          </>
       );

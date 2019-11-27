@@ -1,13 +1,15 @@
 import React, { useMemo } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import NewsletterSignup from "../components/NewsletterSignup";
 import PressFeatures from "./PressFeatures";
 import SocialMedia from "../components/SocialMedia";
 import { ThemeContainer } from "../themes/common";
 
-interface AboutSectionProps {}
+interface AboutSectionProps {
+   show: boolean;
+}
 
-const AboutSection: React.FC<AboutSectionProps> = ({}) => {
+const AboutSection: React.FC<AboutSectionProps> = ({ show }) => {
    const StyledAboutSection = useMemo(
       () => styled.div`
          position: fixed;
@@ -16,21 +18,13 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
          right: 0;
          bottom: 0;
          overflow: auto;
-         padding: 20px 60px;
+         padding: 20px 10% 30px 7.8%;
          padding-top: 15vh;
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
          background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
-         animation: fadeIn 0.3s ease-in both;
-
-         @keyframes fadeIn {
-            from {
-               opacity: 0;
-            }
-            to {
-               opacity: 1;
-            }
-         }
+         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
+         animation-direction: ${show ? "normal" : "reverse"};
 
          .icon {
             width: 50px;
@@ -42,24 +36,37 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
             font-weight: 100;
             margin: 15px 0;
          }
+      `,
+      [show]
+   );
 
-         p {
-            font-family: "lato", sans-serif;
-            font-size: 16px;
-            font-weight: 300;
-            line-height: 22px;
-            letter-spacing: 0.5px;
-            margin-bottom: 30px;
+   const StyledFadeIn = useMemo(
+      () => styled.div`
+         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
+         animation-delay: ${props => props.delay};
+      `,
+      []
+   );
 
-            &.newsletter {
-               font-size: 18px;
-               font-style: italic;
-               font-family: "Frank Ruhl Libre", sans-serif;
-            }
+   const StyledParagraph = useMemo(
+      () => styled.p`
+         font-family: "lato", sans-serif;
+         font-size: 16px;
+         font-weight: 300;
+         line-height: 22px;
+         letter-spacing: 0.5px;
+         margin-bottom: 30px;
+         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
+         animation-delay: ${props => props.delay};
 
-            a {
-               color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-            }
+         &.newsletter {
+            font-size: 18px;
+            font-style: italic;
+            font-family: "Frank Ruhl Libre", sans-serif;
+         }
+
+         a {
+            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          }
       `,
       []
@@ -67,15 +74,19 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
 
    return (
       <StyledAboutSection>
-         <img className="icon" src="/static/finger-print-logo.svg" />
-         <div className="about-title">Loneliness is human and that’s okay.</div>
-         <p>
+         <StyledFadeIn delay={"0.3s"}>
+            <img className="icon" src="/static/finger-print-logo.svg" />
+         </StyledFadeIn>
+         <StyledFadeIn delay={"0.5s"}>
+            <div className="about-title">Loneliness is human and that’s okay.</div>
+         </StyledFadeIn>
+         <StyledParagraph delay={"0.7s"}>
             At The Loneliness Project, we believe that stories have power—the power to heal both
             listener and teller, and to show us that we aren’t ever truly alone. Stories are
             powerful tools for building empathy and growing kindness. Those shared here are deeply
             personal yet profoundly universal. They reveal something about being human.
-         </p>
-         <p>
+         </StyledParagraph>
+         <StyledParagraph delay={"0.9s"}>
             The Loneliness Project is the first chapter of An Imperfect Archive of Us, a digital
             space to cultivate compassion—for others, but especially for ourselves. Become part of
             our community by{" "}
@@ -86,14 +97,16 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
                sharing your story here
             </a>
             .
-         </p>
-         <p className="newsletter">
+         </StyledParagraph>
+         <StyledParagraph className="newsletter" delay={"1.1s"}>
             Sign up below for weekly stories about life, loneliness, and the parts of ourselves that
             we hide from others.
-         </p>
-         <NewsletterSignup showHeader={false} />
-         <SocialMedia />
-         <PressFeatures />
+         </StyledParagraph>
+         <StyledFadeIn delay={"1.3s"}>
+            <NewsletterSignup showHeader={false} />
+            <SocialMedia />
+            <PressFeatures />
+         </StyledFadeIn>
       </StyledAboutSection>
    );
 };
