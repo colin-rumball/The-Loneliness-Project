@@ -97,7 +97,7 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
             </a>
          </StyledButton>
          <StyledNewletterAndSocial>
-            <NewsletterSignup />
+            {/* <NewsletterSignup /> */}
             <SocialMedia />
             <StyledCredits>
                Designed by{" "}

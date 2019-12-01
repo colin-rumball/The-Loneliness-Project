@@ -2,6 +2,7 @@ import React, { useState, useCallback, useMemo } from "react";
 import ScrollLock, { TouchScrollable } from "react-scrolllock";
 import styled from "styled-components";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { IoMdMenu, IoIosClose } from "react-icons/io";
 import AboutSection from "../containers/AboutSection";
 import { ThemeContainer } from "../themes/common";
 import StyledIcon from "./Styled/StyledIcon";
@@ -31,7 +32,7 @@ const SidebarController: React.FC<SidebarControllerProps> = ({ controller, sideb
       return (
          <StyledSidebarController>
             <StyledIcon
-               icon={FaBars}
+               icon={IoMdMenu}
                size={"36px"}
                color={currentTheme.VARIABLES.COLORS.Tan}
                hovercolor={"#fff"}
@@ -47,14 +48,14 @@ const SidebarController: React.FC<SidebarControllerProps> = ({ controller, sideb
          <>
             <StyledSidebarController>
                <StyledIcon
-                  icon={FaTimes}
-                  size={"36px"}
+                  icon={IoIosClose}
+                  size={"38px"}
                   color={currentTheme.VARIABLES.COLORS.Tan}
                   hovercolor={"#fff"}
                   onClick={() => {
                      setTimeout(() => {
                         setIsOpen(false);
-                     }, 550);
+                     }, 450);
                      setShow(false);
                   }}
                />

@@ -44,7 +44,7 @@ const LogoHeader: React.FC = () => {
 
          .slogan {
             color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-            font-size: 19px;
+            font-size: 20px;
             font-weight: 500;
             line-height: 23px;
             text-align: center;

@@ -103,7 +103,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ show }) => {
             we hide from others.
          </StyledParagraph>
          <StyledFadeIn delay={"1.3s"}>
-            <NewsletterSignup showHeader={false} />
+            {/* <NewsletterSignup showHeader={false} /> */}
             <SocialMedia />
             <PressFeatures />
          </StyledFadeIn>
