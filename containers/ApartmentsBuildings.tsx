@@ -66,7 +66,13 @@ const ApartmentBuildings: React.FC = () => {
                                     apt={apartment.apt}
                                     apolloClient={client}
                                  />
-                              )
+                              ),
+                              onAfterClose: () => {
+                                 const href = `/`;
+                                 router.replace(href, href, {
+                                    shallow: true
+                                 });
+                              }
                            });
                         }}
                      />
