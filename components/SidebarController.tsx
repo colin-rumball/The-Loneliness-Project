@@ -15,7 +15,6 @@ export interface SidebarControllerProps {
 
 const SidebarController: React.FC<SidebarControllerProps> = ({ controller, sidebar }) => {
    const currentTheme = useCurrentTheme();
-   const [show, setShow] = useState(false);
    const [isOpen, setIsOpen] = useState(false);
 
    const StyledSidebarController = useMemo(
@@ -28,45 +27,27 @@ const SidebarController: React.FC<SidebarControllerProps> = ({ controller, sideb
       []
    );
 
-   if (!isOpen) {
-      return (
+   const currentIcon = useMemo(() => (isOpen ? IoIosClose : IoMdMenu), [isOpen]);
+
+   return (
+      <>
          <StyledSidebarController>
             <StyledIcon
-               icon={IoMdMenu}
+               icon={currentIcon}
                size={"36px"}
                color={currentTheme.VARIABLES.COLORS.Tan}
                hovercolor={"#fff"}
                onClick={() => {
-                  setIsOpen(true);
-                  setShow(true);
+                  setIsOpen(!isOpen);
                }}
             />
          </StyledSidebarController>
-      );
-   } else {
-      return (
-         <>
-            <StyledSidebarController>
-               <StyledIcon
-                  icon={IoIosClose}
-                  size={"38px"}
-                  color={currentTheme.VARIABLES.COLORS.Tan}
-                  hovercolor={"#fff"}
-                  onClick={() => {
-                     setTimeout(() => {
-                        setIsOpen(false);
-                     }, 450);
-                     setShow(false);
-                  }}
-               />
-            </StyledSidebarController>
-            <ScrollLock isActive={true} />
-            <TouchScrollable>
-               <AboutSection show={show} />
-            </TouchScrollable>
-         </>
-      );
-   }
+         <ScrollLock isActive={isOpen} />
+         <TouchScrollable>
+            <AboutSection show={isOpen} />
+         </TouchScrollable>
+      </>
+   );
 };
 
 export default SidebarController;

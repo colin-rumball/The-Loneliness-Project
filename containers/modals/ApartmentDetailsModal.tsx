@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo, useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 import Arrows from "../../components/Arrows";
 import { useQuery } from "@apollo/react-hooks";
@@ -7,6 +7,7 @@ import ModalBase, { ModalBaseProps } from "./ModalBase";
 import Spinner from "../../components/Spinner";
 import StyledApartmentDetails from "./styled/StyledApartmentDetails";
 import { useRouter } from "next/router";
+import ApartmentModalBase from "./ApartmentModalBase";
 
 interface ApartmentDetailsModalProps extends ModalBaseProps {
    apartmentsStart: number;
@@ -21,10 +22,17 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
    router,
    apolloClient
 }) => {
+   const [apartmentData, setApartmentData] = useState(null);
    const { data, loading, refetch } = useQuery(APARTMENT_BY_NUMBER, {
       client: apolloClient,
       variables: { apt: originalApartmentNum }
    });
+
+   useEffect(() => {
+      if (data && data.apartmentByNumber) {
+         setApartmentData(data.apartmentByNumber);
+      }
+   }, [data]);
 
    const onArrowClicked = useCallback(
       apt => {
@@ -37,11 +45,9 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
       [router]
    );
 
-   const apartmentData = loading ? {} : data.apartmentByNumber;
-
    return (
-      <ModalBase showSpinner={loading}>
-         {loading ? (
+      <ApartmentModalBase showSpinner={loading}>
+         {!apartmentData ? (
             <></>
          ) : (
             <StyledApartmentDetails
@@ -52,7 +58,7 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
                {...apartmentData}
             />
          )}
-      </ModalBase>
+      </ApartmentModalBase>
    );
 };
 

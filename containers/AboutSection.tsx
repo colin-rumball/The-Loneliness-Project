@@ -23,8 +23,10 @@ const AboutSection: React.FC<AboutSectionProps> = ({ show }) => {
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
          background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
-         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
+         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.6s ease-in both;
          animation-direction: ${show ? "normal" : "reverse"};
+         user-select: ${show ? "auto" : "none"};
+         pointer-events: ${show ? "auto" : "none"};
 
          .icon {
             width: 50px;

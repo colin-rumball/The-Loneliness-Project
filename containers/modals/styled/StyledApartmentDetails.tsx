@@ -2,6 +2,7 @@ import React, { useMemo, useCallback } from "react";
 import styled from "styled-components";
 import Arrows from "../../../components/Arrows";
 import { useRouter } from "next/router";
+import { ThemeContainer } from "../../../themes/common";
 
 interface StyledApartmentDetailsProps {
    apt: number;
@@ -52,14 +53,15 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
    const StyledApartmentDetails = useMemo(
       () => styled.div`
          overflow-x: hidden;
+
          .top-color {
-            width: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
             min-height: 40px;
             max-height: 40px;
-            background-color: ${({ theme }) => theme.Blue};
-            border-radius: 22px 22px 0 0;
-            transform: translateY(-2px);
-            margin-bottom: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.9);
+            background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Blue};
          }
 
          .apartment-modal-details {
@@ -69,7 +71,8 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             align-items: flex-start;
             text-align: left;
             padding-right: 3px;
-            margin: 0 28px 34px 28px;
+            padding-top: 40px;
+            margin: 24px 40px 34px 50px;
             overflow: auto;
 
             .line {
@@ -78,7 +81,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                min-height: 4px;
                max-height: 4px;
                width: 32px;
-               background-color: ${({ theme }) => theme.Blue};
+               background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Blue};
                margin-bottom: 22px;
             }
 
@@ -114,7 +117,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                }
                .apt-owner-age {
                   font-family: lato, sans-serif;
-                  color: ${({ theme }) => theme.LightBlue};
+                  color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
                   font-size: 20px;
                   font-weight: 900;
                   letter-spacing: 1px;
@@ -125,7 +128,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   font-family: lato, sans-serif;
                   padding: 0 20px;
                   flex-grow: 1;
-                  color: ${({ theme }) => theme.LightBlue};
+                  color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
                   font-size: 20px;
                   font-weight: 900;
                   letter-spacing: 1px;
@@ -137,7 +140,6 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   text-align: right;
                   flex-grow: 3;
                   align-self: flex-start;
-                  ${({ theme }) => theme.LightBlue};
 
                   font-family: "lato", sans-serif;
                   font-weight: 900;
@@ -146,6 +148,16 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   pointer-events: none;
                }
             }
+         }
+
+         .gradient-bottom {
+            position: absolute;
+            left: 1px;
+            right: 1px;
+            bottom: 1px;
+            background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 0, #fff);
+            min-height: 40px;
+            max-height: 40px;
          }
       `,
       []
@@ -202,6 +214,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                </>
             )}
          </div>
+         <div className="gradient-bottom" />
       </StyledApartmentDetails>
    );
 };

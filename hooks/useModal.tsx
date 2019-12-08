@@ -6,6 +6,7 @@ import { FaWindowClose } from "react-icons/fa";
 import ReactDOMServer from "react-dom/server";
 import { ThemeProvider } from "styled-components";
 import DefaultTheme from "../themes/DefaultTheme";
+import { IoIosClose } from "react-icons/io";
 
 const ModalManager = withReactContent(Swal);
 
@@ -57,19 +58,19 @@ export interface ModalOptions extends SweetAlertOptions {
 }
 
 const StyledModalCloseButton = styled.div`
-   color: ${DefaultTheme.VARIABLES.COLORS.Grey};
-   font-size: 20px;
+   color: ${DefaultTheme.VARIABLES.COLORS.LightGrey};
+   font-size: 34px;
    position: absolute;
-   top: 9px;
-   right: 16px;
+   top: 4px;
+   right: 8px;
    opacity: 0.9;
-   transition: opacity 0.3s ease, transform 0.3s ease;
+   transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 
    &:hover {
       cursor: pointer;
       transform: scale(1.1);
       opacity: 1;
-      color: ${DefaultTheme.VARIABLES.COLORS.DarkGrey};
+      color: #fff;
    }
 `;
 
@@ -93,7 +94,7 @@ const defaultPushModalProps: SweetAlertOptions = {
    showCloseButton: true,
    closeButtonHtml: ReactDOMServer.renderToStaticMarkup(
       <StyledModalCloseButton>
-         <FaWindowClose />
+         <IoIosClose />
       </StyledModalCloseButton>
    ),
    showConfirmButton: false,

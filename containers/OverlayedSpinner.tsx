@@ -37,6 +37,7 @@ const OverlayedSpinner: React.FC<OverlayedSpinnerProps> = props => {
          filter: ${props => (props.blur ? "blur(4px)" : "none")};
          height: 100%;
          width: 100%;
+         overflow: hidden;
       `,
       []
    );
