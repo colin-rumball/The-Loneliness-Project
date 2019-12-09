@@ -5,11 +5,9 @@ import PressFeatures from "./PressFeatures";
 import SocialMedia from "../components/SocialMedia";
 import { ThemeContainer } from "../themes/common";
 
-interface AboutSectionProps {
-   show: boolean;
-}
+interface AboutSectionProps {}
 
-const AboutSection: React.FC<AboutSectionProps> = ({ show }) => {
+const AboutSection: React.FC<AboutSectionProps> = ({}) => {
    const StyledAboutSection = useMemo(
       () => styled.div`
          position: fixed;
@@ -24,9 +22,6 @@ const AboutSection: React.FC<AboutSectionProps> = ({ show }) => {
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
          background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
          animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.6s ease-in both;
-         animation-direction: ${show ? "normal" : "reverse"};
-         user-select: ${show ? "auto" : "none"};
-         pointer-events: ${show ? "auto" : "none"};
 
          .icon {
             width: 50px;
@@ -39,7 +34,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ show }) => {
             margin: 15px 0;
          }
       `,
-      [show]
+      []
    );
 
    const StyledFadeIn = useMemo(
