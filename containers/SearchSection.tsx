@@ -6,6 +6,8 @@ import { APARTMENTS_OVERVIEW } from "../gql/queries";
 import { useRouter } from "next/router";
 import useModal from "../hooks/useModal";
 import ApartmentDetailsModal from "./modals/ApartmentDetailsModal";
+import useDebouncedFunction from "../hooks/useDebouncedFunction";
+import Spinner from "../components/Spinner";
 
 interface SearchSectionProps {}
 
@@ -21,23 +23,32 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
    const [getApartments, { client }] = useLazyQuery(APARTMENTS_OVERVIEW, {
       onCompleted(data) {
          if (data && data.apartments) {
-            setApartments([...apartments, ...data.apartments]);
+            setApartments([...data.apartments]);
          }
       }
    });
 
-   const onQueryChanged = useCallback(event => {
-      setUserQuery(event.target.value);
-      getApartments({
-         variables: {
-            query: event.target.value,
-            first: 15,
-            orderBy: "apt_DESC",
-            skip: 0,
-            published: true
+   const [debouncedSetApartments, { loading }] = useDebouncedFunction(getApartments, 500);
+
+   const onQueryChanged = useCallback(
+      event => {
+         setUserQuery(event.target.value);
+         if (event.target.value) {
+            debouncedSetApartments({
+               variables: {
+                  query: event.target.value,
+                  first: 15,
+                  orderBy: "apt_DESC",
+                  skip: 0,
+                  published: true
+               }
+            });
+         } else {
+            setApartments([]);
          }
-      });
-   }, []);
+      },
+      [debouncedSetApartments]
+   );
 
    const onResultClicked = useCallback(
       apt => {
@@ -129,6 +140,7 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
             value={userQuery}
             onChange={onQueryChanged}
          />
+         {loading && <Spinner />}
          {apartments.length > 0 &&
             apartments.map(apartment => (
                <StyledResult onClick={() => onResultClicked(apartment.apt)} key={apartment.id}>

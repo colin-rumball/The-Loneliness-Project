@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState, useMemo } from "react";
 import Logo from "../components/Logo";
 import styled from "styled-components";
 import { ThemeContainer } from "../themes/common";
-import useDebounce from "../hooks/useDebounce";
+import useDebouncedValue from "../hooks/useDebouncedValue";
 
 const LogoHeader: React.FC = () => {
    const getOpacityAmount = useCallback(() => {
@@ -14,7 +14,7 @@ const LogoHeader: React.FC = () => {
 
       return Math.min(Math.max(1.0 - (winScroll / height - 0) / 0.15, 0.0), 1.0);
    }, []);
-   const [opactiy, setOpacity] = useDebounce(getOpacityAmount(), 50);
+   const [opactiy, setOpacity] = useDebouncedValue(getOpacityAmount(), 50);
 
    const onScroll = useCallback(() => {
       setOpacity(getOpacityAmount());

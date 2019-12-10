@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
-export default function useDebounce(initialValue, delay) {
+export default function useDebounceValue(initialValue, delay) {
    // State and setters for debounced value
    const [value, setDebouncedValue] = useState(initialValue);
    const [internalNewValue, setNewValue] = useState();
