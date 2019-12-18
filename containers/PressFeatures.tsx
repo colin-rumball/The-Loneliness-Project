@@ -58,6 +58,13 @@ const PressFeatures: React.FC<PressFeaturesProps> = ({}) => {
             img {
                max-width: 100%;
                height: auto;
+
+               &.creative-boom,
+               &.walrus,
+               &.stimulant,
+               &.nice-that {
+                  max-width: 90%;
+               }
             }
          }
       `,
@@ -71,7 +78,11 @@ const PressFeatures: React.FC<PressFeaturesProps> = ({}) => {
             {pressFeatures.map(feature => {
                return (
                   <a key={feature.alt} href={`${feature.press}`} target="_blank">
-                     <img src={`/static/press/${feature.src}`} alt={`${feature.alt}`} />
+                     <img
+                        className={feature.class}
+                        src={`/static/press/${feature.src}`}
+                        alt={`${feature.alt}`}
+                     />
                   </a>
                );
             })}
