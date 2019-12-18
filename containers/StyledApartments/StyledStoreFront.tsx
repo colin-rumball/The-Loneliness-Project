@@ -21,14 +21,16 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
    const StyledStoreFront = useMemo(
       () => styled.div`
          flex-basis: 100%;
-         padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.STORE_PADDING}`};
+         padding: 0 1.5%;
 
          @media (min-width: 768px) {
             flex-basis: 50%;
+            padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.STORE_PADDING}`};
          }
 
          @media (min-width: 1286px) {
             flex-basis: 33%;
+            padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.STORE_PADDING}`};
          }
 
          .image-container {

@@ -30,19 +30,17 @@ const StyledApartment: React.FC<StyledApartmentProps> = props => {
 
          &:nth-child(3n) {
             /* Right Apartments */
-            transform: translateY(8.4%);
+            transform: translateY(0);
             @media (min-width: 1286px) {
-               /* padding: 0 0 0 2.5%; */
-               /* transform: translateY(10.5%); */
+               transform: translateY(8.4%);
             }
          }
 
          &:nth-child(3n + 1) {
             /* Left Apartments */
-            transform: translateY(8.4%);
+            transform: translateY(0);
             @media (min-width: 1286px) {
-               /* padding: 0 2.5% 0 0; */
-               /* transform: translateY(10.5%); */
+               transform: translateY(8.4%);
             }
          }
 
