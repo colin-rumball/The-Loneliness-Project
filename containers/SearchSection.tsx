@@ -116,6 +116,8 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
    const StyledResult = useMemo(
       () => styled.div`
          position: relative;
+         display: flex;
+         justify-content: space-evenly;
          width: 100%;
          height: 10vh;
          font-size: 8vh;
@@ -144,7 +146,7 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
          {apartments.length > 0 &&
             apartments.map(apartment => (
                <StyledResult onClick={() => onResultClicked(apartment.apt)} key={apartment.id}>
-                  {apartment.apt}
+                  <span>{apartment.apt}</span>
                </StyledResult>
             ))}
       </StyledSearchSection>

@@ -58,12 +58,16 @@ const Mutation = {
          throw new AuthenticationError();
       }
 
-      const userExists = await prisma.$exists.user({
+      const deletedUser = await prisma.user({
          id: args.userId
       });
 
-      if (!userExists) {
+      if (!deletedUser) {
          throw new Error("User doesn't exist.");
+      }
+
+      if (deletedUser.username === "admin") {
+         throw new Error("Can't delete admin user.");
       }
 
       return prisma.deleteUser({

@@ -43,24 +43,26 @@ const UserList: React.FC = () => {
                   cells: [
                      user.username,
                      user.id,
-                     <StyledIcon
-                        icon={FaTimes}
-                        hovercolor={theme.VARIABLES.COLORS.Red}
-                        onClick={() =>
-                           pushModal({
-                              showCloseButton: false,
-                              html: (
-                                 <ConfirmationModal
-                                    onContinueClicked={async () => {
-                                       await deleteUser({ variables: { userId: user.id } });
-                                       refetch();
-                                    }}
-                                    message={`Are you sure you'd like to delete the user "${user.username}"?`}
-                                 />
-                              )
-                           })
-                        }
-                     />
+                     user.username != "admin" && (
+                        <StyledIcon
+                           icon={FaTimes}
+                           hovercolor={theme.VARIABLES.COLORS.Red}
+                           onClick={() =>
+                              pushModal({
+                                 showCloseButton: false,
+                                 html: (
+                                    <ConfirmationModal
+                                       onContinueClicked={async () => {
+                                          await deleteUser({ variables: { userId: user.id } });
+                                          refetch();
+                                       }}
+                                       message={`Are you sure you'd like to delete the user "${user.username}"?`}
+                                    />
+                                 )
+                              })
+                           }
+                        />
+                     )
                   ]
                }))
          }}
