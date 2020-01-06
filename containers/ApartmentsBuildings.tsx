@@ -31,6 +31,21 @@ const ApartmentBuildings: React.FC = () => {
 
    return (
       <>
+         {apartments.length > 0 && (
+            <StyledShowMore
+               onClick={() =>
+                  getApartments({
+                     variables: {
+                        query: "",
+                        first: 15,
+                        orderBy: "apt_DESC",
+                        skip: apartments.length,
+                        published: true
+                     }
+                  })
+               }
+            />
+         )}
          <StyledApartmentsContainer loading={apartments.length == 0}>
             <StyledApartmentRoof
                position="left"
@@ -94,21 +109,6 @@ const ApartmentBuildings: React.FC = () => {
                alt="store 3"
             />
          </StyledApartmentsContainer>
-         {apartments.length > 0 && (
-            <StyledShowMore
-               onClick={() =>
-                  getApartments({
-                     variables: {
-                        query: "",
-                        first: 15,
-                        orderBy: "apt_DESC",
-                        skip: apartments.length,
-                        published: true
-                     }
-                  })
-               }
-            />
-         )}
       </>
    );
 };
