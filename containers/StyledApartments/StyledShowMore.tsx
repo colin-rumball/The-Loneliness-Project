@@ -21,7 +21,6 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
          bottom: 850px;
          width: 3.5%;
          min-width: 50px;
-         overflow: hidden;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND - 1};
          animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 3s 1s ease-in both;
 
@@ -40,7 +39,7 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
    const StyledShowMore = useMemo(
       () => styled.div`
          position: sticky;
-         width: 200%;
+         width: 100%;
          height: auto;
          top: 50%;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND - 1};
@@ -49,7 +48,7 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
             display: block;
             z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND - 1};
             transform: translateX(-50%);
-            width: 100%;
+            width: 200%;
          }
       `,
       []
@@ -58,10 +57,10 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
    const ClickableArea = useMemo(
       () => styled.div`
          position: absolute;
-         right: 50%;
+         right: 0;
          top: 0;
          bottom: 0;
-         width: 50%;
+         width: 100%;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
 
          &:hover {
