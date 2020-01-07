@@ -18,19 +18,19 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
          position: absolute;
          top: 800px;
          right: 2%;
-         bottom: 12%;
+         bottom: 850px;
          width: 3.5%;
          min-width: 50px;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND - 1};
+         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 3s 1s ease-in both;
 
          @media (min-width: 768px) {
             right: 3%;
-            bottom: 25%;
          }
 
          @media (min-width: 1286px) {
             right: 5%;
-            bottom: 30%;
+            bottom: 600px;
          }
       `,
       []
@@ -57,10 +57,10 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
    const ClickableArea = useMemo(
       () => styled.div`
          position: absolute;
-         right: 0;
+         right: 50%;
          top: 0;
          bottom: 0;
-         width: 100%;
+         width: 50%;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
 
          &:hover {
@@ -76,12 +76,12 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
             <StyledShowMore>
                <img
                   className="load-more-image"
-                  src="/static/apartments/load-more.png"
+                  src="/static/images/load-more.png"
                   alt="load more"
                />
+               <ClickableArea onClick={onClick} />
             </StyledShowMore>
          </StyledShowMoreContainer>
-         <ClickableArea onClick={onClick} />
       </>
    );
 };

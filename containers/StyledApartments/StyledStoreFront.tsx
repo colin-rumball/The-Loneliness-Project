@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 import StyledCat from "./StyledCat";
 import StyledCross from "./StyledCross";
@@ -18,8 +18,30 @@ const StyledStoreFrontDefaultProps: StyledStoreFrontProps = {
 
 const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
    const { position, image, alt } = { ...StyledStoreFrontDefaultProps, ...props };
+
+   const easterEggAudio = useMemo(() => new Audio("/static/audio/lottery-winner.mp3"), []);
+   const [showEasterEgg, setShowEasterEgg] = useState(false);
+   const onEasterEggClicked = useCallback(() => {
+      easterEggAudio.volume = 0.25;
+      easterEggAudio.play();
+      setShowEasterEgg(true);
+   }, []);
+
+   useEffect(() => {
+      let timeoutId;
+      if (showEasterEgg) {
+         timeoutId = setTimeout(() => {
+            setShowEasterEgg(false);
+         }, 6300);
+      }
+      return () => {
+         clearTimeout(timeoutId);
+      };
+   }, [showEasterEgg]);
+
    const StyledStoreFront = useMemo(
       () => styled.div`
+         position: relative;
          flex-basis: 100%;
          padding: 0 1.5%;
 
@@ -99,25 +121,58 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
       []
    );
 
-   const FlareComponent = useMemo(() => {
-      switch (position) {
-         case "left":
-            return <StyledCat />;
-         case "center":
-            return <></>;
-         case "right":
-            return <StyledCross />;
-         default:
-            return <></>;
-      }
-   }, [position]);
+   const EasterEggClickArea = useMemo(
+      () => styled.div`
+         position: absolute;
+         top: 40%;
+         left: 13%;
+         width: 6%;
+         height: 8%;
+
+         user-select: initial;
+         pointer-events: initial;
+
+         @media (min-width: 1286px) {
+            left: 18%;
+         }
+
+         &:hover {
+            cursor: pointer;
+         }
+      `,
+      []
+   );
+
+   const EasterEggText = useMemo(
+      () => styled.div`
+         position: absolute;
+         top: 30%;
+         left: 0;
+         width: 6%;
+         height: 8%;
+         left: 6%;
+
+         text-align: center;
+         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+
+         &:hover {
+            cursor: pointer;
+         }
+      `,
+      []
+   );
 
    return (
       <StyledStoreFront className={position}>
          <div className="image-container">
-            <img className="store-front-image" src={image} alt={alt} />
+            <img
+               className="store-front-image"
+               src={showEasterEgg ? "/static/stores/store_2.gif" : image}
+               alt={alt}
+            />
          </div>
-         {/* {FlareComponent} */}
+         {showEasterEgg && <EasterEggText>Winner Gagnant!</EasterEggText>}
+         {position === "center" && <EasterEggClickArea onClick={onEasterEggClicked} />}
       </StyledStoreFront>
    );
 };

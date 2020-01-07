@@ -1,10 +1,11 @@
-import React, { useMemo } from "react";
+import React, { useMemo, forwardRef } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 
 interface StyledApartmentProps {
    image: string;
    onClick();
+   [key: string]: any;
 }
 
 const StyledApartmentDefaultProps: StyledApartmentProps = {
@@ -12,7 +13,7 @@ const StyledApartmentDefaultProps: StyledApartmentProps = {
    onClick: () => {}
 };
 
-const StyledApartment: React.FC<StyledApartmentProps> = props => {
+const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) => {
    const { image, onClick } = { ...StyledApartmentDefaultProps, ...props };
    const StyledApartment = useMemo(
       () => styled.div`
@@ -59,6 +60,8 @@ const StyledApartment: React.FC<StyledApartmentProps> = props => {
             bottom: 10%;
             background: #85c0d0;
             transition: background 0.4s ease;
+            user-select: initial;
+            pointer-events: initial;
 
             &:hover {
                cursor: pointer;
@@ -70,10 +73,10 @@ const StyledApartment: React.FC<StyledApartmentProps> = props => {
    );
    return (
       <StyledApartment>
-         <div className="backer" onClick={onClick} />
+         <div ref={ref as any} className="backer" onClick={onClick} />
          <img src={image} className="apartment" />
       </StyledApartment>
    );
-};
+});
 
 export default StyledApartment;

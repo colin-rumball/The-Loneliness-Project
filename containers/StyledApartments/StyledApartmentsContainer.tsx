@@ -18,6 +18,8 @@ const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
          display: flex;
          flex-direction: row;
          /* justify-content: center; */
+         user-select: none;
+         pointer-events: none;
          flex-wrap: wrap;
          width: 100%;
          padding: 450px 5% 0 5%;

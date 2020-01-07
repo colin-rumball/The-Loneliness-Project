@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
 import { APARTMENTS_OVERVIEW } from "../gql/queries";
@@ -15,7 +15,7 @@ const ApartmentBuildings: React.FC = () => {
    const router = useRouter();
    const { pushModal } = useModal();
    const [apartments, setApartments] = useState([]);
-   const [getApartments, { client }] = useLazyQuery(APARTMENTS_OVERVIEW, {
+   const [getApartments, { client, loading }] = useLazyQuery(APARTMENTS_OVERVIEW, {
       onCompleted(data) {
          if (data && data.apartments) {
             setApartments([...apartments, ...data.apartments]);
@@ -29,11 +29,14 @@ const ApartmentBuildings: React.FC = () => {
       });
    }, []);
 
+   const lastApartmentRef = useRef(null);
+
    return (
       <>
-         {apartments.length > 0 && (
+         {apartments.length > 0 && !loading && (
             <StyledShowMore
-               onClick={() =>
+               onClick={() => {
+                  lastApartmentRef.current.scrollIntoView();
                   getApartments({
                      variables: {
                         query: "",
@@ -42,30 +45,31 @@ const ApartmentBuildings: React.FC = () => {
                         skip: apartments.length,
                         published: true
                      }
-                  })
-               }
+                  });
+               }}
             />
          )}
          <StyledApartmentsContainer loading={apartments.length == 0}>
             <StyledApartmentRoof
                position="left"
-               image="/static/apartments/roof_3.png"
+               image="/static/roofs/roof_3.png"
                alt="apartment-roof-3"
             />
             <StyledApartmentRoof
                position="center"
-               image="/static/apartments/roof_2.png"
+               image="/static/roofs/roof_2.png"
                alt="apartment-roof-2"
             />
             <StyledApartmentRoof
                position="right"
-               image="/static/apartments/roof_1.png"
+               image="/static/roofs/roof_1.png"
                alt="apartment-roof-1"
             />
             {apartments.length > 0 &&
                apartments.map((apartment, index) => {
                   return (
                      <StyledApartment
+                        ref={index == apartments.length - 1 ? lastApartmentRef : null}
                         key={apartment.id}
                         image={`/static/apartments/storey_${apartment.apt}.png`}
                         onClick={() => {
@@ -93,21 +97,9 @@ const ApartmentBuildings: React.FC = () => {
                      />
                   );
                })}
-            <StyledStoreFront
-               position="left"
-               image="/static/apartments/store_1.png"
-               alt="store 1"
-            />
-            <StyledStoreFront
-               position="center"
-               image="/static/apartments/store_2.png"
-               alt="store 2"
-            />
-            <StyledStoreFront
-               position="right"
-               image="/static/apartments/store_3.png"
-               alt="store 3"
-            />
+            <StyledStoreFront position="left" image="/static/stores/store_1.png" alt="store 1" />
+            <StyledStoreFront position="center" image="/static/stores/store_2.png" alt="store 2" />
+            <StyledStoreFront position="right" image="/static/stores/store_3.png" alt="store 3" />
          </StyledApartmentsContainer>
       </>
    );
