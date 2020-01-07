@@ -21,6 +21,7 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
          bottom: 850px;
          width: 3.5%;
          min-width: 50px;
+         overflow: hidden;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND - 1};
          animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 3s 1s ease-in both;
 
