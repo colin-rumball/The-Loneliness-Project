@@ -49,7 +49,7 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
             position: relative;
             pointer-events: none;
             max-width: 100%;
-            min-height: 100%;
+            min-height: 101%;
          }
 
          .backer {

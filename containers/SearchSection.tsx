@@ -141,6 +141,7 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
             placeholder="Type a word here..."
             value={userQuery}
             onChange={onQueryChanged}
+            autofocus
          />
          {loading && <Spinner />}
          {apartments.length > 0 &&

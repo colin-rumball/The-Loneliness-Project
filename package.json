@@ -2,6 +2,7 @@
 	"name": "The-Loneliness-Project",
 	"version": "0.0.1",
 	"description": "",
+	"engines": { "node": "12.x" },
 	"main": "/pages/index.js",
 	"scripts": {
 		"now:cert": "now certs issue TheLonelinessProject.colinrumball.com",
