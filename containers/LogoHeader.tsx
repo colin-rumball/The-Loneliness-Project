@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState, useMemo } from "react";
 import Logo from "../components/Logo";
 import styled from "styled-components";
 import { ThemeContainer } from "../themes/common";
-import useDebouncedValue from "../hooks/useDebouncedValue";
+import { debounce } from "lodash";
 
 const LogoHeader: React.FC = () => {
    const getOpacityAmount = useCallback(() => {
@@ -10,18 +10,28 @@ const LogoHeader: React.FC = () => {
 
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
 
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-
-      return Math.min(Math.max(1.0 - (winScroll / height - 0) / 0.15, 0.0), 1.0);
+      return Math.max(1 - winScroll / 400, 0.0);
    }, []);
-   const [opactiy, setOpacity] = useDebouncedValue(getOpacityAmount(), 50);
+   const [opacity, setOpacity] = useState(1.0);
+
+   const debouncedSet = useCallback(
+      debounce(
+         () => {
+            const newOpacity = getOpacityAmount();
+            setOpacity(newOpacity);
+         },
+         50,
+         { maxWait: 200 }
+      ),
+      []
+   );
 
    const onScroll = useCallback(() => {
-      setOpacity(getOpacityAmount());
+      debouncedSet();
    }, []);
 
    useEffect(() => {
-      setOpacity(getOpacityAmount());
+      setOpacity(1.0);
       window.addEventListener("scroll", onScroll);
       return () => {
          window.removeEventListener("scroll", onScroll);
@@ -41,7 +51,7 @@ const LogoHeader: React.FC = () => {
          padding-top: 70px;
          user-select: none;
          pointer-events: none;
-         opacity: ${props => props.opactiy};
+         opacity: ${props => props.opacity};
          transition: opacity 0.2s ease;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MID_GROUND};
 
@@ -60,7 +70,7 @@ const LogoHeader: React.FC = () => {
    );
 
    return (
-      <StyledLogoHeader opactiy={opactiy}>
+      <StyledLogoHeader opacity={opacity}>
          <Logo />
          <div className="slogan">
             <span>Weekly stories of loneliness. </span>

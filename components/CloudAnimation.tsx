@@ -39,6 +39,7 @@ const CloudAnimation: React.FC<CloudAnimationProps> = props => {
          background-image: url("/static/images/clouds.png");
          background-repeat: repeat-x;
          background-position-x: 0%;
+         transition: background-image 1s ease-in-out;
 
          left: 0;
          right: 0;
@@ -50,6 +51,7 @@ const CloudAnimation: React.FC<CloudAnimationProps> = props => {
 
          animation: moveClouds 50s linear infinite;
          animation-fill-mode: both;
+         animation-delay: -3s;
 
          @keyframes moveClouds {
             from {
