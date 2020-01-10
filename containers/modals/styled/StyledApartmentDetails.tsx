@@ -56,12 +56,12 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
 
          .top-color {
             position: absolute;
-            left: 0;
-            right: 0;
+            top: 1px;
+            left: 1px;
+            right: 1px;
             min-height: 40px;
             max-height: 40px;
-            border: 1px solid rgba(0, 0, 0, 0.9);
-            background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Blue};
+            background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          }
 
          .apartment-modal-details {
@@ -71,7 +71,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             align-items: flex-start;
             text-align: left;
             padding-right: 3px;
-            padding-top: 40px;
+            padding-top: 60px;
             margin: 24px 40px 34px 50px;
             overflow: auto;
 
@@ -82,7 +82,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                max-height: 4px;
                width: 32px;
                background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Blue};
-               margin-bottom: 22px;
+               margin: 30px 0;
             }
 
             .apartment-modal-details__question {
@@ -91,13 +91,14 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                font-size: 14px;
                font-weight: 700;
                letter-spacing: 1px;
+               margin-bottom: 5px;
             }
 
             .apartment-modal-details__answer {
                color: rgb(34, 34, 34);
                font-size: 18px;
                font-weight: 400;
-               margin-bottom: 22px;
+               margin-bottom: 25px;
             }
 
             .details-header {
@@ -105,7 +106,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                display: flex;
                flex-wrap: nowrap;
                align-items: baseline;
-               margin-bottom: 22px;
+               overflow: hidden;
 
                .apt-owner-name {
                   font-size: 52px;
@@ -114,14 +115,6 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   line-height: 41px;
                   margin: 0;
                   padding: 0;
-               }
-               .apt-owner-age {
-                  font-family: lato, sans-serif;
-                  color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
-                  font-size: 20px;
-                  font-weight: 900;
-                  letter-spacing: 1px;
-                  line-height: 41px;
                }
 
                .details-header-divider {
@@ -134,12 +127,22 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   letter-spacing: 1px;
                   line-height: 41px;
                   text-align: center;
+                  max-width: 50px;
+               }
+
+               .apt-owner-age {
+                  font-family: lato, sans-serif;
+                  color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
+                  font-size: 20px;
+                  font-weight: 900;
+                  letter-spacing: 1px;
+                  line-height: 41px;
                }
 
                .apt-number {
                   text-align: right;
                   flex-grow: 3;
-                  align-self: flex-start;
+                  align-self: center;
 
                   font-family: "lato", sans-serif;
                   font-weight: 900;

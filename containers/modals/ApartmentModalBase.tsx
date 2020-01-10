@@ -21,12 +21,12 @@ const ApartmentModalBase: React.FC<ApartmentModalBaseProps> = props => {
    const StyledModalBase = useMemo(
       () => styled.div`
          background: #fff;
-         height: 60vh;
+         height: 80vh;
          /* max-height: 600px; */
          width: 70vw;
          max-width: 900px;
          /* padding: 18px 36px; */
-         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.6);
          box-shadow: ${({ theme }: ThemeContainer) => `10px 10px 0 ${theme.VARIABLES.COLORS.Tan}`};
          overflow: auto;
          border: 1px solid rgba(0, 0, 0, 0.9);

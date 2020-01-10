@@ -22,7 +22,7 @@ const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
          pointer-events: none;
          flex-wrap: wrap;
          width: 100%;
-         padding: 450px 5% 0 5%;
+         padding: 350px 5% 0 5%;
          min-height: 100vh;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND};
 

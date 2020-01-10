@@ -16,7 +16,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
          right: 0;
          bottom: 0;
          overflow: auto;
-         padding: 20px 10% 30px 7.8%;
+         padding: 20px 12% 30px 12%;
          padding-top: 15vh;
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};

@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import StyledIcon from "./Styled/StyledIcon";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 interface ArrowsProps {
    currentApt: number;
@@ -52,19 +52,19 @@ const Arrows: React.FC<ArrowsProps> = props => {
       <StyledArrows>
          <StyledArrowIcon showArrow={showLeftArrow}>
             <StyledIcon
-               icon={FaArrowLeft}
+               icon={IoIosArrowBack}
                onClick={() => onLeftArrowClicked(currentApt + 1)}
                color={"#fff"}
-               size={"30px"}
+               size={"38px"}
             />
          </StyledArrowIcon>
 
          <StyledArrowIcon showArrow={showRightArrow}>
             <StyledIcon
-               icon={FaArrowRight}
+               icon={IoIosArrowForward}
                onClick={() => onRightArrowClicked(currentApt - 1)}
                color={"#fff"}
-               size={"30px"}
+               size={"38px"}
             />
          </StyledArrowIcon>
       </StyledArrows>

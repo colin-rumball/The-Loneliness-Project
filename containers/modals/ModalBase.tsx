@@ -24,11 +24,11 @@ const ModalBase: React.FC<ModalBaseProps> = props => {
          background: ${({ theme }) => theme.LightBlue};
          /* height: 60vh; */
          min-height: 300px;
-         max-height: 600px;
+         max-height: 80vh;
          min-width: 440px;
          max-width: 610px;
          padding: 18px 36px;
-         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.6);
          overflow: auto;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MODAL};
       `,

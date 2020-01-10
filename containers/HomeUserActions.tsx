@@ -53,7 +53,7 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
          justify-content: center;
          order: 3;
          width: 100%;
-         margin: 10px 5px;
+         margin: 10px 10px;
 
          button,
          a {
@@ -73,16 +73,39 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
 
    const StyledCredits = useMemo(
       () => styled.div`
+         display: flex;
+         flex-direction: column;
          width: 100%;
          text-align: center;
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          opacity: 0.5;
+         margin-bottom: 10px;
+
          a {
             color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
             text-decoration: none;
 
             &:hover {
                color: #fff;
+            }
+         }
+
+         .slash {
+            display: none;
+         }
+
+         .line {
+            display: inline-block;
+            margin: 0 5px 0 0;
+         }
+
+         @media (min-width: 1286px) {
+            margin-bottom: 0px;
+            flex-direction: row;
+            justify-content: space-between;
+            .slash {
+               flex-grow: 1;
+               display: inline-block;
             }
          }
       `,
@@ -100,11 +123,19 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
             {/* <NewsletterSignup /> */}
             <SocialMedia />
             <StyledCredits>
-               Designed by{" "}
-               <a href="http://marissakorda.com/" target="_blank">
-                  Marissa Korda
-               </a>{" "}
-               / Developed by Colin Rumball
+               <span>
+                  <span className="line">Designed by </span>
+                  <a className="line" href="http://marissakorda.com/" target="_blank">
+                     Marissa Korda
+                  </a>
+               </span>
+               {/* <span className="slash"> / </span> */}
+               <span>
+                  <span className="line">Developed by </span>
+                  <a className="line" href="http://colinrumball.com/" target="_blank">
+                     Colin Rumball
+                  </a>
+               </span>
             </StyledCredits>
          </StyledNewletterAndSocial>
          <StyledButton order={3}>

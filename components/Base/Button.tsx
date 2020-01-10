@@ -50,12 +50,13 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
          text-align: center;
          letter-spacing: 2px;
 
-         font-size: 20px;
+         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.DarkBlue};
+         font-size: 16px;
          background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
          border: ${({ theme }: ThemeContainer) => `2px solid ${theme.VARIABLES.COLORS.DarkBlue}`};
 
          min-width: 200px;
-         padding: 14px 0;
+         padding: 14px 5px;
 
          transition: color 0.3s ease, border-color 0.3s ease;
 

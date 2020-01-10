@@ -35,19 +35,29 @@ const CloudAnimation: React.FC<CloudAnimationProps> = props => {
       () => styled.div`
          position: absolute;
          overflow: hidden;
+
+         background-image: url("/static/images/clouds.png");
+         background-repeat: repeat-x;
+         background-position-x: 0%;
+
+         left: 0;
+         right: 0;
+         top: 0;
+         bottom: 0;
+
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.BACKGROUND};
-         opacity: 0.3;
-         animation: moveClouds 200s linear infinite;
+         opacity: 0.4;
+
+         animation: moveClouds 50s linear infinite;
          animation-fill-mode: both;
-         animation-delay: ${props => props.delay};
 
          @keyframes moveClouds {
             from {
-               left: -100vw;
+               background-position-x: 0;
             }
 
             to {
-               left: 100vw;
+               background-position-x: 1985px;
             }
          }
       `,
@@ -55,14 +65,9 @@ const CloudAnimation: React.FC<CloudAnimationProps> = props => {
    );
 
    return (
-      <StyledCloudsContainer>
-         <StyledCloudAnimation delay={"0s"}>
-            <img src="/static/images/clouds.png" />
-         </StyledCloudAnimation>
-         <StyledCloudAnimation delay={"-100s"}>
-            <img src="/static/images/clouds.png" />
-         </StyledCloudAnimation>
-      </StyledCloudsContainer>
+      // <StyledCloudsContainer>
+      <StyledCloudAnimation />
+      // </StyledCloudsContainer>
    );
 };
 

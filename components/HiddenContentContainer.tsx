@@ -35,19 +35,19 @@ const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
          position: fixed;
          left: ${props =>
             props.corner == IconCorner.BOTTOM_LEFT || props.corner == IconCorner.TOP_LEFT
-               ? "60px"
+               ? "5%"
                : null};
          top: ${props =>
             props.corner == IconCorner.TOP_LEFT || props.corner == IconCorner.TOP_RIGHT
-               ? "60px"
+               ? "5%"
                : null};
          bottom: ${props =>
             props.corner == IconCorner.BOTTOM_LEFT || props.corner == IconCorner.BOTTOM_RIGHT
-               ? "60px"
+               ? "5%"
                : null};
          right: ${props =>
             props.corner == IconCorner.BOTTOM_RIGHT || props.corner == IconCorner.TOP_RIGHT
-               ? "60px"
+               ? "5%"
                : null};
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP + 10};
       `,

@@ -34,7 +34,10 @@ const LogoHeader: React.FC = () => {
          display: flex;
          flex-direction: column;
          align-items: center;
+         justify-content: space-evenly;
+
          width: 100%;
+         height: 350px;
          padding-top: 70px;
          user-select: none;
          pointer-events: none;
@@ -49,6 +52,8 @@ const LogoHeader: React.FC = () => {
             line-height: 23px;
             text-align: center;
             letter-spacing: 0.4px;
+
+            max-width: 80%;
          }
       `,
       []

@@ -5,7 +5,7 @@ const Logo: React.FC = () => {
    const StyledLogo = useMemo(
       () =>
          styled.img`
-            max-width: 400px;
+            max-width: 85%;
          `,
       []
    );
