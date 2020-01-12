@@ -13,33 +13,33 @@ interface ApartmentDetailsModalProps extends ModalBaseProps {
 }
 
 const RandomColors = [
-   "#dde2c7",
-   "#eddbb4",
+   "#dec2c4",
    "#dbbeb3",
    "#e7c9b1",
+   "#eddbb4",
    "#e7e2b8",
-   "#dec2c4",
-   "#d7d0e9",
-   "#c6d0e7",
-   "#cadeee",
+   "#dde2c7",
+   "#dbe9d0",
+   "#d0e9d7",
    "#d0e9e9",
-   "#cdb787",
-   "#c3a288"
+   "#cadeee",
+   "#c6d0e7",
+   "#d7d0e9"
 ];
 
 const RandomDarkenedColors = [
-   "#dde2c7",
-   "#eddbb4",
-   "#dbbeb3",
-   "#e7c9b1",
-   "#e7e2b8",
-   "#dec2c4",
-   "#d7d0e9",
-   "#c6d0e7",
-   "#cadeee",
-   "#d0e9e9",
+   "#b2a1a3",
+   "#b09a92",
+   "#c3a288",
    "#cdb787",
-   "#c3a288"
+   "#c3bd90",
+   "#b4b8a5",
+   "#b5c2aa",
+   "#aac2b1",
+   "#aac2c2",
+   "#9fb8cd",
+   "#a0aac1",
+   "#b1aac2"
 ];
 
 const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
