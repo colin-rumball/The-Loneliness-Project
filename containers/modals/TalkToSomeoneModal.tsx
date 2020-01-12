@@ -11,7 +11,7 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
          font-size: 44px;
          font-weight: 200;
          margin: 30px 0 10px 0;
-         max-width: 320;
+         max-width: 320px;
          text-align: center;
       `,
       []

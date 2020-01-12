@@ -41,6 +41,9 @@ const CloudAnimation: React.FC<CloudAnimationProps> = props => {
          background-position-x: 0%;
          transition: background-image 1s ease-in-out;
 
+         pointer-events: none;
+         user-select: none;
+
          left: 0;
          right: 0;
          top: 0;
