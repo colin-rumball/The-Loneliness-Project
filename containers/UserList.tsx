@@ -45,7 +45,7 @@ const UserList: React.FC = () => {
                      user.id,
                      user.username != "admin" && (
                         <StyledIcon
-                           icon={FaTimes}
+                           icon={<FaTimes />}
                            hovercolor={theme.VARIABLES.COLORS.Red}
                            onClick={() =>
                               pushModal({

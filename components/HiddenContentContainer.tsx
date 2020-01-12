@@ -1,7 +1,6 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
 import ScrollLock, { TouchScrollable } from "react-scrolllock";
 import styled from "styled-components";
-import { IoMdMenu, IoIosClose } from "react-icons/io";
 import { ThemeContainer } from "../themes/common";
 import StyledIcon from "./Styled/StyledIcon";
 import useCurrentTheme from "../hooks/useCurrentTheme";
@@ -15,39 +14,63 @@ export enum IconCorner {
 
 export interface HiddenContentContainerProps {
    corner: IconCorner;
-   icon: Object;
+   closedIcon: Object;
+   openIcon: Object;
    content: Object;
+   showBehind: boolean;
+   onVisibleStateChange(visible: boolean);
 }
 
 const DefaultHiddenContentContainerProps: HiddenContentContainerProps = {
    corner: IconCorner.TOP_LEFT,
-   icon: null,
-   content: null
+   closedIcon: null,
+   openIcon: null,
+   content: null,
+   showBehind: false,
+   onVisibleStateChange: () => {}
 };
 
 const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
-   const { corner, icon, content } = { ...DefaultHiddenContentContainerProps, ...props };
+   const { corner, closedIcon, openIcon, content, showBehind, onVisibleStateChange } = {
+      ...DefaultHiddenContentContainerProps,
+      ...props
+   };
    const currentTheme = useCurrentTheme();
+   const [fadingOut, setFadingOut] = useState(false);
    const [showContent, setShowContent] = useState(false);
+
+   useEffect(() => {
+      if (fadingOut) {
+         const timerId = setTimeout(() => {
+            setFadingOut(false);
+         }, 600);
+         return () => {
+            clearTimeout(timerId);
+         };
+      }
+   }, [fadingOut]);
+
+   const distanceFromCorner = "5%";
 
    const StyledIconContainer = useMemo(
       () => styled.div`
+         cursor: pointer;
          position: fixed;
          left: ${props =>
             props.corner == IconCorner.BOTTOM_LEFT || props.corner == IconCorner.TOP_LEFT
-               ? "5%"
+               ? distanceFromCorner
                : null};
          top: ${props =>
             props.corner == IconCorner.TOP_LEFT || props.corner == IconCorner.TOP_RIGHT
-               ? "5%"
+               ? distanceFromCorner
                : null};
          bottom: ${props =>
             props.corner == IconCorner.BOTTOM_LEFT || props.corner == IconCorner.BOTTOM_RIGHT
-               ? "5%"
+               ? distanceFromCorner
                : null};
          right: ${props =>
             props.corner == IconCorner.BOTTOM_RIGHT || props.corner == IconCorner.TOP_RIGHT
-               ? "5%"
+               ? distanceFromCorner
                : null};
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP + 10};
       `,
@@ -56,33 +79,49 @@ const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
 
    const StyledContentContainer = useMemo(
       () => styled.div`
-         /* animation: ${({ theme }: ThemeContainer) =>
-            theme.ANIMATIONS.FadeOut} 0.6s ease-in both; */
-			display: ${showContent ? "block" : "none"};
-         user-select: ${showContent ? "auto" : "none"};
-         pointer-events: ${showContent ? "auto" : "none"};
-      `,
-      [showContent]
-   );
+         position: absolute;
+         animation: ${({ fadingOut }) => (fadingOut ? "fadeOut 0.6s ease both" : "")};
+         display: ${({ showContent, fadingOut }) => (showContent || fadingOut ? "block" : "none")};
+         user-select: ${({ showContent, fadingOut }) =>
+            showContent || fadingOut ? "auto" : "none"};
+         pointer-events: ${({ showContent, fadingOut }) =>
+            showContent || fadingOut ? "auto" : "none"};
+         z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
 
-   const currentIcon = useMemo(() => (showContent ? IoIosClose : icon), [showContent]);
+         @keyframes fadeOut {
+            from {
+               opacity: 1;
+            }
+            to {
+               opacity: 0;
+            }
+         }
+      `,
+      []
+   );
 
    return (
       <>
-         <StyledIconContainer corner={corner}>
+         <StyledIconContainer
+            corner={corner}
+            onClick={() => {
+               onVisibleStateChange(!showContent);
+               setShowContent(!showContent);
+               setFadingOut(showContent);
+            }}
+         >
             <StyledIcon
-               icon={currentIcon}
+               icon={showContent ? openIcon : closedIcon}
                size={"36px"}
                color={currentTheme.VARIABLES.COLORS.Tan}
                hovercolor={"#fff"}
-               onClick={() => {
-                  setShowContent(!showContent);
-               }}
             />
          </StyledIconContainer>
-         <ScrollLock isActive={showContent} />
+         <ScrollLock isActive={showContent || fadingOut} />
          <TouchScrollable>
-            <StyledContentContainer>{content}</StyledContentContainer>
+            <StyledContentContainer showContent={showContent} fadingOut={fadingOut}>
+               {content}
+            </StyledContentContainer>
          </TouchScrollable>
       </>
    );

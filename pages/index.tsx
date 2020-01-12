@@ -8,10 +8,7 @@ import CloudAnimation from "../components/CloudAnimation";
 import { useRouter } from "next/router";
 import useModal from "../hooks/useModal";
 import ApartmentDetailsModal from "../containers/modals/ApartmentDetailsModal";
-import HiddenContentContainer, { IconCorner } from "../components/HiddenContentContainer";
-import { IoMdMenu, IoIosSearch } from "react-icons/io";
-import AboutSection from "../containers/AboutSection";
-import SearchSection from "../containers/SearchSection";
+import CornerIcons from "../containers/CornerIcons";
 
 const HomePage = ({ apolloClient }) => {
    const router = useRouter();
@@ -46,16 +43,7 @@ const HomePage = ({ apolloClient }) => {
    return (
       <>
          <StyledHomePage>
-            <HiddenContentContainer
-               corner={IconCorner.TOP_LEFT}
-               icon={IoMdMenu}
-               content={<AboutSection />}
-            />
-            <HiddenContentContainer
-               corner={IconCorner.TOP_RIGHT}
-               icon={IoIosSearch}
-               content={<SearchSection />}
-            />
+            <CornerIcons />
             <CloudAnimation />
             <LogoHeader />
             <ApartmentBuildings />

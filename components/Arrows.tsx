@@ -59,7 +59,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
       <StyledArrows>
          <StyledArrowIcon showArrow={showLeftArrow}>
             <StyledIcon
-               icon={IoIosArrowBack}
+               icon={<IoIosArrowBack />}
                onClick={() => onLeftArrowClicked(currentApt + 1)}
                color={"#fff"}
                size={"38px"}
@@ -68,7 +68,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
 
          <StyledArrowIcon showArrow={showRightArrow}>
             <StyledIcon
-               icon={IoIosArrowForward}
+               icon={<IoIosArrowForward />}
                onClick={() => onRightArrowClicked(currentApt - 1)}
                color={"#fff"}
                size={"38px"}

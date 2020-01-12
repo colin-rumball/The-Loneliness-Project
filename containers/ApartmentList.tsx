@@ -95,9 +95,9 @@ const ApartmentList: React.FC = () => {
                      }),
                   cells: [
                      apartment.published ? (
-                        <StyledIcon icon={FaCheck} color={VARIABLES.COLORS.Green} />
+                        <StyledIcon icon={<FaCheck />} color={VARIABLES.COLORS.Green} />
                      ) : (
-                        <StyledIcon icon={FaTimes} color={VARIABLES.COLORS.Red} />
+                        <StyledIcon icon={<FaTimes />} color={VARIABLES.COLORS.Red} />
                      ),
                      apartment.apt,
                      apartment.id

@@ -86,7 +86,7 @@ const FlexibleTable: React.FC<FlexibleTableProps> = props => {
       <Card
          header={{
             text: header.title,
-            actions: [<StyledIcon icon={FaPlus} onClick={header.onAddButtonClicked} />]
+            actions: [<StyledIcon icon={<FaPlus />} onClick={header.onAddButtonClicked} />]
          }}
       >
          {loading ? (

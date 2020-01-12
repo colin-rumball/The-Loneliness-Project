@@ -22,7 +22,7 @@ const StyledIcon: React.FC<StyledIconProps> = props => {
    const { icon, color: staticColor, ...rest } = { ...StyledIconDefaultProps, ...props };
 
    const InternalStyledIcon = useMemo(
-      () => styled(icon)`
+      () => styled.span`
          color: ${({ theme, staticcolor = theme.ICON_STYLES.COLOR_DEFAULT }) => staticcolor};
          font-size: ${({ theme, size = theme.ICON_STYLES.SIZE_M }: ThemeContainer) => size};
          transition: color 0.3s ease, transform 0.3s ease;
@@ -38,10 +38,14 @@ const StyledIcon: React.FC<StyledIconProps> = props => {
             transform: ${props => (props.onClick ? "scale(1.1)" : "scale(1)")};
          }
       `,
-      [icon]
+      []
    );
 
-   return <InternalStyledIcon staticcolor={staticColor} {...rest} />;
+   return (
+      <InternalStyledIcon staticcolor={staticColor} {...rest}>
+         {icon}
+      </InternalStyledIcon>
+   );
 };
 
 export default StyledIcon;

@@ -17,12 +17,16 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
       () => styled.div`
          position: absolute;
          top: 800px;
-         right: 2%;
+         right: 0;
          bottom: 850px;
          width: 3.5%;
          min-width: 50px;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND - 1};
          animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 3s 1s ease-in both;
+
+         @media (min-width: 384px) {
+            right: 2%;
+         }
 
          @media (min-width: 768px) {
             right: 3%;

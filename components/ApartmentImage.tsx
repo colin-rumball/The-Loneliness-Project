@@ -87,7 +87,7 @@ const ApartmentImage: React.FC<ApartmentImageProps> = props => {
             <img className="apartment-image" src={originalImage} />
          )}
          <StyledEditIcon className="edit-icon">
-            <StyledIcon color="#fff" icon={FaEdit} size={"40px"} />
+            <StyledIcon color="#fff" icon={<FaEdit />} size={"40px"} />
          </StyledEditIcon>
       </StyledApartmentImage>
    );

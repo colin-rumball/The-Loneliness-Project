@@ -22,11 +22,15 @@ const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
          pointer-events: none;
          flex-wrap: wrap;
          width: 100%;
-         padding: 350px 5% 0 5%;
+         padding: 350px 9% 0 9%;
          min-height: 100vh;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND};
 
          animation: ${props => (!props.showingSpinner ? "fadeIn 2s ease-in 0.4s both" : null)};
+
+         @media (min-width: 768px) {
+            padding: 350px 5% 0 5%;
+         }
 
          @keyframes fadeIn {
             from {
