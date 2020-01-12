@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 import HiddenContentContainer, { IconCorner } from "../components/HiddenContentContainer";
-import { IoMdMenu, IoIosSearch } from "react-icons/io";
+import { IoMdMenu, IoIosSearch, IoMdClose } from "react-icons/io";
 import AboutSection from "../containers/AboutSection";
 import SearchSection from "../containers/SearchSection";
 import HamburgerIcon from "../components/HamburgerIcon";
@@ -25,6 +25,16 @@ const CornerIcons: React.FC<CornerIconsProps> = props => {
             closedIcon={<HamburgerIcon active={activeCorner == IconCorner.TOP_LEFT} />}
             openIcon={<HamburgerIcon active={activeCorner == IconCorner.TOP_LEFT} />}
             content={<AboutSection />}
+         />
+         <HiddenContentContainer
+            showBehind={activeCorner !== null && activeCorner !== IconCorner.TOP_RIGHT}
+            onVisibleStateChange={(show: boolean) =>
+               setActiveCorner(show ? IconCorner.TOP_RIGHT : null)
+            }
+            corner={IconCorner.TOP_RIGHT}
+            closedIcon={<IoIosSearch />}
+            openIcon={<IoMdClose />}
+            content={<SearchSection />}
          />
          {/* <HiddenContentContainer
             showBehind={activeCorner !== IconCorner.TOP_RIGHT && activeCorner !== null}

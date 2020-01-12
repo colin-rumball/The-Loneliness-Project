@@ -73,6 +73,7 @@ const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
                ? distanceFromCorner
                : null};
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP + 10};
+         display: ${props => (props.showBehind ? "none" : "block")};
       `,
       []
    );
@@ -103,6 +104,7 @@ const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
    return (
       <>
          <StyledIconContainer
+            showBehind={showBehind}
             corner={corner}
             onClick={() => {
                onVisibleStateChange(!showContent);
@@ -115,6 +117,7 @@ const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
                size={"36px"}
                color={currentTheme.VARIABLES.COLORS.Tan}
                hovercolor={"#fff"}
+               onClick={() => {}}
             />
          </StyledIconContainer>
          <ScrollLock isActive={showContent || fadingOut} />
