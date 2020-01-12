@@ -21,7 +21,7 @@ const StyledIconDefaultProps: StyledIconProps = {
 const StyledIcon: React.FC<StyledIconProps> = props => {
    const { icon, color: staticColor, ...rest } = { ...StyledIconDefaultProps, ...props };
 
-   const StyledAddIcon = useMemo(
+   const InternalStyledIcon = useMemo(
       () => styled(icon)`
          color: ${({ theme, staticcolor = theme.ICON_STYLES.COLOR_DEFAULT }) => staticcolor};
          font-size: ${({ theme, size = theme.ICON_STYLES.SIZE_M }: ThemeContainer) => size};
@@ -41,7 +41,7 @@ const StyledIcon: React.FC<StyledIconProps> = props => {
       [icon]
    );
 
-   return <StyledAddIcon staticcolor={staticColor} {...rest} />;
+   return <InternalStyledIcon staticcolor={staticColor} {...rest} />;
 };
 
 export default StyledIcon;

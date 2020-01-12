@@ -29,13 +29,20 @@ const Arrows: React.FC<ArrowsProps> = props => {
          position: absolute;
          display: flex;
          flex-wrap: nowrap;
-         justify-content: space-between;
+         justify-content: space-around;
          align-items: center;
-         left: -50px;
-         right: -50px;
-         top: 0;
-         bottom: 0;
+         left: 0;
+         right: 0;
+         bottom: -60px;
          pointer-events: none;
+
+         @media (min-width: 768px) {
+            justify-content: space-between;
+            left: -50px;
+            right: -50px;
+            top: 0;
+            bottom: 0;
+         }
       `,
       []
    );

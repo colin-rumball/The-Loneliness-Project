@@ -16,6 +16,7 @@ interface StyledApartmentDetailsProps {
    onRightArrowClicked?(apt: number);
    showLeftArrow?: boolean;
    showRightArrow?: boolean;
+   color: string;
 }
 
 const StyledApartmentDetailsDefaultProps: StyledApartmentDetailsProps = {
@@ -29,7 +30,8 @@ const StyledApartmentDetailsDefaultProps: StyledApartmentDetailsProps = {
    onLeftArrowClicked: () => {},
    onRightArrowClicked: () => {},
    showLeftArrow: true,
-   showRightArrow: true
+   showRightArrow: true,
+   color: "#e7c9b1"
 };
 
 const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
@@ -44,7 +46,8 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
       onLeftArrowClicked,
       onRightArrowClicked,
       showLeftArrow,
-      showRightArrow
+      showRightArrow,
+      color
    } = {
       ...StyledApartmentDetailsDefaultProps,
       ...props
@@ -61,7 +64,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             right: 1px;
             min-height: 40px;
             max-height: 40px;
-            background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+            background-color: ${color};
          }
 
          .apartment-modal-details {
@@ -72,8 +75,12 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             text-align: left;
             padding-right: 3px;
             padding-top: 60px;
-            margin: 24px 40px 34px 50px;
+            margin: 24px 25px 34px 35px;
             overflow: auto;
+
+            @media (min-width: 768px) {
+               margin: 24px 40px 34px 50px;
+            }
 
             .line {
                display: inline-block;
@@ -104,9 +111,14 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             .details-header {
                width: 100%;
                display: flex;
+               flex-direction: column;
                flex-wrap: nowrap;
                align-items: baseline;
                overflow: hidden;
+
+               @media (min-width: 768px) {
+                  flex-direction: row;
+               }
 
                .apt-owner-name {
                   font-size: 52px;
@@ -128,6 +140,11 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   line-height: 41px;
                   text-align: center;
                   max-width: 50px;
+                  display: none;
+
+                  @media (min-width: 768px) {
+                     display: inline-block;
+                  }
                }
 
                .apt-owner-age {
@@ -140,15 +157,24 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                }
 
                .apt-number {
-                  text-align: right;
+                  text-align: left;
                   flex-grow: 3;
-                  align-self: center;
+                  align-self: auto;
+                  margin-bottom: 15px;
 
                   font-family: "lato", sans-serif;
                   font-weight: 900;
                   letter-spacing: 1px;
                   font-size: 12px;
                   pointer-events: none;
+                  order: -1;
+
+                  @media (min-width: 768px) {
+                     margin-bottom: 0;
+                     align-self: center;
+                     text-align: right;
+                     order: 0;
+                  }
                }
             }
          }
@@ -163,7 +189,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             max-height: 40px;
          }
       `,
-      []
+      [color]
    );
 
    return (
