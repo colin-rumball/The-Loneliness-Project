@@ -2,7 +2,7 @@ import React, { useMemo, useState, useCallback } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../themes/common";
 import { useLazyQuery } from "@apollo/react-hooks";
-import { APARTMENTS_OVERVIEW } from "../gql/queries";
+import { APARTMENTS_OVERVIEW_EXTRAS } from "../gql/queries";
 import { useRouter } from "next/router";
 import useModal from "../hooks/useModal";
 import ApartmentDetailsModal from "./modals/ApartmentDetailsModal";
@@ -20,7 +20,7 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
    const { pushModal } = useModal();
    const [userQuery, setUserQuery] = useState("");
    const [apartments, setApartments] = useState([]);
-   const [getApartments, { client }] = useLazyQuery(APARTMENTS_OVERVIEW, {
+   const [getApartments, { client }] = useLazyQuery(APARTMENTS_OVERVIEW_EXTRAS, {
       onCompleted(data) {
          if (data && data.apartments) {
             setApartments([...data.apartments]);
@@ -147,7 +147,9 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
          {apartments.length > 0 &&
             apartments.map(apartment => (
                <StyledResult onClick={() => onResultClicked(apartment.apt)} key={apartment.id}>
-                  <span>{apartment.apt}</span>
+                  <span>APT: {apartment.apt}</span>
+                  <span>{apartment.name}</span>
+                  <span>AGE: {apartment.age}</span>
                </StyledResult>
             ))}
       </StyledSearchSection>

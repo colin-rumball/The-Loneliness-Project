@@ -19,7 +19,7 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
          justify-content: space-evenly;
          align-items: center;
          width: 100%;
-         padding: 60px 40px;
+         padding: 40px 40px;
          background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
 
          @media (min-width: 768px) {
@@ -79,7 +79,7 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
          text-align: center;
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          opacity: 0.5;
-         margin-bottom: 10px;
+         margin-bottom: 20px;
 
          a {
             color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};

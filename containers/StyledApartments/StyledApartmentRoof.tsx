@@ -61,7 +61,7 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
          &.center {
             /* padding: 0 2.5%; */
             display: block;
-            transform: translateY(12.5%);
+            transform: translateY(9%);
             padding: 0 1.4%;
 
             .roof-image {

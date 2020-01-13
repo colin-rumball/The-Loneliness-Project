@@ -41,6 +41,10 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
       () => styled.div`
          animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
          animation-delay: ${props => props.delay};
+
+         &:last-child {
+            padding-top: 10px;
+         }
       `,
       []
    );

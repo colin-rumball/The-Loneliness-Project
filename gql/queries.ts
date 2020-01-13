@@ -65,6 +65,31 @@ export const APARTMENTS_OVERVIEW = gql`
    }
 `;
 
+export const APARTMENTS_OVERVIEW_EXTRAS = gql`
+   query Apartments(
+      $query: String
+      $first: Int
+      $skip: Int
+      $after: String
+      $orderBy: ApartmentOrderByInput
+      $published: Boolean
+   ) {
+      apartments(
+         query: $query
+         first: $first
+         skip: $skip
+         after: $after
+         orderBy: $orderBy
+         published: $published
+      ) {
+         id
+         apt
+         name
+         age
+      }
+   }
+`;
+
 export const APARTMENT_COUNT = gql`
    query ApartmentCount {
       apartmentCount
