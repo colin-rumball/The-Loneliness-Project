@@ -74,6 +74,17 @@ const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
                : null};
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP + 10};
          display: ${props => (props.showBehind ? "none" : "block")};
+
+         animation: fadeIn 2s ease-out 2.5s both;
+
+         @keyframes fadeIn {
+            from {
+               opacity: 0;
+            }
+            to {
+               opacity: 1;
+            }
+         }
       `,
       []
    );

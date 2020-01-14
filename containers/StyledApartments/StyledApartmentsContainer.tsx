@@ -25,7 +25,7 @@ const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
          min-height: 100vh;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND};
 
-         animation: ${props => (!props.showingSpinner ? "fadeIn 2s ease-in 0.4s both" : null)};
+         animation: ${props => (!props.showingSpinner ? "fadeIn 2s ease-in 2s both" : null)};
 
          @media (min-width: 768px) {
             padding: 430px 5% 0 5%;

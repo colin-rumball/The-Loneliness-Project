@@ -55,6 +55,17 @@ const LogoHeader: React.FC = () => {
          transition: opacity 0.2s ease;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MID_GROUND};
 
+         animation: fadeIn 2s ease-out 0.25s both;
+
+         @keyframes fadeIn {
+            from {
+               opacity: 0;
+            }
+            to {
+               opacity: 1;
+            }
+         }
+
          .slogan {
             color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
             font-size: 20px;
@@ -64,6 +75,16 @@ const LogoHeader: React.FC = () => {
             letter-spacing: 0.4px;
 
             max-width: 80%;
+            animation: fadeIn 1s ease-out 1s both;
+
+            @keyframes fadeIn {
+               from {
+                  opacity: 0;
+               }
+               to {
+                  opacity: 1;
+               }
+            }
          }
       `,
       []
