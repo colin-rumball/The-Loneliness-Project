@@ -55,7 +55,7 @@ const LogoHeader: React.FC = () => {
          transition: opacity 0.2s ease;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MID_GROUND};
 
-         animation: fadeIn 2s ease-out 0.25s both;
+         animation: fadeIn 2s ease-out 0.25s backwards;
 
          @keyframes fadeIn {
             from {
