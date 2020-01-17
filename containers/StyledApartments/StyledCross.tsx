@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import { ThemeContainer } from "../../themes/common";
 
 interface StyledCrossProps {}
 
@@ -16,7 +17,7 @@ const StyledCross: React.FC<StyledCrossProps> = props => {
          left: 5.5%;
          top: -7.5%;
 
-         @media (min-width: 1286px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             /* width: 26%;
             top: 55.5%; */
          }

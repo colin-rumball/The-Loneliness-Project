@@ -22,11 +22,11 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
          padding: 40px 40px;
          background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
 
-         @media (min-width: 768px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             flex-direction: row;
          }
 
-         @media (min-width: 1286px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             flex-direction: row;
          }
       `,
@@ -61,11 +61,11 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
             max-width: 300px;
          }
 
-         @media (min-width: 768px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             order: ${props => props.order};
          }
 
-         @media (min-width: 1286px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
          }
       `,
       []
@@ -99,7 +99,7 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
             margin: 0 5px 0 0;
          }
 
-         @media (min-width: 1286px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             margin-bottom: 0px;
             flex-direction: row;
             justify-content: space-between;

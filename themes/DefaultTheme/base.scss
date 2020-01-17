@@ -1,3 +1,9 @@
+@font-face {
+   font-family: "freight-display-pro";
+   src: url("/static/fonts/FreightDispProMedium-Regular.otf") format("opentype"),
+      url("/static/fonts/FreightDispProMedium-Regular.ttf") format("truetype");
+}
+
 * {
    box-sizing: border-box;
 }
@@ -10,7 +16,7 @@ html {
 }
 
 body {
-   font-family: "Frank Ruhl Libre", serif;
+   font-family: "freight-display-pro", serif;
    background-color: #1b2334;
    // line-height: 1.6;
    margin: 0;

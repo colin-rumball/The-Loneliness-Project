@@ -21,18 +21,19 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
          flex-basis: 100%;
          padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.UNIT_PADDING}`};
 
-         @media (min-width: 768px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             flex-basis: 50%;
          }
 
-         @media (min-width: 1286px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             flex-basis: 33%;
          }
 
          &:nth-child(3n) {
             /* Right Apartments */
             transform: translateY(0);
-            @media (min-width: 1286px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                transform: translateY(8.4%);
             }
          }
@@ -40,7 +41,8 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
          &:nth-child(3n + 1) {
             /* Left Apartments */
             transform: translateY(0);
-            @media (min-width: 1286px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                transform: translateY(8.4%);
             }
          }

@@ -48,10 +48,12 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
             border-bottom: ${({ theme }: ThemeContainer) =>
                `1px solid ${theme.VARIABLES.COLORS.Tan}`};
 
-            @media (min-width: 768px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             }
 
-            @media (min-width: 1286px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                flex-direction: row;
             }
 

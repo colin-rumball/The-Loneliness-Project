@@ -47,11 +47,13 @@ const PressFeatures: React.FC<PressFeaturesProps> = ({}) => {
                opacity: 1;
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                flex-basis: 33.3%;
             }
 
-            @media (min-width: 1286px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                flex-basis: 16.6%;
             }
 

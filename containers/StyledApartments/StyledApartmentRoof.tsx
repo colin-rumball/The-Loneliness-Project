@@ -21,11 +21,11 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
          flex-basis: 100%;
          padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.ROOF_PADDING}`};
 
-         @media (min-width: 768px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             flex-basis: 50%;
          }
 
-         @media (min-width: 1286px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             flex-basis: 33%;
          }
 
@@ -49,11 +49,13 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
                width: 100%;
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                display: block;
             }
 
-            @media (min-width: 1286px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                display: block;
             }
          }
@@ -71,11 +73,13 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
                /* height: 100%; */
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                display: none;
             }
 
-            @media (min-width: 1286px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                display: block;
                padding: ${({ theme }: ThemeContainer) =>
                   `0 ${theme.APARTMENT_STYLES.ROOF_PADDING}`};
@@ -95,12 +99,14 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
                width: 100%;
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                padding: 0 1.7%;
                display: block;
             }
 
-            @media (min-width: 1286px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                display: block;
                padding: 0 2.4%;
             }

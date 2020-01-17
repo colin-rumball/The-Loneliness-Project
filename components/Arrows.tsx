@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import StyledIcon from "./Styled/StyledIcon";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { ThemeContainer } from "../themes/common";
 
 interface ArrowsProps {
    currentApt: number;
@@ -36,7 +37,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
          bottom: -60px;
          pointer-events: none;
 
-         @media (min-width: 768px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             justify-content: space-between;
             left: -50px;
             right: -50px;

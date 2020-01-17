@@ -1,4 +1,10 @@
-import { FontSizes, Colors, Layers, Variables } from "../common";
+import { FontSizes, Colors, Layers, Variables, BreakPoints } from "../common";
+
+export const BREAK_POINTS: BreakPoints = {
+   SMALL: "384px",
+   MEDIUM: "480px",
+   LARGE: "786px"
+};
 
 export const FONT_SIZES: FontSizes = {
    XS: "0.5rem",
@@ -38,6 +44,7 @@ export const LAYERS: Layers = {
 // );
 
 const VARIABLES: Variables = {
+   BREAK_POINTS,
    FONT_SIZES,
    COLORS,
    LAYERS

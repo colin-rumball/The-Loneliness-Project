@@ -34,7 +34,7 @@ const ApartmentModalBase: React.FC<ApartmentModalBaseProps> = props => {
             width: 0;
          }
 
-         @media (min-width: 768px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             width: 70vw;
             max-width: 900px;
             box-shadow: ${`10px 10px 0 ${color}`};

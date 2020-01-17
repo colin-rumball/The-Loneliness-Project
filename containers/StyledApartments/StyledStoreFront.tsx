@@ -45,12 +45,12 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
          flex-basis: 100%;
          padding: 0 1.5%;
 
-         @media (min-width: 768px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             flex-basis: 50%;
             padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.STORE_PADDING}`};
          }
 
-         @media (min-width: 1286px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             flex-basis: 33%;
             padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.STORE_PADDING}`};
          }
@@ -72,11 +72,13 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
                width: 100%;
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                display: block;
             }
 
-            @media (min-width: 1286px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                display: block;
             }
          }
@@ -84,11 +86,13 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
          &.center {
             display: block;
 
-            @media (min-width: 768px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                display: none;
             }
 
-            @media (min-width: 1286px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                display: block;
             }
 
@@ -109,11 +113,13 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
                width: 100%;
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                display: block;
             }
 
-            @media (min-width: 1286px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                display: block;
             }
          }
@@ -132,7 +138,7 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
          user-select: initial;
          pointer-events: initial;
 
-         @media (min-width: 1286px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             left: 18%;
          }
 

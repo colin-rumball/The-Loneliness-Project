@@ -1,3 +1,9 @@
+export interface BreakPoints {
+   LARGE: string;
+   MEDIUM: string;
+   SMALL: string;
+}
+
 export interface FontSizes {
    XS: string;
    S: string;
@@ -28,6 +34,7 @@ export interface Layers {
 }
 
 export interface Variables {
+   BREAK_POINTS: BreakPoints;
    FONT_SIZES: FontSizes;
    COLORS: Colors;
    LAYERS: Layers;

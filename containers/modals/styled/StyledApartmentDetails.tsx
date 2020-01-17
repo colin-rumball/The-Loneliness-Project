@@ -78,7 +78,8 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             margin: 24px 25px 34px 35px;
             overflow: auto;
 
-            @media (min-width: 768px) {
+            @media (min-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                margin: 24px 40px 34px 50px;
             }
 
@@ -116,7 +117,8 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                align-items: baseline;
                overflow: hidden;
 
-               @media (min-width: 768px) {
+               @media (min-width: ${({ theme }: ThemeContainer) =>
+                     theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                   flex-direction: row;
                }
 
@@ -142,7 +144,8 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   max-width: 50px;
                   display: none;
 
-                  @media (min-width: 768px) {
+                  @media (min-width: ${({ theme }: ThemeContainer) =>
+                        theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                      display: inline-block;
                   }
                }
@@ -169,7 +172,8 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   pointer-events: none;
                   order: -1;
 
-                  @media (min-width: 768px) {
+                  @media (min-width: ${({ theme }: ThemeContainer) =>
+                        theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
                      margin-bottom: 0;
                      align-self: center;
                      text-align: right;
@@ -215,7 +219,10 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   <div className="apartment-modal-details__question">
                      LAST TIME I FELT LONELY WAS...
                   </div>
-                  <div className="apartment-modal-details__answer">{lastTime}</div>
+                  <div
+                     className="apartment-modal-details__answer"
+                     dangerouslySetInnerHTML={{ __html: lastTime }}
+                  ></div>
                </>
             )}
             {lonelinessMeans && (
@@ -223,7 +230,10 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   <div className="apartment-modal-details__question">
                      TO ME, LONELINESS MEANS...
                   </div>
-                  <div className="apartment-modal-details__answer">{lonelinessMeans}</div>
+                  <div
+                     className="apartment-modal-details__answer"
+                     dangerouslySetInnerHTML={{ __html: lonelinessMeans }}
+                  ></div>
                </>
             )}
             {firstTime && (
@@ -231,7 +241,10 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   <div className="apartment-modal-details__question">
                      ONE OF THE FIRST TIMES I REALIZED I WAS LONELY WAS...
                   </div>
-                  <div className="apartment-modal-details__answer">{firstTime}</div>
+                  <div
+                     className="apartment-modal-details__answer"
+                     dangerouslySetInnerHTML={{ __html: firstTime }}
+                  ></div>
                </>
             )}
             {mostLonely && (
@@ -239,7 +252,10 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   <div className="apartment-modal-details__question">
                      TELL ME THE STORY OF THE TIME YOU FELT THE MOST LONELY.
                   </div>
-                  <div className="apartment-modal-details__answer">{mostLonely}</div>
+                  <div
+                     className="apartment-modal-details__answer"
+                     dangerouslySetInnerHTML={{ __html: mostLonely }}
+                  ></div>
                </>
             )}
          </div>

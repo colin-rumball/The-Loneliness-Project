@@ -27,7 +27,7 @@ const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
 
          animation: ${props => (!props.showingSpinner ? "fadeIn 2s ease-in 2s both" : null)};
 
-         @media (min-width: 768px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             padding: 430px 5% 0 5%;
          }
 

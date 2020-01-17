@@ -30,7 +30,7 @@ const ModalBase: React.FC<ModalBaseProps> = props => {
          overflow: auto;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MODAL};
 
-         @media (min-width: 768px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             min-width: 440px;
          }
       `,

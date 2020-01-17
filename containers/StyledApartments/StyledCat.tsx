@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import { ThemeContainer } from "../../themes/common";
 
 interface StyledCatProps {}
 
@@ -16,7 +17,7 @@ const StyledCat: React.FC<StyledCatProps> = props => {
          left: 64%;
          top: 55.8%;
 
-         @media (min-width: 1286px) {
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             width: 26%;
             top: 55.5%;
          }
