@@ -10,10 +10,12 @@ import StyledShowMore from "./StyledApartments/StyledShowMore";
 import StyledApartmentRoof from "./StyledApartments/StyledApartmentRoof";
 import StyledApartment from "./StyledApartments/StyledApartment";
 import { useRouter } from "next/router";
+import useCurrentTheme from "../hooks/useCurrentTheme";
 
 const ApartmentBuildings: React.FC = () => {
    const router = useRouter();
    const { pushModal } = useModal();
+   const currentTheme = useCurrentTheme();
 
    // Window sizing
    const [windowDimensions, setWindowDimensions] = useState({
@@ -26,9 +28,9 @@ const ApartmentBuildings: React.FC = () => {
    }, []);
 
    const getQueryAmount = useCallback(() => {
-      if (windowDimensions.width > 1286) {
+      if (windowDimensions.width > parseInt(currentTheme.VARIABLES.BREAK_POINTS.LARGE)) {
          return 15;
-      } else if (windowDimensions.width > 768) {
+      } else if (windowDimensions.width > parseInt(currentTheme.VARIABLES.BREAK_POINTS.MEDIUM)) {
          return 12;
       }
       return 9;
@@ -129,9 +131,9 @@ const ApartmentBuildings: React.FC = () => {
                      />
                   );
                })}
-            <StyledStoreFront position="left" image="/static/stores/store_1.png" alt="store 1" />
+            <StyledStoreFront position="left" image="/static/stores/store_1.gif" alt="store 1" />
             <StyledStoreFront position="center" image="/static/stores/store_2.png" alt="store 2" />
-            <StyledStoreFront position="right" image="/static/stores/store_3.png" alt="store 3" />
+            <StyledStoreFront position="right" image="/static/stores/store_3.gif" alt="store 3" />
          </StyledApartmentsContainer>
       </>
    );

@@ -29,7 +29,7 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
          }
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
-            right: 3%;
+            right: 2%;
          }
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {

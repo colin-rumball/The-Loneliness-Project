@@ -42,6 +42,12 @@ class MyDocument extends Document {
       return (
          <Html>
             <Head>
+               <meta
+                  name="description"
+                  content="Sharing stories and starting a conversation about loneliness. Become part of our community of people who are not as alone as they think."
+               />
+               <meta name="keywords" content="Loneliness" />
+               <meta name="author" content="Marissa Korda" />
                <link
                   href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:400,700&display=swap"
                   rel="stylesheet"

@@ -9,7 +9,6 @@
 }
 
 html {
-   // font-size: 62.5%; // Causes rem to equal 1
    font-size: 18px;
    color: #222222;
    scroll-behavior: smooth;
@@ -18,7 +17,6 @@ html {
 body {
    font-family: "freight-display-pro", serif;
    background-color: #1b2334;
-   // line-height: 1.6;
    margin: 0;
 }
 

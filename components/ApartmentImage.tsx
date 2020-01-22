@@ -2,7 +2,6 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import StyledIcon from "./Styled/StyledIcon";
 import { FaEdit } from "react-icons/fa";
-import ScreenSection from "./Base/ScreenSection";
 
 interface ApartmentImageProps {
    originalImage: string;
@@ -81,11 +80,12 @@ const ApartmentImage: React.FC<ApartmentImageProps> = props => {
             }}
          />
 
-         {currentImage ? (
-            <img className="apartment-image" src={URL.createObjectURL(currentImage)} />
-         ) : (
-            <img className="apartment-image" src={originalImage} />
-         )}
+         <img
+            className="apartment-image"
+            alt={"apartment-image"}
+            src={currentImage ? URL.createObjectURL(currentImage) : originalImage}
+         />
+
          <StyledEditIcon className="edit-icon">
             <StyledIcon color="#fff" icon={<FaEdit />} size={"40px"} />
          </StyledEditIcon>

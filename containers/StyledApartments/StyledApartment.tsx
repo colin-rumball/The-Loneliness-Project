@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 
 interface StyledApartmentProps {
+   key?: any;
    image: string;
    onClick();
    [key: string]: any;
@@ -14,7 +15,7 @@ const StyledApartmentDefaultProps: StyledApartmentProps = {
 };
 
 const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) => {
-   const { image, onClick } = { ...StyledApartmentDefaultProps, ...props };
+   const { key, image, onClick } = { ...StyledApartmentDefaultProps, ...props };
    const StyledApartment = useMemo(
       () => styled.div`
          position: relative;
@@ -76,7 +77,7 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
    return (
       <StyledApartment>
          <div ref={ref as any} className="backer" onClick={onClick} />
-         <img src={image} className="apartment" />
+         <img src={image} alt={`apartment-${key}-image`} className="apartment" />
       </StyledApartment>
    );
 });

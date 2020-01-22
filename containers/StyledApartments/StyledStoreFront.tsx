@@ -1,7 +1,5 @@
 import React, { useMemo, useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
-import StyledCat from "./StyledCat";
-import StyledCross from "./StyledCross";
 import { ThemeContainer } from "../../themes/common";
 
 interface StyledStoreFrontProps {

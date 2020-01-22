@@ -76,7 +76,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
    return (
       <StyledAboutSection>
          <StyledFadeIn delay={"0.3s"}>
-            <img className="icon" src="/static/finger-print-logo.svg" />
+            <img className="icon" alt={"fingerprint-logo"} src="/static/finger-print-logo.svg" />
          </StyledFadeIn>
          <StyledFadeIn delay={"0.5s"}>
             <div className="about-title">Loneliness is human and that’s okay.</div>

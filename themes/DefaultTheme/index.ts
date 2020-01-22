@@ -1,4 +1,4 @@
-import "./base.scss";
+import "./base.css";
 import VARIABLES from "./variables";
 import ICON_STYLES from "./defaultTheme_Icon";
 import APARTMENT_STYLES from "./defaultTheme_Apartment";

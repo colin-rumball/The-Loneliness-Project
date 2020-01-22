@@ -1,15 +1,12 @@
-import React, { useMemo, useCallback } from "react";
-import styled from "styled-components";
-import { useQuery, useLazyQuery, useMutation } from "@apollo/react-hooks";
-import { APARTMENTS_OVERVIEW, APARTMENT_DETAILED } from "../gql/queries";
+import React, { useCallback } from "react";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { APARTMENTS_OVERVIEW } from "../gql/queries";
 import useGQLErrorHandler from "../hooks/useGQLErrorHandler";
-import { FaEdit, FaPlusSquare, FaTimes, FaCheck } from "react-icons/fa";
+import { FaTimes, FaCheck } from "react-icons/fa";
 import useModal from "../hooks/useModal";
-import Card from "../components/Base/Card";
 import EditApartmentModal from "./modals/EditApartmentModal";
 import { CREATE_APARTMENT, UPDATE_APARTMENT } from "../gql/mutations";
 import FlexibleTable from "../components/Base/FlexibleTable";
-import Spinner from "../components/Spinner";
 import StyledIcon from "../components/Styled/StyledIcon";
 import useCurrentTheme from "../hooks/useCurrentTheme";
 
