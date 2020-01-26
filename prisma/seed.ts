@@ -43,6 +43,16 @@ const seed = async () => {
    console.log("Seeding database");
    const apartments: [ApartmentData] = JSON.parse(file);
    for (const apartment of apartments) {
+      const searchField: string =
+         apartment.name +
+         " " +
+         apartment.last_time +
+         " " +
+         apartment.loneliness_means +
+         " " +
+         apartment.most_lonely +
+         " " +
+         apartment.most_lonely;
       await prisma.createApartment({
          author: { connect: { id: adminUser.id } },
          apt: Number.parseInt(apartment.apt.$numberInt),
@@ -52,7 +62,8 @@ const seed = async () => {
          lonelinessMeans: apartment.loneliness_means,
          mostLonely: apartment.most_lonely,
          firstTime: apartment.first_time,
-         published: apartment.published ? apartment.published : false
+         published: apartment.published ? apartment.published : false,
+         searchField: searchField.toLowerCase()
       });
    }
 };

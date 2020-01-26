@@ -17,16 +17,7 @@ type Apartment {
    lastTime: String
    published: Boolean!
    author: User @relation(name: "ApartmentToUser", onDelete: SET_NULL)
-   # comments: [Comment!]! @relation(name: "CommentToApartment", onDelete: CASCADE)
+   searchField: String
    updatedAt: DateTime! @updatedAt
    createdAt: DateTime! @createdAt
 }
-
-# type Comment {
-#    id: ID! @id
-#    title: String!
-#    body: String!
-#    apartment: Apartment! @relation(name: "CommentToApartment", onDelete: SET_NULL)
-#    updatedAt: DateTime! @updatedAt
-#    createdAt: DateTime! @createdAt
-# }

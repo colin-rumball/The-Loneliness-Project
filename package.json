@@ -28,6 +28,7 @@
 		"@capacitor/cli": "^1.2.1",
 		"@capacitor/core": "^1.2.1",
 		"@ionic/react": "^4.10.0-rc.3",
+		"@types/lodash": "^4.14.149",
 		"apollo-boost": "^0.4.3",
 		"apollo-errors": "^1.9.0",
 		"babel-plugin-css-modules-transform": "^1.6.2",

@@ -52,19 +52,7 @@ const Query = {
       if (args.query) {
          opArgs.where.OR = [
             {
-               name_contains: args.query
-            },
-            {
-               mostLonely_contains: args.query
-            },
-            {
-               lonelinessMeans_contains: args.query
-            },
-            {
-               firstTime_contains: args.query
-            },
-            {
-               lastTime_contains: args.query
+               searchField_contains: args.query
             }
          ];
       }
