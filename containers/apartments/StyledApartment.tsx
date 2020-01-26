@@ -1,12 +1,12 @@
-import React, { useMemo, forwardRef } from "react";
+import React, { useMemo, forwardRef, Key, MutableRefObject } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 
 interface StyledApartmentProps {
-   key?: any;
+   key?: Key;
+   ref?: MutableRefObject<any>;
    image: string;
    onClick();
-   [key: string]: any;
 }
 
 const StyledApartmentDefaultProps: StyledApartmentProps = {
@@ -48,7 +48,7 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
             }
          }
 
-         .apartment {
+         .apartment-image {
             position: relative;
             pointer-events: none;
             max-width: 100%;
@@ -76,8 +76,8 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
    );
    return (
       <StyledApartment>
-         <div ref={ref as any} className="backer" onClick={onClick} />
-         <img src={image} alt={`apartment-${key}-image`} className="apartment" />
+         <div ref={ref} className="backer" onClick={onClick} />
+         <img src={image} className="apartment-image" alt={`apartment-${key}-image`} />
       </StyledApartment>
    );
 });

@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import Button from "../components/Base/Button";
-import SocialMedia from "../components/SocialMedia";
+import SocialMedia from "./SocialMedia";
 import TalkToSomeoneModal from "./modals/TalkToSomeoneModal";
 import useModal from "../hooks/useModal";
 import { ThemeContainer } from "../themes/common";

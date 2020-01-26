@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import PressFeatures from "./PressFeatures";
-import SocialMedia from "../components/SocialMedia";
+import SocialMedia from "./SocialMedia";
 import { ThemeContainer } from "../themes/common";
 
 interface AboutSectionProps {}

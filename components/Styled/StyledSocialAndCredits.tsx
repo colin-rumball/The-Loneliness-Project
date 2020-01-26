@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import SocialMedia from "../SocialMedia";
+import SocialMedia from "../../containers/SocialMedia";
 import { ThemeContainer } from "../../themes/common";
 
 interface StyledSocialAndCreditsProps {}

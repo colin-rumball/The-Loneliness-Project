@@ -1,5 +1,5 @@
 import React from "react";
-import StyledStoreFront from "./StyledStoreFront";
+import StyledStoreFront from "../../components/Styled/StyledStoreFront";
 
 interface StoreFrontsProps {}
 
