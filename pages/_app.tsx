@@ -7,15 +7,6 @@ import DefaultTheme from "../themes/DefaultTheme";
 import Head from "next/head";
 
 class MyApp extends App {
-   // static async getInitialProps({ Component, ctx }) {
-   //    let pageProps = {};
-
-   //    if (Component.getInitialProps) {
-   //       pageProps = await Component.getInitialProps(ctx);
-   //    }
-   //    return { pageProps };
-   // }
-
    render() {
       const { Component, pageProps, router, apolloClient } = this.props as any;
       return (

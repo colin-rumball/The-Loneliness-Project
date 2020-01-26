@@ -1,7 +1,7 @@
 export interface BreakPoints {
-   LARGE: string;
-   MEDIUM: string;
    SMALL: string;
+   MEDIUM: string;
+   LARGE: string;
 }
 
 export interface FontSizes {
@@ -52,6 +52,9 @@ export interface ApartmentStyles {
    STORE_PADDING: string;
    UNIT_PADDING: string;
    ROOF_PADDING: string;
+   QUERY_AMOUNT_SMALL: number;
+   QUERY_AMOUNT_MEDIUM: number;
+   QUERY_AMOUNT_LARGE: number;
 }
 
 export interface Animations {

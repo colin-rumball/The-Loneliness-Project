@@ -4,7 +4,6 @@ import { ServerStyleSheet } from "styled-components";
 
 class MyDocument extends Document {
    static async getInitialProps(ctx) {
-      // Create an instance of ServerStyleSheet
       const sheet = new ServerStyleSheet();
 
       const originalRenderPage = ctx.renderPage;
@@ -27,15 +26,6 @@ class MyDocument extends Document {
       } finally {
          sheet.seal();
       }
-
-      // // Step 2: Retrieve styles from components in the page
-      // const page = renderPage(App => props => sheet.collectStyles(<App {...props} />));
-
-      // // Step 3: Extract the styles as <style> tags
-      // const styleTags = sheet.getStyleElement();
-      // const initialProps = await Document.getInitialProps(ctx);
-      // console.log("TCL: MyDocument -> getInitialProps -> initialProps", initialProps);
-      // return { ...initialProps, styleTags };
    }
 
    render() {

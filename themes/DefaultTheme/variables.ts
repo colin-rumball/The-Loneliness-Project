@@ -35,14 +35,6 @@ export const LAYERS: Layers = {
    BACKGROUND: 1
 };
 
-// $breakpoints: (
-//    "xsmall": 280px,
-//    "small": 480px,
-//    "medium": 768px,
-//    "large": 1080px,
-//    "xlarge": 1280px
-// );
-
 const VARIABLES: Variables = {
    BREAK_POINTS,
    FONT_SIZES,
