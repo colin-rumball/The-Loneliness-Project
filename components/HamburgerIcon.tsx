@@ -1,13 +1,9 @@
 import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 
-interface HamburgerIconProps {
-   active: boolean;
-}
+interface HamburgerIconProps {}
 
-const HamburgerIconDefaultProps: HamburgerIconProps = {
-   active: false
-};
+const HamburgerIconDefaultProps: HamburgerIconProps = {};
 
 const HamburgerIcon: React.FC<HamburgerIconProps> = props => {
    const {} = { ...HamburgerIconDefaultProps, ...props };

@@ -1,18 +1,15 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { ThemeContainer } from "../../themes/common";
 import Spinner from "../../components/Spinner";
+import { ThemeContainer } from "../../themes/common";
 
-interface StyledApartmentsContainerProps {
+interface StyledMainContentProps {
    loading: Boolean;
    children: Object;
 }
 
-const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
-   loading,
-   children
-}) => {
-   const StyledApartmentsContainer = useMemo(
+const StyledMainContent: React.FC<StyledMainContentProps> = ({ loading, children }) => {
+   const StyledMainContent = useMemo(
       () => styled.div`
          position: relative;
          display: flex;
@@ -25,7 +22,7 @@ const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
          min-height: 100vh;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND};
 
-         animation: ${props => (!props.showingSpinner ? "fadeIn 2s ease-in 2s both" : null)};
+         animation: fadeIn 2s ease-in 2s both;
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             padding: 430px 5% 0 5%;
@@ -43,25 +40,17 @@ const StyledApartmentsContainer: React.FC<StyledApartmentsContainerProps> = ({
       []
    );
 
-   const StyledSpinnerContainer = useMemo(
-      () => styled.div`
-         padding-top: 100px;
-         width: 100%;
-      `,
-      []
-   );
-
    return (
-      <StyledApartmentsContainer showingSpinner={loading}>
+      <StyledMainContent>
          {loading ? (
-            <StyledSpinnerContainer>
+            <div style={{ paddingTop: "100px", width: "100%" }}>
                <Spinner />
-            </StyledSpinnerContainer>
+            </div>
          ) : (
             children
          )}
-      </StyledApartmentsContainer>
+      </StyledMainContent>
    );
 };
 
-export default StyledApartmentsContainer;
+export default StyledMainContent;

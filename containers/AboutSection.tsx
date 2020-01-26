@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
-import styled, { css } from "styled-components";
-import NewsletterSignup from "../components/NewsletterSignup";
+import styled from "styled-components";
 import PressFeatures from "./PressFeatures";
 import SocialMedia from "../components/SocialMedia";
 import { ThemeContainer } from "../themes/common";
@@ -104,7 +103,6 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
             we hide from others.
          </StyledParagraph>
          <StyledFadeIn delay={"1.3s"}>
-            {/* <NewsletterSignup showHeader={false} /> */}
             <SocialMedia />
             <PressFeatures />
          </StyledFadeIn>

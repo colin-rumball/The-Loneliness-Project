@@ -1,10 +1,10 @@
-import React, { useState, useMemo } from "react";
-import styled from "styled-components";
-import HiddenContentContainer, { IconCorner } from "../components/HiddenContentContainer";
-import { IoMdMenu, IoIosSearch, IoMdClose } from "react-icons/io";
+import React from "react";
+import CornerIconWithContent, { IconCorner } from "../components/CornerIcon/CornerIconWithContent";
+import { IoIosSearch, IoMdClose } from "react-icons/io";
 import AboutSection from "../containers/AboutSection";
 import SearchSection from "../containers/SearchSection";
 import HamburgerIcon from "../components/HamburgerIcon";
+import { CornerIconsContextProvider } from "../contexts/CornerIconsContext";
 
 interface CornerIconsProps {}
 
@@ -12,41 +12,22 @@ const CornerIconsDefaultProps: CornerIconsProps = {};
 
 const CornerIcons: React.FC<CornerIconsProps> = props => {
    const {} = { ...CornerIconsDefaultProps, ...props };
-   const [activeCorner, setActiveCorner] = useState(null);
 
    return (
-      <>
-         <HiddenContentContainer
-            showBehind={activeCorner !== null && activeCorner !== IconCorner.TOP_LEFT}
-            onVisibleStateChange={(show: boolean) =>
-               setActiveCorner(show ? IconCorner.TOP_LEFT : null)
-            }
+      <CornerIconsContextProvider>
+         <CornerIconWithContent
             corner={IconCorner.TOP_LEFT}
-            closedIcon={<HamburgerIcon active={activeCorner == IconCorner.TOP_LEFT} />}
-            openIcon={<HamburgerIcon active={activeCorner == IconCorner.TOP_LEFT} />}
+            closedIcon={<HamburgerIcon />}
+            openIcon={<HamburgerIcon />}
             content={<AboutSection />}
          />
-         <HiddenContentContainer
-            showBehind={activeCorner !== null && activeCorner !== IconCorner.TOP_RIGHT}
-            onVisibleStateChange={(show: boolean) =>
-               setActiveCorner(show ? IconCorner.TOP_RIGHT : null)
-            }
+         <CornerIconWithContent
             corner={IconCorner.TOP_RIGHT}
             closedIcon={<IoIosSearch />}
             openIcon={<IoMdClose />}
             content={<SearchSection />}
          />
-         {/* <HiddenContentContainer
-            showBehind={activeCorner !== IconCorner.TOP_RIGHT && activeCorner !== null}
-            onVisibleStateChange={(show: boolean) =>
-               setActiveCorner(!show ? null : IconCorner.TOP_RIGHT)
-            }
-            corner={IconCorner.TOP_RIGHT}
-            closedIcon={IoIosSearch}
-            openIcon={IoIosSearch}
-            content={<SearchSection />}
-         /> */}
-      </>
+      </CornerIconsContextProvider>
    );
 };
 

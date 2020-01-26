@@ -1,9 +1,11 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import ScrollLock, { TouchScrollable } from "react-scrolllock";
 import styled from "styled-components";
-import { ThemeContainer } from "../themes/common";
-import StyledIcon from "./Styled/StyledIcon";
-import useCurrentTheme from "../hooks/useCurrentTheme";
+import { ThemeContainer } from "../../themes/common";
+import StyledIcon from "../Styled/StyledIcon";
+import useCurrentTheme from "../../hooks/useCurrentTheme";
+import { useCornerIconsContext } from "../../contexts/CornerIconsContext";
+import CornerIconContainer from "./CornerIconContainer";
 
 export enum IconCorner {
    TOP_LEFT,
@@ -17,27 +19,24 @@ export interface HiddenContentContainerProps {
    closedIcon: Object;
    openIcon: Object;
    content: Object;
-   showBehind: boolean;
-   onVisibleStateChange(visible: boolean);
 }
 
 const DefaultHiddenContentContainerProps: HiddenContentContainerProps = {
    corner: IconCorner.TOP_LEFT,
    closedIcon: null,
    openIcon: null,
-   content: null,
-   showBehind: false,
-   onVisibleStateChange: () => {}
+   content: null
 };
 
-const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
-   const { corner, closedIcon, openIcon, content, showBehind, onVisibleStateChange } = {
+const CornerIconWithContent: React.FC<HiddenContentContainerProps> = props => {
+   const { corner, closedIcon, openIcon, content } = {
       ...DefaultHiddenContentContainerProps,
       ...props
    };
    const currentTheme = useCurrentTheme();
    const [fadingOut, setFadingOut] = useState(false);
    const [showContent, setShowContent] = useState(false);
+   const { activeCorner, setActiveCorner } = useCornerIconsContext();
 
    useEffect(() => {
       if (fadingOut) {
@@ -49,45 +48,6 @@ const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
          };
       }
    }, [fadingOut]);
-
-   const distanceFromCorner = "5%";
-
-   const StyledIconContainer = useMemo(
-      () => styled.div`
-         cursor: pointer;
-         position: fixed;
-         left: ${props =>
-            props.corner == IconCorner.BOTTOM_LEFT || props.corner == IconCorner.TOP_LEFT
-               ? distanceFromCorner
-               : null};
-         top: ${props =>
-            props.corner == IconCorner.TOP_LEFT || props.corner == IconCorner.TOP_RIGHT
-               ? distanceFromCorner
-               : null};
-         bottom: ${props =>
-            props.corner == IconCorner.BOTTOM_LEFT || props.corner == IconCorner.BOTTOM_RIGHT
-               ? distanceFromCorner
-               : null};
-         right: ${props =>
-            props.corner == IconCorner.BOTTOM_RIGHT || props.corner == IconCorner.TOP_RIGHT
-               ? distanceFromCorner
-               : null};
-         z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP + 10};
-         display: ${props => (props.showBehind ? "none" : "block")};
-
-         animation: fadeIn 2s ease-out 2.5s both;
-
-         @keyframes fadeIn {
-            from {
-               opacity: 0;
-            }
-            to {
-               opacity: 1;
-            }
-         }
-      `,
-      []
-   );
 
    const StyledContentContainer = useMemo(
       () => styled.div`
@@ -114,11 +74,11 @@ const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
 
    return (
       <>
-         <StyledIconContainer
-            showBehind={showBehind}
+         <CornerIconContainer
+            shouldHide={activeCorner != undefined && activeCorner != corner}
             corner={corner}
             onClick={() => {
-               onVisibleStateChange(!showContent);
+               setActiveCorner(activeCorner == corner ? undefined : corner);
                setShowContent(!showContent);
                setFadingOut(showContent);
             }}
@@ -130,7 +90,7 @@ const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
                hovercolor={"#fff"}
                onClick={() => {}}
             />
-         </StyledIconContainer>
+         </CornerIconContainer>
          <ScrollLock isActive={showContent || fadingOut} />
          <TouchScrollable>
             <StyledContentContainer showContent={showContent} fadingOut={fadingOut}>
@@ -141,4 +101,4 @@ const HiddenContentContainer: React.FC<HiddenContentContainerProps> = props => {
    );
 };
 
-export default HiddenContentContainer;
+export default CornerIconWithContent;

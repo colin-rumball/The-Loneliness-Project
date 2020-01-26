@@ -1,0 +1,87 @@
+import React, { useMemo } from "react";
+import styled from "styled-components";
+import SocialMedia from "../SocialMedia";
+import { ThemeContainer } from "../../themes/common";
+
+interface StyledSocialAndCreditsProps {}
+
+const StyledSocialAndCreditsDefaultProps: StyledSocialAndCreditsProps = {};
+
+const StyledSocialAndCredits: React.FC<StyledSocialAndCreditsProps> = props => {
+   const {} = { ...StyledSocialAndCreditsDefaultProps, ...props };
+   const StyledNewletterAndSocial = useMemo(
+      () => styled.div`
+         order: 2;
+         display: flex;
+         flex-grow: 1;
+         flex-direction: column;
+         align-items: center;
+         width: 100%;
+         min-width: 360px;
+         height: 100%;
+      `,
+      []
+   );
+   const StyledCredits = useMemo(
+      () => styled.div`
+         display: flex;
+         flex-direction: column;
+         width: 100%;
+         text-align: center;
+         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+         opacity: 0.5;
+         margin-bottom: 20px;
+
+         a {
+            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+            text-decoration: none;
+
+            &:hover {
+               color: #fff;
+            }
+         }
+
+         .slash {
+            display: none;
+         }
+
+         .line {
+            display: inline-block;
+            margin: 0 5px 0 0;
+         }
+
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+            margin-bottom: 0px;
+            flex-direction: row;
+            justify-content: space-between;
+            .slash {
+               flex-grow: 1;
+               display: inline-block;
+            }
+         }
+      `,
+      []
+   );
+   return (
+      <StyledNewletterAndSocial>
+         <SocialMedia />
+         <StyledCredits>
+            <span>
+               <span className="line">Designed by </span>
+               <a className="line" href="https://marissakorda.com/" target="_blank">
+                  Marissa Korda
+               </a>
+            </span>
+            {/* <span className="slash"> / </span> */}
+            <span>
+               <span className="line">Developed by </span>
+               <a className="line" href="https://colinrumball.com/" target="_blank">
+                  Colin Rumball
+               </a>
+            </span>
+         </StyledCredits>
+      </StyledNewletterAndSocial>
+   );
+};
+
+export default StyledSocialAndCredits;

@@ -22,7 +22,7 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
          width: 3.5%;
          min-width: 50px;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.FOREGROUND - 1};
-         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 3s 1s ease-in both;
+         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 3s 3s ease-in both;
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.SMALL}) {
             right: 2%;

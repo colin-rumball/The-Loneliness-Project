@@ -9,28 +9,6 @@ const CloudAnimationDefaultProps: CloudAnimationProps = {};
 const CloudAnimation: React.FC<CloudAnimationProps> = props => {
    const {} = { ...CloudAnimationDefaultProps, ...props };
 
-   const StyledCloudsContainer = useMemo(
-      () => styled.div`
-         position: absolute;
-         overflow: hidden;
-         animation: fadeIn 2s ease-in 0.4s both;
-         width: 100%;
-         height: 100%;
-         pointer-events: none;
-         user-select: none;
-
-         @keyframes fadeIn {
-            from {
-               opacity: 0;
-            }
-            to {
-               opacity: 1;
-            }
-         }
-      `,
-      []
-   );
-
    const StyledCloudAnimation = useMemo(
       () => styled.div`
          position: absolute;
@@ -69,11 +47,7 @@ const CloudAnimation: React.FC<CloudAnimationProps> = props => {
       []
    );
 
-   return (
-      // <StyledCloudsContainer>
-      <StyledCloudAnimation />
-      // </StyledCloudsContainer>
-   );
+   return <StyledCloudAnimation />;
 };
 
 export default CloudAnimation;

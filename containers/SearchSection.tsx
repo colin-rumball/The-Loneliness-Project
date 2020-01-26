@@ -34,9 +34,10 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
       event => {
          setUserQuery(event.target.value);
          if (event.target.value) {
+            const query = event.target.value.toLowerCase();
             debouncedSetApartments({
                variables: {
-                  query: event.target.value,
+                  query: query,
                   first: 15,
                   orderBy: "apt_DESC",
                   skip: 0,

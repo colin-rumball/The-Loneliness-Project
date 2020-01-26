@@ -1,11 +1,11 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import Button from "../components/Base/Button";
-import NewsletterSignup from "../components/NewsletterSignup";
 import SocialMedia from "../components/SocialMedia";
 import TalkToSomeoneModal from "./modals/TalkToSomeoneModal";
 import useModal from "../hooks/useModal";
 import { ThemeContainer } from "../themes/common";
+import StyledSocialAndCredits from "../components/Styled/StyledSocialAndCredits";
 
 interface HomeUserActionsProps {}
 
@@ -23,26 +23,12 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
          background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
-            flex-direction: row;
+            flex-direction: column;
          }
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             flex-direction: row;
          }
-      `,
-      []
-   );
-
-   const StyledNewletterAndSocial = useMemo(
-      () => styled.div`
-         order: 2;
-         display: flex;
-         flex-grow: 1;
-         flex-direction: column;
-         align-items: center;
-         width: 100%;
-         min-width: 360px;
-         height: 100%;
       `,
       []
    );
@@ -71,47 +57,6 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
       []
    );
 
-   const StyledCredits = useMemo(
-      () => styled.div`
-         display: flex;
-         flex-direction: column;
-         width: 100%;
-         text-align: center;
-         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-         opacity: 0.5;
-         margin-bottom: 20px;
-
-         a {
-            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-            text-decoration: none;
-
-            &:hover {
-               color: #fff;
-            }
-         }
-
-         .slash {
-            display: none;
-         }
-
-         .line {
-            display: inline-block;
-            margin: 0 5px 0 0;
-         }
-
-         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
-            margin-bottom: 0px;
-            flex-direction: row;
-            justify-content: space-between;
-            .slash {
-               flex-grow: 1;
-               display: inline-block;
-            }
-         }
-      `,
-      []
-   );
-
    return (
       <StyledHomeUserActions>
          <StyledButton order={1}>
@@ -119,25 +64,8 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
                <Button text="SUBMIT YOUR STORY" onClick={() => {}} />
             </a>
          </StyledButton>
-         <StyledNewletterAndSocial>
-            {/* <NewsletterSignup /> */}
-            <SocialMedia />
-            <StyledCredits>
-               <span>
-                  <span className="line">Designed by </span>
-                  <a className="line" href="http://marissakorda.com/" target="_blank">
-                     Marissa Korda
-                  </a>
-               </span>
-               {/* <span className="slash"> / </span> */}
-               <span>
-                  <span className="line">Developed by </span>
-                  <a className="line" href="http://colinrumball.com/" target="_blank">
-                     Colin Rumball
-                  </a>
-               </span>
-            </StyledCredits>
-         </StyledNewletterAndSocial>
+         {/* SOCIAL AND CREDITS (MIDDLE) */}
+         <StyledSocialAndCredits />
          <StyledButton order={3}>
             <Button
                text="TALK TO SOMEONE"
