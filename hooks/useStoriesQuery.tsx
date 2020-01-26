@@ -46,7 +46,9 @@ const useStoriesQuery = () => {
 
    useEffect(() => {
       // Initial query (hacky)
-      queryStories(queryParams);
+      if (stories.length == 0) {
+         queryStories(queryParams);
+      }
 
       // Listen for window size changes
       if (typeof window == "undefined") return;
@@ -54,7 +56,7 @@ const useStoriesQuery = () => {
       return () => {
          window.removeEventListener("resize", onWindowResized);
       };
-   }, [windowDimensions, currentTheme]);
+   }, []);
 
    // Replacement refetch
    const refetch = useCallback(() => queryStories(queryParams), [queryAmount, stories]);
