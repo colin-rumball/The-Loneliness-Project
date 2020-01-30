@@ -3,15 +3,15 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { APARTMENTS_OVERVIEW } from "../gql/queries";
 import useGQLErrorHandler from "../hooks/useGQLErrorHandler";
 import { FaTimes, FaCheck } from "react-icons/fa";
-import useModal from "../hooks/useModal";
 import EditApartmentModal from "./modals/EditApartmentModal";
 import { CREATE_APARTMENT, UPDATE_APARTMENT } from "../gql/mutations";
 import FlexibleTable from "../components/Base/FlexibleTable";
 import StyledIcon from "../components/Styled/StyledIcon";
 import useCurrentTheme from "../hooks/useCurrentTheme";
+import { useModalContext } from "../contexts/ModalContext";
 
 const ApartmentList: React.FC = () => {
-   const { pushModal, closeTopModal } = useModal();
+   const { pushModal, popModal } = useModalContext();
    const { refetch, data, loading, client } = useQuery(APARTMENTS_OVERVIEW, {
       variables: { orderBy: "apt_DESC" },
       onError: useGQLErrorHandler
@@ -37,7 +37,7 @@ const ApartmentList: React.FC = () => {
       const strippedData = extractApartmentData(data);
       strippedData.apt = Number.parseInt(strippedData.apt);
       await createApartment({ variables: { data: strippedData } });
-      closeTopModal();
+      popModal();
       refetch();
    }, []);
 
@@ -47,7 +47,7 @@ const ApartmentList: React.FC = () => {
       const strippedData = extractApartmentData(data);
       strippedData.apt = Number.parseInt(strippedData.apt);
       await updateApartment({ variables: { id, data: strippedData } });
-      closeTopModal();
+      popModal();
       refetch();
    }, []);
 
@@ -60,16 +60,14 @@ const ApartmentList: React.FC = () => {
             title: "Apartments",
             showAddButton: true,
             onAddButtonClicked: () =>
-               pushModal({
-                  html: (
-                     <EditApartmentModal
-                        apolloClient={client}
-                        onFormSubmit={onCreateNewApartment}
-                        modalTitle="Create Apartment"
-                        buttonText="Create"
-                     />
-                  )
-               })
+               pushModal(
+                  <EditApartmentModal
+                     apolloClient={client}
+                     onFormSubmit={onCreateNewApartment}
+                     modalTitle="Create Apartment"
+                     buttonText="Create"
+                  />
+               )
          }}
          body={{
             TableHeaders: ["Published", "Apt Number", "ID"],
@@ -79,17 +77,15 @@ const ApartmentList: React.FC = () => {
                data.apartments.map(apartment => ({
                   id: apartment.id,
                   onClick: () =>
-                     pushModal({
-                        html: (
-                           <EditApartmentModal
-                              apolloClient={client}
-                              modalTitle="Edit Apartment Details"
-                              buttonText="Submit"
-                              onFormSubmit={onUpdateApartment}
-                              id={apartment.id}
-                           />
-                        )
-                     }),
+                     pushModal(
+                        <EditApartmentModal
+                           apolloClient={client}
+                           modalTitle="Edit Apartment Details"
+                           buttonText="Submit"
+                           onFormSubmit={onUpdateApartment}
+                           id={apartment.id}
+                        />
+                     ),
                   cells: [
                      apartment.published ? (
                         <StyledIcon icon={<FaCheck />} color={VARIABLES.COLORS.Green} />

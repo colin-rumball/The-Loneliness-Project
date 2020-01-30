@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useContext } from "react";
 import styled from "styled-components";
 import CloudAnimation from "../components/CloudAnimation";
 import ApartmentBuildings from "../containers/ApartmentsBuildings";
@@ -8,30 +8,35 @@ import HomeUserActions from "../containers/HomeUserActions";
 import LogoHeader from "../containers/LogoHeader";
 import ApartmentDetailsModal from "../containers/modals/ApartmentDetailsModal";
 import PressFeatures from "../containers/PressFeatures";
-import useModal from "../hooks/useModal";
+import {
+   ControllerContextProvider,
+   ControllerContext,
+   Controller
+} from "../contexts/ControllerContext";
+import InteractionController from "../components/InteractionController";
+import { useModalContext } from "../contexts/ModalContext";
 
 const HomePage = ({ apolloClient }) => {
    const router = useRouter();
-   const { pushModal } = useModal();
+   const { pushModal } = useModalContext();
 
    // query url param for apartment
    useEffect(() => {
       if (router.query && router.query.a && typeof router.query.a == "string") {
          const apt = Number.parseInt(router.query.a as string);
          if (apt) {
-            pushModal({
-               html: (
-                  <ApartmentDetailsModal
-                     hideArrows={true}
-                     apartmentsStart={apt}
-                     apt={apt}
-                     apolloClient={apolloClient}
-                  />
-               )
-            });
+            pushModal(
+               <ApartmentDetailsModal
+                  hideArrows={true}
+                  apartmentsStart={apt}
+                  apt={apt}
+                  apolloClient={apolloClient}
+               />,
+               { name: "apartment" }
+            );
          }
       }
-   }, [router.query.a]);
+   }, []);
 
    const StyledHomePage = useMemo(
       () => styled.div`
@@ -42,7 +47,7 @@ const HomePage = ({ apolloClient }) => {
    );
 
    return (
-      <>
+      <InteractionController controller={Controller.MAIN}>
          <StyledHomePage>
             <CornerIcons />
             <CloudAnimation />
@@ -51,7 +56,7 @@ const HomePage = ({ apolloClient }) => {
             <HomeUserActions />
          </StyledHomePage>
          <PressFeatures />
-      </>
+      </InteractionController>
    );
 };
 

@@ -52,7 +52,6 @@ class MyDocument extends Document {
                <Main />
                <NextScript />
             </body>
-            <link href="/static/swal.css" rel="stylesheet" />
          </Html>
       );
    }

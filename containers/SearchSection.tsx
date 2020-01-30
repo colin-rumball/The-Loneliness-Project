@@ -4,10 +4,10 @@ import { ThemeContainer } from "../themes/common";
 import { useLazyQuery } from "@apollo/react-hooks";
 import { APARTMENTS_OVERVIEW_EXTRAS } from "../gql/queries";
 import { useRouter } from "next/router";
-import useModal from "../hooks/useModal";
 import ApartmentDetailsModal from "./modals/ApartmentDetailsModal";
 import useDebouncedFunction from "../hooks/useDebouncedFunction";
 import Spinner from "../components/Spinner";
+import { useModalContext } from "../contexts/ModalContext";
 
 interface SearchSectionProps {}
 
@@ -17,7 +17,7 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
    const {} = { ...SearchSectionDefaultProps, ...props };
 
    const router = useRouter();
-   const { pushModal } = useModal();
+   const { pushModal } = useModalContext();
    const [userQuery, setUserQuery] = useState("");
    const [apartments, setApartments] = useState([]);
    const [getApartments, { client }] = useLazyQuery(APARTMENTS_OVERVIEW_EXTRAS, {
@@ -57,23 +57,23 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
          router.replace(href, href, {
             shallow: true
          });
-         pushModal({
-            html: (
-               <ApartmentDetailsModal
-                  router={router}
-                  apartmentsStart={apt}
-                  hideArrows={true}
-                  apt={apt}
-                  apolloClient={client}
-               />
-            ),
-            onAfterClose: () => {
-               const href = `/`;
-               router.replace(href, href, {
-                  shallow: true
-               });
+         pushModal(
+            <ApartmentDetailsModal
+               router={router}
+               apartmentsStart={apt}
+               hideArrows={true}
+               apt={apt}
+               apolloClient={client}
+            />,
+            {
+               onClose: () => {
+                  const href = `/`;
+                  router.replace(href, href, {
+                     shallow: true
+                  });
+               }
             }
-         });
+         );
       },
       [router, client]
    );

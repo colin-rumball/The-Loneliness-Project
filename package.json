@@ -61,14 +61,14 @@
 		"react-scrolllock": "^4.0.1",
 		"request": "^2.88.0",
 		"styled-components": "^4.4.0",
-		"sweetalert2": "^8.18.0",
-		"sweetalert2-react-content": "^1.1.0",
 		"yup": "^0.27.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",
 		"@babel/plugin-proposal-class-properties": "^7.5.5",
+		"@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
 		"@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+		"@babel/plugin-proposal-optional-chaining": "^7.8.3",
 		"@babel/polyfill": "^7.4.4",
 		"@babel/preset-env": "^7.5.5",
 		"@babel/preset-react": "^7.0.0",
@@ -103,7 +103,7 @@
 		"prompt-list": "^3.2.0",
 		"recursive-readdir": "^2.2.2",
 		"ts-node": "^8.3.0",
-		"typescript": "^3.5.3",
+		"typescript": "^3.7.5",
 		"yargs": "^13.3.0"
 	},
 	"keywords": [],

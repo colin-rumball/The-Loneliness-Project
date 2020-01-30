@@ -4,14 +4,14 @@ import UserForm from "../../components/UserForm";
 import ModalBase, { ModalBaseProps } from "./ModalBase";
 import { CREATE_USER } from "../../gql/mutations";
 import { useMutation } from "@apollo/react-hooks";
-import useModal from "../../hooks/useModal";
+import { useModalContext } from "../../contexts/ModalContext";
 
 interface AddUserModalProps extends ModalBaseProps {
    onNewUserCreated();
 }
 
 const AddUserModal: React.FC<AddUserModalProps> = ({ apolloClient, onNewUserCreated, ...rest }) => {
-   const { closeTopModal } = useModal();
+   const { popModal } = useModalContext();
    const [createUser, { loading: creatingUser }] = useMutation(CREATE_USER, {
       client: apolloClient
    });
@@ -19,7 +19,7 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ apolloClient, onNewUserCrea
    const onCreateUser = useCallback(async (username, password) => {
       await createUser({ variables: { data: { username, password } } });
       onNewUserCreated();
-      closeTopModal();
+      popModal();
    }, []);
 
    return (

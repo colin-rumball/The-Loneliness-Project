@@ -79,7 +79,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             overflow: auto;
 
             @media (min-width: ${({ theme }: ThemeContainer) =>
-                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
                margin: 24px 40px 34px 50px;
             }
 
@@ -118,7 +118,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                overflow: hidden;
 
                @media (min-width: ${({ theme }: ThemeContainer) =>
-                     theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+                     theme.VARIABLES.BREAK_POINTS.LARGE}) {
                   flex-direction: row;
                }
 
@@ -145,7 +145,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   display: none;
 
                   @media (min-width: ${({ theme }: ThemeContainer) =>
-                        theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+                        theme.VARIABLES.BREAK_POINTS.LARGE}) {
                      display: inline-block;
                   }
                }
@@ -173,7 +173,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   order: -1;
 
                   @media (min-width: ${({ theme }: ThemeContainer) =>
-                        theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+                        theme.VARIABLES.BREAK_POINTS.LARGE}) {
                      margin-bottom: 0;
                      align-self: center;
                      text-align: right;

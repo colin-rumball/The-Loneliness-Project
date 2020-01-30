@@ -1,9 +1,9 @@
 import { ApolloClient } from "apollo-boost";
 import { useRouter } from "next/router";
 import React, { MutableRefObject } from "react";
-import useModal from "../../hooks/useModal";
 import ApartmentDetailsModal from "../modals/ApartmentDetailsModal";
 import StyledApartment from "./StyledApartment";
+import { useModalContext } from "../../contexts/ModalContext";
 
 interface RenderStoriesProps {
    stories: any[];
@@ -20,7 +20,7 @@ const RenderStoriesDefaultProps: RenderStoriesProps = {
 const RenderStories: React.FC<RenderStoriesProps> = props => {
    const { stories, client, lastApartmentRef } = { ...RenderStoriesDefaultProps, ...props };
    const router = useRouter();
-   const { pushModal } = useModal();
+   const { pushModal } = useModalContext();
 
    if (stories.length == 0) return null;
 
@@ -39,22 +39,22 @@ const RenderStories: React.FC<RenderStoriesProps> = props => {
                   });
 
                   // Push the detailed modal
-                  pushModal({
-                     html: (
-                        <ApartmentDetailsModal
-                           router={router}
-                           apartmentsStart={stories[0].apt}
-                           apt={story.apt}
-                           apolloClient={client}
-                        />
-                     ),
-                     onAfterClose: () => {
-                        const href = `/`;
-                        router.replace(href, href, {
-                           shallow: true
-                        });
+                  pushModal(
+                     <ApartmentDetailsModal
+                        router={router}
+                        apartmentsStart={stories[0].apt}
+                        apt={story.apt}
+                        apolloClient={client}
+                     />,
+                     {
+                        onClose: () => {
+                           const href = `/`;
+                           router.replace(href, href, {
+                              shallow: true
+                           });
+                        }
                      }
-                  });
+                  );
                }}
             />
          ))}

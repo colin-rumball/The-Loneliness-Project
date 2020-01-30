@@ -6,6 +6,8 @@ import StyledIcon from "../Styled/StyledIcon";
 import useCurrentTheme from "../../hooks/useCurrentTheme";
 import { useCornerIconsContext } from "../../contexts/CornerIconsContext";
 import CornerIconContainer from "./CornerIconContainer";
+import InteractionController from "../InteractionController";
+import { Controller, useControllerContext } from "../../contexts/ControllerContext";
 
 export enum IconCorner {
    TOP_LEFT,
@@ -37,6 +39,7 @@ const CornerIconWithContent: React.FC<HiddenContentContainerProps> = props => {
    const [fadingOut, setFadingOut] = useState(false);
    const [showContent, setShowContent] = useState(false);
    const { activeCorner, setActiveCorner } = useCornerIconsContext();
+   const { setCurrentController } = useControllerContext();
 
    useEffect(() => {
       if (fadingOut) {
@@ -78,6 +81,7 @@ const CornerIconWithContent: React.FC<HiddenContentContainerProps> = props => {
             shouldHide={activeCorner != undefined && activeCorner != corner}
             corner={corner}
             onClick={() => {
+               setCurrentController(activeCorner == corner ? Controller.MAIN : Controller.OVERLAY);
                setActiveCorner(activeCorner == corner ? undefined : corner);
                setShowContent(!showContent);
                setFadingOut(showContent);
@@ -91,12 +95,11 @@ const CornerIconWithContent: React.FC<HiddenContentContainerProps> = props => {
                onClick={() => {}}
             />
          </CornerIconContainer>
-         <ScrollLock isActive={showContent || fadingOut} />
-         <TouchScrollable>
+         <InteractionController controller={Controller.OVERLAY}>
             <StyledContentContainer showContent={showContent} fadingOut={fadingOut}>
                {content}
             </StyledContentContainer>
-         </TouchScrollable>
+         </InteractionController>
       </>
    );
 };

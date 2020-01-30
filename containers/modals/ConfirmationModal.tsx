@@ -1,8 +1,8 @@
 import React, { useMemo, useCallback, useState } from "react";
 import styled from "styled-components";
 import Button from "../../components/Base/Button";
-import useModal from "../../hooks/useModal";
 import ModalBase, { ModalBaseProps } from "./ModalBase";
+import { useModalContext } from "../../contexts/ModalContext";
 
 interface ConfirmationModalProps extends ModalBaseProps {
    message: string;
@@ -23,7 +23,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = props => {
    };
 
    const [showSpinner, setShowSpinner] = useState(false);
-   const { closeTopModal } = useModal();
+   const { popModal } = useModalContext();
 
    const StyledConfirmationModal = useMemo(
       () => styled.div`
@@ -57,7 +57,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = props => {
    const onButtonClicked = useCallback(async cb => {
       setShowSpinner(true);
       await cb();
-      closeTopModal();
+      popModal();
    }, []);
 
    return (

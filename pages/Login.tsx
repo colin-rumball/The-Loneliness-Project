@@ -6,12 +6,12 @@ import { useMutation } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
 import { ThemeContainer } from "../themes/common";
 import Spinner from "../components/Spinner";
-import useModal from "../hooks/useModal";
 import MessageModal from "../containers/modals/MessageModal";
+import { useModalContext } from "../contexts/ModalContext";
 
 const Login: React.FC = () => {
    const router = useRouter();
-   const { pushModal } = useModal();
+   const { pushModal } = useModalContext();
    const [login, { data, loading }] = useMutation(LOGIN, {
       onCompleted(data) {
          if (data && data.login) {
@@ -21,9 +21,7 @@ const Login: React.FC = () => {
          }
       },
       onError(err) {
-         pushModal({
-            html: <MessageModal message="Unable to login with provided username and password." />
-         });
+         pushModal(<MessageModal message="Unable to login with provided username and password." />);
       }
    });
 

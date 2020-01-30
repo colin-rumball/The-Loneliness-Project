@@ -28,6 +28,8 @@
          "styled-components"
       ],
       ["@babel/plugin-proposal-class-properties", {}, "class-properties"],
-      ["@babel/plugin-proposal-object-rest-spread", {}, "object-rest-spread"]
+      ["@babel/plugin-proposal-object-rest-spread", {}, "object-rest-spread"],
+      ["@babel/plugin-proposal-optional-chaining", {}, "optional-chaining"],
+      ["@babel/plugin-proposal-nullish-coalescing-operator", {}, "nullish-operator"]
    ]
 }

@@ -14,6 +14,10 @@ html {
    scroll-behavior: smooth;
 }
 
+.modal-open {
+   overflow: hidden;
+}
+
 body {
    font-family: "freight-display-pro", serif;
    background-color: #1b2334;

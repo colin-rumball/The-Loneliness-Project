@@ -3,14 +3,14 @@ import styled from "styled-components";
 import Button from "../components/Base/Button";
 import SocialMedia from "./SocialMedia";
 import TalkToSomeoneModal from "./modals/TalkToSomeoneModal";
-import useModal from "../hooks/useModal";
 import { ThemeContainer } from "../themes/common";
 import StyledSocialAndCredits from "../components/Styled/StyledSocialAndCredits";
+import { useModalContext } from "../contexts/ModalContext";
 
 interface HomeUserActionsProps {}
 
 const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
-   const { pushModal } = useModal();
+   const { pushModal } = useModalContext();
    const StyledHomeUserActions = useMemo(
       () => styled.div`
          display: flex;
@@ -70,7 +70,7 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
             <Button
                text="TALK TO SOMEONE"
                onClick={() => {
-                  pushModal({ html: <TalkToSomeoneModal /> });
+                  pushModal(<TalkToSomeoneModal />);
                }}
             />
          </StyledButton>

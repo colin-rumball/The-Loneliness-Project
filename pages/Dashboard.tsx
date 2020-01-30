@@ -7,12 +7,12 @@ import { LOGOUT } from "../gql/mutations";
 import UserList from "../containers/UserList";
 import ApartmentList from "../containers/ApartmentList";
 import { ThemeContainer } from "../themes/common";
-import useModal from "../hooks/useModal";
 import ConfirmationModal from "../containers/modals/ConfirmationModal";
+import { useModalContext } from "../contexts/ModalContext";
 
 const Dashboard: React.FC = () => {
    const router = useRouter();
-   const { pushModal } = useModal();
+   const { pushModal } = useModalContext();
    const [logout] = useMutation(LOGOUT);
 
    const { data, loading } = useQuery(ME, {
@@ -24,17 +24,15 @@ const Dashboard: React.FC = () => {
    });
 
    const onLogoutClicked = useCallback(() => {
-      pushModal({
-         html: (
-            <ConfirmationModal
-               onContinueClicked={async () => {
-                  logout();
-                  router.replace("/");
-               }}
-               message="Are you sure you'd like to logout?"
-            />
-         )
-      });
+      pushModal(
+         <ConfirmationModal
+            onContinueClicked={async () => {
+               logout();
+               router.replace("/");
+            }}
+            message="Are you sure you'd like to logout?"
+         />
+      );
    }, []);
 
    const StyledDashboardPage = useMemo(
