@@ -39,11 +39,7 @@ class MyDocument extends Document {
                <meta name="keywords" content="Loneliness" />
                <meta name="author" content="Marissa Korda" />
                <link
-                  href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre:400,700&display=swap"
-                  rel="stylesheet"
-               />
-               <link
-                  href="https://fonts.googleapis.com/css?family=Lato:400,900&display=swap"
+                  href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900&display=swap"
                   rel="stylesheet"
                />
                <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />

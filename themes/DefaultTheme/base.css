@@ -1,7 +1,6 @@
 @font-face {
    font-family: "freight-display-pro";
-   src: url("/static/fonts/FreightDispProMedium-Regular.otf") format("opentype"),
-      url("/static/fonts/FreightDispProMedium-Regular.ttf") format("truetype");
+   src: url("/static/fonts/Freight Disp Light.otf") format("opentype");
 }
 
 * {
@@ -12,6 +11,7 @@ html {
    font-size: 18px;
    color: #222222;
    scroll-behavior: smooth;
+   webkit-font-smoothing: antialiased;
 }
 
 .modal-open {
