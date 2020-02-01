@@ -103,8 +103,8 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
             from others.
          </StyledParagraph>
          <StyledFadeIn delay={"1.3s"}>
-            <SocialMedia />
-            <PressFeatures />
+            <SocialMedia justifyContent={"flex-start"} divider={true} />
+            <PressFeatures addPadding={false} />
          </StyledFadeIn>
       </StyledAboutSection>
    );

@@ -4,9 +4,16 @@ import PressHeader from "../components/PressFeatures/PressHeader";
 import RenderPressFeatures from "../components/PressFeatures/RenderPressFeatures";
 import pressFeatures from "./../static/press.json";
 
-interface PressFeaturesProps {}
+interface PressFeaturesProps {
+   addPadding?: boolean;
+}
 
-const PressFeatures: React.FC<PressFeaturesProps> = ({}) => {
+const PressFeaturesDefaultProps: PressFeaturesProps = {
+   addPadding: true
+};
+
+const PressFeatures: React.FC<PressFeaturesProps> = props => {
+   const { addPadding } = { ...PressFeaturesDefaultProps, ...props };
    const StyledPressFeatures = useMemo(
       () => styled.div`
          display: flex;
@@ -14,7 +21,7 @@ const PressFeatures: React.FC<PressFeaturesProps> = ({}) => {
          justify-content: center;
          align-items: center;
          width: 100%;
-         padding: 20px 40px;
+         padding: ${props => (props.addPadding ? "20px 40px" : null)};
          margin-bottom: 40px;
       `,
       []
@@ -23,7 +30,7 @@ const PressFeatures: React.FC<PressFeaturesProps> = ({}) => {
    return (
       <>
          <PressHeader />
-         <StyledPressFeatures>
+         <StyledPressFeatures addPadding={addPadding}>
             <RenderPressFeatures features={pressFeatures} />
          </StyledPressFeatures>
       </>

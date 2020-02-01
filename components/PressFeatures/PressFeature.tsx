@@ -27,7 +27,6 @@ const PressFeature: React.FC<PressFeatureProps> = props => {
          margin-bottom: 40px;
          text-align: center;
          height: 60px;
-         /* border: 1px solid red; */
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             flex-basis: 33.3%;
@@ -40,7 +39,6 @@ const PressFeature: React.FC<PressFeatureProps> = props => {
          .press-image {
             max-width: 100%;
             max-height: 100%;
-            /* border: yellow 1px solid; */
 
             &.walrus {
                max-width: 90%;
