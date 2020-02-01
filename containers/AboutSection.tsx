@@ -51,7 +51,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
    const StyledParagraph = useMemo(
       () => styled.p`
          font-family: "lato", sans-serif;
-         font-size: 16px;
+         font-size: 18px;
          font-weight: 300;
          line-height: 22px;
          letter-spacing: 0.5px;
@@ -81,26 +81,26 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
             <div className="about-title">Loneliness is human and that’s okay.</div>
          </StyledFadeIn>
          <StyledParagraph delay={"0.7s"}>
-            At The Loneliness Project, we believe that stories have power—the power to heal both
-            listener and teller, and to show us that we aren’t ever truly alone. Stories are
-            powerful tools for building empathy and growing kindness. Those shared here are deeply
-            personal yet profoundly universal. They reveal something about being human.
+            Stories have power—the power to heal both listener and teller, and show us that we
+            aren't ever truly alone. Those shared here are deeply personal yet profoundly universal.
+            They reveal something about being human.
          </StyledParagraph>
          <StyledParagraph delay={"0.9s"}>
-            The Loneliness Project is the first chapter of An Imperfect Archive of Us, a digital
-            space to cultivate compassion—for others, but especially for ourselves. Become part of
-            our community by{" "}
+            The project is no longer publishing weekly stories but it remains up as an archive for
+            whoever needs it. This is a digital space to cultivate compassion—for others, but
+            especially for ourselves. Though the site is no longer publishing submissions, the
+            anonymous form has remained open.{" "}
             <a
                href="https://docs.google.com/forms/d/e/1FAIpQLSf5hbVcxdWvkNSiVHucPs8Czjpehh58y2DkuGMlfmlHt1IoVQ/viewform?c=0&w=1"
                target="_blank"
             >
-               sharing your story here
-            </a>
-            .
+               Share your story here
+            </a>{" "}
+            and know that someone on the other side is listening.
          </StyledParagraph>
-         <StyledParagraph className="newsletter" delay={"1.1s"}>
-            Sign up below for weekly stories about life, loneliness, and the parts of ourselves that
-            we hide from others.
+         <StyledParagraph delay={"1.1s"}>
+            Explore the site for stories about life, loneliness, and the parts of ourselves we hide
+            from others.
          </StyledParagraph>
          <StyledFadeIn delay={"1.3s"}>
             <SocialMedia />
