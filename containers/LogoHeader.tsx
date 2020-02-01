@@ -47,11 +47,11 @@ const LogoHeader: React.FC = () => {
          justify-content: space-evenly;
 
          width: 100%;
-         height: 350px;
+         height: 430px;
          padding-top: 70px;
          user-select: none;
          pointer-events: none;
-         opacity: ${props => props.opacity};
+         opacity: ${props => props.currentOpacity};
          transition: opacity 0.2s ease;
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MID_GROUND};
 
@@ -73,6 +73,7 @@ const LogoHeader: React.FC = () => {
             line-height: 26px;
             text-align: center;
             letter-spacing: 0.4px;
+            padding-top: 25px;
 
             max-width: 80%;
             animation: fadeIn 1s ease-out 1s both;
@@ -91,7 +92,7 @@ const LogoHeader: React.FC = () => {
    );
 
    return (
-      <StyledLogoHeader opacity={opacity}>
+      <StyledLogoHeader currentOpacity={opacity}>
          <Logo />
          <div className="slogan">
             <span>Weekly stories of loneliness. </span>
