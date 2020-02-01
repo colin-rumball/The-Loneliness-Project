@@ -53,7 +53,7 @@ const StyledSocialAndCredits: React.FC<StyledSocialAndCreditsProps> = props => {
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             margin-bottom: 0px;
             flex-direction: row;
-            justify-content: space-between;
+            justify-content: space-around;
             .slash {
                flex-grow: 1;
                display: inline-block;
@@ -72,7 +72,7 @@ const StyledSocialAndCredits: React.FC<StyledSocialAndCreditsProps> = props => {
                   Marissa Korda
                </a>
             </span>
-            {/* <span className="slash"> / </span> */}
+            <span className="slash"> / </span>
             <span>
                <span className="line">Developed by </span>
                <a className="line" href="https://colinrumball.com/" target="_blank">

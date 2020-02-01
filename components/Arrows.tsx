@@ -34,13 +34,13 @@ const Arrows: React.FC<ArrowsProps> = props => {
          align-items: center;
          left: 0;
          right: 0;
-         bottom: -60px;
+         bottom: -66px;
          pointer-events: none;
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             justify-content: space-between;
-            left: -50px;
-            right: -50px;
+            left: -60px;
+            right: -60px;
             top: 0;
             bottom: 0;
          }
@@ -63,7 +63,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
                icon={<IoIosArrowBack />}
                onClick={() => onLeftArrowClicked(currentApt + 1)}
                color={"#fff"}
-               size={"38px"}
+               size={"54px"}
             />
          </StyledArrowIcon>
 
@@ -72,7 +72,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
                icon={<IoIosArrowForward />}
                onClick={() => onRightArrowClicked(currentApt - 1)}
                color={"#fff"}
-               size={"38px"}
+               size={"54px"}
             />
          </StyledArrowIcon>
       </StyledArrows>

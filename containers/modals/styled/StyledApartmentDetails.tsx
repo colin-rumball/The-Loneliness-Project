@@ -16,7 +16,7 @@ interface StyledApartmentDetailsProps {
    onRightArrowClicked?(apt: number);
    showLeftArrow?: boolean;
    showRightArrow?: boolean;
-   color: string;
+   passedColor: string;
 }
 
 const StyledApartmentDetailsDefaultProps: StyledApartmentDetailsProps = {
@@ -31,7 +31,7 @@ const StyledApartmentDetailsDefaultProps: StyledApartmentDetailsProps = {
    onRightArrowClicked: () => {},
    showLeftArrow: true,
    showRightArrow: true,
-   color: "#e7c9b1"
+   passedColor: "#e7c9b1"
 };
 
 const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
@@ -47,7 +47,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
       onRightArrowClicked,
       showLeftArrow,
       showRightArrow,
-      color
+      passedColor
    } = {
       ...StyledApartmentDetailsDefaultProps,
       ...props
@@ -64,7 +64,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             right: 1px;
             min-height: 40px;
             max-height: 40px;
-            background-color: ${color};
+            background-color: ${props => props.passedColor};
          }
 
          .apartment-modal-details {
@@ -89,7 +89,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                min-height: 4px;
                max-height: 4px;
                width: 32px;
-               background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Blue};
+               background-color: ${props => props.passedColor};
                margin: 30px 0;
             }
 
@@ -107,6 +107,8 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                font-size: 18px;
                font-weight: 400;
                margin-bottom: 25px;
+               letter-spacing: 0.4px;
+               line-height: 1.28em;
             }
 
             .details-header {
@@ -126,7 +128,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   font-size: 52px;
                   font-weight: 100;
                   color: rgb(34, 34, 34);
-                  line-height: 41px;
+                  line-height: 54px;
                   margin: 0;
                   padding: 0;
                }
@@ -154,7 +156,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   font-family: lato, sans-serif;
                   color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
                   font-size: 20px;
-                  font-weight: 900;
+                  font-weight: 600;
                   letter-spacing: 1px;
                   line-height: 41px;
                }
@@ -164,7 +166,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   flex-grow: 3;
                   align-self: auto;
                   margin-bottom: 15px;
-
+                  color: ${props => props.passedColor};
                   font-family: "lato", sans-serif;
                   font-weight: 900;
                   letter-spacing: 1px;
@@ -193,11 +195,11 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             max-height: 40px;
          }
       `,
-      [color]
+      []
    );
 
    return (
-      <StyledApartmentDetails>
+      <StyledApartmentDetails passedColor={passedColor}>
          <Arrows
             currentApt={apt}
             onLeftArrowClicked={onLeftArrowClicked}

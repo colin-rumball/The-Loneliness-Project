@@ -84,7 +84,7 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
                onRightArrowClicked={onArrowClicked}
                showLeftArrow={!hideArrows && apartmentsStart != apartmentData.apt}
                showRightArrow={!hideArrows && apartmentData.apt > 1}
-               color={RandomColors[chosenColorIndex]}
+               passedColor={RandomColors[chosenColorIndex]}
                {...apartmentData}
             />
          )}

@@ -23,7 +23,7 @@ const ApartmentModalBase: React.FC<ApartmentModalBaseProps> = props => {
    const StyledModalBase = useMemo(
       () => styled.div`
          background: #fff;
-         height: 80vh;
+         height: 85vh;
          width: 95vw;
          max-width: 95vw;
          overflow: auto;
@@ -35,9 +35,13 @@ const ApartmentModalBase: React.FC<ApartmentModalBaseProps> = props => {
          }
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
-            width: 70vw;
+            width: 80vw;
             max-width: 900px;
             box-shadow: ${`10px 10px 0 ${color}`};
+         }
+
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+            max-width: 980px;
          }
       `,
       [color]
