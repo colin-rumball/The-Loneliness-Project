@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
-import { FaFacebookF, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
 import { ThemeContainer } from "../themes/common";
 
 interface SocialMediaProps {}
@@ -40,7 +41,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({}) => {
             <FaTwitter />
          </StyledSocialIcon>
          <StyledSocialIcon href="https://www.instagram.com/thelonelinessproject/" target="_blank">
-            <FaInstagram />
+            <AiFillInstagram />
          </StyledSocialIcon>
          <StyledSocialIcon href="mailto:hello@marissakorda.com" target="_blank">
             <FaEnvelope />

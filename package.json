@@ -57,7 +57,7 @@
 		"react-apollo": "^2.5.8",
 		"react-dom": "^16.8.6",
 		"react-grid-layout": "^0.16.6",
-		"react-icons": "^3.7.0",
+		"react-icons": "^3.9.0",
 		"react-scrolllock": "^4.0.1",
 		"request": "^2.88.0",
 		"styled-components": "^4.4.0",
