@@ -19,7 +19,8 @@ const PressHeader: React.FC<PressHeaderProps> = props => {
          font-family: "lato", sans-serif;
          margin-top: 20px;
          font-size: 16px;
-         font-weight: 600;
+         font-weight: 500;
+         letter-spacing: 1px;
       `,
       []
    );

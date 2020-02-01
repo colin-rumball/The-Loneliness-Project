@@ -11,7 +11,7 @@ const PressFeatures: React.FC<PressFeaturesProps> = ({}) => {
       () => styled.div`
          display: flex;
          flex-wrap: wrap;
-         justify-content: space-evenly;
+         justify-content: center;
          align-items: center;
          width: 100%;
          padding: 20px 40px;
