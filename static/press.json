@@ -50,9 +50,9 @@
 		"alt": "CBC | Spark"
 	},
 	{
-		"class": "how",
-		"src": "press-how.png",
-		"alt": "HOW"
+		"class": "national-post",
+		"src": "press-nationalpost.png",
+		"alt": "National Post"
 	},
 	{
 		"class": "global",
@@ -60,13 +60,13 @@
 		"alt": "Global News"
 	},
 	{
-		"class": "national-post",
-		"src": "press-nationalpost.png",
-		"alt": "National Post"
-	},
-	{
 		"class": "radio-canada",
 		"src": "press-radiocanada.png",
 		"alt": "Radio Canada"
+	},
+	{
+		"class": "how",
+		"src": "press-how.png",
+		"alt": "HOW"
 	}
 ]
