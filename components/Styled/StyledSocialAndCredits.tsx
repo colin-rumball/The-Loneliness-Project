@@ -43,19 +43,20 @@ const StyledSocialAndCredits: React.FC<StyledSocialAndCreditsProps> = props => {
 
          .slash {
             display: none;
+            padding: 0 5px;
          }
 
          .line {
             display: inline-block;
-            margin: 0 5px 0 0;
+            margin: 0 4px 0 0;
          }
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
             margin-bottom: 0px;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: center;
+            align-items: center;
             .slash {
-               flex-grow: 1;
                display: inline-block;
             }
          }
