@@ -8,17 +8,15 @@ import HomeUserActions from "../containers/HomeUserActions";
 import LogoHeader from "../containers/LogoHeader";
 import ApartmentDetailsModal from "../containers/modals/ApartmentDetailsModal";
 import PressFeatures from "../containers/PressFeatures";
-import {
-   ControllerContextProvider,
-   ControllerContext,
-   Controller
-} from "../contexts/ControllerContext";
+import { Controller } from "../contexts/ControllerContext";
 import InteractionController from "../components/InteractionController";
 import { useModalContext } from "../contexts/ModalContext";
+import useAudio from "../hooks/useAudio";
 
 const HomePage = ({ apolloClient }) => {
    const router = useRouter();
    const { pushModal } = useModalContext();
+   const { play } = useAudio("/static/audio/cityscapes_short.mp3");
 
    // query url param for apartment
    useEffect(() => {
@@ -47,7 +45,7 @@ const HomePage = ({ apolloClient }) => {
    );
 
    return (
-      <InteractionController controller={Controller.MAIN}>
+      <InteractionController controller={Controller.MAIN} onClick={() => play()}>
          <StyledHomePage>
             <CornerIcons />
             <CloudAnimation />

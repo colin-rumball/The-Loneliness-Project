@@ -4,14 +4,16 @@ import { Controller, ControllerContext, useControllerContext } from "../contexts
 
 interface InteractionControllerProps {
    controller: Controller;
+   onClick?();
 }
 
 const InteractionControllerDefaultProps: InteractionControllerProps = {
-   controller: Controller.NONE
+   controller: Controller.NONE,
+   onClick: () => {}
 };
 
 const InteractionController: React.FC<InteractionControllerProps> = props => {
-   const { controller, children } = { ...InteractionControllerDefaultProps, ...props };
+   const { controller, onClick, children } = { ...InteractionControllerDefaultProps, ...props };
    const { currentController } = useControllerContext();
 
    const StyledInteractionController = useMemo(
@@ -24,7 +26,7 @@ const InteractionController: React.FC<InteractionControllerProps> = props => {
    );
 
    return (
-      <StyledInteractionController controlling={controller == currentController}>
+      <StyledInteractionController controlling={controller == currentController} onClick={onClick}>
          {children}
       </StyledInteractionController>
    );
