@@ -5,6 +5,7 @@ import { Controller } from "../../contexts/ControllerContext";
 import { ModalContext, useModalContext, ModalState } from "../../contexts/ModalContext";
 import { ThemeContainer } from "../../themes/common";
 import ModalOverlay from "./ModalOverlay";
+import CloseIcon from "./CloseIcon";
 
 interface ModalViewerProps {}
 
@@ -53,7 +54,10 @@ const ModalViewer: React.FC<ModalViewerProps> = props => {
       <InteractionController controller={Controller.MODAL}>
          <ModalOverlay onClick={popModal} />
          <StyledModalViewer state={currentModal.state}>
-            <div className="internal-modal-container">{currentModal.node}</div>
+            <div className="internal-modal-container">
+               {currentModal.node}
+               <CloseIcon onClick={popModal} />
+            </div>
          </StyledModalViewer>
       </InteractionController>
    );
