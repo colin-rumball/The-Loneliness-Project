@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import Button from "../components/Base/Button";
 import SocialMedia from "./SocialMedia";
-import TalkToSomeoneModal from "./modals/TalkToSomeoneModal";
+import TalkToSomeoneModal from "./modals/TalkToSomeone/TalkToSomeoneModal";
 import { ThemeContainer } from "../themes/common";
 import StyledSocialAndCredits from "../components/Styled/StyledSocialAndCredits";
 import { useModalContext } from "../contexts/ModalContext";

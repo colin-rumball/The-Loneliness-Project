@@ -1,8 +1,9 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo, useCallback, useContext } from "react";
 import styled from "styled-components";
 import Arrows from "../../../components/Arrows";
 import { useRouter } from "next/router";
 import { ThemeContainer } from "../../../themes/common";
+import { RandomColorContext } from "../../../contexts/RandomColorContext";
 
 interface StyledApartmentDetailsProps {
    apt: number;
@@ -16,7 +17,6 @@ interface StyledApartmentDetailsProps {
    onRightArrowClicked?(apt: number);
    showLeftArrow?: boolean;
    showRightArrow?: boolean;
-   passedColor: string;
 }
 
 const StyledApartmentDetailsDefaultProps: StyledApartmentDetailsProps = {
@@ -30,8 +30,7 @@ const StyledApartmentDetailsDefaultProps: StyledApartmentDetailsProps = {
    onLeftArrowClicked: () => {},
    onRightArrowClicked: () => {},
    showLeftArrow: true,
-   showRightArrow: true,
-   passedColor: "#e7c9b1"
+   showRightArrow: true
 };
 
 const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
@@ -46,26 +45,16 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
       onLeftArrowClicked,
       onRightArrowClicked,
       showLeftArrow,
-      showRightArrow,
-      passedColor
+      showRightArrow
    } = {
       ...StyledApartmentDetailsDefaultProps,
       ...props
    };
+   const { randomColor } = useContext(RandomColorContext);
 
    const StyledApartmentDetails = useMemo(
       () => styled.div`
          overflow-x: hidden;
-
-         .top-color {
-            position: absolute;
-            top: 1px;
-            left: 1px;
-            right: 1px;
-            min-height: 40px;
-            max-height: 40px;
-            background-color: ${props => props.passedColor};
-         }
 
          .apartment-modal-details {
             flex-grow: 1;
@@ -74,7 +63,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             align-items: flex-start;
             text-align: left;
             padding-right: 3px;
-            padding-top: 60px;
+            padding-top: 20px;
             margin: 24px 25px 34px 35px;
             overflow: auto;
 
@@ -89,7 +78,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                min-height: 4px;
                max-height: 4px;
                width: 32px;
-               background-color: ${props => props.passedColor};
+               background-color: ${props => props.randomColor};
                margin: 30px 0;
             }
 
@@ -166,7 +155,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                   flex-grow: 3;
                   align-self: auto;
                   margin-bottom: 15px;
-                  color: ${props => props.passedColor};
+                  color: ${props => props.randomColor};
                   font-family: "lato", sans-serif;
                   font-weight: 900;
                   letter-spacing: 1px;
@@ -199,7 +188,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
    );
 
    return (
-      <StyledApartmentDetails passedColor={passedColor}>
+      <StyledApartmentDetails randomColor={randomColor}>
          <Arrows
             currentApt={apt}
             onLeftArrowClicked={onLeftArrowClicked}
@@ -207,7 +196,7 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             showLeftArrow={showLeftArrow}
             showRightArrow={showRightArrow}
          />
-         <div className="top-color" />
+
          <div className="apartment-modal-details">
             <div className="details-header">
                <span className="apt-owner-name">{name}</span>

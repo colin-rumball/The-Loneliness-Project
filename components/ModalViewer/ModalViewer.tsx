@@ -43,6 +43,11 @@ const ModalViewer: React.FC<ModalViewerProps> = props => {
          .internal-modal-container {
             position: relative;
             pointer-events: auto;
+
+            @media (max-width: ${({ theme }: ThemeContainer) =>
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+               transform: translateY(-30px);
+            }
          }
       `,
       []

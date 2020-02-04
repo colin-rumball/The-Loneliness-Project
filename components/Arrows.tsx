@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useContext } from "react";
 import styled from "styled-components";
 import StyledIcon from "./Styled/StyledIcon";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { ThemeContainer } from "../themes/common";
+import { RandomColorContext } from "../contexts/RandomColorContext";
 
 interface ArrowsProps {
    currentApt: number;
@@ -25,6 +26,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
       ...ArrowsDefaultProps,
       ...props
    };
+   const { randomColor } = useContext(RandomColorContext);
    const StyledArrows = useMemo(
       () => styled.div`
          position: absolute;
@@ -32,10 +34,9 @@ const Arrows: React.FC<ArrowsProps> = props => {
          flex-wrap: nowrap;
          justify-content: space-around;
          align-items: center;
-         left: 0;
-         right: 0;
-         bottom: -66px;
+         bottom: -75px;
          pointer-events: none;
+         width: calc(100% - 2px);
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             justify-content: space-between;
@@ -43,6 +44,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
             right: -60px;
             top: 0;
             bottom: 0;
+            width: auto;
          }
       `,
       []
@@ -50,30 +52,68 @@ const Arrows: React.FC<ArrowsProps> = props => {
 
    const StyledArrowIcon = useMemo(
       () => styled.div`
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         text-align: center;
+
+         filter: ${props => (props.showArrow ? null : "grayscale(100%)")};
          pointer-events: ${props => (props.showArrow ? "auto" : "none")};
-         opacity: ${props => (props.showArrow ? "1" : "0")};
+
+         background: #fff;
+         color: ${props => props.randomColor};
+         border-top: solid 2px ${props => props.randomColor};
+
+         width: 100%;
+
+         padding: 10px 0;
+         font-size: 54px;
+         pointer-events: all;
+
+         &:first-child {
+            border-right: solid 1px ${props => props.randomColor};
+         }
+
+         &:last-child {
+            border-left: solid 1px ${props => props.randomColor};
+         }
+
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+            background: rgba(0, 0, 0, 0);
+            width: auto;
+
+            &:first-child {
+               border: none;
+            }
+
+            &:last-child {
+               border: none;
+            }
+         }
       `,
       []
    );
 
    return (
       <StyledArrows>
-         <StyledArrowIcon showArrow={showLeftArrow}>
-            <StyledIcon
-               icon={<IoIosArrowBack />}
-               onClick={() => onLeftArrowClicked(currentApt + 1)}
-               color={"#fff"}
-               size={"54px"}
-            />
+         <StyledArrowIcon
+            showArrow={showLeftArrow}
+            randomColor={randomColor}
+            onClick={() => {
+               if (showLeftArrow) onLeftArrowClicked(currentApt + 1);
+            }}
+         >
+            <IoIosArrowBack />
          </StyledArrowIcon>
 
-         <StyledArrowIcon showArrow={showRightArrow}>
-            <StyledIcon
-               icon={<IoIosArrowForward />}
-               onClick={() => onRightArrowClicked(currentApt - 1)}
-               color={"#fff"}
-               size={"54px"}
-            />
+         <StyledArrowIcon
+            showArrow={showRightArrow}
+            randomColor={randomColor}
+            onClick={() => {
+               if (showRightArrow) onRightArrowClicked(currentApt - 1);
+            }}
+         >
+            <IoIosArrowForward />
          </StyledArrowIcon>
       </StyledArrows>
    );
