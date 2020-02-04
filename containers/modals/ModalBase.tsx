@@ -21,7 +21,7 @@ const ModalBase: React.FC<ModalBaseProps> = props => {
    const StyledModalBase = useMemo(
       () => styled.div`
          border-radius: 22px;
-         background: ${({ theme }) => theme.LightBlue};
+         background: #fff;
          min-height: 300px;
          max-height: 80vh;
          max-width: 610px;

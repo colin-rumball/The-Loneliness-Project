@@ -16,7 +16,7 @@ import useAudio from "../hooks/useAudio";
 const HomePage = ({ apolloClient }) => {
    const router = useRouter();
    const { pushModal } = useModalContext();
-   const { play } = useAudio("/static/audio/cityscapes_short.mp3");
+   const { play: playAudio } = useAudio("/static/audio/cityscapes_short.mp3");
 
    // query url param for apartment
    useEffect(() => {
@@ -45,7 +45,7 @@ const HomePage = ({ apolloClient }) => {
    );
 
    return (
-      <InteractionController controller={Controller.MAIN} onClick={() => play()}>
+      <InteractionController controller={Controller.MAIN} onClick={() => playAudio()}>
          <StyledHomePage>
             <CornerIcons />
             <CloudAnimation />
