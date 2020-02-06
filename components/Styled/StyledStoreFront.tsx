@@ -150,17 +150,42 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
    const EasterEggText = useMemo(
       () => styled.div`
          position: absolute;
-         top: 30%;
-         left: 0;
+         top: 18%;
+         left: -8%;
          width: 6%;
          height: 8%;
-         left: 6%;
 
          text-align: center;
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
 
          &:hover {
             cursor: pointer;
+         }
+
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+            left: -7%;
+            top: 12%;
+         }
+      `,
+      []
+   );
+
+   const EasterEggLine = useMemo(
+      () => styled.svg`
+         position: absolute;
+         top: 39%;
+         left: 0;
+         width: 9%;
+
+         stroke: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+
+         &:hover {
+            cursor: pointer;
+         }
+
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+            top: 34%;
+            width: 16%;
          }
       `,
       []
@@ -175,7 +200,14 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
                alt={alt}
             />
          </div>
-         {showEasterEgg && <EasterEggText>Winner Gagnant!</EasterEggText>}
+         {true && (
+            <>
+               <EasterEggLine>
+                  <line x1="0" y1="0" x2="350" y2="250" />
+               </EasterEggLine>
+               <EasterEggText>Winner Gagnant!</EasterEggText>
+            </>
+         )}
          {position === "center" && <EasterEggClickArea onClick={onEasterEggClicked} />}
       </StyledStoreFront>
    );
