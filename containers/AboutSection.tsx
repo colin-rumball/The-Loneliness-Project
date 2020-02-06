@@ -21,6 +21,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
          background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
          animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.6s ease-in both;
+         user-select: text;
 
          .icon {
             width: 50px;
@@ -40,10 +41,6 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
       () => styled.div`
          animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
          animation-delay: ${props => props.delay};
-
-         &:last-child {
-            padding-top: 10px;
-         }
       `,
       []
    );
@@ -55,19 +52,25 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
          font-weight: 300;
          line-height: 22px;
          letter-spacing: 0.5px;
-         margin-bottom: 30px;
+         margin: 0 0 32px;
          animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
          animation-delay: ${props => props.delay};
 
-         &.newsletter {
-            font-size: 18px;
-            font-style: italic;
-            font-family: "Frank Ruhl Libre", sans-serif;
+         &:nth-last-child(2) {
+            margin-bottom: 40px;
          }
 
          a {
             color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          }
+      `,
+      []
+   );
+
+   const StyledHR = useMemo(
+      () => styled.hr`
+         border-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+         margin: 32px 0 0 0;
       `,
       []
    );
@@ -103,7 +106,8 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
             from others.
          </StyledParagraph>
          <StyledFadeIn delay={"1.3s"}>
-            <SocialMedia justifyContent={"flex-start"} divider={true} />
+            <SocialMedia justifyContent={"flex-start"} />
+            <StyledHR />
             <PressFeatures addPadding={false} />
          </StyledFadeIn>
       </StyledAboutSection>
