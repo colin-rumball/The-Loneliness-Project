@@ -1,6 +1,7 @@
 import React, { useMemo, useContext, useEffect, useCallback, useRef } from "react";
 import styled from "styled-components";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+// import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import { ThemeContainer } from "../themes/common";
 import { RandomColorContext } from "../contexts/RandomColorContext";
 
@@ -39,10 +40,10 @@ const Arrows: React.FC<ArrowsProps> = props => {
    );
 
    useEffect(() => {
-      document?.addEventListener("keydown", onKeyPress);
+      window?.addEventListener("keydown", onKeyPress);
 
       return () => {
-         document?.removeEventListener("keydown", onKeyPress);
+         window?.removeEventListener("keydown", onKeyPress);
       };
    }, [onKeyPress]);
 
@@ -86,8 +87,11 @@ const Arrows: React.FC<ArrowsProps> = props => {
          width: 100%;
 
          padding: 10px 0;
-         font-size: 54px;
+         font-size: 48px;
          pointer-events: all;
+         opacity: 0.95;
+
+         transition: scale 0.4s ease-in-out, opacity 0.4s ease-in-out;
 
          &:first-child {
             border-right: solid 1px ${props => props.randomColor};
@@ -99,6 +103,11 @@ const Arrows: React.FC<ArrowsProps> = props => {
 
          &:hover {
             cursor: ${props => (props.showArrow ? "pointer" : "default")};
+            opacity: 1;
+         }
+
+         &:active {
+            transform: scale(0.95);
          }
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
@@ -126,7 +135,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
                if (showLeftArrow) onLeftArrowClicked(currentApt + 1);
             }}
          >
-            <IoIosArrowBack />
+            <FiArrowLeft />
          </StyledArrowIcon>
 
          <StyledArrowIcon
@@ -136,7 +145,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
                if (showRightArrow) onRightArrowClicked(currentApt - 1);
             }}
          >
-            <IoIosArrowForward />
+            <FiArrowRight />
          </StyledArrowIcon>
       </StyledArrows>
    );
