@@ -35,7 +35,8 @@ const Arrows: React.FC<ArrowsProps> = props => {
          align-items: center;
          bottom: -75px;
          pointer-events: none;
-         width: calc(100% - 2px);
+         left: 1px;
+         right: 1px;
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
             justify-content: space-between;
@@ -43,7 +44,6 @@ const Arrows: React.FC<ArrowsProps> = props => {
             right: -60px;
             top: 0;
             bottom: 0;
-            width: auto;
          }
       `,
       []

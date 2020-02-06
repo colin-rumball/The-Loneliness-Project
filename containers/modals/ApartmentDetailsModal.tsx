@@ -6,31 +6,31 @@ import ModalBase, { ModalBaseProps } from "./ModalBase";
 import OverlayedSpinner from "../OverlayedSpinner";
 import { useRouter } from "next/router";
 import withModalBase from "../../helpers/withModalBase";
+import Arrows from "../../components/Arrows";
 
 interface ApartmentDetailsModalProps extends ModalBaseProps {
-   apartmentsStart: number;
-   hideArrows?: boolean;
+   highestApartmentNum?: number;
    apt: number;
+   hideArrows?: boolean;
 }
 
-const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
-   apt: originalApartmentNum,
-   apartmentsStart,
-   hideArrows,
-   apolloClient
-}) => {
+const ApartmentDetailsModalDefaultProps: ApartmentDetailsModalProps = {
+   highestApartmentNum: 300,
+   apt: 1,
+   hideArrows: false
+};
+
+const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = props => {
+   const { highestApartmentNum, apt: originalApartmentNum, apolloClient, hideArrows } = {
+      ...ApartmentDetailsModalDefaultProps,
+      ...props
+   };
+   const router = useRouter();
    const [apartmentData, setApartmentData] = useState(null);
    const { data, loading, refetch } = useQuery(APARTMENT_BY_NUMBER, {
       client: apolloClient,
       variables: { apt: originalApartmentNum }
    });
-   const router = useRouter();
-
-   useEffect(() => {
-      if (data && data.apartmentByNumber) {
-         setApartmentData(data.apartmentByNumber);
-      }
-   }, [data]);
 
    const onArrowClicked = useCallback(
       apt => {
@@ -43,18 +43,27 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
       [router]
    );
 
+   useEffect(() => {
+      if (data && data.apartmentByNumber) {
+         setApartmentData(data.apartmentByNumber);
+      }
+   }, [data]);
+
    return (
       <OverlayedSpinner show={loading}>
          {!apartmentData ? (
             <></>
          ) : (
-            <StyledApartmentDetails
-               onLeftArrowClicked={onArrowClicked}
-               onRightArrowClicked={onArrowClicked}
-               showLeftArrow={!hideArrows && apartmentsStart != apartmentData.apt}
-               showRightArrow={!hideArrows && apartmentData.apt > 1}
-               {...apartmentData}
-            />
+            <>
+               <StyledApartmentDetails {...apartmentData} />
+               <Arrows
+                  currentApt={apartmentData.apt}
+                  showLeftArrow={!hideArrows && apartmentData.apt !== highestApartmentNum}
+                  showRightArrow={!hideArrows && apartmentData.apt !== 1}
+                  onLeftArrowClicked={onArrowClicked}
+                  onRightArrowClicked={onArrowClicked}
+               />
+            </>
          )}
       </OverlayedSpinner>
    );

@@ -13,10 +13,6 @@ interface StyledApartmentDetailsProps {
    lonelinessMeans: string;
    firstTime: string;
    lastTime: string;
-   onLeftArrowClicked?(apt: number);
-   onRightArrowClicked?(apt: number);
-   showLeftArrow?: boolean;
-   showRightArrow?: boolean;
 }
 
 const StyledApartmentDetailsDefaultProps: StyledApartmentDetailsProps = {
@@ -26,27 +22,11 @@ const StyledApartmentDetailsDefaultProps: StyledApartmentDetailsProps = {
    mostLonely: "",
    lonelinessMeans: "",
    firstTime: "",
-   lastTime: "",
-   onLeftArrowClicked: () => {},
-   onRightArrowClicked: () => {},
-   showLeftArrow: true,
-   showRightArrow: true
+   lastTime: ""
 };
 
 const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
-   const {
-      apt,
-      name,
-      age,
-      mostLonely,
-      lonelinessMeans,
-      firstTime,
-      lastTime,
-      onLeftArrowClicked,
-      onRightArrowClicked,
-      showLeftArrow,
-      showRightArrow
-   } = {
+   const { apt, name, age, mostLonely, lonelinessMeans, firstTime, lastTime } = {
       ...StyledApartmentDetailsDefaultProps,
       ...props
    };
@@ -64,12 +44,11 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
             text-align: left;
             padding-right: 3px;
             padding-top: 20px;
-            margin: 24px 25px 34px 35px;
             overflow: auto;
 
             @media (min-width: ${({ theme }: ThemeContainer) =>
-                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
-               margin: 24px 40px 34px 50px;
+                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+               margin: 0;
             }
 
             .line {
@@ -107,6 +86,11 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                flex-wrap: nowrap;
                align-items: baseline;
                overflow: hidden;
+
+               @media (min-width: ${({ theme }: ThemeContainer) =>
+                     theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+                  margin-top: 20px;
+               }
 
                @media (min-width: ${({ theme }: ThemeContainer) =>
                      theme.VARIABLES.BREAK_POINTS.LARGE}) {
@@ -173,30 +157,12 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                }
             }
          }
-
-         .gradient-bottom {
-            position: absolute;
-            left: 1px;
-            right: 1px;
-            bottom: 1px;
-            background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 0, #fff);
-            min-height: 40px;
-            max-height: 40px;
-         }
       `,
       []
    );
 
    return (
       <StyledApartmentDetails randomColor={randomColor}>
-         <Arrows
-            currentApt={apt}
-            onLeftArrowClicked={onLeftArrowClicked}
-            onRightArrowClicked={onRightArrowClicked}
-            showLeftArrow={showLeftArrow}
-            showRightArrow={showRightArrow}
-         />
-
          <div className="apartment-modal-details">
             <div className="details-header">
                <span className="apt-owner-name">{name}</span>
@@ -250,7 +216,6 @@ const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
                </>
             )}
          </div>
-         <div className="gradient-bottom" />
       </StyledApartmentDetails>
    );
 };

@@ -21,16 +21,11 @@ const ModalBase: React.FC<ModalBaseProps> = props => {
 
    const StyledModalBase = useMemo(
       () => styled.div`
-         position: relative;
          background: #fff;
          height: 75vh;
-         /* min-width: 40vw;
-         max-width: 95vw; */
          overflow: auto;
-         overflow-x: hidden;
          border: 1px solid rgba(0, 0, 0, 0.9);
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MODAL};
-         padding-top: 40px; /* Title Bar */
          padding: 40px 40px 0 40px;
 
          &::-webkit-scrollbar {

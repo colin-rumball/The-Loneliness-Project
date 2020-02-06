@@ -1,6 +1,6 @@
 import { ApolloClient } from "apollo-boost";
 import { useRouter } from "next/router";
-import React, { MutableRefObject } from "react";
+import React, { MutableRefObject, useCallback } from "react";
 import ApartmentDetailsModal from "../modals/ApartmentDetailsModal";
 import StyledApartment from "./StyledApartment";
 import useModalSystemHelper from "../../hooks/useModalSystemHelper";
@@ -41,7 +41,7 @@ const RenderStories: React.FC<RenderStoriesProps> = props => {
                   // Push the detailed modal
                   pushModal(
                      <ApartmentDetailsModal
-                        apartmentsStart={stories[0].apt}
+                        highestApartmentNum={stories[0].apt}
                         apt={story.apt}
                         apolloClient={client}
                      />,

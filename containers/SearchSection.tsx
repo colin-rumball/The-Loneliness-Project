@@ -58,22 +58,14 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
          router.replace(href, href, {
             shallow: true
          });
-         pushModal(
-            <ApartmentDetailsModal
-               apartmentsStart={apt}
-               hideArrows={true}
-               apt={apt}
-               apolloClient={client}
-            />,
-            {
-               onClose: () => {
-                  const href = `/`;
-                  router.replace(href, href, {
-                     shallow: true
-                  });
-               }
+         pushModal(<ApartmentDetailsModal hideArrows={true} apt={apt} apolloClient={client} />, {
+            onClose: () => {
+               const href = `/`;
+               router.replace(href, href, {
+                  shallow: true
+               });
             }
-         );
+         });
       },
       [router, client]
    );

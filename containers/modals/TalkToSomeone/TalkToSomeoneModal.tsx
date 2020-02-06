@@ -1,7 +1,6 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../../themes/common";
-import ModalBase from "../ModalBase";
 import withModalBase from "../../../helpers/withModalBase";
 
 interface TalkToSomeoneModalProps {}
