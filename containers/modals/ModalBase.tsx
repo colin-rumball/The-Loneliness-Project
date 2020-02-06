@@ -17,7 +17,7 @@ const ModalBase: React.FC<ModalBaseProps> = props => {
       ...ModalBaseDefaultProps,
       ...props
    };
-   const { randomColor, randomDarkenedColor } = useRandomColor();
+   const { randomColor, randomDarkenedColor, rerandomizeColors } = useRandomColor();
 
    const StyledModalBase = useMemo(
       () => styled.div`
@@ -57,6 +57,7 @@ const ModalBase: React.FC<ModalBaseProps> = props => {
       <RandomColorContextProvider
          randomColor={randomColor}
          randomDarkenedColor={randomDarkenedColor}
+         rerandomizeColors={rerandomizeColors}
       >
          <StyledModalBase shadowColor={randomDarkenedColor}>
             <ModalTitleBar bgColor={randomColor} />

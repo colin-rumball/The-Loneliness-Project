@@ -1,5 +1,5 @@
 import { random } from "lodash";
-import { useMemo } from "react";
+import { useMemo, useCallback, useState } from "react";
 
 const RandomColors = [
    "#dec2c4",
@@ -32,12 +32,15 @@ const RandomDarkenedColors = [
 ];
 
 const useRandomColor = () => {
-   const chosenColorIndex = useMemo(() => random(RandomColors.length - 1), []);
+   const [chosenColorIndex, setChosenColorIndex] = useState(random(RandomColors.length - 1));
+   const rerandomizeColors = useCallback(() => {
+      setChosenColorIndex(random(RandomColors.length - 1));
+   }, [RandomColors]);
    const randomColor = useMemo(() => RandomColors[chosenColorIndex], [chosenColorIndex]);
    const randomDarkenedColor = useMemo(() => RandomDarkenedColors[chosenColorIndex], [
       chosenColorIndex
    ]);
-   return { randomColor, randomDarkenedColor };
+   return { randomColor, randomDarkenedColor, rerandomizeColors };
 };
 
 export default useRandomColor;

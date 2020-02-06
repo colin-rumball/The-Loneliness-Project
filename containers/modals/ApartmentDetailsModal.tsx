@@ -1,12 +1,13 @@
-import React, { useMemo, useCallback, useState, useEffect, useContext } from "react";
+import React, { useCallback, useState, useEffect, useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { APARTMENT_DETAILED, APARTMENT_BY_NUMBER } from "../../gql/queries";
+import { APARTMENT_BY_NUMBER } from "../../gql/queries";
 import StyledApartmentDetails from "./styled/StyledApartmentDetails";
-import ModalBase, { ModalBaseProps } from "./ModalBase";
+import { ModalBaseProps } from "./ModalBase";
 import OverlayedSpinner from "../OverlayedSpinner";
 import { useRouter } from "next/router";
 import withModalBase from "../../helpers/withModalBase";
 import Arrows from "../../components/Arrows";
+import { RandomColorContext } from "../../contexts/RandomColorContext";
 
 interface ApartmentDetailsModalProps extends ModalBaseProps {
    highestApartmentNum?: number;
@@ -26,6 +27,7 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = props => {
       ...props
    };
    const router = useRouter();
+   const { rerandomizeColors } = useContext(RandomColorContext);
    const [apartmentData, setApartmentData] = useState(null);
    const { data, loading, refetch } = useQuery(APARTMENT_BY_NUMBER, {
       client: apolloClient,
@@ -33,14 +35,16 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = props => {
    });
 
    const onArrowClicked = useCallback(
-      apt => {
-         const href = `/?a=${apt}`;
+      (arrow: "left" | "right") => {
+         rerandomizeColors();
+         const newApt: number = arrow == "left" ? apartmentData.apt + 1 : apartmentData.apt - 1;
+         const href = `/?a=${newApt}`;
          router.replace(href, href, {
             shallow: true
          });
-         refetch({ apt });
+         refetch({ apt: newApt });
       },
-      [router]
+      [apartmentData, router]
    );
 
    useEffect(() => {
@@ -58,10 +62,9 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = props => {
                <StyledApartmentDetails {...apartmentData} />
                <Arrows
                   currentApt={apartmentData.apt}
-                  showLeftArrow={!hideArrows && apartmentData.apt !== highestApartmentNum}
-                  showRightArrow={!hideArrows && apartmentData.apt !== 1}
-                  onLeftArrowClicked={onArrowClicked}
-                  onRightArrowClicked={onArrowClicked}
+                  leftArrowEnabled={!hideArrows && apartmentData.apt !== highestApartmentNum}
+                  rightArrowEnabled={!hideArrows && apartmentData.apt !== 1}
+                  onArrowClicked={onArrowClicked}
                />
             </>
          )}

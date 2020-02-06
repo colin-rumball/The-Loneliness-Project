@@ -1,7 +1,5 @@
-import React, { useMemo, useCallback, useContext } from "react";
+import React, { useMemo, useContext } from "react";
 import styled from "styled-components";
-import Arrows from "../../../components/Arrows";
-import { useRouter } from "next/router";
 import { ThemeContainer } from "../../../themes/common";
 import { RandomColorContext } from "../../../contexts/RandomColorContext";
 

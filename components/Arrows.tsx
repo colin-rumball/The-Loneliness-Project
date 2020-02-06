@@ -1,28 +1,25 @@
 import React, { useMemo, useContext, useEffect, useCallback, useRef } from "react";
 import styled from "styled-components";
-// import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
 import { ThemeContainer } from "../themes/common";
 import { RandomColorContext } from "../contexts/RandomColorContext";
 
 interface ArrowsProps {
    currentApt: number;
-   onLeftArrowClicked?(apt: number);
-   onRightArrowClicked?(apt: number);
-   showLeftArrow?: boolean;
-   showRightArrow?: boolean;
+   onArrowClicked?(arrow: "left" | "right");
+   leftArrowEnabled?: boolean;
+   rightArrowEnabled?: boolean;
 }
 
 const ArrowsDefaultProps: ArrowsProps = {
    currentApt: 1,
-   onLeftArrowClicked: () => {},
-   onRightArrowClicked: () => {},
-   showLeftArrow: true,
-   showRightArrow: true
+   onArrowClicked: () => {},
+   leftArrowEnabled: true,
+   rightArrowEnabled: true
 };
 
 const Arrows: React.FC<ArrowsProps> = props => {
-   const { currentApt, onLeftArrowClicked, onRightArrowClicked, showLeftArrow, showRightArrow } = {
+   const { currentApt, onArrowClicked, leftArrowEnabled, rightArrowEnabled } = {
       ...ArrowsDefaultProps,
       ...props
    };
@@ -30,13 +27,13 @@ const Arrows: React.FC<ArrowsProps> = props => {
 
    const onKeyPress = useCallback(
       e => {
-         if (e.key === "ArrowLeft" && showLeftArrow) {
-            onLeftArrowClicked(currentApt + 1);
-         } else if (e.key === "ArrowRight" && showRightArrow) {
-            onRightArrowClicked(currentApt - 1);
+         if (e.key === "ArrowLeft" && leftArrowEnabled) {
+            onArrowClicked("left");
+         } else if (e.key === "ArrowRight" && rightArrowEnabled) {
+            onArrowClicked("right");
          }
       },
-      [currentApt, showLeftArrow, showRightArrow]
+      [currentApt, leftArrowEnabled, rightArrowEnabled]
    );
 
    useEffect(() => {
@@ -129,20 +126,20 @@ const Arrows: React.FC<ArrowsProps> = props => {
    return (
       <StyledArrows>
          <StyledArrowIcon
-            showArrow={showLeftArrow}
+            showArrow={leftArrowEnabled}
             randomColor={randomColor}
             onClick={() => {
-               if (showLeftArrow) onLeftArrowClicked(currentApt + 1);
+               if (leftArrowEnabled) onArrowClicked("left");
             }}
          >
             <FiArrowLeft />
          </StyledArrowIcon>
 
          <StyledArrowIcon
-            showArrow={showRightArrow}
+            showArrow={rightArrowEnabled}
             randomColor={randomColor}
             onClick={() => {
-               if (showRightArrow) onRightArrowClicked(currentApt - 1);
+               if (rightArrowEnabled) onArrowClicked("right");
             }}
          >
             <FiArrowRight />
