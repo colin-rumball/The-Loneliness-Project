@@ -1,45 +1,60 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useContext } from "react";
 import styled from "styled-components";
-import { ApolloClient } from "apollo-boost";
-import OverlayedSpinner from "../OverlayedSpinner";
 import { ThemeContainer } from "../../themes/common";
-import { NextRouter } from "next/router";
+import ModalTitleBar from "../../components/ModalViewer/ModalTitleBar";
+import useRandomColor from "../../hooks/useRandomColor";
+import { RandomColorContextProvider } from "../../contexts/RandomColorContext";
+import { ApolloClient } from "apollo-boost";
 
 export interface ModalBaseProps {
    apolloClient?: ApolloClient<any>;
-   router?: NextRouter;
-   showSpinner?: boolean;
 }
 
-const ModalBaseDefaultProps: ModalBaseProps = {
-   showSpinner: false
-};
+const ModalBaseDefaultProps: ModalBaseProps = {};
 
 const ModalBase: React.FC<ModalBaseProps> = props => {
-   const { children, showSpinner } = { ...ModalBaseDefaultProps, ...props };
+   const { children } = { ...ModalBaseDefaultProps, ...props };
+   const { randomColor, randomDarkenedColor } = useRandomColor();
 
    const StyledModalBase = useMemo(
       () => styled.div`
-         border-radius: 22px;
          background: #fff;
-         min-height: 300px;
-         max-height: 80vh;
-         max-width: 610px;
-         padding: 18px 36px;
-         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.6);
+         height: 75vh;
+         width: 95vw;
+         max-width: 95vw;
          overflow: auto;
+         border: 1px solid rgba(0, 0, 0, 0.9);
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MODAL};
+         padding-top: 40px; /* Title Bar */
+
+         &::-webkit-scrollbar {
+            width: 0;
+         }
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
-            min-width: 440px;
+            width: 80vw;
+            height: 85vh;
+            max-width: 900px;
+            box-shadow: ${props => `10px 10px 0${props.shadowColor}`};
+         }
+
+         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+            max-width: 980px;
          }
       `,
       []
    );
+
    return (
-      <StyledModalBase>
-         {showSpinner ? <OverlayedSpinner show={showSpinner} children={children} /> : children}
-      </StyledModalBase>
+      <RandomColorContextProvider
+         randomColor={randomColor}
+         randomDarkenedColor={randomDarkenedColor}
+      >
+         <StyledModalBase shadowColor={randomDarkenedColor}>
+            <ModalTitleBar bgColor={randomColor} />
+            {children}
+         </StyledModalBase>
+      </RandomColorContextProvider>
    );
 };
 

@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import ModalBase, { ModalBaseProps } from "./ModalBase";
+import withModalBase from "../../helpers/withModalBase";
 
 interface MessageModalProps extends ModalBaseProps {
    message: string;
@@ -24,11 +25,7 @@ const MessageModal: React.FC<MessageModalProps> = props => {
       []
    );
 
-   return (
-      <ModalBase>
-         <StyledMessageContainer>{message}</StyledMessageContainer>
-      </ModalBase>
-   );
+   return <StyledMessageContainer>{message}</StyledMessageContainer>;
 };
 
-export default MessageModal;
+export default withModalBase<MessageModalProps>(MessageModal);

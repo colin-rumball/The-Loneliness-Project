@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../../themes/common";
-import NewModalBase from "../NewModalBase";
+import ModalBase from "../ModalBase";
+import withModalBase from "../../../helpers/withModalBase";
 
 interface TalkToSomeoneModalProps {}
 
@@ -82,7 +83,7 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
    );
 
    return (
-      <NewModalBase>
+      <>
          <StyledHeader>Need to Talk to Someone?</StyledHeader>
          <StyledSubheader>IT’S OKAY. WE ALL DO SOMETIMES.</StyledSubheader>
          <StyledSectionsContainer>
@@ -114,8 +115,8 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
                </a>
             </StyledSection>
          </StyledSectionsContainer>
-      </NewModalBase>
+      </>
    );
 };
 
-export default TalkToSomeoneModal;
+export default withModalBase<TalkToSomeoneModalProps>(TalkToSomeoneModal);

@@ -1,11 +1,12 @@
-import React, { useMemo, useContext } from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import InteractionController from "../InteractionController";
 import { Controller } from "../../contexts/ControllerContext";
-import { ModalContext, useModalContext, ModalState } from "../../contexts/ModalContext";
 import { ThemeContainer } from "../../themes/common";
 import ModalOverlay from "./ModalOverlay";
 import CloseIcon from "./CloseIcon";
+import { ModalSystemState } from "../../contexts/ModalSystem/actions/common";
+import useModalSystemHelper from "../../hooks/useModalSystemHelper";
 
 interface ModalViewerProps {}
 
@@ -13,7 +14,7 @@ const ModalViewerDefaultProps: ModalViewerProps = {};
 
 const ModalViewer: React.FC<ModalViewerProps> = props => {
    const {} = { ...ModalViewerDefaultProps, ...props };
-   const { currentModal, popModal } = useModalContext();
+   const { currentModal, system, popModal } = useModalSystemHelper();
 
    const StyledModalViewer = useMemo(
       () => styled.div.attrs(props => ({}))`
@@ -32,10 +33,10 @@ const ModalViewer: React.FC<ModalViewerProps> = props => {
          z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MODAL};
 
          ${({ state, theme }: ThemeContainer) => {
-            switch (state as ModalState) {
-               case ModalState.OPENING:
+            switch (state as ModalSystemState) {
+               case ModalSystemState.OPENING:
                   return theme.ANIMATIONS.MODAL_OPENING;
-               case ModalState.CLOSING:
+               case ModalSystemState.CLOSING:
                   return theme.ANIMATIONS.MODAL_CLOSING;
             }
          }};
@@ -53,12 +54,12 @@ const ModalViewer: React.FC<ModalViewerProps> = props => {
       []
    );
 
-   if (currentModal == null || currentModal?.state == ModalState.QUEUED) return null;
+   if (currentModal == null) return null;
 
    return (
       <InteractionController controller={Controller.MODAL}>
          <ModalOverlay onClick={popModal} />
-         <StyledModalViewer state={currentModal.state}>
+         <StyledModalViewer state={system.state}>
             <div className="internal-modal-container">
                {currentModal.node}
                <CloseIcon onClick={popModal} />

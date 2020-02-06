@@ -8,10 +8,10 @@ import { CREATE_APARTMENT, UPDATE_APARTMENT } from "../gql/mutations";
 import FlexibleTable from "../components/Base/FlexibleTable";
 import StyledIcon from "../components/Styled/StyledIcon";
 import useCurrentTheme from "../hooks/useCurrentTheme";
-import { useModalContext } from "../contexts/ModalContext";
+import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 const ApartmentList: React.FC = () => {
-   const { pushModal, popModal } = useModalContext();
+   const { pushModal, popModal } = useModalSystemHelper();
    const { refetch, data, loading, client } = useQuery(APARTMENTS_OVERVIEW, {
       variables: { orderBy: "apt_DESC" },
       onError: useGQLErrorHandler

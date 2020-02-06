@@ -10,12 +10,13 @@ import ApartmentDetailsModal from "../containers/modals/ApartmentDetailsModal";
 import PressFeatures from "../containers/PressFeatures";
 import { Controller } from "../contexts/ControllerContext";
 import InteractionController from "../components/InteractionController";
-import { useModalContext } from "../contexts/ModalContext";
 import useAudio from "../hooks/useAudio";
+import { createPushAction } from "../contexts/ModalSystem/actions/PushAction";
+import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 const HomePage = ({ apolloClient }) => {
    const router = useRouter();
-   const { pushModal } = useModalContext();
+   const { pushModal } = useModalSystemHelper();
    const { play: playAudio } = useAudio("/static/audio/cityscapes_short.mp3");
 
    // query url param for apartment
@@ -30,7 +31,14 @@ const HomePage = ({ apolloClient }) => {
                   apt={apt}
                   apolloClient={apolloClient}
                />,
-               { name: "apartment" }
+               {
+                  onClose: () => {
+                     const href = `/`;
+                     router.replace(href, href, {
+                        shallow: true
+                     });
+                  }
+               }
             );
          }
       }

@@ -1,9 +1,11 @@
-import React, { useMemo, useCallback, useState, useEffect } from "react";
+import React, { useMemo, useCallback, useState, useEffect, useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { APARTMENT_DETAILED, APARTMENT_BY_NUMBER } from "../../gql/queries";
-import ModalBase, { ModalBaseProps } from "./ModalBase";
 import StyledApartmentDetails from "./styled/StyledApartmentDetails";
-import NewModalBase from "./NewModalBase";
+import ModalBase, { ModalBaseProps } from "./ModalBase";
+import OverlayedSpinner from "../OverlayedSpinner";
+import { useRouter } from "next/router";
+import withModalBase from "../../helpers/withModalBase";
 
 interface ApartmentDetailsModalProps extends ModalBaseProps {
    apartmentsStart: number;
@@ -15,7 +17,6 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
    apt: originalApartmentNum,
    apartmentsStart,
    hideArrows,
-   router,
    apolloClient
 }) => {
    const [apartmentData, setApartmentData] = useState(null);
@@ -23,6 +24,7 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
       client: apolloClient,
       variables: { apt: originalApartmentNum }
    });
+   const router = useRouter();
 
    useEffect(() => {
       if (data && data.apartmentByNumber) {
@@ -42,7 +44,7 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
    );
 
    return (
-      <NewModalBase showSpinner={loading}>
+      <OverlayedSpinner show={loading}>
          {!apartmentData ? (
             <></>
          ) : (
@@ -54,8 +56,8 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = ({
                {...apartmentData}
             />
          )}
-      </NewModalBase>
+      </OverlayedSpinner>
    );
 };
 
-export default ApartmentDetailsModal;
+export default withModalBase<ApartmentDetailsModalProps>(ApartmentDetailsModal);

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ManagedStyledInput from "./Forms/ManagedStyledInput";
 import Button from "./Base/Button";
 import { ThemeContainer } from "../themes/common";
+import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 interface UserFormProps {
    title: string;
@@ -67,7 +68,7 @@ const UserForm: React.FC<UserFormProps> = ({ title, inverted, onFormSubmit }) =>
    );
 
    const StyledErrorMessage = useMemo(
-      () => styled.form`
+      () => styled.span`
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Red};
          padding: 10px 0;
       `,
@@ -76,6 +77,7 @@ const UserForm: React.FC<UserFormProps> = ({ title, inverted, onFormSubmit }) =>
 
    return (
       <StyledLoginForm inverted={inverted} onSubmit={internalOnFormSubmit}>
+         {/* TITLE */}
          <div className="form-title">{title}</div>
          {/* USERNAME */}
          <ManagedStyledInput

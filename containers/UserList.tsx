@@ -9,10 +9,11 @@ import ConfirmationModal from "./modals/ConfirmationModal";
 import FlexibleTable from "../components/Base/FlexibleTable";
 import StyledIcon from "../components/Styled/StyledIcon";
 import useCurrentTheme from "../hooks/useCurrentTheme";
-import { useModalContext } from "../contexts/ModalContext";
+import { createPushAction } from "../contexts/ModalSystem/actions/PushAction";
+import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 const UserList: React.FC = () => {
-   const { pushModal } = useModalContext();
+   const { pushModal } = useModalSystemHelper();
    const { onError } = useGQLErrorHandler();
    const theme = useCurrentTheme();
 

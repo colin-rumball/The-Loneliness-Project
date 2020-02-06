@@ -1,17 +1,18 @@
-import React, { useMemo, useCallback } from "react";
-import styled from "styled-components";
+import React, { useMemo, useCallback, useContext, useEffect } from "react";
 import UserForm from "../../components/UserForm";
-import ModalBase, { ModalBaseProps } from "./ModalBase";
 import { CREATE_USER } from "../../gql/mutations";
 import { useMutation } from "@apollo/react-hooks";
-import { useModalContext } from "../../contexts/ModalContext";
+import { ApolloClient } from "apollo-boost";
+import useModalSystemHelper from "../../hooks/useModalSystemHelper";
+import withModalBase from "../../helpers/withModalBase";
 
-interface AddUserModalProps extends ModalBaseProps {
+interface AddUserModalProps {
    onNewUserCreated();
+   apolloClient: ApolloClient<any>;
 }
 
 const AddUserModal: React.FC<AddUserModalProps> = ({ apolloClient, onNewUserCreated, ...rest }) => {
-   const { popModal } = useModalContext();
+   const { popModal } = useModalSystemHelper();
    const [createUser, { loading: creatingUser }] = useMutation(CREATE_USER, {
       client: apolloClient
    });
@@ -22,11 +23,7 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ apolloClient, onNewUserCrea
       popModal();
    }, []);
 
-   return (
-      <ModalBase showSpinner={creatingUser} {...rest}>
-         <UserForm onFormSubmit={onCreateUser} inverted={true} title={"Add New User"} />
-      </ModalBase>
-   );
+   return <UserForm onFormSubmit={onCreateUser} inverted={true} title={"Add New User"} />;
 };
 
-export default AddUserModal;
+export default withModalBase<AddUserModalProps>(AddUserModal);

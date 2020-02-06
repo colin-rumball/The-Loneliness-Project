@@ -1,8 +1,9 @@
-import React, { useMemo, useCallback, useState } from "react";
+import React, { useMemo, useCallback, useContext } from "react";
 import styled from "styled-components";
 import Button from "../../components/Base/Button";
 import ModalBase, { ModalBaseProps } from "./ModalBase";
-import { useModalContext } from "../../contexts/ModalContext";
+import useModalSystemHelper from "../../hooks/useModalSystemHelper";
+import withModalBase from "../../helpers/withModalBase";
 
 interface ConfirmationModalProps extends ModalBaseProps {
    message: string;
@@ -22,8 +23,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = props => {
       ...props
    };
 
-   const [showSpinner, setShowSpinner] = useState(false);
-   const { popModal } = useModalContext();
+   const { popModal } = useModalSystemHelper();
 
    const StyledConfirmationModal = useMemo(
       () => styled.div`
@@ -55,22 +55,19 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = props => {
    );
 
    const onButtonClicked = useCallback(async cb => {
-      setShowSpinner(true);
       await cb();
       popModal();
    }, []);
 
    return (
-      <ModalBase showSpinner={showSpinner} {...rest}>
-         <StyledConfirmationModal>
-            <StyledConfirmationMessage>{message}</StyledConfirmationMessage>
-            <StyledConfirmationButtons>
-               <Button text="CONTINUE" onClick={() => onButtonClicked(onContinueClicked)} />
-               <Button text="CANCEL" onClick={() => onButtonClicked(onCancelClicked)} />
-            </StyledConfirmationButtons>
-         </StyledConfirmationModal>
-      </ModalBase>
+      <StyledConfirmationModal>
+         <StyledConfirmationMessage>{message}</StyledConfirmationMessage>
+         <StyledConfirmationButtons>
+            <Button text="CONTINUE" onClick={() => onButtonClicked(onContinueClicked)} />
+            <Button text="CANCEL" onClick={() => onButtonClicked(onCancelClicked)} />
+         </StyledConfirmationButtons>
+      </StyledConfirmationModal>
    );
 };
 
-export default ConfirmationModal;
+export default withModalBase<ConfirmationModalProps>(ConfirmationModal);

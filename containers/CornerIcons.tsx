@@ -21,12 +21,12 @@ const CornerIcons: React.FC<CornerIconsProps> = props => {
             openIcon={<HamburgerIcon />}
             content={<AboutSection />}
          />
-         <CornerIconWithContent
+         {/* <CornerIconWithContent
             corner={IconCorner.TOP_RIGHT}
             closedIcon={<IoIosSearch />}
             openIcon={<IoMdClose />}
             content={<SearchSection />}
-         />
+         /> */}
       </CornerIconsContextProvider>
    );
 };

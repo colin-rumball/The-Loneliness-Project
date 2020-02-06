@@ -42,6 +42,8 @@ const OverlayedSpinner: React.FC<OverlayedSpinnerProps> = props => {
       []
    );
 
+   if (!show) return <>{children}</>;
+
    return (
       <>
          <StyledContent blur={show}>{children}</StyledContent>

@@ -48,6 +48,20 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
             }
          }
 
+         .gap-filler-contianer {
+            position: relative;
+            width: 100%;
+
+            .gap-filler {
+               position: absolute;
+               height: 20px;
+               background: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.DarkBlue};
+               bottom: 0;
+               left: 0;
+               right: 0;
+            }
+         }
+
          .apartment-image {
             position: relative;
             pointer-events: none;
@@ -78,6 +92,9 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
       <StyledApartment>
          <div ref={ref} className="backer" onClick={onClick} />
          <img src={image} className="apartment-image" alt={`apartment-${key}-image`} />
+         <div className="gap-filler-contianer">
+            <div className="gap-filler" />
+         </div>
       </StyledApartment>
    );
 });

@@ -1,6 +1,5 @@
 import React, { useMemo, useContext } from "react";
 import styled from "styled-components";
-import StyledIcon from "./Styled/StyledIcon";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { ThemeContainer } from "../themes/common";
 import { RandomColorContext } from "../contexts/RandomColorContext";
@@ -61,7 +60,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
          pointer-events: ${props => (props.showArrow ? "auto" : "none")};
 
          background: #fff;
-         color: ${props => props.randomColor};
+         color: ${props => (props.showArrow ? props.randomColor : "rgba(100,100,100,0.5)")};
          border-top: solid 2px ${props => props.randomColor};
 
          width: 100%;
@@ -76,6 +75,10 @@ const Arrows: React.FC<ArrowsProps> = props => {
 
          &:last-child {
             border-left: solid 1px ${props => props.randomColor};
+         }
+
+         &:hover {
+            cursor: ${props => (props.showArrow ? "pointer" : "default")};
          }
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {

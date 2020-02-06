@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { Formik, Form, useFormikContext } from "formik";
 import * as Yup from "yup";
@@ -14,6 +14,7 @@ import ModalBase, { ModalBaseProps } from "./ModalBase";
 import OverlayedSpinner from "../OverlayedSpinner";
 import Spinner from "../../components/Spinner";
 import ApartmentImage from "../../components/ApartmentImage";
+import withModalBase from "../../helpers/withModalBase";
 
 interface EditApartmentModalProps extends ModalBaseProps {
    id?: string;
@@ -99,7 +100,7 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, .
    );
 
    return (
-      <ModalBase showSpinner={loading || updating} {...props}>
+      <>
          <h2>{modalTitle}</h2>
          <Formik
             enableReinitialize={true}
@@ -184,8 +185,8 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, .
                <SubmitButton text={buttonText} />
             </StyledForm>
          </Formik>
-      </ModalBase>
+      </>
    );
 };
 
-export default EditApartmentModal;
+export default withModalBase<EditApartmentModalProps>(EditApartmentModal);

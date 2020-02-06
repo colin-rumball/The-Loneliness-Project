@@ -5,12 +5,12 @@ import SocialMedia from "./SocialMedia";
 import TalkToSomeoneModal from "./modals/TalkToSomeone/TalkToSomeoneModal";
 import { ThemeContainer } from "../themes/common";
 import StyledSocialAndCredits from "../components/Styled/StyledSocialAndCredits";
-import { useModalContext } from "../contexts/ModalContext";
+import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 interface HomeUserActionsProps {}
 
 const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
-   const { pushModal } = useModalContext();
+   const { pushModal } = useModalSystemHelper();
    const StyledHomeUserActions = useMemo(
       () => styled.div`
          display: flex;

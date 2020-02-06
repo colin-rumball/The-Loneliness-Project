@@ -7,7 +7,8 @@ import { useRouter } from "next/router";
 import ApartmentDetailsModal from "./modals/ApartmentDetailsModal";
 import useDebouncedFunction from "../hooks/useDebouncedFunction";
 import Spinner from "../components/Spinner";
-import { useModalContext } from "../contexts/ModalContext";
+import { createPushAction } from "../contexts/ModalSystem/actions/PushAction";
+import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 interface SearchSectionProps {}
 
@@ -17,7 +18,7 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
    const {} = { ...SearchSectionDefaultProps, ...props };
 
    const router = useRouter();
-   const { pushModal } = useModalContext();
+   const { pushModal } = useModalSystemHelper();
    const [userQuery, setUserQuery] = useState("");
    const [apartments, setApartments] = useState([]);
    const [getApartments, { client }] = useLazyQuery(APARTMENTS_OVERVIEW_EXTRAS, {
@@ -59,7 +60,6 @@ const SearchSection: React.FC<SearchSectionProps> = props => {
          });
          pushModal(
             <ApartmentDetailsModal
-               router={router}
                apartmentsStart={apt}
                hideArrows={true}
                apt={apt}

@@ -8,11 +8,12 @@ import UserList from "../containers/UserList";
 import ApartmentList from "../containers/ApartmentList";
 import { ThemeContainer } from "../themes/common";
 import ConfirmationModal from "../containers/modals/ConfirmationModal";
-import { useModalContext } from "../contexts/ModalContext";
+import { createPushAction } from "../contexts/ModalSystem/actions/PushAction";
+import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 const Dashboard: React.FC = () => {
    const router = useRouter();
-   const { pushModal } = useModalContext();
+   const { pushModal } = useModalSystemHelper();
    const [logout] = useMutation(LOGOUT);
 
    const { data, loading } = useQuery(ME, {

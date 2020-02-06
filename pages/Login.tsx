@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useCallback } from "react";
 import UserForm from "../components/UserForm";
 import styled from "styled-components";
 import { LOGIN } from "../gql/mutations";
@@ -7,11 +7,20 @@ import { useRouter } from "next/router";
 import { ThemeContainer } from "../themes/common";
 import Spinner from "../components/Spinner";
 import MessageModal from "../containers/modals/MessageModal";
-import { useModalContext } from "../contexts/ModalContext";
+import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 const Login: React.FC = () => {
    const router = useRouter();
-   const { pushModal } = useModalContext();
+   const { pushModal } = useModalSystemHelper();
+   const onFormSubmit = useCallback(
+      async (username, password) => {
+         const { data } = await login({ variables: { data: { username, password } } });
+         // if (!data || !data.login) {
+         // pushModal(<MessageModal message="Unable to login with provided username and password." />);
+         // }
+      },
+      [pushModal]
+   );
    const [login, { data, loading }] = useMutation(LOGIN, {
       onCompleted(data) {
          if (data && data.login) {
@@ -19,9 +28,6 @@ const Login: React.FC = () => {
                router.replace("/dashboard");
             }, 1500);
          }
-      },
-      onError(err) {
-         pushModal(<MessageModal message="Unable to login with provided username and password." />);
       }
    });
 
@@ -41,16 +47,10 @@ const Login: React.FC = () => {
 
    return (
       <StyledLoginPage>
-         {loading || (data && data.login) ? (
+         {false || (data && data.login) ? (
             <Spinner />
          ) : (
-            <UserForm
-               inverted={false}
-               title="Login"
-               onFormSubmit={(username, password) => {
-                  login({ variables: { data: { username, password } } });
-               }}
-            />
+            <UserForm inverted={false} title="Login" onFormSubmit={onFormSubmit} />
          )}
       </StyledLoginPage>
    );
