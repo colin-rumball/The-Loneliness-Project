@@ -33,10 +33,9 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
       () => styled.div`
          width: 100%;
          min-height: 50vh;
-         margin-top: 40px;
          display: flex;
          flex-direction: column;
-         justify-content: space-evenly;
+         justify-content: center;
          flex-grow: 1;
          text-align: center;
       `,
@@ -46,7 +45,6 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
    const StyledSection = useMemo(
       () => styled.div`
          text-align: center;
-         padding: 20px 0;
 
          .name {
             font-family: "lato", sans-serif;
@@ -77,7 +75,8 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
    const StyledHR = useMemo(
       () => styled.hr`
          width: 50px;
-         border-top: 1px solid ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.DarkGrey};
+         margin: 30px auto;
+         border-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.DarkBlue};
       `,
       []
    );
