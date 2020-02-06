@@ -200,7 +200,7 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
                alt={alt}
             />
          </div>
-         {true && (
+         {showEasterEgg && (
             <>
                <EasterEggLine>
                   <line x1="0" y1="0" x2="350" y2="250" />
