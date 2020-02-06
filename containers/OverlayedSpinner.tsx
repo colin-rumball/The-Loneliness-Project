@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import Spinner, { SpinnerProps } from "../components/Spinner";
+import { ThemeContainer } from "../themes/common";
 
 interface OverlayedSpinnerProps extends SpinnerProps {
    show?: boolean;
@@ -27,6 +28,7 @@ const OverlayedSpinner: React.FC<OverlayedSpinnerProps> = props => {
          display: flex;
          justify-content: center;
          align-items: center;
+         z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MODAL + 3};
       `,
       []
    );
