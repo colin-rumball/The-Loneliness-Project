@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from "react";
+import React, { useMemo, useContext, useEffect, useCallback, useRef } from "react";
 import styled from "styled-components";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { ThemeContainer } from "../themes/common";
@@ -26,6 +26,26 @@ const Arrows: React.FC<ArrowsProps> = props => {
       ...props
    };
    const { randomColor } = useContext(RandomColorContext);
+
+   const onKeyPress = useCallback(
+      e => {
+         if (e.key === "ArrowLeft" && showLeftArrow) {
+            onLeftArrowClicked(currentApt + 1);
+         } else if (e.key === "ArrowRight" && showRightArrow) {
+            onRightArrowClicked(currentApt - 1);
+         }
+      },
+      [currentApt, showLeftArrow, showRightArrow]
+   );
+
+   useEffect(() => {
+      document?.addEventListener("keydown", onKeyPress);
+
+      return () => {
+         document?.removeEventListener("keydown", onKeyPress);
+      };
+   }, [onKeyPress]);
+
    const StyledArrows = useMemo(
       () => styled.div`
          position: absolute;

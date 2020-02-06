@@ -11,7 +11,6 @@ import PressFeatures from "../containers/PressFeatures";
 import { Controller } from "../contexts/ControllerContext";
 import InteractionController from "../components/InteractionController";
 import useAudio from "../hooks/useAudio";
-import { createPushAction } from "../contexts/ModalSystem/actions/PushAction";
 import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 const HomePage = ({ apolloClient }) => {
@@ -25,12 +24,7 @@ const HomePage = ({ apolloClient }) => {
          const apt = Number.parseInt(router.query.a as string);
          if (apt) {
             pushModal(
-               <ApartmentDetailsModal
-                  hideArrows={true}
-                  apartmentsStart={apt}
-                  apt={apt}
-                  apolloClient={apolloClient}
-               />,
+               <ApartmentDetailsModal hideArrows={true} apt={apt} apolloClient={apolloClient} />,
                {
                   onClose: () => {
                      const href = `/`;
