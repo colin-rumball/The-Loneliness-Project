@@ -154,6 +154,8 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
          left: -8%;
          width: 6%;
          height: 8%;
+         font-size: 5.4vw;
+         font-weight: 600;
 
          text-align: center;
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
@@ -163,8 +165,9 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
          }
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
-            left: -7%;
-            top: 12%;
+            left: 1%;
+            top: 20%;
+            font-size: 1.4vw;
          }
       `,
       []
@@ -173,9 +176,10 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
    const EasterEggLine = useMemo(
       () => styled.svg`
          position: absolute;
-         top: 39%;
-         left: 0;
-         width: 9%;
+         top: 37%;
+         left: 3%;
+         width: 7%;
+         height: 8%;
 
          stroke: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
 
@@ -184,8 +188,10 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
          }
 
          @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
-            top: 34%;
-            width: 16%;
+            top: 37%;
+            left: 9%;
+            width: 7%;
+            height: 8%;
          }
       `,
       []
@@ -203,7 +209,7 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
          {showEasterEgg && (
             <>
                <EasterEggLine>
-                  <line x1="0" y1="0" x2="350" y2="250" />
+                  <line x1="0" y1="0" x2="100%" y2="100%" />
                </EasterEggLine>
                <EasterEggText>Winner Gagnant!</EasterEggText>
             </>
