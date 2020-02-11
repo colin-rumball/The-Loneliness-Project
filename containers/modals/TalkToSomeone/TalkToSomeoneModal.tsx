@@ -24,6 +24,8 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
          text-align: center;
          letter-spacing: 1px;
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
+
+         margin-bottom: 40px;
       `,
       []
    );
@@ -37,6 +39,8 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
          justify-content: center;
          flex-grow: 1;
          text-align: center;
+
+         margin-bottom: 40px;
       `,
       []
    );
@@ -97,7 +101,7 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
                <a className="name" href="https://kidshelpphone.ca/" target="_blank">
                   KIDS HELP PHONE
                </a>
-               <div className="text">For kids and teens. No Problem too small.</div>
+               <div className="text">For kids and teens. No problem too small.</div>
                <div className="text">1 800 668 6868</div>
             </StyledSection>
             <StyledHR />
