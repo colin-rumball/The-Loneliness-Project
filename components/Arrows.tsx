@@ -51,7 +51,7 @@ const Arrows: React.FC<ArrowsProps> = props => {
          flex-wrap: nowrap;
          justify-content: space-around;
          align-items: center;
-         bottom: -75px;
+         bottom: -69px;
          pointer-events: none;
          left: 1px;
          right: 1px;
