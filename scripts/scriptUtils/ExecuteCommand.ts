@@ -1,5 +1,15 @@
 const { exec } = require("child_process");
 
+// const oldLog = console.log;
+// console.log = message => {
+//    oldLog("ERR!", message);
+// };
+
+// const oldLog = console.debug;
+// console.debug = message => {
+//    oldLog("\u001b[" + 32 + "m" + "hello stack" + "\u001b[0m");
+// };
+
 interface CommandConfig {
    logsEnabled?;
    onError?;
@@ -11,16 +21,24 @@ const ExecuteCommand = async (
    config: CommandConfig = { logsEnabled: true }
 ) => {
    return new Promise((resolve, reject) => {
-      console.log(`Running command: ${command}`);
-      const execution = exec(command);
+      console.log(`\n>>> Running command: ${command} with name ${name}`);
+      const execution = exec(command, (err, stdout, stderr) => {
+         if (err && config.onError) {
+            config.onError(err);
+         }
+         console.log("TCL: execution -> stdout", stdout);
+      });
 
       if (config.logsEnabled) {
          const logMessage = data => {
-            const message = data.toString();
-            console.log(`[${name}]: ` + message);
+            console.log("TCL: data", data);
+            const message = data.toString().trim();
+            if (message && message != "") {
+               console.log(`> [${name}]: ` + message);
+            }
          };
 
-         execution.stdout.on("data", logMessage);
+         execution.stdout.on("message", logMessage);
       }
 
       execution.stderr.on("data", err => {
@@ -32,7 +50,7 @@ const ExecuteCommand = async (
       });
 
       execution.on("exit", exitCode => {
-         console.log(`Exiting command: ${command}`);
+         console.log(`>>> ${name} has finished.\n`);
          if (exitCode === 0) {
             resolve(exitCode);
          } else {

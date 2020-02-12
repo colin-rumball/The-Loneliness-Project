@@ -16,7 +16,7 @@ const runDeployment = async (target: STAGE) => {
    }
 
    try {
-      await AddEnvToNow(target);
+      // await AddEnvToNow(target);
       await DeployToNow(target);
       await CleanUpNowDeployment();
    } catch (error) {
