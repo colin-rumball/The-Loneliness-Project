@@ -1,21 +1,38 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
+import useCurrentTheme from "../../hooks/useCurrentTheme";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 interface StyledApartmentRoofProps {
    position: "left" | "center" | "right";
-   image: string;
+   src: string;
+   srcset: string;
    alt: string;
 }
 
 const StyledShowMoreDefaultProps: StyledApartmentRoofProps = {
    position: "center",
-   image: "",
+   src: "",
+   srcset: "",
    alt: ""
 };
 
 const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
-   const { position, image, alt } = { ...StyledShowMoreDefaultProps, ...props };
+   const { position, src, srcset, alt } = { ...StyledShowMoreDefaultProps, ...props };
+   const currentTheme = useCurrentTheme();
+   const { width } = useWindowDimensions();
+
+   const expectedImageWidth = useMemo(() => {
+      const breakPoints = currentTheme.VARIABLES.BREAK_POINTS;
+      if (width > parseInt(breakPoints.LARGE.substring(0, breakPoints.LARGE.length - 2))) {
+         return "30vw";
+      } else if (width > parseInt(breakPoints.MEDIUM.substring(0, breakPoints.MEDIUM.length - 2))) {
+         return "45vw";
+      }
+      return "90vw";
+   }, [currentTheme, width]);
+
    const StyledApartmentRoof = useMemo(
       () => styled.div`
          flex-basis: 100%;
@@ -118,7 +135,13 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
    return (
       <StyledApartmentRoof className={position}>
          <div className="image-container">
-            <img className="roof-image" src={image} alt={alt} />
+            <img
+               className="roof-image"
+               src={src}
+               srcSet={srcset}
+               sizes={expectedImageWidth}
+               alt={alt}
+            />
          </div>
       </StyledApartmentRoof>
    );

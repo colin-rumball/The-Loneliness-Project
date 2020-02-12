@@ -12,17 +12,20 @@ const ApartmentRoofs: React.FC<ApartmentRoofsProps> = props => {
       <>
          <StyledApartmentRoof
             position="left"
-            image="/static/roofs/roof_3.png"
+            src="/static/roofs/medium/roof_3_medium.png"
+            srcset={`/static/roofs/small/roof_3_small.png 360w, /static/roofs/medium/roof_3_medium.png 640w, /static/roofs/large/roof_3_large.png 920w`}
             alt="apartment-roof-3"
          />
          <StyledApartmentRoof
             position="center"
-            image="/static/roofs/roof_2.png"
+            src="/static/roofs/medium/roof_2_medium.png"
+            srcset={`/static/roofs/small/roof_2_small.png 360w, /static/roofs/medium/roof_2_medium.png 640w, /static/roofs/large/roof_2_large.png 920w`}
             alt="apartment-roof-2"
          />
          <StyledApartmentRoof
             position="right"
-            image="/static/roofs/roof_1.png"
+            src="/static/roofs/medium/roof_1_medium.png"
+            srcset={`/static/roofs/small/roof_1_small.png 360w, /static/roofs/medium/roof_1_medium.png 640w, /static/roofs/large/roof_1_large.png 920w`}
             alt="apartment-roof-1"
          />
       </>
