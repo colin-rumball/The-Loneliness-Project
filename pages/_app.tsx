@@ -7,7 +7,7 @@ import DefaultTheme from "../themes/DefaultTheme";
 import Head from "next/head";
 import { ControllerContextProvider } from "../contexts/ControllerContext";
 import ModalViewer from "../components/ModalViewer/ModalViewer";
-import { ModalContextProvider } from "../contexts/ModalContext";
+import { ModalSystemProvider } from "../contexts/ModalSystem/ModalSystem";
 
 class MyApp extends App {
    render() {
@@ -21,14 +21,14 @@ class MyApp extends App {
                <ApolloProvider client={apolloClient}>
                   <ThemeProvider theme={DefaultTheme}>
                      <ControllerContextProvider>
-                        <ModalContextProvider>
+                        <ModalSystemProvider>
                            <Component
                               {...pageProps}
                               key={router.route}
                               apolloClient={apolloClient}
                            />
                            <ModalViewer />
-                        </ModalContextProvider>
+                        </ModalSystemProvider>
                      </ControllerContextProvider>
                   </ThemeProvider>
                </ApolloProvider>

@@ -12,7 +12,7 @@ const PressHeader: React.FC<PressHeaderProps> = props => {
    const StyledPressHeader = useMemo(
       () => styled.div`
          width: 100%;
-         padding: 20px 40px;
+         padding: 20px 0;
          text-align: center;
          color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
          opacity: 0.9;
@@ -21,6 +21,8 @@ const PressHeader: React.FC<PressHeaderProps> = props => {
          font-size: 16px;
          font-weight: 500;
          letter-spacing: 1px;
+         overflow: visible;
+         white-space: nowrap;
       `,
       []
    );

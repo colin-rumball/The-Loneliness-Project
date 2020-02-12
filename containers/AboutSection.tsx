@@ -70,7 +70,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
    const StyledHR = useMemo(
       () => styled.hr`
          border-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-         margin: 72px 0 40px 0;
+         margin: 72px 0 60px 0;
       `,
       []
    );
