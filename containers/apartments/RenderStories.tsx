@@ -30,7 +30,8 @@ const RenderStories: React.FC<RenderStoriesProps> = props => {
             <StyledApartment
                ref={index == stories.length - 1 ? lastApartmentRef : null}
                key={story.id}
-               image={`/static/apartments/storey_${story.apt}.png`}
+               srcset={`/static/apartments/small/storey_${story.apt}_small.png 360w, /static/apartments/medium/storey_${story.apt}_medium.png 640w, /static/apartments/large/storey_${story.apt}_large.png 920w`}
+               src={`/static/apartments/storey_${story.apt}_medium.png`}
                onClick={() => {
                   // Replace the url with a query for the current story
                   const href = `/?a=${story.apt}`;

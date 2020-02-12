@@ -6,8 +6,5 @@
       "**/plugins": true,
       "**/typings": true,
       "**/www": true
-   },
-   "workbench.colorCustomizations": {
-      "terminalCursor.foreground": "#88ffff"
    }
 }

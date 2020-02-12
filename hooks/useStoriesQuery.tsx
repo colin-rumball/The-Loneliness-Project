@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { useLazyQuery } from "@apollo/react-hooks";
 import { APARTMENTS_OVERVIEW } from "../gql/queries";
 import useCurrentTheme from "./useCurrentTheme";
+import useWindowDimensions from "./useWindowDimensions";
 
 const useStoriesQuery = () => {
    const currentTheme = useCurrentTheme();
@@ -10,14 +11,7 @@ const useStoriesQuery = () => {
 		Apollo has an issuing involving using onCompleted with refetch so this hook contains a hack work around.
 	*/
    // Window sizing
-   const [windowDimensions, setWindowDimensions] = useState({
-      width: typeof window == "undefined" ? 900 : window.innerWidth,
-      height: typeof window == "undefined" ? 1600 : window.innerHeight
-   });
-   const onWindowResized = useCallback(() => {
-      if (typeof window == "undefined") return;
-      setWindowDimensions({ width: window.innerWidth, height: window.innerHeight });
-   }, []);
+   const windowDimensions = useWindowDimensions();
 
    // Stores the current shown stories
    const [stories, setStories] = useState([]);
@@ -49,13 +43,6 @@ const useStoriesQuery = () => {
       if (stories.length == 0) {
          queryStories(queryParams);
       }
-
-      // Listen for window size changes
-      if (typeof window == "undefined") return;
-      window.addEventListener("resize", onWindowResized);
-      return () => {
-         window.removeEventListener("resize", onWindowResized);
-      };
    }, []);
 
    // Replacement refetch

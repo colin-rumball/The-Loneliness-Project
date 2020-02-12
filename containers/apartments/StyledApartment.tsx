@@ -1,23 +1,40 @@
 import React, { useMemo, forwardRef, Key, MutableRefObject } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
+import useCurrentTheme from "../../hooks/useCurrentTheme";
 
 interface StyledApartmentProps {
    key?: Key;
    ref?: MutableRefObject<any>;
-   image: string;
+   src: string;
+   srcset: string;
    onClick();
 }
 
 const StyledApartmentDefaultProps: StyledApartmentProps = {
-   image: "",
+   src: "",
+   srcset: "",
    onClick: () => {}
 };
 
 const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) => {
-   const { key, image, onClick } = { ...StyledApartmentDefaultProps, ...props };
+   const { key, src, srcset, onClick } = { ...StyledApartmentDefaultProps, ...props };
+   const currentTheme = useCurrentTheme();
+   const { width } = useWindowDimensions();
+
+   const expectedImageWidth = useMemo(() => {
+      const breakPoints = currentTheme.VARIABLES.BREAK_POINTS;
+      if (width > parseInt(breakPoints.LARGE.substring(0, breakPoints.LARGE.length - 2))) {
+         return "30vw";
+      } else if (width > parseInt(breakPoints.MEDIUM.substring(0, breakPoints.MEDIUM.length - 2))) {
+         return "45vw";
+      }
+      return "90vw";
+   }, [currentTheme, width]);
+
    const StyledApartment = useMemo(
-      () => styled.div`
+      () => styled.article`
          position: relative;
          flex-basis: 100%;
          padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.UNIT_PADDING}`};
@@ -91,7 +108,13 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
    return (
       <StyledApartment>
          <div ref={ref} className="backer" onClick={onClick} />
-         <img src={image} className="apartment-image" alt={`apartment-${key}-image`} />
+         <img
+            src={src}
+            srcSet={srcset}
+            sizes={expectedImageWidth}
+            className="apartment-image"
+            alt={`apartment-${key}-image`}
+         />
          <div className="gap-filler-contianer">
             <div className="gap-filler" />
          </div>
