@@ -29,8 +29,8 @@ const replaceAllInFile = async (file: string, fileType: FILE_TYPE) => {
          let newFileData: string = await replace(fileData, "/_next/", "next/");
 
          if (fileType === FILE_TYPE.HTML) {
-            // Replace all src="/static/ references
-            newFileData = await replace(newFileData, 'src="/static/', 'src="static/');
+            // Replace all src="/ references
+            newFileData = await replace(newFileData, 'src="/', 'src="static/');
          }
 
          fs.writeFile(file, newFileData, err => {

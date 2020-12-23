@@ -16,7 +16,7 @@ import useModalSystemHelper from "../hooks/useModalSystemHelper";
 const HomePage = ({ apolloClient }) => {
    const router = useRouter();
    const { pushModal } = useModalSystemHelper();
-   const { play: playAudio } = useAudio("/static/audio/cityscapes_short.mp3");
+   const { play: playAudio } = useAudio("/audio/cityscapes_short.mp3");
 
    // query url param for apartment
    useEffect(() => {
@@ -41,7 +41,7 @@ const HomePage = ({ apolloClient }) => {
    const StyledHomePage = useMemo(
       () => styled.div`
          position: relative;
-         background-image: url("/static/images/stars.png");
+         background-image: url("/images/stars.png");
       `,
       []
    );

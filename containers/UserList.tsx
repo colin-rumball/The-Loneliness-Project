@@ -1,7 +1,6 @@
 import React from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { USERS } from "../gql/queries";
-import useGQLErrorHandler from "../hooks/useGQLErrorHandler";
 import { FaTimes } from "react-icons/fa";
 import AddUserModal from "./modals/AddUserModal";
 import { DELETE_USER } from "../gql/mutations";
@@ -14,12 +13,9 @@ import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 const UserList: React.FC = () => {
    const { pushModal } = useModalSystemHelper();
-   const { onError } = useGQLErrorHandler();
    const theme = useCurrentTheme();
 
-   const { data, loading: loadingUserList, refetch, client } = useQuery(USERS, {
-      onError
-   });
+   const { data, loading: loadingUserList, refetch, client } = useQuery(USERS, {});
 
    const [deleteUser, { loading: deletingUser }] = useMutation(DELETE_USER);
 

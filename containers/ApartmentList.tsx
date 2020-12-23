@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { APARTMENTS_OVERVIEW } from "../gql/queries";
-import useGQLErrorHandler from "../hooks/useGQLErrorHandler";
 import { FaTimes, FaCheck } from "react-icons/fa";
 import EditApartmentModal from "./modals/EditApartmentModal";
 import { CREATE_APARTMENT, UPDATE_APARTMENT } from "../gql/mutations";
@@ -13,8 +12,7 @@ import useModalSystemHelper from "../hooks/useModalSystemHelper";
 const ApartmentList: React.FC = () => {
    const { pushModal, popModal } = useModalSystemHelper();
    const { refetch, data, loading, client } = useQuery(APARTMENTS_OVERVIEW, {
-      variables: { orderBy: "apt_DESC" },
-      onError: useGQLErrorHandler
+      variables: { orderBy: "apt_DESC" }
    });
 
    const extractApartmentData = useCallback(

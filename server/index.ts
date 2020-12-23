@@ -1,41 +1,46 @@
 import "@babel/polyfill/noConflict";
+import { formatError } from "apollo-errors";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { formatError } from "apollo-errors";
-import multer from "multer";
-import server from "./server";
-import fs from "fs";
+import jwt from "jsonwebtoken";
 import { join } from "path";
+import { prisma } from "./generated/prisma-client";
+import createServer from "./serverUtils/createServer";
 
 const graphQLEndpoint = "/graphql";
-
-const upload = multer();
-
 const port = process.env.PORT || 4000;
-const targetStage = process.env.PD_STAGING_ENVIRONMENT;
-const debug = process.env.PD_LOCAL_DEVELOPMENT ? true : false;
+const targetStage = process.env.STAGING_ENVIRONMENT;
 const playground = targetStage === "development" ? graphQLEndpoint : false;
+const pathToSchema = join(__dirname, `schema.graphql`);
 
-const corsOptions = {
-   origin: "*",
-   credentials: true
-};
+const server = createServer(pathToSchema);
 
-server.express.use(cors(corsOptions));
-
+server.express.use(
+   cors({
+      origin: process.env.LOCAL_DEVELOPMENT ? "*" : process.env.FRONTEND_ENDPOINT,
+      credentials: true
+   })
+);
 server.express.use(cookieParser());
 
-server.express.post("/upload", upload.any(), (req, res) => {
-   const files = req["files"];
-   if (files && files.length > 0) {
-      fs.writeFileSync(
-         join(__dirname, "..", "static", "apartments", files[0].originalname),
-         files[0].buffer
-      );
-      res.sendStatus(200);
-   } else {
-      res.sendStatus(400);
+// decode the JWT so we can get the user Id on each request
+server.express.use((req, res, next) => {
+   const { token } = req.cookies;
+   if (token) {
+      const { userId } = jwt.verify(token, process.env.JWT_SECRET);
+      // put the userId onto the req for future requests to access
+      req["userId"] = userId;
    }
+   next();
+});
+
+// middleware that populates the user on each request
+server.express.use(async (req, res, next) => {
+   // if they aren't logged in, skip this
+   if (!req["userId"]) return next();
+   const user = await prisma.user({ id: req["userId"] });
+   req["user"] = user;
+   next();
 });
 
 server.start(
@@ -44,8 +49,7 @@ server.start(
       formatError,
       endpoint: graphQLEndpoint,
       playground,
-      cors: false,
-      debug
+      cors: false
    },
    ops => {
       console.log(

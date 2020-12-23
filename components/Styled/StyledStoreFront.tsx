@@ -17,7 +17,7 @@ const StyledStoreFrontDefaultProps: StyledStoreFrontProps = {
 const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
    const { position, image, alt } = { ...StyledStoreFrontDefaultProps, ...props };
 
-   const easterEggAudio = useMemo(() => new Audio("/static/audio/lottery-winner.mp3"), []);
+   const easterEggAudio = useMemo(() => new Audio("/audio/lottery-winner.mp3"), []);
    const [showEasterEgg, setShowEasterEgg] = useState(false);
    const onEasterEggClicked = useCallback(() => {
       easterEggAudio.volume = 0.25;
@@ -202,7 +202,7 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
          <div className="image-container">
             <img
                className="store-front-image"
-               src={showEasterEgg ? "/static/stores/store_2.gif" : image}
+               src={showEasterEgg ? "/stores/store_2.gif" : image}
                alt={alt}
             />
          </div>

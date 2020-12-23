@@ -12,24 +12,24 @@ import useModalSystemHelper from "../hooks/useModalSystemHelper";
 const Login: React.FC = () => {
    const router = useRouter();
    const { pushModal } = useModalSystemHelper();
+   const [login, { data, loading }] = useMutation(LOGIN, {
+      onCompleted(data) {
+         console.log("GOING TO DASHBOARD");
+
+         router.replace("/dashboard");
+      },
+      onError(err) {
+         console.error("login error:", err.message);
+         pushModal(<MessageModal message="Unable to login with provided username and password." />);
+      }
+   });
+
    const onFormSubmit = useCallback(
       async (username, password) => {
-         const { data } = await login({ variables: { data: { username, password } } });
-         // if (!data || !data.login) {
-         // pushModal(<MessageModal message="Unable to login with provided username and password." />);
-         // }
+         login({ variables: { data: { username, password } } });
       },
       [pushModal]
    );
-   const [login, { data, loading }] = useMutation(LOGIN, {
-      onCompleted(data) {
-         if (data && data.login) {
-            setTimeout(() => {
-               router.replace("/dashboard");
-            }, 1500);
-         }
-      }
-   });
 
    const StyledLoginPage = useMemo(
       () => styled.div`

@@ -1,13 +1,15 @@
-import React from "react";
-import App, { Container as NextAppContainer } from "next/app";
 import { ApolloProvider } from "@apollo/react-hooks";
-import withApolloClient from "../lib/apollo/withApolloClient";
-import { ThemeProvider } from "styled-components";
-import DefaultTheme from "../themes/DefaultTheme";
+import App from "next/app";
 import Head from "next/head";
-import { ControllerContextProvider } from "../contexts/ControllerContext";
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../components/GlobalStyles";
 import ModalViewer from "../components/ModalViewer/ModalViewer";
+import { ControllerContextProvider } from "../contexts/ControllerContext";
 import { ModalSystemProvider } from "../contexts/ModalSystem/ModalSystem";
+import { StoriesContextProvider } from "../contexts/StoriesContext";
+import withApolloClient from "../lib/apollo/withApolloClient";
+import DefaultTheme from "../themes/DefaultTheme";
 
 class MyApp extends App {
    render() {
@@ -17,10 +19,11 @@ class MyApp extends App {
             <Head>
                <title>The Loneliness Project</title>
             </Head>
-            <NextAppContainer>
-               <ApolloProvider client={apolloClient}>
-                  <ThemeProvider theme={DefaultTheme}>
-                     <ControllerContextProvider>
+            <GlobalStyles />
+            <ApolloProvider client={apolloClient}>
+               <ThemeProvider theme={DefaultTheme}>
+                  <ControllerContextProvider>
+                     <StoriesContextProvider>
                         <ModalSystemProvider>
                            <Component
                               {...pageProps}
@@ -29,10 +32,10 @@ class MyApp extends App {
                            />
                            <ModalViewer />
                         </ModalSystemProvider>
-                     </ControllerContextProvider>
-                  </ThemeProvider>
-               </ApolloProvider>
-            </NextAppContainer>
+                     </StoriesContextProvider>
+                  </ControllerContextProvider>
+               </ThemeProvider>
+            </ApolloProvider>
          </>
       );
    }

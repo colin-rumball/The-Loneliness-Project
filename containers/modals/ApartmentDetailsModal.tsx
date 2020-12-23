@@ -1,6 +1,4 @@
 import React, { useCallback, useState, useEffect, useContext } from "react";
-import { useQuery } from "@apollo/react-hooks";
-import { APARTMENT_BY_NUMBER } from "../../gql/queries";
 import StyledApartmentDetails from "./styled/StyledApartmentDetails";
 import { ModalBaseProps } from "./ModalBase";
 import OverlayedSpinner from "../OverlayedSpinner";
@@ -8,6 +6,7 @@ import { useRouter } from "next/router";
 import withModalBase from "../../helpers/withModalBase";
 import Arrows from "../../components/Arrows";
 import { RandomColorContext } from "../../contexts/RandomColorContext";
+import { StoriesContext } from "../../contexts/StoriesContext";
 
 interface ApartmentDetailsModalProps extends ModalBaseProps {
    highestApartmentNum?: number;
@@ -26,13 +25,14 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = props => {
       ...ApartmentDetailsModalDefaultProps,
       ...props
    };
+   const stories: any[] = useContext(StoriesContext);
    const router = useRouter();
    const { rerandomizeColors } = useContext(RandomColorContext);
    const [apartmentData, setApartmentData] = useState(null);
-   const { data, loading, refetch } = useQuery(APARTMENT_BY_NUMBER, {
-      client: apolloClient,
-      variables: { apt: originalApartmentNum }
-   });
+   // const { data, loading, refetch } = useQuery(APARTMENT_BY_NUMBER, {
+   //    client: apolloClient,
+   //    variables: { apt: originalApartmentNum }
+   // });
 
    const onArrowClicked = useCallback(
       (arrow: "left" | "right") => {
@@ -42,19 +42,20 @@ const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = props => {
          router.replace(href, href, {
             shallow: true
          });
-         refetch({ apt: newApt });
+         setApartmentData(() => stories.find(story => story.apt == newApt));
+         // refetch({ apt: newApt });
       },
       [apartmentData, router]
    );
 
    useEffect(() => {
-      if (data && data.apartmentByNumber) {
-         setApartmentData(data.apartmentByNumber);
+      if (stories) {
+         setApartmentData(() => stories.find(story => story.apt == originalApartmentNum));
       }
-   }, [data]);
+   }, [stories]);
 
    return (
-      <OverlayedSpinner show={loading}>
+      <OverlayedSpinner show={false}>
          {!apartmentData ? (
             <></>
          ) : (

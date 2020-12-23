@@ -78,11 +78,7 @@ const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
       <>
          <StyledShowMoreContainer>
             <StyledShowMore>
-               <img
-                  className="load-more-image"
-                  src="/static/images/load-more.png"
-                  alt="load more"
-               />
+               <img className="load-more-image" src="/images/load-more.png" alt="load more" />
                <ClickableArea onClick={onClick} />
             </StyledShowMore>
          </StyledShowMoreContainer>

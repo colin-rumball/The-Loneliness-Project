@@ -6,7 +6,6 @@
 /www
 /config
 /node_modules
-/server/generated
 
 debugNow.json
 deployableNow.json
@@ -91,3 +90,5 @@ typings/
 .env.production
 debugNow.json
 deployableNow.json
+
+.now

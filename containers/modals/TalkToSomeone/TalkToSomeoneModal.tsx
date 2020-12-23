@@ -90,7 +90,12 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
          <StyledSubheader>IT’S OKAY. WE ALL DO SOMETIMES.</StyledSubheader>
          <StyledSectionsContainer>
             <StyledSection>
-               <a className="name" href="https://suicidepreventionlifeline.org/" target="_blank">
+               <a
+                  className="name"
+                  href="https://suicidepreventionlifeline.org/"
+                  target="_blank"
+                  rel="noopener"
+               >
                   NATIONAL SUICIDE PREVENTION LIFELINE
                </a>
                <div className="text">Free and confidential support and resources.</div>
@@ -98,7 +103,7 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
             </StyledSection>
             <StyledHR />
             <StyledSection>
-               <a className="name" href="https://kidshelpphone.ca/" target="_blank">
+               <a className="name" href="https://kidshelpphone.ca/" target="_blank" rel="noopener">
                   KIDS HELP PHONE
                </a>
                <div className="text">For kids and teens. No problem too small.</div>
@@ -112,6 +117,7 @@ const TalkToSomeoneModal: React.FC<TalkToSomeoneModalProps> = ({}) => {
                   className="text"
                   href="http://www.suicide.org/international-suicide-hotlines.html"
                   target="_blank"
+                  rel="noopener"
                >
                   Browse the list of global hotlines
                </a>

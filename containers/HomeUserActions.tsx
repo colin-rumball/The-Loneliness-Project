@@ -60,7 +60,7 @@ const HomeUserActions: React.FC<HomeUserActionsProps> = ({}) => {
    return (
       <StyledHomeUserActions>
          <StyledButton order={1}>
-            <a href="https://goo.gl/forms/yBwn2gFgvxyO0nTf2" target="_blank">
+            <a href="https://goo.gl/forms/yBwn2gFgvxyO0nTf2" target="_blank" rel="noopener">
                <Button text="SUBMIT YOUR STORY" onClick={() => {}} />
             </a>
          </StyledButton>

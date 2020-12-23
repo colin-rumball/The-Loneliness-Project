@@ -1,4 +1,8 @@
-# import ApartmentCreateInput, ApartmentUpdateInput, UserOrderByInput, ApartmentOrderByInput  from './generated/prisma.graphql'
+# import * from './generated/prisma.graphql'
+
+type SuccessMessage {
+   message: String
+}
 
 type Query {
    users: [User!]
@@ -14,12 +18,12 @@ type Query {
    ): [Apartment!]
    apartmentsCount: Int
    #comments(first: Int, skip: Int, after: String, orderBy: CommentOrderByInput): [Comment!]!
-   me: MeData
+   me: User
 }
 
 type Mutation {
    login(data: LoginUserInput!): User!
-   logout: User
+   logout: SuccessMessage
    createUser(data: CreateUserInput!): User!
    deleteUser(userId: String!): User
    updateUser(data: UpdateUserInput!): User

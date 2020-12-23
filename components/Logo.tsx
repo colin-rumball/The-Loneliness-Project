@@ -16,7 +16,7 @@ const Logo: React.FC = () => {
          `,
       []
    );
-   return <StyledLogo src="/static/thelonelinessproject.svg" alt="The Loneliness Project" />;
+   return <StyledLogo src="/thelonelinessproject.svg" alt="The Loneliness Project" />;
 };
 
 export default Logo;

@@ -69,14 +69,14 @@ const StyledSocialAndCredits: React.FC<StyledSocialAndCreditsProps> = props => {
          <StyledCredits>
             <span>
                <span className="line">Designed by </span>
-               <a className="line" href="https://marissakorda.com/" target="_blank">
+               <a className="line" href="https://marissakorda.com/" target="_blank" rel="noopener">
                   Marissa Korda
                </a>
             </span>
             <span className="slash"> / </span>
             <span>
                <span className="line">Developed by </span>
-               <a className="line" href="https://colinrumball.com/" target="_blank">
+               <a className="line" href="https://colinrumball.com/" target="_blank" rel="noopener">
                   Colin Rumball
                </a>
             </span>

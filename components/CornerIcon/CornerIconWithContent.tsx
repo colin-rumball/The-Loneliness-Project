@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useEffect } from "react";
-import ScrollLock, { TouchScrollable } from "react-scrolllock";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 import StyledIcon from "../Styled/StyledIcon";

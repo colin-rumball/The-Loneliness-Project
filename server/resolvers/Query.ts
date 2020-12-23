@@ -1,13 +1,11 @@
-import { ResolveContext } from "../serverUtils/constants";
 import { ApartmentWhereInput, ApartmentOrderByInput } from "../generated/prisma-client";
-import { AuthenticationError } from "../../gql/errors";
-import extractDecodedToken from "../serverUtils/extractDecodedToken";
+import ResolverContainer from "./common";
+import isLoggedIn from "../serverUtils/isLoggedIn";
 
-const Query = {
-   async users(parent, args, { user, request, prisma }: ResolveContext, info) {
-      if (!user) {
-         throw new AuthenticationError();
-      }
+const Query: ResolverContainer = {
+   async users(parent, args, { request, prisma }, info) {
+      // Check if they are logged in
+      isLoggedIn(request);
 
       const opArgs: any = {
          first: args.first,
@@ -18,17 +16,17 @@ const Query = {
 
       return prisma.users(opArgs);
    },
-   async apartment(parent, args, { prisma }: ResolveContext, info) {
+   async apartment(parent, args, { prisma }, info) {
       return prisma.apartment({
          id: args.id
       });
    },
-   async apartmentByNumber(parent, args, { prisma }: ResolveContext, info) {
+   async apartmentByNumber(parent, args, { prisma }, info) {
       return prisma.apartment({
          apt: args.apt
       });
    },
-   async apartments(parent, args, { user, prisma }: ResolveContext, info) {
+   async apartments(parent, args, { request, prisma }, info) {
       const opArgs: {
          where?: ApartmentWhereInput;
          orderBy?: ApartmentOrderByInput;
@@ -42,7 +40,7 @@ const Query = {
          skip: args.skip,
          after: args.after,
          orderBy: args.orderBy,
-         where: !user
+         where: !request.userId
             ? { published: true }
             : {
                  published: args.published
@@ -59,23 +57,18 @@ const Query = {
 
       return prisma.apartments(opArgs);
    },
-   async apartmentsCount(parent, args, { prisma }: ResolveContext, info) {
+   async apartmentsCount(parent, args, { prisma }, info) {
       return prisma
          .apartmentsConnection()
          .aggregate()
          .count();
    },
-   async me(parent, args, { prisma, request, response, user }: ResolveContext, info) {
-      if (!user) {
+   async me(parent, args, { prisma, request, response }, info) {
+      // Check if there is a current user ID
+      if (!request.userId) {
          return null;
       }
-
-      const token = extractDecodedToken(request);
-
-      return {
-         expiryDate: token.expiryDate,
-         user
-      };
+      return prisma.user({ id: request.userId });
    }
 };
 

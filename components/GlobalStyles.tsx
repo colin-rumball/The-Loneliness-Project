@@ -1,6 +1,9 @@
-@font-face {
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+	@font-face {
    font-family: "freight-display-pro";
-   src: url("/static/fonts/Freight Disp Light.otf") format("opentype");
+   src: url("/fonts/Freight Disp Light.otf") format("opentype");
 }
 
 * {
@@ -41,3 +44,7 @@ h4,
 h5 {
    margin: 0;
 }
+
+`;
+
+export default GlobalStyles;

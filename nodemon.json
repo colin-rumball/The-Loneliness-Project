@@ -1,0 +1,16 @@
+{
+	"ignore": [
+		"**/*.test.ts",
+		"**/*.spec.ts",
+		"node_modules"
+	],
+	"watch": [
+		"server",
+		".env"
+	],
+	"exec": "npm run dev:server",
+	"ext": "ts",
+	"events": {
+		"start": "cls"
+	}
+}

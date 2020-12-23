@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import PressHeader from "../components/PressFeatures/PressHeader";
 import RenderPressFeatures from "../components/PressFeatures/RenderPressFeatures";
-import pressFeatures from "./../static/press.json";
+import pressFeatures from "./../public/press.json";
 
 interface PressFeaturesProps {
    addPadding?: boolean;

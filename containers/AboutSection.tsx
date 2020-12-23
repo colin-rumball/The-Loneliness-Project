@@ -78,7 +78,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
    return (
       <StyledAboutSection>
          <StyledFadeIn delay={"0.3s"}>
-            <img className="icon" alt={"fingerprint-logo"} src="/static/finger-print-logo.svg" />
+            <img className="icon" alt={"fingerprint-logo"} src="/finger-print-logo.svg" />
          </StyledFadeIn>
          <StyledFadeIn delay={"0.5s"}>
             <div className="about-title">Loneliness is human and that’s okay.</div>
@@ -95,6 +95,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
             anonymous form has remained open.{" "}
             <a
                href="https://docs.google.com/forms/d/e/1FAIpQLSf5hbVcxdWvkNSiVHucPs8Czjpehh58y2DkuGMlfmlHt1IoVQ/viewform?c=0&w=1"
+               rel="noopener"
                target="_blank"
             >
                Share your story here

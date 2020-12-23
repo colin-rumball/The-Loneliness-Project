@@ -41,16 +41,36 @@ const SocialMedia: React.FC<SocialMediaProps> = props => {
 
    return (
       <StyledSocialMedia justifyContent={justifyContent}>
-         <StyledSocialIcon href="https://www.facebook.com/animperfectarchiveofus/" target="_blank">
+         <StyledSocialIcon
+            href="https://www.facebook.com/animperfectarchiveofus/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+         >
             <FaFacebookF />
          </StyledSocialIcon>
-         <StyledSocialIcon href="https://twitter.com/marissakorda" target="_blank">
+         <StyledSocialIcon
+            href="https://twitter.com/marissakorda"
+            target="_blank"
+            rel="noopener"
+            aria-label="Twitter"
+         >
             <FaTwitter />
          </StyledSocialIcon>
-         <StyledSocialIcon href="https://www.instagram.com/thelonelinessproject/" target="_blank">
+         <StyledSocialIcon
+            href="https://www.instagram.com/thelonelinessproject/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+         >
             <AiFillInstagram />
          </StyledSocialIcon>
-         <StyledSocialIcon href="mailto:hello@marissakorda.com" target="_blank">
+         <StyledSocialIcon
+            href="mailto:hello@marissakorda.com"
+            target="_blank"
+            rel="noopener"
+            aria-label="Email"
+         >
             <FaEnvelope />
          </StyledSocialIcon>
       </StyledSocialMedia>

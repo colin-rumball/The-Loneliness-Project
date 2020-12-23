@@ -1,7 +1,7 @@
 import ApolloBoost from "apollo-boost";
 const getClient = (jwt = "") => {
    return new ApolloBoost({
-      uri: "http://localhost:4000/graphql",
+      uri: "http://localhost:3000/graphql",
       request(operation) {
          if (jwt) {
             operation.setContext({

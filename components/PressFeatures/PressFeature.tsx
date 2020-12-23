@@ -91,7 +91,7 @@ const PressFeature: React.FC<PressFeatureProps> = props => {
       <StyledPressFeature>
          <img
             className={`press-image ${info.class}`}
-            src={`/static/press/${info.src}`}
+            src={`/press/${info.src}`}
             alt={`${info.alt}`}
          />
       </StyledPressFeature>

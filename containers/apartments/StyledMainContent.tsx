@@ -10,7 +10,7 @@ interface StyledMainContentProps {
 
 const StyledMainContent: React.FC<StyledMainContentProps> = ({ loading, children }) => {
    const StyledMainContent = useMemo(
-      () => styled.div`
+      () => styled.main`
          position: relative;
          display: flex;
          flex-direction: row;

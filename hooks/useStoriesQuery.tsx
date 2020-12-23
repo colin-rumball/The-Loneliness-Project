@@ -12,43 +12,51 @@ const useStoriesQuery = () => {
 	*/
    // Window sizing
    const windowDimensions = useWindowDimensions();
+   const [loading, setLoading] = useState(true);
 
    // Stores the current shown stories
    const [stories, setStories] = useState([]);
 
    // Query
    const queryAmount = useQueryAmount(windowDimensions, currentTheme);
-   const queryParams = useMemo(
-      () => ({
-         variables: {
-            query: "",
-            first: queryAmount,
-            orderBy: "apt_DESC",
-            skip: stories.length,
-            published: true
-         }
-      }),
-      [queryAmount, stories]
-   );
-   const [queryStories, { client, loading }] = useLazyQuery(APARTMENTS_OVERVIEW, {
-      onCompleted(data) {
-         if (data && data.apartments) {
-            setStories(prevApartments => [...prevApartments, ...data.apartments]);
-         }
-      }
-   });
+   // const queryParams = useMemo(
+   //    () => ({
+   //       variables: {
+   //          query: "",
+   //          first: queryAmount,
+   //          orderBy: "apt_DESC",
+   //          skip: stories.length,
+   //          published: true
+   //       }
+   //    }),
+   //    [queryAmount, stories]
+   // );
+   // const [queryStories, { client, loading }] = useLazyQuery(APARTMENTS_OVERVIEW, {
+   //    onCompleted(data) {
+   //       if (data && data.apartments) {
+   //          setStories(prevApartments => [...prevApartments, ...data.apartments]);
+   //       }
+   //    }
+   // });
 
    useEffect(() => {
+      const fetchData = async () => {
+         const res = await fetch("/apartments.json");
+         const data = await res.json();
+         setStories(data);
+         setLoading(false);
+      };
+      fetchData();
       // Initial query (hacky)
-      if (stories.length == 0) {
-         queryStories(queryParams);
-      }
+      // if (stories.length == 0) {
+      //    queryStories(queryParams);
+      // }
    }, []);
 
    // Replacement refetch
-   const refetch = useCallback(() => queryStories(queryParams), [queryAmount, stories]);
+   // const refetch = useCallback(() => queryStories(queryParams), [queryAmount, stories]);
 
-   return { stories, loading, client, refetch };
+   return { stories, loading };
 };
 
 export default useStoriesQuery;

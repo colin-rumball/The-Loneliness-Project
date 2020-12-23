@@ -9,7 +9,6 @@ import Button from "../../components/Base/Button";
 import SubmitButton from "../../components/Forms/SubmitButton";
 import { useQuery } from "@apollo/react-hooks";
 import { APARTMENT_DETAILED } from "../../gql/queries";
-import useGQLErrorHandler from "../../hooks/useGQLErrorHandler";
 import ModalBase, { ModalBaseProps } from "./ModalBase";
 import OverlayedSpinner from "../OverlayedSpinner";
 import Spinner from "../../components/Spinner";
@@ -77,8 +76,7 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, .
          if (data && data.apartment) {
             setQueriedData(data.apartment);
          }
-      },
-      onError: useGQLErrorHandler
+      }
    });
 
    const StyledForm = useMemo(
@@ -131,11 +129,7 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, .
                if (currentImage) {
                   const data = new FormData();
                   data.append("file", currentImage);
-                  const endpoint =
-                     process.env.PD_LOCAL_DEVELOPMENT && process.env.PD_USE_LOCAL_SERVER
-                        ? "http://localhost:4000/upload"
-                        : "/upload";
-                  await fetch(endpoint, {
+                  await fetch("/upload", {
                      method: "POST",
                      body: data
                   });
@@ -148,7 +142,7 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, .
                <TextInput label="ID" name="id" type="text" disabled />
                {apt != 0 && (
                   <ApartmentImage
-                     originalImage={`/static/apartments/storey_${apt}.png`}
+                     originalImage={`/apartments/storey_${apt}.png`}
                      currentImage={currentImage}
                      setCurrentImage={setCurrentImage}
                   />

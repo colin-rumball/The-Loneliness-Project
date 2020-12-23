@@ -14,7 +14,7 @@ const CloudAnimation: React.FC<CloudAnimationProps> = props => {
          position: absolute;
          overflow: hidden;
 
-         background-image: url("/static/images/clouds.png");
+         background-image: url("/images/clouds.png");
          background-repeat: repeat-x;
          background-position-x: 0%;
          transition: background-image 1s ease-in-out;

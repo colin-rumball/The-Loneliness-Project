@@ -1,36 +1,33 @@
-import React, { useMemo, useCallback } from "react";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
+import React, { useCallback, useMemo } from "react";
 import styled from "styled-components";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { ME } from "../gql/queries";
-import { LOGOUT } from "../gql/mutations";
-import UserList from "../containers/UserList";
 import ApartmentList from "../containers/ApartmentList";
-import { ThemeContainer } from "../themes/common";
 import ConfirmationModal from "../containers/modals/ConfirmationModal";
-import { createPushAction } from "../contexts/ModalSystem/actions/PushAction";
+import UserList from "../containers/UserList";
+import { LOGOUT } from "../gql/mutations";
+import { ME } from "../gql/queries";
 import useModalSystemHelper from "../hooks/useModalSystemHelper";
+import { ThemeContainer } from "../themes/common";
+import { NextPageContext } from "next";
+import nextCookie from "next-cookies";
 
-const Dashboard: React.FC = () => {
+const Dashboard = ({ myName }) => {
    const router = useRouter();
    const { pushModal } = useModalSystemHelper();
-   const [logout] = useMutation(LOGOUT);
-
-   const { data, loading } = useQuery(ME, {
-      onCompleted(data) {
-         if (!data || !data.me) {
-            router.replace("/login");
-         }
+   const [logout] = useMutation(LOGOUT, {
+      onCompleted() {
+         router.replace("/");
+      },
+      onError(err) {
+         console.log(err);
       }
    });
 
    const onLogoutClicked = useCallback(() => {
       pushModal(
          <ConfirmationModal
-            onContinueClicked={async () => {
-               logout();
-               router.replace("/");
-            }}
+            onContinueClicked={() => logout()}
             message="Are you sure you'd like to logout?"
          />
       );
@@ -73,12 +70,10 @@ const Dashboard: React.FC = () => {
       []
    );
 
-   if (!data || !data.me || loading) return <></>;
-
    return (
       <StyledDashboardPage>
          <StyledPageHeader>
-            <span>Hello, {data.me.user.username}</span>
+            <span>Hello, {myName}</span>
             <StyledMinimalButton onClick={() => router.push("/")}>
                The Loneliness Project
             </StyledMinimalButton>
@@ -88,6 +83,26 @@ const Dashboard: React.FC = () => {
          <ApartmentList />
       </StyledDashboardPage>
    );
+};
+
+Dashboard.getInitialProps = async (ctx: NextPageContext) => {
+   const redirectOnError = () => {
+      if (process.browser) {
+         window.location.href = "/login";
+      } else {
+         ctx.res.writeHead(301, { Location: "/login" });
+         ctx.res.end();
+      }
+   };
+
+   const { token } = nextCookie(ctx);
+
+   if (!token && !process.browser) {
+      redirectOnError();
+      return {};
+   }
+
+   return {};
 };
 
 export default Dashboard;
