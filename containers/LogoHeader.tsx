@@ -3,14 +3,45 @@ import Logo from "../components/Logo";
 import styled from "styled-components";
 import { ThemeContainer } from "../themes/common";
 import { debounce } from "lodash";
+import Slogan from "../components/Slogan";
+
+const StyledLogoHeader = styled.div`
+   position: fixed;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-evenly;
+
+   width: 100%;
+   height: 430px;
+   padding-top: 70px;
+   user-select: none;
+   pointer-events: none;
+   opacity: ${props => props.currentOpacity};
+   transition: opacity 0.2s ease;
+   z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MID_GROUND};
+
+   animation: fadeIn 2s ease-out 0.25s backwards;
+
+   @keyframes fadeIn {
+      from {
+         opacity: 0;
+      }
+      to {
+         opacity: 1;
+      }
+   }
+`;
 
 const LogoHeader: React.FC = () => {
    const getOpacityAmount = useCallback(() => {
       if (typeof document == "undefined") return 1.0;
 
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      if (winScroll > 200) return 0;
+      return 1;
 
-      return Math.max(1 - winScroll / 400, 0.0);
+      // return Math.max(1 - winScroll / 400, 0.0);
    }, []);
    const [opacity, setOpacity] = useState(1.0);
 
@@ -18,10 +49,10 @@ const LogoHeader: React.FC = () => {
       debounce(
          () => {
             const newOpacity = getOpacityAmount();
-            setOpacity(newOpacity);
+            setOpacity(() => newOpacity);
          },
-         50,
-         { maxWait: 200 }
+         150,
+         { maxWait: 300 }
       ),
       []
    );
@@ -31,73 +62,18 @@ const LogoHeader: React.FC = () => {
    }, []);
 
    useEffect(() => {
-      setOpacity(1.0);
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      setOpacity(winScroll > 200 ? 0 : 1);
       window.addEventListener("scroll", onScroll);
       return () => {
          window.removeEventListener("scroll", onScroll);
       };
    }, []);
 
-   const StyledLogoHeader = useMemo(
-      () => styled.div`
-         position: fixed;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: space-evenly;
-
-         width: 100%;
-         height: 430px;
-         padding-top: 70px;
-         user-select: none;
-         pointer-events: none;
-         opacity: ${props => props.currentOpacity};
-         transition: opacity 0.2s ease;
-         z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MID_GROUND};
-
-         animation: fadeIn 2s ease-out 0.25s backwards;
-
-         @keyframes fadeIn {
-            from {
-               opacity: 0;
-            }
-            to {
-               opacity: 1;
-            }
-         }
-
-         .slogan {
-            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-            font-size: 24px;
-            font-weight: 500;
-            line-height: 26px;
-            text-align: center;
-            letter-spacing: 0.4px;
-            padding-top: 25px;
-
-            max-width: 80%;
-            animation: fadeIn 1s ease-out 1s both;
-
-            @keyframes fadeIn {
-               from {
-                  opacity: 0;
-               }
-               to {
-                  opacity: 1;
-               }
-            }
-         }
-      `,
-      []
-   );
-
    return (
       <StyledLogoHeader currentOpacity={opacity}>
          <Logo />
-         <div className="slogan">
-            <span>Weekly stories of loneliness. </span>
-            <span>Visit an apartment to get started.</span>
-         </div>
+         <Slogan />
       </StyledLogoHeader>
    );
 };
