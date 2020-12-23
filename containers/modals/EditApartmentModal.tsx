@@ -144,7 +144,7 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ apolloClient, .
                   <ApartmentImage
                      originalImage={`/apartments/storey_${apt}.png`}
                      currentImage={currentImage}
-                     setCurrentImage={setCurrentImage}
+                     setCurrentImage={(newImage: string) => setCurrentImage(newImage as any)}
                   />
                )}
                <StyledSection>

@@ -3,8 +3,8 @@
 import { formatError } from "apollo-errors";
 import cookieParser from "cookie-parser";
 // import cors from "cors";
-import createApolloServer from "../../backend/src/utils/createApolloServer";
-import signToken from "./../../backend/src/utils/signToken";
+// import createApolloServer from "../../backend/src/utils/createApolloServer";
+// import signToken from "./../../backend/src/utils/signToken";
 import cors from "micro-cors";
 
 // const graphQLEndpoint = "/graphql";
@@ -12,8 +12,8 @@ import cors from "micro-cors";
 // const targetStage = process.env.STAGING_ENVIRONMENT;
 // const playground = targetStage === "development" ? graphQLEndpoint : false;
 
-const gqlServer = createApolloServer();
-const gqlHandler = gqlServer.createHandler({ path: "/api/graphql" });
+// const gqlServer = createApolloServer();
+// const gqlHandler = gqlServer.createHandler({ path: "/api/graphql" });
 
 // lambda.express.use(
 //    cors({
@@ -50,8 +50,8 @@ const gqlHandler = gqlServer.createHandler({ path: "/api/graphql" });
 
 export const config = {
    api: {
-      bodyParser: false,
-   },
+      bodyParser: false
+   }
 };
 
 export default gqlHandler; // cors(parseToken, gqlServer.createHandler({ path: "/api/graphql" }));

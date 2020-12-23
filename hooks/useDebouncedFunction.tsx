@@ -17,13 +17,11 @@ export default function useDebouncedFunction(func, delay): [Function, DebounceOp
             setTimeoutId(undefined);
          }
 
-         setTimeoutId(
-            setTimeout(() => {
-               func(vars);
-               setTimeoutId(undefined);
-               setLoading(false);
-            }, delay)
-         );
+         setTimeoutId(setTimeout(() => {
+            func(vars);
+            setTimeoutId(undefined);
+            setLoading(false);
+         }, delay) as any);
       },
       [timeoutId]
    );
