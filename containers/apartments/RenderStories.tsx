@@ -29,7 +29,7 @@ const RenderStories: React.FC<RenderStoriesProps> = props => {
             .filter((story, index) => index < shownAmount)
             .map((story, index) => (
                <StyledApartment
-                  ref={index == shownAmount - 1 ? lastApartmentRef : null}
+                  myRef={index == shownAmount - 1 ? lastApartmentRef : null}
                   key={story.id}
                   srcset={`/apartments/small/storey_${
                      story.apt

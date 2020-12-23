@@ -6,7 +6,7 @@ import useCurrentTheme from "../../hooks/useCurrentTheme";
 
 interface StyledApartmentProps {
    key?: Key;
-   ref?: MutableRefObject<any>;
+   myRef?: MutableRefObject<any>;
    src: string;
    srcset: string;
    onClick();
@@ -18,8 +18,8 @@ const StyledApartmentDefaultProps: StyledApartmentProps = {
    onClick: () => {}
 };
 
-const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) => {
-   const { key, src, srcset, onClick } = { ...StyledApartmentDefaultProps, ...props };
+const StyledApartment: React.FC<StyledApartmentProps> = forwardRef(props => {
+   const { key, src, srcset, onClick, myRef } = { ...StyledApartmentDefaultProps, ...props };
    const currentTheme = useCurrentTheme();
    const { width } = useWindowDimensions();
 
@@ -107,7 +107,7 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
    );
    return (
       <StyledApartment>
-         <div ref={ref} className="backer" onClick={onClick} />
+         <div ref={myRef} className="backer" onClick={onClick} />
          <img
             src={src}
             srcSet={srcset}
