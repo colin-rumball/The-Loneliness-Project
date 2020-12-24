@@ -1,4 +1,4 @@
-import React, { useMemo, forwardRef, Key, MutableRefObject } from "react";
+import React, { useMemo, forwardRef, Key, MutableRefObject, useState } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
@@ -90,6 +90,7 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
    const { key, src, srcset, onClick } = { ...StyledApartmentDefaultProps, ...props };
    const currentTheme = useCurrentTheme();
    const { width } = useWindowDimensions();
+   const [loaded, setLoaded] = useState(false);
 
    const expectedImageWidth = useMemo(() => {
       const breakPoints = currentTheme.VARIABLES.BREAK_POINTS;
@@ -103,13 +104,15 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
 
    return (
       <InternalStyledApartment>
-         <div ref={ref as any} className="backer" onClick={onClick} />
+         {loaded && <div ref={ref as any} className="backer" onClick={onClick} />}
          <img
+            style={loaded ? {} : { display: "none" }}
             src={src}
             srcSet={srcset}
             sizes={expectedImageWidth}
             className="apartment-image"
             alt={`apartment-${key}-image`}
+            onLoad={() => setLoaded(true)}
          />
          <div className="gap-filler-contianer">
             <div className="gap-filler" />
