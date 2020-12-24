@@ -114,9 +114,11 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
             alt={`apartment-${key}-image`}
             onLoad={() => setLoaded(true)}
          />
-         <div className="gap-filler-contianer">
-            <div className="gap-filler" />
-         </div>
+         {loaded && (
+            <div className="gap-filler-contianer">
+               <div className="gap-filler" />
+            </div>
+         )}
       </InternalStyledApartment>
    );
 });
