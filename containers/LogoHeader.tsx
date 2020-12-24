@@ -17,7 +17,7 @@ const StyledLogoHeader = styled.div`
    padding-top: 70px;
    user-select: none;
    pointer-events: none;
-   opacity: ${props => props.currentOpacity};
+   opacity: ${(props) => props.currentOpacity};
    transition: opacity 0.2s ease;
    z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MID_GROUND};
 
@@ -49,8 +49,8 @@ const LogoHeader: React.FC = () => {
             const newOpacity = getOpacityAmount();
             setOpacity(() => newOpacity);
          },
-         150,
-         { maxWait: 300 }
+         50,
+         { maxWait: 200 }
       ),
       []
    );

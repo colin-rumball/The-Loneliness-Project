@@ -1,16 +1,16 @@
 // import { useMutation, useQuery } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
 import React, { useCallback, useMemo } from "react";
-import styled from "styled-components";
-import ApartmentList from "../containers/ApartmentList";
-import ConfirmationModal from "../containers/modals/ConfirmationModal";
-import UserList from "../containers/UserList";
+// import styled from "styled-components";
+// import ApartmentList from "../containers/ApartmentList";
+// import ConfirmationModal from "../containers/modals/ConfirmationModal";
+// import UserList from "../containers/UserList";
 // import { LOGOUT } from "../gql/mutations";
 // import { ME } from "../gql/queries";
-import useModalSystemHelper from "../hooks/useModalSystemHelper";
-import { ThemeContainer } from "../themes/common";
-import { NextPageContext } from "next";
-import nextCookie from "next-cookies";
+// import useModalSystemHelper from "../hooks/useModalSystemHelper";
+// import { ThemeContainer } from "../themes/common";
+// import { NextPageContext } from "next";
+// import nextCookie from "next-cookies";
 
 const Dashboard = ({ myName }) => {
    return <></>;
@@ -86,24 +86,24 @@ const Dashboard = ({ myName }) => {
    // );
 };
 
-Dashboard.getInitialProps = async (ctx: NextPageContext) => {
-   const redirectOnError = () => {
-      if (process.browser) {
-         window.location.href = "/login";
-      } else {
-         ctx.res.writeHead(301, { Location: "/login" });
-         ctx.res.end();
-      }
-   };
+// Dashboard.getInitialProps = async (ctx: NextPageContext) => {
+//    const redirectOnError = () => {
+//       if (process.browser) {
+//          window.location.href = "/login";
+//       } else {
+//          ctx.res.writeHead(301, { Location: "/login" });
+//          ctx.res.end();
+//       }
+//    };
 
-   const { token } = nextCookie(ctx);
+//    const { token } = nextCookie(ctx);
 
-   if (!token && !process.browser) {
-      redirectOnError();
-      return {};
-   }
+//    if (!token && !process.browser) {
+//       redirectOnError();
+//       return {};
+//    }
 
-   return {};
-};
+//    return {};
+// };
 
 export default Dashboard;
