@@ -12,10 +12,10 @@ interface RenderStoriesProps {
 
 const RenderStoriesDefaultProps: RenderStoriesProps = {
    lastApartmentRef: undefined,
-   shownAmount: 0
+   shownAmount: 0,
 };
 
-const RenderStories: React.FC<RenderStoriesProps> = props => {
+const RenderStories: React.FC<RenderStoriesProps> = (props) => {
    const stories: any[] = useContext(StoriesContext);
    const { lastApartmentRef, shownAmount } = { ...RenderStoriesDefaultProps, ...props };
    const router = useRouter();
@@ -29,19 +29,15 @@ const RenderStories: React.FC<RenderStoriesProps> = props => {
             .filter((story, index) => index < shownAmount)
             .map((story, index) => (
                <StyledApartment
-                  myRef={index == shownAmount - 1 ? lastApartmentRef : null}
+                  ref={index == shownAmount - 1 ? lastApartmentRef : null}
                   key={story.id}
-                  srcset={`/apartments/small/storey_${
-                     story.apt
-                  }_small.png 360w, /apartments/medium/storey_${
-                     story.apt
-                  }_medium.png 640w, /apartments/large/storey_${story.apt}_large.png 920w`}
+                  srcset={`/apartments/small/storey_${story.apt}_small.png 360w, /apartments/medium/storey_${story.apt}_medium.png 640w, /apartments/large/storey_${story.apt}_large.png 920w`}
                   src={`/apartments/storey_${story.apt}_medium.png`}
                   onClick={() => {
                      // Replace the url with a query for the current story
                      const href = `/?a=${story.apt}`;
                      router.replace(href, href, {
-                        shallow: true
+                        shallow: true,
                      });
 
                      // Push the detailed modal
@@ -54,9 +50,9 @@ const RenderStories: React.FC<RenderStoriesProps> = props => {
                            onClose: () => {
                               const href = `/`;
                               router.replace(href, href, {
-                                 shallow: true
+                                 shallow: true,
                               });
-                           }
+                           },
                         }
                      );
                   }}

@@ -9,7 +9,7 @@ import StoreFronts from "./apartments/StoreFronts";
 import StyledMainContent from "./apartments/StyledMainContent";
 import StyledShowMore from "./apartments/StyledShowMore";
 
-const ApartmentBuildings: React.FC = props => {
+const ApartmentBuildings: React.FC = (props) => {
    const currentTheme = useCurrentTheme();
    const windowDimensions = useWindowDimensions();
    const queryAmount = useQueryAmount(windowDimensions, currentTheme);
@@ -22,7 +22,7 @@ const ApartmentBuildings: React.FC = props => {
             <StyledShowMore
                onClick={() => {
                   lastApartmentRef.current.scrollIntoView();
-                  setShownAmount(amt => amt + 1);
+                  setShownAmount((amt) => amt + 1);
                   // refetch();
                }}
             />

@@ -77,6 +77,7 @@ interface StyledApartmentProps {
    src: string;
    srcset: string;
    onClick();
+   ref?: any;
 }
 
 const StyledApartmentDefaultProps: StyledApartmentProps = {
