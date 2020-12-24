@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+// import { useQuery, useMutation } from "@apollo/react-hooks";
 // import { USERS } from "../gql/queries";
 import { FaTimes } from "react-icons/fa";
 import AddUserModal from "./modals/AddUserModal";

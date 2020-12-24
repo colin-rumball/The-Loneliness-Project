@@ -1,13 +1,13 @@
 import React, { useMemo, useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import { Formik, Form, useFormikContext } from "formik";
-import * as Yup from "yup";
+// import * as Yup from "yup";
 import TextInput from "../../components/Forms/TextInput";
 import Checkbox from "../../components/Forms/Checkbox";
 import TextArea from "../../components/Forms/TextArea";
 import Button from "../../components/Base/Button";
 import SubmitButton from "../../components/Forms/SubmitButton";
-import { useQuery } from "@apollo/react-hooks";
+// import { useQuery } from "@apollo/react-hooks";
 // import { APARTMENT_DETAILED } from "../../gql/queries";
 import ModalBase, { ModalBaseProps } from "./ModalBase";
 import OverlayedSpinner from "../OverlayedSpinner";
@@ -45,7 +45,7 @@ const EditApartmentModalDefaultProps: EditApartmentModalProps = {
    createdAt: "",
    updateAt: "",
    modalTitle: "",
-   buttonText: ""
+   buttonText: "",
 };
 
 const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ ...props }) => {

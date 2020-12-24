@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useCallback } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../themes/common";
-import { useLazyQuery } from "@apollo/react-hooks";
+// import { useLazyQuery } from "@apollo/react-hooks";
 // import { APARTMENTS_OVERVIEW_EXTRAS } from "../gql/queries";
 import { useRouter } from "next/router";
 import ApartmentDetailsModal from "./modals/ApartmentDetailsModal";
@@ -14,7 +14,7 @@ interface SearchSectionProps {}
 
 const SearchSectionDefaultProps: SearchSectionProps = {};
 
-const SearchSection: React.FC<SearchSectionProps> = props => {
+const SearchSection: React.FC<SearchSectionProps> = (props) => {
    return <></>;
    // const {} = { ...SearchSectionDefaultProps, ...props };
 
