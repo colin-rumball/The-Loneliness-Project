@@ -15,7 +15,7 @@ html {
    color: #222222;
    scroll-behavior: smooth;
    webkit-font-smoothing: antialiased;
-   font-display: swap;
+   font-display: block;
 }
 
 .modal-open {
