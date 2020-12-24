@@ -3,18 +3,15 @@ import styled from "styled-components";
 import { useField } from "formik";
 import StyledErrorMessage from "../Styled/StyledErrorMessage";
 
+const StyledCheckbox = styled.div`
+   margin: 10px 5px;
+`;
+
 interface CheckboxProps
    extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {}
 
 const Checkbox: React.FC<CheckboxProps> = ({ children, ...props }) => {
    const [field, meta] = useField({ ...(props as any), type: "checkbox" });
-
-   const StyledCheckbox = useMemo(
-      () => styled.div`
-         margin: 10px 5px;
-      `,
-      []
-   );
 
    return (
       <StyledCheckbox>

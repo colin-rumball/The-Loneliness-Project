@@ -2,6 +2,148 @@ import React, { useMemo, useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 
+const InternalStyledStoreFront = styled.div`
+   position: relative;
+   flex-basis: 100%;
+   padding: 0 1.5%;
+
+   @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+      flex-basis: 50%;
+      padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.STORE_PADDING}`};
+   }
+
+   @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+      flex-basis: 33%;
+      padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.STORE_PADDING}`};
+   }
+
+   .image-container {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+   }
+
+   &.left {
+      display: none;
+
+      .store-front-image {
+         /* transform: translateX(-0.8%); */
+         /* width: 101.6%; */
+         width: 100%;
+      }
+
+      @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+         display: block;
+      }
+
+      @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+         display: block;
+      }
+   }
+
+   &.center {
+      display: block;
+
+      @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+         display: none;
+      }
+
+      @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+         display: block;
+      }
+
+      .store-front-image {
+         /* transform: translateX(-2%); */
+         /* width: 104%; */
+         width: 100%;
+         height: 100%;
+      }
+   }
+
+   &.right {
+      display: none;
+
+      .store-front-image {
+         /* transform: translateX(-0.8%); */
+         /* width: 101.6%; */
+         width: 100%;
+      }
+
+      @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
+         display: block;
+      }
+
+      @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+         display: block;
+      }
+   }
+`;
+
+const EasterEggClickArea = styled.div`
+   position: absolute;
+   top: 40%;
+   left: 13%;
+   width: 6%;
+   height: 8%;
+
+   user-select: initial;
+   pointer-events: initial;
+
+   @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+      left: 18%;
+   }
+
+   &:hover {
+      cursor: pointer;
+   }
+`;
+
+const EasterEggText = styled.div`
+   position: absolute;
+   top: 18%;
+   left: -8%;
+   width: 6%;
+   height: 8%;
+   font-size: 5.4vw;
+   font-weight: 600;
+
+   text-align: center;
+   color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+
+   &:hover {
+      cursor: pointer;
+   }
+
+   @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+      left: 1%;
+      top: 20%;
+      font-size: 1.4vw;
+   }
+`;
+
+const EasterEggLine = styled.svg`
+   position: absolute;
+   top: 37%;
+   left: 3%;
+   width: 7%;
+   height: 8%;
+
+   stroke: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+
+   &:hover {
+      cursor: pointer;
+   }
+
+   @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
+      top: 37%;
+      left: 9%;
+      width: 7%;
+      height: 8%;
+   }
+`;
+
 interface StyledStoreFrontProps {
    position: "left" | "center" | "right";
    image: string;
@@ -11,10 +153,10 @@ interface StyledStoreFrontProps {
 const StyledStoreFrontDefaultProps: StyledStoreFrontProps = {
    position: "center",
    image: "",
-   alt: ""
+   alt: "",
 };
 
-const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
+const StyledStoreFront: React.FC<StyledStoreFrontProps> = (props) => {
    const { position, image, alt } = { ...StyledStoreFrontDefaultProps, ...props };
 
    const easterEggAudio = useMemo(() => new Audio("/audio/lottery-winner.mp3"), []);
@@ -37,168 +179,8 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
       };
    }, [showEasterEgg]);
 
-   const StyledStoreFront = useMemo(
-      () => styled.div`
-         position: relative;
-         flex-basis: 100%;
-         padding: 0 1.5%;
-
-         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
-            flex-basis: 50%;
-            padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.STORE_PADDING}`};
-         }
-
-         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
-            flex-basis: 33%;
-            padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.STORE_PADDING}`};
-         }
-
-         .image-container {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-         }
-
-         &.left {
-            display: none;
-
-            .store-front-image {
-               /* transform: translateX(-0.8%); */
-               /* width: 101.6%; */
-               width: 100%;
-            }
-
-            @media (min-width: ${({ theme }: ThemeContainer) =>
-                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
-               display: block;
-            }
-
-            @media (min-width: ${({ theme }: ThemeContainer) =>
-                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
-               display: block;
-            }
-         }
-
-         &.center {
-            display: block;
-
-            @media (min-width: ${({ theme }: ThemeContainer) =>
-                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
-               display: none;
-            }
-
-            @media (min-width: ${({ theme }: ThemeContainer) =>
-                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
-               display: block;
-            }
-
-            .store-front-image {
-               /* transform: translateX(-2%); */
-               /* width: 104%; */
-               width: 100%;
-               height: 100%;
-            }
-         }
-
-         &.right {
-            display: none;
-
-            .store-front-image {
-               /* transform: translateX(-0.8%); */
-               /* width: 101.6%; */
-               width: 100%;
-            }
-
-            @media (min-width: ${({ theme }: ThemeContainer) =>
-                  theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
-               display: block;
-            }
-
-            @media (min-width: ${({ theme }: ThemeContainer) =>
-                  theme.VARIABLES.BREAK_POINTS.LARGE}) {
-               display: block;
-            }
-         }
-      `,
-      []
-   );
-
-   const EasterEggClickArea = useMemo(
-      () => styled.div`
-         position: absolute;
-         top: 40%;
-         left: 13%;
-         width: 6%;
-         height: 8%;
-
-         user-select: initial;
-         pointer-events: initial;
-
-         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
-            left: 18%;
-         }
-
-         &:hover {
-            cursor: pointer;
-         }
-      `,
-      []
-   );
-
-   const EasterEggText = useMemo(
-      () => styled.div`
-         position: absolute;
-         top: 18%;
-         left: -8%;
-         width: 6%;
-         height: 8%;
-         font-size: 5.4vw;
-         font-weight: 600;
-
-         text-align: center;
-         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-
-         &:hover {
-            cursor: pointer;
-         }
-
-         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
-            left: 1%;
-            top: 20%;
-            font-size: 1.4vw;
-         }
-      `,
-      []
-   );
-
-   const EasterEggLine = useMemo(
-      () => styled.svg`
-         position: absolute;
-         top: 37%;
-         left: 3%;
-         width: 7%;
-         height: 8%;
-
-         stroke: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-
-         &:hover {
-            cursor: pointer;
-         }
-
-         @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
-            top: 37%;
-            left: 9%;
-            width: 7%;
-            height: 8%;
-         }
-      `,
-      []
-   );
-
    return (
-      <StyledStoreFront className={position}>
+      <InternalStyledStoreFront className={position}>
          <div className="image-container">
             <img
                className="store-front-image"
@@ -215,7 +197,7 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = props => {
             </>
          )}
          {position === "center" && <EasterEggClickArea onClick={onEasterEggClicked} />}
-      </StyledStoreFront>
+      </InternalStyledStoreFront>
    );
 };
 

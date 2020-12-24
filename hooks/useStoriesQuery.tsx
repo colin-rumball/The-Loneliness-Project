@@ -1,24 +1,24 @@
 import useQueryAmount from "./useQueryAmount";
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { useLazyQuery } from "@apollo/react-hooks";
-import { APARTMENTS_OVERVIEW } from "../gql/queries";
+// import { useLazyQuery } from "@apollo/react-hooks";
+// import { APARTMENTS_OVERVIEW } from "../gql/queries";
 import useCurrentTheme from "./useCurrentTheme";
 import useWindowDimensions from "./useWindowDimensions";
 
 const useStoriesQuery = () => {
-   const currentTheme = useCurrentTheme();
+   // const currentTheme = useCurrentTheme();
    /*
 		Apollo has an issuing involving using onCompleted with refetch so this hook contains a hack work around.
 	*/
    // Window sizing
-   const windowDimensions = useWindowDimensions();
+   // const windowDimensions = useWindowDimensions();
    const [loading, setLoading] = useState(true);
 
    // Stores the current shown stories
    const [stories, setStories] = useState([]);
 
    // Query
-   const queryAmount = useQueryAmount(windowDimensions, currentTheme);
+   // const queryAmount = useQueryAmount(windowDimensions, currentTheme);
    // const queryParams = useMemo(
    //    () => ({
    //       variables: {

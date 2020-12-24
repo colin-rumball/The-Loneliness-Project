@@ -13,6 +13,11 @@ import InteractionController from "../components/InteractionController";
 import useAudio from "../hooks/useAudio";
 import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
+const StyledHomePage = styled.div`
+   position: relative;
+   background-image: url("/images/stars.png");
+`;
+
 const HomePage = ({ apolloClient }) => {
    const router = useRouter();
    const { pushModal } = useModalSystemHelper();
@@ -23,28 +28,17 @@ const HomePage = ({ apolloClient }) => {
       if (router.query && router.query.a && typeof router.query.a == "string") {
          const apt = Number.parseInt(router.query.a as string);
          if (apt) {
-            pushModal(
-               <ApartmentDetailsModal hideArrows={true} apt={apt} apolloClient={apolloClient} />,
-               {
-                  onClose: () => {
-                     const href = `/`;
-                     router.replace(href, href, {
-                        shallow: true
-                     });
-                  }
-               }
-            );
+            pushModal(<ApartmentDetailsModal hideArrows={true} apt={apt} />, {
+               onClose: () => {
+                  const href = `/`;
+                  router.replace(href, href, {
+                     shallow: true,
+                  });
+               },
+            });
          }
       }
    }, []);
-
-   const StyledHomePage = useMemo(
-      () => styled.div`
-         position: relative;
-         background-image: url("/images/stars.png");
-      `,
-      []
-   );
 
    return (
       <InteractionController controller={Controller.MAIN} onClick={() => playAudio()}>

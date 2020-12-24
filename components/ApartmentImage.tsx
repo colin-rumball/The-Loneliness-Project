@@ -3,6 +3,40 @@ import styled from "styled-components";
 import StyledIcon from "./Styled/StyledIcon";
 import { FaEdit } from "react-icons/fa";
 
+const StyledApartmentImage = styled.div`
+   position: relative;
+   height: auto;
+
+   .apartment-image-uploader {
+      display: none;
+   }
+
+   .apartment-image {
+      max-width: 100%;
+      min-height: 300px;
+   }
+`;
+
+const StyledEditIcon = styled.div`
+   position: absolute;
+   background: rgba(0, 0, 0, 0.6);
+   border-radius: inherit;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   opacity: 0;
+   transition: opacity 0.3s ease;
+
+   &:hover {
+      opacity: 1;
+      cursor: pointer;
+   }
+`;
+
 interface ApartmentImageProps {
    originalImage: string;
    currentImage: string;
@@ -21,46 +55,6 @@ const ApartmentImage: React.FC<ApartmentImageProps> = props => {
       ...props
    };
    const uploadRef = useRef(null);
-
-   const StyledApartmentImage = useMemo(
-      () => styled.div`
-         position: relative;
-         height: auto;
-
-         .apartment-image-uploader {
-            display: none;
-         }
-
-         .apartment-image {
-            max-width: 100%;
-            min-height: 300px;
-         }
-      `,
-      []
-   );
-
-   const StyledEditIcon = useMemo(
-      () => styled.div`
-         position: absolute;
-         background: rgba(0, 0, 0, 0.6);
-         border-radius: inherit;
-         top: 0;
-         left: 0;
-         bottom: 0;
-         right: 0;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         opacity: 0;
-         transition: opacity 0.3s ease;
-
-         &:hover {
-            opacity: 1;
-            cursor: pointer;
-         }
-      `,
-      []
-   );
 
    return (
       <StyledApartmentImage

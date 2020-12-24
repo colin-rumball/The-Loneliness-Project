@@ -1,7 +1,34 @@
-import classnames from "classnames";
 import React, { CSSProperties, useMemo } from "react";
 import styled from "styled-components";
 import { string } from "prop-types";
+
+const StyledCard = styled.div`
+   position: relative;
+   display: inline-block;
+   margin: 20px;
+   max-width: 100%;
+   background-color: #fff;
+   flex-grow: ${props => props.grow};
+
+   .pd-card-content {
+      width: 100%;
+      height: 100%;
+
+      padding: 10px;
+      border-radius: 4px;
+      transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
+
+      .pd-card-body {
+      }
+
+      .pd-card-footer {
+         width: 100%;
+         /* border-radius: 0 0 $card-border-radius $card-border-radius; */
+      }
+   }
+`;
 
 export enum CardBackground {
    DEFAULT = ""
@@ -36,36 +63,7 @@ const defaultCardProps: CardProps = {
 
 const Card: React.FC<CardProps> = props => {
    const { header, children, key, footer, grow }: CardProps = { ...defaultCardProps, ...props };
-   const StyledCard = useMemo(
-      () => styled.div`
-         position: relative;
-         display: inline-block;
-         margin: 20px;
-         max-width: 100%;
-         background-color: #fff;
-         flex-grow: ${props => props.grow};
 
-         .pd-card-content {
-            width: 100%;
-            height: 100%;
-
-            padding: 10px;
-            border-radius: 4px;
-            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-            overflow: hidden;
-            box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15);
-
-            .pd-card-body {
-            }
-
-            .pd-card-footer {
-               width: 100%;
-               /* border-radius: 0 0 $card-border-radius $card-border-radius; */
-            }
-         }
-      `,
-      [grow]
-   );
    return (
       <StyledCard grow={grow}>
          <div className="pd-card-content">
@@ -81,25 +79,23 @@ export const CardDivider = () => {
    return <div className="divider" />;
 };
 
+const StyledCardHeader = styled.div`
+   & > * {
+      /* border-radius: $card-border-radius $card-border-radius 0 0; */
+   }
+
+   display: flex;
+   padding-bottom: 20px;
+
+   .text {
+      flex-grow: 1;
+      font-family: "lato" sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+   }
+`;
+
 const CardHeader: React.FC<CardHeaderProps> = ({ text, actions }) => {
-   const StyledCardHeader = useMemo(
-      () => styled.div`
-         & > * {
-            /* border-radius: $card-border-radius $card-border-radius 0 0; */
-         }
-
-         display: flex;
-         padding-bottom: 20px;
-
-         .text {
-            flex-grow: 1;
-            font-family: "lato" sans-serif;
-            font-size: 26px;
-            font-weight: 600;
-         }
-      `,
-      []
-   );
    return (
       <StyledCardHeader>
          <span className="text">{text}</span>

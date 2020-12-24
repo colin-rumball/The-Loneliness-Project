@@ -6,6 +6,37 @@ import { FaPlusSquare, FaPlus } from "react-icons/fa";
 import { ThemeContainer } from "../../themes/common";
 import Spinner from "../Spinner";
 
+const StyledFlexibleTable = styled.table`
+   border-collapse: collapse;
+   width: 100%;
+   text-align: center;
+   tr {
+      td {
+         padding: 10px;
+      }
+   }
+`;
+
+const StyledFlexibleRow = styled.tr`
+   &:nth-child(1n + 2) {
+      border-bottom: ${({ theme }: ThemeContainer) =>
+         `${theme.VARIABLES.COLORS.LightGrey} 1px solid`};
+      opacity: ${props => (props.onClick ? "0.95" : "1")};
+      transition: all 0.3s;
+      &:hover {
+         cursor: ${({ onClick }) => (onClick ? "pointer" : "initial")};
+         background-color: ${({ theme, onClick }: ThemeContainer) =>
+            onClick ? theme.VARIABLES.COLORS.LightBlue : "initial"};
+         opacity: 1;
+         color: ${({ theme, onClick }: ThemeContainer) =>
+            onClick ? theme.VARIABLES.COLORS.Tan : "inherit"};
+      }
+   }
+   &:last-child {
+      border: none;
+   }
+`;
+
 interface FlexibleTableHeaderProps {
    title?: string;
    showAddButton?: boolean;
@@ -44,43 +75,6 @@ const defaultFlexibleTableProps: FlexibleTableProps = {
 
 const FlexibleTable: React.FC<FlexibleTableProps> = props => {
    const { loading, header, body } = { ...defaultFlexibleTableProps, ...props };
-
-   const StyledFlexibleTable = useMemo(
-      () => styled.table`
-         border-collapse: collapse;
-         width: 100%;
-         text-align: center;
-         tr {
-            td {
-               padding: 10px;
-            }
-         }
-      `,
-      []
-   );
-
-   const StyledFlexibleRow = useMemo(
-      () => styled.tr`
-         &:nth-child(1n + 2) {
-            border-bottom: ${({ theme }: ThemeContainer) =>
-               `${theme.VARIABLES.COLORS.LightGrey} 1px solid`};
-            opacity: ${props => (props.onClick ? "0.95" : "1")};
-            transition: all 0.3s;
-            &:hover {
-               cursor: ${({ onClick }) => (onClick ? "pointer" : "initial")};
-               background-color: ${({ theme, onClick }: ThemeContainer) =>
-                  onClick ? theme.VARIABLES.COLORS.LightBlue : "initial"};
-               opacity: 1;
-               color: ${({ theme, onClick }: ThemeContainer) =>
-                  onClick ? theme.VARIABLES.COLORS.Tan : "inherit"};
-            }
-         }
-         &:last-child {
-            border: none;
-         }
-      `,
-      []
-   );
 
    return (
       <Card

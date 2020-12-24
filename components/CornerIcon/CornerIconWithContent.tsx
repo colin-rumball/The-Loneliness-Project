@@ -8,6 +8,24 @@ import CornerIconContainer from "./CornerIconContainer";
 import InteractionController from "../InteractionController";
 import { Controller, useControllerContext } from "../../contexts/ControllerContext";
 
+const StyledContentContainer = styled.div`
+   position: absolute;
+   animation: ${({ fadingOut }) => (fadingOut ? "fadeOut 0.6s ease both" : "")};
+   display: ${({ showContent, fadingOut }) => (showContent || fadingOut ? "block" : "none")};
+   user-select: ${({ showContent, fadingOut }) => (showContent || fadingOut ? "auto" : "none")};
+   pointer-events: ${({ showContent, fadingOut }) => (showContent || fadingOut ? "auto" : "none")};
+   z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
+
+   @keyframes fadeOut {
+      from {
+         opacity: 1;
+      }
+      to {
+         opacity: 0;
+      }
+   }
+`;
+
 export enum IconCorner {
    TOP_LEFT,
    TOP_RIGHT,
@@ -50,29 +68,6 @@ const CornerIconWithContent: React.FC<HiddenContentContainerProps> = props => {
          };
       }
    }, [fadingOut]);
-
-   const StyledContentContainer = useMemo(
-      () => styled.div`
-         position: absolute;
-         animation: ${({ fadingOut }) => (fadingOut ? "fadeOut 0.6s ease both" : "")};
-         display: ${({ showContent, fadingOut }) => (showContent || fadingOut ? "block" : "none")};
-         user-select: ${({ showContent, fadingOut }) =>
-            showContent || fadingOut ? "auto" : "none"};
-         pointer-events: ${({ showContent, fadingOut }) =>
-            showContent || fadingOut ? "auto" : "none"};
-         z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
-
-         @keyframes fadeOut {
-            from {
-               opacity: 1;
-            }
-            to {
-               opacity: 0;
-            }
-         }
-      `,
-      []
-   );
 
    return (
       <>

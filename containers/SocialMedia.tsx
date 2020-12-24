@@ -4,6 +4,25 @@ import { FaFacebookF, FaTwitter, FaEnvelope } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { ThemeContainer } from "../themes/common";
 
+const StyledSocialMedia = styled.div`
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: ${props => props.justifyContent};
+   width: 100%;
+   margin: 20px 0;
+`;
+
+const StyledSocialIcon = styled.a`
+   font-size: 28px;
+   color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+   margin: 0 15px;
+
+   &:hover {
+      cursor: pointer;
+      color: #fff;
+   }
+`;
+
 interface SocialMediaProps {
    justifyContent?: "center" | "flex-start";
 }
@@ -14,30 +33,6 @@ const SocialMediaDefaultProps: SocialMediaProps = {
 
 const SocialMedia: React.FC<SocialMediaProps> = props => {
    const { justifyContent } = { ...SocialMediaDefaultProps, ...props };
-   const StyledSocialMedia = useMemo(
-      () => styled.div`
-         display: flex;
-         flex-wrap: nowrap;
-         justify-content: ${props => props.justifyContent};
-         width: 100%;
-         margin: 20px 0;
-      `,
-      []
-   );
-
-   const StyledSocialIcon = useMemo(
-      () => styled.a`
-         font-size: 28px;
-         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-         margin: 0 15px;
-
-         &:hover {
-            cursor: pointer;
-            color: #fff;
-         }
-      `,
-      []
-   );
 
    return (
       <StyledSocialMedia justifyContent={justifyContent}>

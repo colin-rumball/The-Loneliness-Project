@@ -38,10 +38,8 @@ const LogoHeader: React.FC = () => {
       if (typeof document == "undefined") return 1.0;
 
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      if (winScroll > 200) return 0;
-      return 1;
 
-      // return Math.max(1 - winScroll / 400, 0.0);
+      return Math.max(1 - winScroll / 400, 0.0);
    }, []);
    const [opacity, setOpacity] = useState(1.0);
 
@@ -62,8 +60,7 @@ const LogoHeader: React.FC = () => {
    }, []);
 
    useEffect(() => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      setOpacity(winScroll > 200 ? 0 : 1);
+      setOpacity(1.0);
       window.addEventListener("scroll", onScroll);
       return () => {
          window.removeEventListener("scroll", onScroll);

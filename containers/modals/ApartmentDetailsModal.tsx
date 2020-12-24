@@ -21,7 +21,7 @@ const ApartmentDetailsModalDefaultProps: ApartmentDetailsModalProps = {
 };
 
 const ApartmentDetailsModal: React.FC<ApartmentDetailsModalProps> = props => {
-   const { highestApartmentNum, apt: originalApartmentNum, apolloClient, hideArrows } = {
+   const { highestApartmentNum, apt: originalApartmentNum, hideArrows } = {
       ...ApartmentDetailsModalDefaultProps,
       ...props
    };

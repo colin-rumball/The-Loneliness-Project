@@ -2,6 +2,23 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 
+const InternalStyledIcon = styled.span`
+   color: ${({ theme, staticcolor = theme.ICON_STYLES.COLOR_DEFAULT }) => staticcolor};
+   font-size: ${({ theme, size = theme.ICON_STYLES.SIZE_M }: ThemeContainer) => size};
+   transition: color 0.3s ease, transform 0.3s ease;
+
+   &:hover {
+      cursor: ${(props) => (props.onClick ? "pointer" : "default")};
+      color: ${({
+         theme,
+         staticcolor = theme.ICON_STYLES.COLOR_DEFAULT,
+         hovercolor = theme.ICON_STYLES.COLOR_HOVER,
+         onClick,
+      }) => (onClick ? hovercolor : staticcolor)};
+      transform: ${(props) => (props.onClick ? "scale(1.1)" : "scale(1)")};
+   }
+`;
+
 interface StyledIconProps {
    icon: Object;
    size?: string;
@@ -15,31 +32,11 @@ const StyledIconDefaultProps: StyledIconProps = {
    size: undefined,
    color: undefined,
    hovercolor: undefined,
-   onClick: null
+   onClick: null,
 };
 
-const StyledIcon: React.FC<StyledIconProps> = props => {
+const StyledIcon: React.FC<StyledIconProps> = (props) => {
    const { icon, color: staticColor, ...rest } = { ...StyledIconDefaultProps, ...props };
-
-   const InternalStyledIcon = useMemo(
-      () => styled.span`
-         color: ${({ theme, staticcolor = theme.ICON_STYLES.COLOR_DEFAULT }) => staticcolor};
-         font-size: ${({ theme, size = theme.ICON_STYLES.SIZE_M }: ThemeContainer) => size};
-         transition: color 0.3s ease, transform 0.3s ease;
-
-         &:hover {
-            cursor: ${props => (props.onClick ? "pointer" : "default")};
-            color: ${({
-               theme,
-               staticcolor = theme.ICON_STYLES.COLOR_DEFAULT,
-               hovercolor = theme.ICON_STYLES.COLOR_HOVER,
-               onClick
-            }) => (onClick ? hovercolor : staticcolor)};
-            transform: ${props => (props.onClick ? "scale(1.1)" : "scale(1)")};
-         }
-      `,
-      []
-   );
 
    return (
       <InternalStyledIcon staticcolor={staticColor} {...rest}>

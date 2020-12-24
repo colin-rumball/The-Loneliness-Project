@@ -4,77 +4,65 @@ import PressFeatures from "./PressFeatures";
 import SocialMedia from "./SocialMedia";
 import { ThemeContainer } from "../themes/common";
 
+const StyledAboutSection = styled.div`
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   overflow: auto;
+   padding: 20px 12% 30px 12%;
+   padding-top: 15vh;
+   color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+   z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
+   background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
+   animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.6s ease-in both;
+   user-select: text;
+
+   .icon {
+      width: 50px;
+      fill: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+   }
+
+   .about-title {
+      font-size: 57px;
+      font-weight: 100;
+      margin: 15px 0;
+   }
+`;
+
+const StyledParagraph = styled.p`
+   font-family: "lato", sans-serif;
+   font-size: 18px;
+   font-weight: 300;
+   line-height: 22px;
+   letter-spacing: 0.5px;
+   margin: 0 0 32px;
+   animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
+   animation-delay: ${props => props.delay};
+
+   &:nth-last-child(2) {
+      margin-bottom: 40px;
+   }
+
+   a {
+      color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+   }
+`;
+
+const StyledFadeIn = styled.div`
+   animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
+   animation-delay: ${props => props.delay};
+`;
+
+const StyledHR = styled.hr`
+   border-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
+   margin: 72px 0 60px 0;
+`;
+
 interface AboutSectionProps {}
 
 const AboutSection: React.FC<AboutSectionProps> = ({}) => {
-   const StyledAboutSection = useMemo(
-      () => styled.div`
-         position: fixed;
-         top: 0;
-         left: 0;
-         right: 0;
-         bottom: 0;
-         overflow: auto;
-         padding: 20px 12% 30px 12%;
-         padding-top: 15vh;
-         color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-         z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.ON_TOP};
-         background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
-         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.6s ease-in both;
-         user-select: text;
-
-         .icon {
-            width: 50px;
-            fill: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-         }
-
-         .about-title {
-            font-size: 57px;
-            font-weight: 100;
-            margin: 15px 0;
-         }
-      `,
-      []
-   );
-
-   const StyledFadeIn = useMemo(
-      () => styled.div`
-         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
-         animation-delay: ${props => props.delay};
-      `,
-      []
-   );
-
-   const StyledParagraph = useMemo(
-      () => styled.p`
-         font-family: "lato", sans-serif;
-         font-size: 18px;
-         font-weight: 300;
-         line-height: 22px;
-         letter-spacing: 0.5px;
-         margin: 0 0 32px;
-         animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
-         animation-delay: ${props => props.delay};
-
-         &:nth-last-child(2) {
-            margin-bottom: 40px;
-         }
-
-         a {
-            color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-         }
-      `,
-      []
-   );
-
-   const StyledHR = useMemo(
-      () => styled.hr`
-         border-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
-         margin: 72px 0 60px 0;
-      `,
-      []
-   );
-
    return (
       <StyledAboutSection>
          <StyledFadeIn delay={"0.3s"}>
