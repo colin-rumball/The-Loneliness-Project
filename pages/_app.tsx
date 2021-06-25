@@ -10,7 +10,7 @@ import { StoriesContextProvider } from "../contexts/StoriesContext";
 import DefaultTheme from "../themes/DefaultTheme";
 import "../themes/DefaultTheme/base.css";
 
-class MyApp extends App {
+class TheLonelinessProjectApp extends App {
    render() {
       const { Component, pageProps, router } = this.props as any;
       return (
@@ -34,4 +34,4 @@ class MyApp extends App {
    }
 }
 
-export default MyApp;
+export default TheLonelinessProjectApp;

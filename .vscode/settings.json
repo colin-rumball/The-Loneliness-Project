@@ -1,5 +1,10 @@
 {
    "files.exclude": {
-      "package-lock.json": true
+      "**/.next": true,
+      "**/out": true,
+      "**/android": true,
+      "**/plugins": true,
+      "**/typings": true,
+      "**/www": true
    }
 }

@@ -5,36 +5,20 @@
    "version": "0.2.0",
    "configurations": [
       {
-         "type": "chrome",
+         "type": "pwa-chrome",
          "request": "launch",
          "name": "Launch Chrome against localhost",
          "url": "http://localhost:3000",
          "webRoot": "${workspaceFolder}",
-         "skipFiles": ["node_modules/**/*.*"]
+         "skipFiles": ["<node_internals>/**"],
+         "outFiles": ["${workspaceFolder}/**/*.js", "!**/node_modules/**"]
       },
       {
          "type": "node",
-         "request": "launch",
-         "name": "Launch Debug Server",
-         "protocol": "inspector",
-         "args": ["${workspaceRoot}/server/index.ts", "-P", "config/tsconfig.json"],
-         "cwd": "${workspaceRoot}",
-         "envFile": "${workspaceFolder}/.env",
-         "runtimeArgs": ["-r", "ts-node/register"],
-         "internalConsoleOptions": "openOnSessionStart",
-         "preLaunchTask": "FixTSConfig"
-      },
-      {
-         "type": "node",
-         "request": "launch",
-         "name": "Debug Current File",
-         "protocol": "inspector",
-         "args": ["${relativeFile}", "-P", "config/tsconfig.json"],
-         "cwd": "${workspaceRoot}",
-         "envFile": "${workspaceFolder}/.env",
-         "runtimeArgs": ["-r", "ts-node/register"],
-         "internalConsoleOptions": "openOnSessionStart",
-         "preLaunchTask": "FixTSConfig"
+         "request": "attach",
+         "name": "Launch inspector",
+         "skipFiles": ["<node_internals>/**"],
+         "port": 9229
       }
    ]
 }

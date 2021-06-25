@@ -33,7 +33,7 @@ const InternalStyledApartment = styled.article`
       }
    }
 
-   .gap-filler-contianer {
+   .gap-filler-container {
       position: relative;
       width: 100%;
 
@@ -115,7 +115,7 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
             onLoad={() => setLoaded(true)}
          />
          {loaded && (
-            <div className="gap-filler-contianer">
+            <div className="gap-filler-container">
                <div className="gap-filler" />
             </div>
          )}
