@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PressFeatures from "./PressFeatures";
 import SocialMedia from "./SocialMedia";
 import { ThemeContainer } from "../themes/common";
+import FingerPrintSVG from "../public/finger-print-logo.svg";
 
 const StyledAboutSection = styled.div`
    position: fixed;
@@ -39,7 +40,7 @@ const StyledParagraph = styled.p`
    letter-spacing: 0.5px;
    margin: 0 0 32px;
    animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
-   animation-delay: ${props => props.delay};
+   animation-delay: ${(props) => props.delay};
 
    &:nth-last-child(2) {
       margin-bottom: 40px;
@@ -52,7 +53,7 @@ const StyledParagraph = styled.p`
 
 const StyledFadeIn = styled.div`
    animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
-   animation-delay: ${props => props.delay};
+   animation-delay: ${(props) => props.delay};
 `;
 
 const StyledHR = styled.hr`
@@ -66,7 +67,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({}) => {
    return (
       <StyledAboutSection>
          <StyledFadeIn delay={"0.3s"}>
-            <img className="icon" alt={"fingerprint-logo"} src="/finger-print-logo.svg" />
+            <FingerPrintSVG className="icon" alt={"fingerprint-logo"} />
          </StyledFadeIn>
          <StyledFadeIn delay={"0.5s"}>
             <div className="about-title">Loneliness is human and that’s okay.</div>

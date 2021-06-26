@@ -1,6 +1,8 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
+import Image from "next/image";
+import LoadMorePNG from "/public/images/load-more.png";
 
 const StyledShowMoreContainer = styled.div`
    position: absolute;
@@ -59,17 +61,19 @@ interface StyledShowMoreProps {
 }
 
 const StyledShowMoreDefaultProps: StyledShowMoreProps = {
-   onClick: () => {}
+   onClick: () => {},
 };
 
-const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
+const StyledShowMore: React.FC<StyledShowMoreProps> = (props) => {
    const { onClick } = { ...StyledShowMoreDefaultProps, ...props };
 
    return (
       <>
          <StyledShowMoreContainer>
             <InternalStyledShowMore>
-               <img className="load-more-image" src="/images/load-more.png" alt="load more" />
+               <div className="load-more-image">
+                  <Image src={LoadMorePNG} alt="load more" />
+               </div>
                <ClickableArea onClick={onClick} />
             </InternalStyledShowMore>
          </StyledShowMoreContainer>

@@ -104,10 +104,10 @@ const StyledShowMoreDefaultProps: StyledApartmentRoofProps = {
    position: "center",
    src: "",
    srcset: "",
-   alt: ""
+   alt: "",
 };
 
-const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = props => {
+const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = (props) => {
    const { position, src, srcset, alt } = { ...StyledShowMoreDefaultProps, ...props };
    const currentTheme = useCurrentTheme();
    const { width } = useWindowDimensions();
