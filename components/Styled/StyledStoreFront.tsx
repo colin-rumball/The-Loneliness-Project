@@ -2,7 +2,7 @@ import React, { useMemo, useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 
-const InternalStyledStoreFront = styled.div`
+const InternalStyledStoreFront = styled.div<any>`
    position: relative;
    flex-basis: 100%;
    padding: 0 1.5%;
@@ -81,7 +81,7 @@ const InternalStyledStoreFront = styled.div`
    }
 `;
 
-const EasterEggClickArea = styled.div`
+const EasterEggClickArea = styled.div<any>`
    position: absolute;
    top: 40%;
    left: 13%;
@@ -100,7 +100,7 @@ const EasterEggClickArea = styled.div`
    }
 `;
 
-const EasterEggText = styled.div`
+const EasterEggText = styled.div<any>`
    position: absolute;
    top: 18%;
    left: -8%;

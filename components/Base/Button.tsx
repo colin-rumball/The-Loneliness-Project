@@ -41,7 +41,7 @@ const StyledButton = styled.button`
 `;
 
 export enum ButtonVariant {
-   DEFAULT = "default"
+   DEFAULT = "default",
 }
 
 export interface ButtonProps {
@@ -64,7 +64,7 @@ const defaultButtonProps: ButtonProps = {
    disabled: false,
    className: undefined,
    type: "button",
-   style: {}
+   style: {},
 };
 
 /**
@@ -73,7 +73,7 @@ const defaultButtonProps: ButtonProps = {
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
    const { text, id, tabIndex, onClick, disabled, className, type, style } = {
       ...defaultButtonProps,
-      ...props
+      ...props,
    };
 
    return (
@@ -85,7 +85,7 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
          disabled={disabled}
          tabIndex={tabIndex}
          onClick={onClick}
-         type={type}
+         type={type as any}
       >
          {text}
       </StyledButton>

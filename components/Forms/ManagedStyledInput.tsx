@@ -4,7 +4,7 @@ import { IconType } from "react-icons/lib/cjs";
 import useCurrentTheme from "../../hooks/useCurrentTheme";
 import { ThemeContainer } from "../../themes/common";
 
-const StyledInputWithIcon = styled.span`
+const StyledInputWithIcon = styled.span<any>`
    width: 100%;
    height: 30px;
    position: relative;
@@ -16,7 +16,7 @@ const StyledInputWithIcon = styled.span`
       font-size: 14px;
       top: 6px;
       left: 12px;
-      color: ${props => props.color};
+      color: ${(props) => props.color};
       z-index: 3;
       user-select: none;
       pointer-events: none;
@@ -31,11 +31,11 @@ const StyledInputWithIcon = styled.span`
       width: 100%;
       height: 100%;
       font-size: 20px;
-      color: ${props => props.color};
-      border-bottom: ${props => props.border};
+      color: ${(props) => props.color};
+      border-bottom: ${(props) => props.border};
 
       &::placeholder {
-         color: ${props => props.color};
+         color: ${(props) => props.color};
          opacity: 0.5;
       }
    }
@@ -43,14 +43,14 @@ const StyledInputWithIcon = styled.span`
    &:hover,
    &:focus-within {
       .icon {
-         color: ${props => props.color};
+         color: ${(props) => props.color};
       }
 
       input {
-         border-bottom: 2px solid ${props => props.color};
+         border-bottom: 2px solid ${(props) => props.color};
 
          &::placeholder {
-            color: ${props => props.color};
+            color: ${(props) => props.color};
             opacity: 0.3;
          }
       }
@@ -78,13 +78,13 @@ const DefaultManagedStyledInputProps: ManagedStyledInputProps = {
    name: "",
    placeholder: "",
    autoComplete: "on",
-   onChange: () => {}
+   onChange: () => {},
 };
 
-const ManagedStyledInput: React.FC<ManagedStyledInputProps> = props => {
+const ManagedStyledInput: React.FC<ManagedStyledInputProps> = (props) => {
    const { inverted, type, Icon, value, error, name, placeholder, autoComplete, onChange } = {
       ...DefaultManagedStyledInputProps,
-      ...props
+      ...props,
    };
    const currentTheme = useCurrentTheme();
 

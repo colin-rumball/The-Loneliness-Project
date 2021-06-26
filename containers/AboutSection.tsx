@@ -5,7 +5,7 @@ import SocialMedia from "./SocialMedia";
 import { ThemeContainer } from "../themes/common";
 import FingerPrintSVG from "../public/finger-print-logo.svg";
 
-const StyledAboutSection = styled.div`
+const StyledAboutSection = styled.div<any>`
    position: fixed;
    top: 0;
    left: 0;
@@ -32,7 +32,7 @@ const StyledAboutSection = styled.div`
    }
 `;
 
-const StyledParagraph = styled.p`
+const StyledParagraph = styled.p<any>`
    font-family: "lato", sans-serif;
    font-size: 18px;
    font-weight: 300;
@@ -51,12 +51,12 @@ const StyledParagraph = styled.p`
    }
 `;
 
-const StyledFadeIn = styled.div`
+const StyledFadeIn = styled.div<any>`
    animation: ${({ theme }: ThemeContainer) => theme.ANIMATIONS.FadeIn} 0.5s ease-in both;
    animation-delay: ${(props) => props.delay};
 `;
 
-const StyledHR = styled.hr`
+const StyledHR = styled.hr<any>`
    border-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
    margin: 72px 0 60px 0;
 `;

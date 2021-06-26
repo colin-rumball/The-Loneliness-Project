@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { ThemeContainer } from "../../../themes/common";
 import withModalBase from "../../../helpers/withModalBase";
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.div<any>`
    font-size: 44px;
    font-weight: 400;
    margin-top: 40px;
    text-align: center;
 `;
 
-const StyledSubheader = styled.div`
+const StyledSubheader = styled.div<any>`
    font-family: "lato", sans-serif;
    font-size: 16px;
    font-weight: 600;
@@ -21,7 +21,7 @@ const StyledSubheader = styled.div`
    margin-bottom: 40px;
 `;
 
-const StyledSectionsContainer = styled.div`
+const StyledSectionsContainer = styled.div<any>`
    width: 100%;
    min-height: 50vh;
    display: flex;
@@ -33,7 +33,7 @@ const StyledSectionsContainer = styled.div`
    margin-bottom: 40px;
 `;
 
-const StyledSection = styled.div`
+const StyledSection = styled.div<any>`
    text-align: center;
 
    .name {

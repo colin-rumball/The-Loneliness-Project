@@ -5,7 +5,7 @@ import ManagedStyledInput from "./Forms/ManagedStyledInput";
 import Button from "./Base/Button";
 import { ThemeContainer } from "../themes/common";
 
-const StyledLoginForm = styled.form`
+const StyledLoginForm = styled.form<any>`
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
@@ -22,7 +22,7 @@ const StyledLoginForm = styled.form`
    }
 `;
 
-const StyledErrorMessage = styled.span`
+const StyledErrorMessage = styled.span<any>`
    color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Red};
    padding: 10px 0;
 `;
@@ -42,7 +42,7 @@ const UserForm: React.FC<UserFormProps> = ({ title, inverted, onFormSubmit }) =>
    const [passwordError, setPasswordError] = useState("");
 
    const internalOnFormSubmit = useCallback(
-      event => {
+      (event) => {
          event.preventDefault();
 
          // Validation
@@ -80,7 +80,7 @@ const UserForm: React.FC<UserFormProps> = ({ title, inverted, onFormSubmit }) =>
             name="username"
             placeholder="Username"
             autoComplete="off"
-            onChange={event => {
+            onChange={(event) => {
                setUsernameError("");
                setUsername(event.target.value);
             }}
@@ -94,7 +94,7 @@ const UserForm: React.FC<UserFormProps> = ({ title, inverted, onFormSubmit }) =>
             error={passwordError}
             name="password"
             placeholder="Password"
-            onChange={event => {
+            onChange={(event) => {
                setPasswordError("");
                setPassword(event.target.value);
             }}

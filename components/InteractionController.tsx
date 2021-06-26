@@ -2,10 +2,10 @@ import React, { useMemo, useContext } from "react";
 import styled from "styled-components";
 import { Controller, ControllerContext, useControllerContext } from "../contexts/ControllerContext";
 
-const StyledInteractionController = styled.div`
-   user-select: ${props => (props.controlling ? "auto" : "none")};
-   pointer-events: ${props => (props.controlling ? "auto" : "none")};
-   overflow: ${props => (props.controlling ? "visible" : "hidden")};
+const StyledInteractionController = styled.div<any>`
+   user-select: ${(props) => (props.controlling ? "auto" : "none")};
+   pointer-events: ${(props) => (props.controlling ? "auto" : "none")};
+   overflow: ${(props) => (props.controlling ? "visible" : "hidden")};
 `;
 
 interface InteractionControllerProps {
@@ -15,10 +15,10 @@ interface InteractionControllerProps {
 
 const InteractionControllerDefaultProps: InteractionControllerProps = {
    controller: Controller.NONE,
-   onClick: () => {}
+   onClick: () => {},
 };
 
-const InteractionController: React.FC<InteractionControllerProps> = props => {
+const InteractionController: React.FC<InteractionControllerProps> = (props) => {
    const { controller, onClick, children } = { ...InteractionControllerDefaultProps, ...props };
    const { currentController } = useControllerContext();
 

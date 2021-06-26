@@ -6,7 +6,7 @@ interface StyledErrorMessageProps {
 }
 
 const StyledErrorMessage: React.FC<StyledErrorMessageProps> = ({ message }) => {
-   const InternalStyledErrorMessage = styled.div`
+   const InternalStyledErrorMessage = styled.div<any>`
       font-size: 15px;
       color: ${({ theme }) => theme.Red};
       &:before {

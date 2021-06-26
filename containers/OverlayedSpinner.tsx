@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Spinner, { SpinnerProps } from "../components/Spinner";
 import { ThemeContainer } from "../themes/common";
 
-const StyledOverlayedSpinner = styled.div`
+const StyledOverlayedSpinner = styled.div<any>`
    position: absolute;
    background: rgba(0, 0, 0, 0.5);
    border-radius: inherit;
@@ -17,9 +17,9 @@ const StyledOverlayedSpinner = styled.div`
    z-index: ${({ theme }: ThemeContainer) => theme.VARIABLES.LAYERS.MODAL + 3};
 `;
 
-const StyledContent = styled.div`
+const StyledContent = styled.div<any>`
    position: relative;
-   filter: ${props => (props.blur ? "blur(4px)" : "none")};
+   filter: ${(props) => (props.blur ? "blur(4px)" : "none")};
    height: 100%;
    width: 100%;
    overflow: hidden;
@@ -32,10 +32,10 @@ interface OverlayedSpinnerProps extends SpinnerProps {
 
 const OverlayedSpinnerDefaultProps: OverlayedSpinnerProps = {
    show: true,
-   children: null
+   children: null,
 };
 
-const OverlayedSpinner: React.FC<OverlayedSpinnerProps> = props => {
+const OverlayedSpinner: React.FC<OverlayedSpinnerProps> = (props) => {
    const { show, children } = { ...OverlayedSpinnerDefaultProps, ...props };
 
    if (!show) return <>{children}</>;

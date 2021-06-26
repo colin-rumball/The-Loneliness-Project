@@ -4,7 +4,7 @@ import { ThemeContainer } from "../../themes/common";
 import useCurrentTheme from "../../hooks/useCurrentTheme";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
-const InternalStyledApartmentRoof = styled.div`
+const InternalStyledApartmentRoof = styled.div<any>`
    flex-basis: 100%;
    padding: ${({ theme }: ThemeContainer) => `0 ${theme.APARTMENT_STYLES.ROOF_PADDING}`};
 

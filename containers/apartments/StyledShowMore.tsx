@@ -4,7 +4,7 @@ import { ThemeContainer } from "../../themes/common";
 import Image from "next/image";
 import LoadMorePNG from "/public/images/load-more.png";
 
-const StyledShowMoreContainer = styled.div`
+const StyledShowMoreContainer = styled.div<any>`
    position: absolute;
    top: 800px;
    right: 0;
@@ -28,7 +28,7 @@ const StyledShowMoreContainer = styled.div`
    }
 `;
 
-const InternalStyledShowMore = styled.div`
+const InternalStyledShowMore = styled.div<any>`
    position: sticky;
    width: 100%;
    height: auto;
@@ -43,7 +43,7 @@ const InternalStyledShowMore = styled.div`
    }
 `;
 
-const ClickableArea = styled.div`
+const ClickableArea = styled.div<any>`
    position: absolute;
    right: 0;
    top: 0;

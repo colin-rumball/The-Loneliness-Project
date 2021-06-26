@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 import Image from "next/image";
 
-const StyledPressFeature = styled.div`
+const StyledPressFeature = styled.div<any>`
    display: flex;
    justify-content: center;
    align-items: center;

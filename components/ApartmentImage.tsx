@@ -3,7 +3,7 @@ import styled from "styled-components";
 import StyledIcon from "./Styled/StyledIcon";
 import { FaEdit } from "react-icons/fa";
 
-const StyledApartmentImage = styled.div`
+const StyledApartmentImage = styled.div<any>`
    position: relative;
    height: auto;
 
@@ -17,7 +17,7 @@ const StyledApartmentImage = styled.div`
    }
 `;
 
-const StyledEditIcon = styled.div`
+const StyledEditIcon = styled.div<any>`
    position: absolute;
    background: rgba(0, 0, 0, 0.6);
    border-radius: inherit;
@@ -40,7 +40,7 @@ const StyledEditIcon = styled.div`
 interface ApartmentImageProps {
    originalImage: string;
    currentImage: string;
-   setCurrentImage?(newImage: string);
+   setCurrentImage(newImage: string);
 }
 
 const ApartmentImageDefaultProps: ApartmentImageProps = {
@@ -59,7 +59,7 @@ const ApartmentImage: React.FC<ApartmentImageProps> = (props) => {
    return (
       <StyledApartmentImage
          onClick={() => {
-            uploadRef.current.click();
+            uploadRef.current?.click();
          }}
       >
          <input
@@ -70,7 +70,7 @@ const ApartmentImage: React.FC<ApartmentImageProps> = (props) => {
             title="Upload Image"
             accept="image/png, image/jpeg"
             onChange={(e) => {
-               setCurrentImage(uploadRef.current.files[0]);
+               setCurrentImage(uploadRef.current?.files[0]);
             }}
          />
 

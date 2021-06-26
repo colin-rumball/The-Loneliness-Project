@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SocialMedia from "../../containers/SocialMedia";
 import { ThemeContainer } from "../../themes/common";
 
-const StyledNewletterAndSocial = styled.div`
+const StyledNewletterAndSocial = styled.div<any>`
    order: 2;
    display: flex;
    flex-grow: 1;
@@ -13,7 +13,7 @@ const StyledNewletterAndSocial = styled.div`
    min-width: 360px;
    height: 100%;
 `;
-const StyledCredits = styled.div`
+const StyledCredits = styled.div<any>`
    display: flex;
    flex-direction: column;
    width: 100%;

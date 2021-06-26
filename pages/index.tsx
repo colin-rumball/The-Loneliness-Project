@@ -13,7 +13,7 @@ import InteractionController from "../components/InteractionController";
 import useAudio from "../hooks/useAudio";
 import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
-const StyledHomePage = styled.div`
+const StyledHomePage = styled.div<any>`
    position: relative;
    background-image: url("/images/stars.png");
 `;

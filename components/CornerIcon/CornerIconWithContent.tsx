@@ -8,7 +8,7 @@ import CornerIconContainer from "./CornerIconContainer";
 import InteractionController from "../InteractionController";
 import { Controller, useControllerContext } from "../../contexts/ControllerContext";
 
-const StyledContentContainer = styled.div`
+const StyledContentContainer = styled.div<any>`
    position: absolute;
    animation: ${({ fadingOut }) => (fadingOut ? "fadeOut 0.6s ease both" : "")};
    display: ${({ showContent, fadingOut }) => (showContent || fadingOut ? "block" : "none")};
@@ -30,7 +30,7 @@ export enum IconCorner {
    TOP_LEFT,
    TOP_RIGHT,
    BOTTOM_LEFT,
-   BOTTOM_RIGHT
+   BOTTOM_RIGHT,
 }
 
 export interface HiddenContentContainerProps {
@@ -44,13 +44,13 @@ const DefaultHiddenContentContainerProps: HiddenContentContainerProps = {
    corner: IconCorner.TOP_LEFT,
    closedIcon: null,
    openIcon: null,
-   content: null
+   content: null,
 };
 
-const CornerIconWithContent: React.FC<HiddenContentContainerProps> = props => {
+const CornerIconWithContent: React.FC<HiddenContentContainerProps> = (props) => {
    const { corner, closedIcon, openIcon, content } = {
       ...DefaultHiddenContentContainerProps,
-      ...props
+      ...props,
    };
    const currentTheme = useCurrentTheme();
    const [fadingOut, setFadingOut] = useState(false);

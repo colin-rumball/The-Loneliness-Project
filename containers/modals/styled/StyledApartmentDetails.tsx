@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ThemeContainer } from "../../../themes/common";
 import { RandomColorContext } from "../../../contexts/RandomColorContext";
 
-const InternalStyledApartmentDetails = styled.div`
+const InternalStyledApartmentDetails = styled.div<any>`
    overflow-x: hidden;
 
    .apartment-modal-details {
@@ -26,7 +26,7 @@ const InternalStyledApartmentDetails = styled.div`
          min-height: 4px;
          max-height: 4px;
          width: 32px;
-         background-color: ${props => props.randomColor};
+         background-color: ${(props) => props.randomColor};
          margin: 30px 0;
       }
 
@@ -106,7 +106,7 @@ const InternalStyledApartmentDetails = styled.div`
             flex-grow: 3;
             align-self: auto;
             margin-bottom: 15px;
-            color: ${props => props.randomColor};
+            color: ${(props) => props.randomColor};
             font-family: "lato", sans-serif;
             font-weight: 900;
             letter-spacing: 1px;
@@ -143,13 +143,13 @@ const StyledApartmentDetailsDefaultProps: StyledApartmentDetailsProps = {
    mostLonely: "",
    lonelinessMeans: "",
    firstTime: "",
-   lastTime: ""
+   lastTime: "",
 };
 
-const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = props => {
+const StyledApartmentDetails: React.FC<StyledApartmentDetailsProps> = (props) => {
    const { apt, name, age, mostLonely, lonelinessMeans, firstTime, lastTime } = {
       ...StyledApartmentDetailsDefaultProps,
-      ...props
+      ...props,
    };
    const { randomColor } = useContext(RandomColorContext);
 

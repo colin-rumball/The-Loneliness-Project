@@ -8,7 +8,7 @@ import CloseIcon from "./CloseIcon";
 import { ModalSystemState } from "../../contexts/ModalSystem/actions/common";
 import useModalSystemHelper from "../../hooks/useModalSystemHelper";
 
-const StyledModalViewer = styled.div.attrs(props => ({}))`
+const StyledModalViewer = styled.div.attrs((props) => ({}))<any>`
    position: fixed;
    top: 0;
    bottom: 0;
@@ -58,7 +58,7 @@ interface ModalViewerProps {}
 
 const ModalViewerDefaultProps: ModalViewerProps = {};
 
-const ModalViewer: React.FC<ModalViewerProps> = props => {
+const ModalViewer: React.FC<ModalViewerProps> = (props) => {
    const {} = { ...ModalViewerDefaultProps, ...props };
    const { currentModal, system, popModal } = useModalSystemHelper();
 
