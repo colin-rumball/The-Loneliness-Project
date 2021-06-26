@@ -41,8 +41,8 @@ const StyledIconContainer = styled.div<any>`
 
 interface IconContainerProps {
    shouldHide: boolean;
-   corner: IconCorner;
-   onClick();
+   corner: IconCorner | undefined;
+   onClick(): void;
 }
 
 const IconContainerDefaultProps: IconContainerProps = {

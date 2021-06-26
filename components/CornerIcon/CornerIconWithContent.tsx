@@ -35,9 +35,9 @@ export enum IconCorner {
 
 export interface HiddenContentContainerProps {
    corner: IconCorner;
-   closedIcon: Object;
-   openIcon: Object;
-   content: Object;
+   closedIcon: IconCorner | null;
+   openIcon: IconCorner | null;
+   content: IconCorner | null;
 }
 
 const DefaultHiddenContentContainerProps: HiddenContentContainerProps = {

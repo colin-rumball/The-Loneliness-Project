@@ -51,9 +51,9 @@ export interface CardProps {
 }
 
 const defaultCardProps: CardProps = {
-   header: null,
-   children: null,
-   footer: null,
+   header: undefined,
+   children: undefined,
+   footer: undefined,
    background: CardBackground.DEFAULT,
    key: undefined,
    className: undefined,
@@ -104,11 +104,11 @@ const CardHeader: React.FC<CardHeaderProps> = ({ text, actions }) => {
    );
 };
 
-const CardBody = ({ children }) => {
+const CardBody: React.FC = ({ children }) => {
    return <div className="pd-card-body">{children}</div>;
 };
 
-const CardFooter = ({ children }) => {
+const CardFooter: React.FC = ({ children }) => {
    return <div className="pd-card-footer">{children}</div>;
 };
 

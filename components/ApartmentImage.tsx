@@ -40,7 +40,7 @@ const StyledEditIcon = styled.div<any>`
 interface ApartmentImageProps {
    originalImage: string;
    currentImage: string;
-   setCurrentImage(newImage: string);
+   setCurrentImage(newImage: string): void;
 }
 
 const ApartmentImageDefaultProps: ApartmentImageProps = {
@@ -54,37 +54,38 @@ const ApartmentImage: React.FC<ApartmentImageProps> = (props) => {
       ...ApartmentImageDefaultProps,
       ...props,
    };
-   const uploadRef = useRef(null);
+   return <></>;
+   // const uploadRef = useRef(null);
 
-   return (
-      <StyledApartmentImage
-         onClick={() => {
-            uploadRef.current?.click();
-         }}
-      >
-         <input
-            ref={uploadRef}
-            type="file"
-            className="apartment-image-uploader"
-            name="file"
-            title="Upload Image"
-            accept="image/png, image/jpeg"
-            onChange={(e) => {
-               setCurrentImage(uploadRef.current?.files[0]);
-            }}
-         />
+   // return (
+   //    <StyledApartmentImage
+   //       onClick={() => {
+   //          uploadRef.current?.click();
+   //       }}
+   //    >
+   //       <input
+   //          ref={uploadRef}
+   //          type="file"
+   //          className="apartment-image-uploader"
+   //          name="file"
+   //          title="Upload Image"
+   //          accept="image/png, image/jpeg"
+   //          onChange={(e) => {
+   //             setCurrentImage(uploadRef.current?.files[0]);
+   //          }}
+   //       />
 
-         <img
-            className="apartment-image"
-            alt={"apartment-image"}
-            src={currentImage ? URL.createObjectURL(currentImage) : originalImage}
-         />
+   //       <img
+   //          className="apartment-image"
+   //          alt={"apartment-image"}
+   //          src={currentImage ? URL.createObjectURL(currentImage) : originalImage}
+   //       />
 
-         <StyledEditIcon className="edit-icon">
-            <StyledIcon color="#fff" icon={<FaEdit />} size={"40px"} />
-         </StyledEditIcon>
-      </StyledApartmentImage>
-   );
+   //       <StyledEditIcon className="edit-icon">
+   //          <StyledIcon color="#fff" icon={<FaEdit />} size={"40px"} />
+   //       </StyledEditIcon>
+   //    </StyledApartmentImage>
+   // );
 };
 
 export default ApartmentImage;

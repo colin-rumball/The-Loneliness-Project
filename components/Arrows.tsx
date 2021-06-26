@@ -24,12 +24,7 @@ const StyledArrows = styled.div<any>`
    }
 `;
 
-type IconPropTypes = {
-   showArrow: boolean;
-   randomColor: string;
-};
-
-const StyledArrowIcon = styled.div<IconPropTypes>`
+const StyledArrowIcon = styled.div<any>`
    display: flex;
    justify-content: center;
    align-items: center;
@@ -84,7 +79,7 @@ const StyledArrowIcon = styled.div<IconPropTypes>`
 
 interface ArrowsProps {
    currentApt: number;
-   onArrowClicked?(arrow: "left" | "right");
+   onArrowClicked?(arrow: "left" | "right"): void;
    leftArrowEnabled?: boolean;
    rightArrowEnabled?: boolean;
 }
@@ -97,7 +92,12 @@ const ArrowsDefaultProps: ArrowsProps = {
 };
 
 const Arrows: React.FC<ArrowsProps> = (props) => {
-   const { currentApt, onArrowClicked, leftArrowEnabled, rightArrowEnabled } = {
+   const {
+      currentApt,
+      onArrowClicked = () => {},
+      leftArrowEnabled,
+      rightArrowEnabled,
+   } = {
       ...ArrowsDefaultProps,
       ...props,
    };

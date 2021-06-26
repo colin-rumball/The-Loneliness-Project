@@ -21,7 +21,7 @@ const StyledFlexibleRow = styled.tr`
    &:nth-child(1n + 2) {
       border-bottom: ${({ theme }: ThemeContainer) =>
          `${theme.VARIABLES.COLORS.LightGrey} 1px solid`};
-      opacity: ${props => (props.onClick ? "0.95" : "1")};
+      opacity: ${(props) => (props.onClick ? "0.95" : "1")};
       transition: all 0.3s;
       &:hover {
          cursor: ${({ onClick }) => (onClick ? "pointer" : "initial")};
@@ -40,12 +40,12 @@ const StyledFlexibleRow = styled.tr`
 interface FlexibleTableHeaderProps {
    title?: string;
    showAddButton?: boolean;
-   onAddButtonClicked?();
+   onAddButtonClicked?(): void;
 }
 
 interface FlexibleTableRow {
    id: string;
-   onClick?();
+   onClick?(): void;
    cells: [Object];
 }
 
@@ -65,22 +65,22 @@ const defaultFlexibleTableProps: FlexibleTableProps = {
    header: {
       title: undefined,
       showAddButton: false,
-      onAddButtonClicked: () => {}
+      onAddButtonClicked: () => {},
    },
    body: {
       TableHeaders: [],
-      TableRows: []
-   }
+      TableRows: [],
+   },
 };
 
-const FlexibleTable: React.FC<FlexibleTableProps> = props => {
+const FlexibleTable: React.FC<FlexibleTableProps> = (props) => {
    const { loading, header, body } = { ...defaultFlexibleTableProps, ...props };
 
    return (
       <Card
          header={{
-            text: header.title,
-            actions: [<StyledIcon icon={<FaPlus />} onClick={header.onAddButtonClicked} />]
+            text: header?.title,
+            actions: [<StyledIcon icon={<FaPlus />} onClick={header?.onAddButtonClicked} />],
          }}
       >
          {loading ? (
@@ -89,13 +89,15 @@ const FlexibleTable: React.FC<FlexibleTableProps> = props => {
             <StyledFlexibleTable>
                <tbody>
                   <tr>
-                     {body.TableHeaders &&
-                        body.TableHeaders.map(header => <th key={header as string}>{header}</th>)}
+                     {body?.TableHeaders &&
+                        body?.TableHeaders.map((header) => (
+                           <th key={header as string}>{header}</th>
+                        ))}
                   </tr>
-                  {body.TableRows &&
-                     body.TableRows.map((row: FlexibleTableRow) => (
-                        <StyledFlexibleRow key={row.id} onClick={row.onClick}>
-                           {row.cells.map(cell => (
+                  {body?.TableRows &&
+                     body?.TableRows.map((row: FlexibleTableRow | undefined) => (
+                        <StyledFlexibleRow key={row?.id} onClick={row?.onClick}>
+                           {row?.cells.map((cell) => (
                               <td key={cell as string}>{cell}</td>
                            ))}
                         </StyledFlexibleRow>
