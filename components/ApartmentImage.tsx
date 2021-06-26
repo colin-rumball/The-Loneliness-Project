@@ -46,13 +46,13 @@ interface ApartmentImageProps {
 const ApartmentImageDefaultProps: ApartmentImageProps = {
    originalImage: "",
    currentImage: "",
-   setCurrentImage: (newImage: string) => {}
+   setCurrentImage: (newImage: string) => {},
 };
 
-const ApartmentImage: React.FC<ApartmentImageProps> = props => {
+const ApartmentImage: React.FC<ApartmentImageProps> = (props) => {
    const { originalImage, currentImage, setCurrentImage } = {
       ...ApartmentImageDefaultProps,
-      ...props
+      ...props,
    };
    const uploadRef = useRef(null);
 
@@ -69,7 +69,7 @@ const ApartmentImage: React.FC<ApartmentImageProps> = props => {
             name="file"
             title="Upload Image"
             accept="image/png, image/jpeg"
-            onChange={e => {
+            onChange={(e) => {
                setCurrentImage(uploadRef.current.files[0]);
             }}
          />
