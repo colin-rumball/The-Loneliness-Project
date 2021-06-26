@@ -18,6 +18,7 @@ const RenderStoriesDefaultProps: RenderStoriesProps = {
 const RenderStories: React.FC<RenderStoriesProps> = (props) => {
    const stories: any[] = useContext(StoriesContext);
    const { lastApartmentRef, shownAmount } = { ...RenderStoriesDefaultProps, ...props };
+   console.log("🚀 ~ file: RenderStories.tsx ~ line 21 ~ shownAmount", shownAmount);
    const router = useRouter();
    const { pushModal } = useModalSystemHelper();
 
@@ -26,13 +27,13 @@ const RenderStories: React.FC<RenderStoriesProps> = (props) => {
    return (
       <>
          {stories
-            .filter((story, index) => index < shownAmount)
-            .map((story, index) => (
+            .filter((story, index) => index < shownAmount && story.published)
+            .map((story, index, arr) => (
                <StyledApartment
-                  ref={index == shownAmount - 1 ? lastApartmentRef : null}
-                  key={story.id}
+                  ref={index == arr.length - 1 ? lastApartmentRef : null}
+                  key={story.apt}
                   srcset={`/apartments/small/storey_${story.apt}_small.png 360w, /apartments/medium/storey_${story.apt}_medium.png 640w, /apartments/large/storey_${story.apt}_large.png 920w`}
-                  src={`/apartments/storey_${story.apt}_medium.png`}
+                  src={`/apartments/medium/storey_${story.apt}_medium.png`}
                   onClick={() => {
                      // Replace the url with a query for the current story
                      const href = `/?a=${story.apt}`;
