@@ -21,7 +21,9 @@ const ApartmentBuildings: React.FC = (props) => {
          {stories.length > 0 && (
             <StyledShowMore
                onClick={() => {
-                  lastApartmentRef.current.scrollIntoView();
+                  if (lastApartmentRef.current) {
+                     lastApartmentRef.current.scrollIntoView();
+                  }
                   setShownAmount((amt) => amt + 1);
                   // refetch();
                }}
