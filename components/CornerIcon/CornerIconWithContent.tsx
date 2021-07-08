@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, ReactNode } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 import StyledIcon from "../Styled/StyledIcon";
@@ -35,9 +35,9 @@ export enum IconCorner {
 
 export interface HiddenContentContainerProps {
    corner: IconCorner;
-   closedIcon: IconCorner | null;
-   openIcon: IconCorner | null;
-   content: IconCorner | null;
+   closedIcon: IconCorner | null | ReactNode;
+   openIcon: IconCorner | null | ReactNode;
+   content: IconCorner | null | ReactNode;
 }
 
 const DefaultHiddenContentContainerProps: HiddenContentContainerProps = {

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { ReactNode, useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 
@@ -20,7 +20,7 @@ const InternalStyledIcon = styled.span<any>`
 `;
 
 interface StyledIconProps {
-   icon: Object;
+   icon: ReactNode;
    size?: string;
    color?: string;
    hovercolor?: string;

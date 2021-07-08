@@ -109,8 +109,11 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
          <div style={loaded ? {} : { display: "none" }}>
             <Image
                src={src}
-               sizes={expectedImageWidth}
+               // sizes={expectedImageWidth}
                className="apartment-image"
+               placeholder="blur"
+               priority
+               blurDataURL={`ata:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPkltT4DwAB0AFNWui6rAAAAABJRU5ErkJggg==`}
                alt={`apartment-${key}-image`}
                onLoad={() => setLoaded(true)}
                width={640}

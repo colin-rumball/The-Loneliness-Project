@@ -17,6 +17,8 @@ const StyledHomeUserActions = styled.div<any>`
    padding: 40px 40px;
    background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
 
+   transform: translateY(-4px);
+
    @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
       flex-direction: column;
    }

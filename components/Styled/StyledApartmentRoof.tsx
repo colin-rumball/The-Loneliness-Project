@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 import useCurrentTheme from "../../hooks/useCurrentTheme";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import Image from "next/image";
 
 const InternalStyledApartmentRoof = styled.div<any>`
    flex-basis: 100%;
@@ -95,20 +96,20 @@ const InternalStyledApartmentRoof = styled.div<any>`
 
 interface StyledApartmentRoofProps {
    position: "left" | "center" | "right";
-   src: string;
-   srcset: string;
+   src: StaticImageData;
+   // srcset: string;
    alt: string;
 }
 
 const StyledShowMoreDefaultProps: StyledApartmentRoofProps = {
    position: "center",
-   src: "",
-   srcset: "",
+   src: null,
+   // srcset: "",
    alt: "",
 };
 
 const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = (props) => {
-   const { position, src, srcset, alt } = { ...StyledShowMoreDefaultProps, ...props };
+   const { position, src, alt } = { ...StyledShowMoreDefaultProps, ...props };
    const currentTheme = useCurrentTheme();
    const { width } = useWindowDimensions();
 
@@ -125,13 +126,14 @@ const StyledApartmentRoof: React.FC<StyledApartmentRoofProps> = (props) => {
    return (
       <InternalStyledApartmentRoof className={position}>
          <div className="image-container">
-            <img
-               className="roof-image"
+            {/* <div className="roof-image"> */}
+            <Image
+               priority
                src={src}
-               srcSet={srcset}
-               sizes={expectedImageWidth}
                alt={alt}
+               className="roof-image" /*sizes={expectedImageWidth}*/
             />
+            {/* </div> */}
          </div>
       </InternalStyledApartmentRoof>
    );
