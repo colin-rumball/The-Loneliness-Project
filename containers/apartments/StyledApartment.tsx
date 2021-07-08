@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import useCurrentTheme from "../../hooks/useCurrentTheme";
+import Image from "next/image";
 
 const InternalStyledApartment = styled.article`
    position: relative;
@@ -33,7 +34,7 @@ const InternalStyledApartment = styled.article`
       }
    }
 
-   .gap-filler-contianer {
+   .gap-filler-container {
       position: relative;
       width: 100%;
 
@@ -105,17 +106,22 @@ const StyledApartment: React.FC<StyledApartmentProps> = forwardRef((props, ref) 
    return (
       <InternalStyledApartment>
          {loaded && <div ref={ref as any} className="backer" onClick={onClick} />}
-         <img
-            style={loaded ? {} : { display: "none" }}
-            src={src}
-            srcSet={srcset}
-            sizes={expectedImageWidth}
-            className="apartment-image"
-            alt={`apartment-${key}-image`}
-            onLoad={() => setLoaded(true)}
-         />
+         <div style={loaded ? {} : { display: "none" }}>
+            <Image
+               src={src}
+               // sizes={expectedImageWidth}
+               className="apartment-image"
+               placeholder="blur"
+               priority
+               blurDataURL={`ata:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPkltT4DwAB0AFNWui6rAAAAABJRU5ErkJggg==`}
+               alt={`apartment-${key}-image`}
+               onLoad={() => setLoaded(true)}
+               width={640}
+               height={520}
+            />
+         </div>
          {loaded && (
-            <div className="gap-filler-contianer">
+            <div className="gap-filler-container">
                <div className="gap-filler" />
             </div>
          )}

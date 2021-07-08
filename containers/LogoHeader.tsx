@@ -5,7 +5,7 @@ import { ThemeContainer } from "../themes/common";
 import { debounce } from "lodash";
 import Slogan from "../components/Slogan";
 
-const StyledLogoHeader = styled.div`
+const StyledLogoHeader = styled.div<any>`
    position: fixed;
    display: flex;
    flex-direction: column;

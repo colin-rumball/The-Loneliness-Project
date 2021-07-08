@@ -4,10 +4,10 @@ import { FaFacebookF, FaTwitter, FaEnvelope } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { ThemeContainer } from "../themes/common";
 
-const StyledSocialMedia = styled.div`
+const StyledSocialMedia = styled.div<any>`
    display: flex;
    flex-wrap: nowrap;
-   justify-content: ${props => props.justifyContent};
+   justify-content: ${(props) => props.justifyContent};
    width: 100%;
    margin: 20px 0;
 `;
@@ -28,10 +28,10 @@ interface SocialMediaProps {
 }
 
 const SocialMediaDefaultProps: SocialMediaProps = {
-   justifyContent: "center"
+   justifyContent: "center",
 };
 
-const SocialMedia: React.FC<SocialMediaProps> = props => {
+const SocialMedia: React.FC<SocialMediaProps> = (props) => {
    const { justifyContent } = { ...SocialMediaDefaultProps, ...props };
 
    return (

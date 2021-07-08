@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../themes/common";
 
-const StyledCloudAnimation = styled.div`
+const StyledCloudAnimation = styled.div<any>`
    position: absolute;
    overflow: hidden;
 
@@ -41,7 +41,7 @@ interface CloudAnimationProps {}
 
 const CloudAnimationDefaultProps: CloudAnimationProps = {};
 
-const CloudAnimation: React.FC<CloudAnimationProps> = props => {
+const CloudAnimation: React.FC<CloudAnimationProps> = (props) => {
    const {} = { ...CloudAnimationDefaultProps, ...props };
 
    return <StyledCloudAnimation />;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useField } from "formik";
 import StyledErrorMessage from "../Styled/StyledErrorMessage";
 
-const StyledCheckbox = styled.div`
+const StyledCheckbox = styled.div<any>`
    margin: 10px 5px;
 `;
 

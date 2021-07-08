@@ -32,7 +32,7 @@ const Login: React.FC = () => {
    // );
 
    // const StyledLoginPage = useMemo(
-   //    () => styled.div`
+   //    () => styled.div<any>`
    //       display: flex;
    //       flex-direction: column;
    //       justify-content: center;

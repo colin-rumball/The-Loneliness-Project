@@ -2,13 +2,13 @@ import React, { CSSProperties, useMemo } from "react";
 import styled from "styled-components";
 import { string } from "prop-types";
 
-const StyledCard = styled.div`
+const StyledCard = styled.div<any>`
    position: relative;
    display: inline-block;
    margin: 20px;
    max-width: 100%;
    background-color: #fff;
-   flex-grow: ${props => props.grow};
+   flex-grow: ${(props) => props.grow};
 
    .pd-card-content {
       width: 100%;
@@ -31,7 +31,7 @@ const StyledCard = styled.div`
 `;
 
 export enum CardBackground {
-   DEFAULT = ""
+   DEFAULT = "",
 }
 
 interface CardHeaderProps {
@@ -51,17 +51,17 @@ export interface CardProps {
 }
 
 const defaultCardProps: CardProps = {
-   header: null,
-   children: null,
-   footer: null,
+   header: undefined,
+   children: undefined,
+   footer: undefined,
    background: CardBackground.DEFAULT,
    key: undefined,
    className: undefined,
    grow: 0,
-   style: {}
+   style: {},
 };
 
-const Card: React.FC<CardProps> = props => {
+const Card: React.FC<CardProps> = (props) => {
    const { header, children, key, footer, grow }: CardProps = { ...defaultCardProps, ...props };
 
    return (
@@ -79,7 +79,7 @@ export const CardDivider = () => {
    return <div className="divider" />;
 };
 
-const StyledCardHeader = styled.div`
+const StyledCardHeader = styled.div<any>`
    & > * {
       /* border-radius: $card-border-radius $card-border-radius 0 0; */
    }
@@ -104,11 +104,11 @@ const CardHeader: React.FC<CardHeaderProps> = ({ text, actions }) => {
    );
 };
 
-const CardBody = ({ children }) => {
+const CardBody: React.FC = ({ children }) => {
    return <div className="pd-card-body">{children}</div>;
 };
 
-const CardFooter = ({ children }) => {
+const CardFooter: React.FC = ({ children }) => {
    return <div className="pd-card-footer">{children}</div>;
 };
 

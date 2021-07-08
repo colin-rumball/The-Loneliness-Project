@@ -35,7 +35,7 @@ const Dashboard = ({ myName }) => {
    // }, []);
 
    // const StyledDashboardPage = useMemo(
-   //    () => styled.div`
+   //    () => styled.div<any>`
    //       display: flex;
    //       flex-direction: column;
    //       width: 100%;
@@ -47,7 +47,7 @@ const Dashboard = ({ myName }) => {
    // );
 
    // const StyledPageHeader = useMemo(
-   //    () => styled.div`
+   //    () => styled.div<any>`
    //       display: flex;
    //       justify-content: space-between;
    //       width: 100%;
@@ -62,7 +62,7 @@ const Dashboard = ({ myName }) => {
    // );
 
    // const StyledMinimalButton = useMemo(
-   //    () => styled.span`
+   //    () => styled.span<any>`
    //       &:hover {
    //          color: #fff;
    //          cursor: pointer;

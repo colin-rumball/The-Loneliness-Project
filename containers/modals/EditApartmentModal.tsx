@@ -90,7 +90,7 @@ const EditApartmentModal: React.FC<EditApartmentModalProps> = ({ ...props }) => 
    // );
 
    // const StyledSection = useMemo(
-   //    () => styled.div`
+   //    () => styled.div<any>`
    //       display: flex;
    //       flex-wrap: nowrap;
    //       max-width: 100%;

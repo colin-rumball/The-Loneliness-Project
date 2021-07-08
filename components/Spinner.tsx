@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../themes/common";
 
-const StyledSpinner = styled.div`
+const StyledSpinner = styled.div<any>`
    position: relative;
    border-radius: inherit;
    display: flex;
@@ -64,10 +64,10 @@ export interface SpinnerProps {
 }
 
 const SpinnerDefaultProps: SpinnerProps = {
-   inverted: false
+   inverted: false,
 };
 
-const Spinner: React.FC<SpinnerProps> = props => {
+const Spinner: React.FC<SpinnerProps> = (props) => {
    const { inverted } = { ...SpinnerDefaultProps, ...props };
 
    return (

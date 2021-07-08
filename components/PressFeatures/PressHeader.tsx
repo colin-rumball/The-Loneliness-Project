@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 
-const StyledPressHeader = styled.div`
+const StyledPressHeader = styled.div<any>`
    width: 100%;
    padding: 20px 0;
    text-align: center;
@@ -21,7 +21,7 @@ interface PressHeaderProps {}
 
 const PressHeaderDefaultProps: PressHeaderProps = {};
 
-const PressHeader: React.FC<PressHeaderProps> = props => {
+const PressHeader: React.FC<PressHeaderProps> = (props) => {
    const {} = { ...PressHeaderDefaultProps, ...props };
 
    return <StyledPressHeader>PROUD TO BE FEATURED ON</StyledPressHeader>;

@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 
-const StyledModalOverlay = styled.div`
+const StyledModalOverlay = styled.div<any>`
    position: fixed;
    top: 0;
    bottom: 0;
@@ -18,10 +18,10 @@ interface ModalOverlayProps {
 }
 
 const ModalOverlayDefaultProps: ModalOverlayProps = {
-   onClick: () => {}
+   onClick: () => {},
 };
 
-const ModalOverlay: React.FC<ModalOverlayProps> = props => {
+const ModalOverlay: React.FC<ModalOverlayProps> = (props) => {
    const { children, onClick } = { ...ModalOverlayDefaultProps, ...props };
 
    return <StyledModalOverlay onClick={onClick}>{children}</StyledModalOverlay>;

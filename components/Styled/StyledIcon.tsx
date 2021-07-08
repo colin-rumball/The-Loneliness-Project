@@ -1,8 +1,8 @@
-import React, { useMemo } from "react";
+import React, { ReactNode, useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
 
-const InternalStyledIcon = styled.span`
+const InternalStyledIcon = styled.span<any>`
    color: ${({ theme, staticcolor = theme.ICON_STYLES.COLOR_DEFAULT }) => staticcolor};
    font-size: ${({ theme, size = theme.ICON_STYLES.SIZE_M }: ThemeContainer) => size};
    transition: color 0.3s ease, transform 0.3s ease;
@@ -20,7 +20,7 @@ const InternalStyledIcon = styled.span`
 `;
 
 interface StyledIconProps {
-   icon: Object;
+   icon: ReactNode;
    size?: string;
    color?: string;
    hovercolor?: string;

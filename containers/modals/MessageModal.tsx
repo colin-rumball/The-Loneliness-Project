@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ModalBase, { ModalBaseProps } from "./ModalBase";
 import withModalBase from "../../helpers/withModalBase";
 
-const StyledMessageContainer = styled.div`
+const StyledMessageContainer = styled.div<any>`
    height: 100%;
    display: flex;
    flex-direction: column;
@@ -16,10 +16,10 @@ interface MessageModalProps extends ModalBaseProps {
 }
 
 const MessageModalDefaultProps: MessageModalProps = {
-   message: ""
+   message: "",
 };
 
-const MessageModal: React.FC<MessageModalProps> = props => {
+const MessageModal: React.FC<MessageModalProps> = (props) => {
    const { message } = { ...MessageModalDefaultProps, ...props };
 
    return <StyledMessageContainer>{message}</StyledMessageContainer>;

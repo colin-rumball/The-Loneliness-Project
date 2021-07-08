@@ -5,7 +5,7 @@ import ModalBase, { ModalBaseProps } from "./ModalBase";
 import useModalSystemHelper from "../../hooks/useModalSystemHelper";
 import withModalBase from "../../helpers/withModalBase";
 
-const StyledConfirmationModal = styled.div`
+const StyledConfirmationModal = styled.div<any>`
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -14,11 +14,11 @@ const StyledConfirmationModal = styled.div`
    min-width: 460px;
 `;
 
-const StyledConfirmationMessage = styled.div`
+const StyledConfirmationMessage = styled.div<any>`
    font-size: 24px;
 `;
 
-const StyledConfirmationButtons = styled.div`
+const StyledConfirmationButtons = styled.div<any>`
    display: flex;
    justify-content: space-between;
    padding-top: 30px;
@@ -34,18 +34,18 @@ interface ConfirmationModalProps extends ModalBaseProps {
 const confirmationModalDefaultProps: ConfirmationModalProps = {
    message: "",
    onContinueClicked: async () => {},
-   onCancelClicked: async () => {}
+   onCancelClicked: async () => {},
 };
 
-const ConfirmationModal: React.FC<ConfirmationModalProps> = props => {
+const ConfirmationModal: React.FC<ConfirmationModalProps> = (props) => {
    const { message, onContinueClicked, onCancelClicked, ...rest } = {
       ...confirmationModalDefaultProps,
-      ...props
+      ...props,
    };
 
    const { popModal } = useModalSystemHelper();
 
-   const onButtonClicked = useCallback(async cb => {
+   const onButtonClicked = useCallback(async (cb) => {
       await cb();
       popModal();
    }, []);

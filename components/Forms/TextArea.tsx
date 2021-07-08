@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useField } from "formik";
 import StyledErrorMessage from "../Styled/StyledErrorMessage";
 
-const StyledTextArea = styled.div`
+const StyledTextArea = styled.div<any>`
    display: flex;
    flex-direction: column;
    flex-wrap: nowrap;

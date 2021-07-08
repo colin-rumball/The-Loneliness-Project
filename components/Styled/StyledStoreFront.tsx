@@ -1,8 +1,9 @@
 import React, { useMemo, useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
+import Image from "next/image";
 import { ThemeContainer } from "../../themes/common";
 
-const InternalStyledStoreFront = styled.div`
+const InternalStyledStoreFront = styled.div<any>`
    position: relative;
    flex-basis: 100%;
    padding: 0 1.5%;
@@ -81,7 +82,7 @@ const InternalStyledStoreFront = styled.div`
    }
 `;
 
-const EasterEggClickArea = styled.div`
+const EasterEggClickArea = styled.div<any>`
    position: absolute;
    top: 40%;
    left: 13%;
@@ -100,7 +101,7 @@ const EasterEggClickArea = styled.div`
    }
 `;
 
-const EasterEggText = styled.div`
+const EasterEggText = styled.div<any>`
    position: absolute;
    top: 18%;
    left: -8%;
@@ -146,13 +147,13 @@ const EasterEggLine = styled.svg`
 
 interface StyledStoreFrontProps {
    position: "left" | "center" | "right";
-   image: string;
+   image: StaticImageData;
    alt: string;
 }
 
 const StyledStoreFrontDefaultProps: StyledStoreFrontProps = {
    position: "center",
-   image: "",
+   image: null,
    alt: "",
 };
 
@@ -182,11 +183,13 @@ const StyledStoreFront: React.FC<StyledStoreFrontProps> = (props) => {
    return (
       <InternalStyledStoreFront className={position}>
          <div className="image-container">
-            <img
-               className="store-front-image"
-               src={showEasterEgg ? "/stores/store_2.gif" : image}
-               alt={alt}
-            />
+            <div className="store-front-image">
+               {showEasterEgg ? (
+                  <Image src={{ src: "/stores/store_2.gif", width: 1000, height: 866 }} alt={alt} />
+               ) : (
+                  <Image src={image} alt={alt} />
+               )}
+            </div>
          </div>
          {showEasterEgg && (
             <>

@@ -72,7 +72,7 @@ const SearchSection: React.FC<SearchSectionProps> = (props) => {
    // );
 
    // const StyledSearchSection = useMemo(
-   //    () => styled.div`
+   //    () => styled.div<any>`
    //       position: fixed;
    //       top: 0;
    //       left: 0;
@@ -108,7 +108,7 @@ const SearchSection: React.FC<SearchSectionProps> = (props) => {
    // );
 
    // const StyledResult = useMemo(
-   //    () => styled.div`
+   //    () => styled.div<any>`
    //       position: relative;
    //       display: flex;
    //       justify-content: space-evenly;

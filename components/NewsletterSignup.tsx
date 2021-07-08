@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TextInput from "./Forms/TextInput";
 import { ThemeContainer } from "../themes/common";
 
-const StyledNewsletterHeader = styled.div`
+const StyledNewsletterHeader = styled.div<any>`
    width: 100%;
    text-align: center;
    color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.Tan};
@@ -14,7 +14,7 @@ const StyledNewsletterHeader = styled.div`
    margin-bottom: 30px;
 `;
 
-const StyledNewletterInput = styled.div`
+const StyledNewletterInput = styled.div<any>`
    width: 100%;
    padding: 0 40px;
    display: flex;
@@ -62,7 +62,7 @@ const StyledNewletterInput = styled.div`
    }
 `;
 
-const StyledErrorMessage = styled.div`
+const StyledErrorMessage = styled.div<any>`
    width: 100%;
    padding: 20px 40px;
    text-align: center;
@@ -79,10 +79,10 @@ interface NewsletterSignupProps {
 }
 
 const NewsletterSignupDefaultProps: NewsletterSignupProps = {
-   showHeader: true
+   showHeader: true,
 };
 
-const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
+const NewsletterSignup: React.FC<NewsletterSignupProps> = (props) => {
    const { showHeader } = { ...NewsletterSignupDefaultProps, ...props };
    const [error, setError] = useState("");
    const [email, setEmail] = useState("");
@@ -99,7 +99,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = props => {
                   name="email"
                   value={email}
                   autoComplete="off"
-                  onChange={e => {
+                  onChange={(e) => {
                      setEmail(e.target.value);
                   }}
                   placeholder="Leave your email for our newsletter"

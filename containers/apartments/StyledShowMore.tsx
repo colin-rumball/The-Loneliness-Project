@@ -1,8 +1,10 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ThemeContainer } from "../../themes/common";
+import Image from "next/image";
+import LoadMorePNG from "/public/images/load-more.png";
 
-const StyledShowMoreContainer = styled.div`
+const StyledShowMoreContainer = styled.div<any>`
    position: absolute;
    top: 800px;
    right: 0;
@@ -26,7 +28,7 @@ const StyledShowMoreContainer = styled.div`
    }
 `;
 
-const InternalStyledShowMore = styled.div`
+const InternalStyledShowMore = styled.div<any>`
    position: sticky;
    width: 100%;
    height: auto;
@@ -41,7 +43,7 @@ const InternalStyledShowMore = styled.div`
    }
 `;
 
-const ClickableArea = styled.div`
+const ClickableArea = styled.div<any>`
    position: absolute;
    right: 0;
    top: 0;
@@ -59,17 +61,19 @@ interface StyledShowMoreProps {
 }
 
 const StyledShowMoreDefaultProps: StyledShowMoreProps = {
-   onClick: () => {}
+   onClick: () => {},
 };
 
-const StyledShowMore: React.FC<StyledShowMoreProps> = props => {
+const StyledShowMore: React.FC<StyledShowMoreProps> = (props) => {
    const { onClick } = { ...StyledShowMoreDefaultProps, ...props };
 
    return (
       <>
          <StyledShowMoreContainer>
             <InternalStyledShowMore>
-               <img className="load-more-image" src="/images/load-more.png" alt="load more" />
+               <div className="load-more-image">
+                  <Image src={LoadMorePNG} alt="load more" />
+               </div>
                <ClickableArea onClick={onClick} />
             </InternalStyledShowMore>
          </StyledShowMoreContainer>

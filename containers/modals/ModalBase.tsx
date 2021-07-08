@@ -6,7 +6,7 @@ import useRandomColor from "../../hooks/useRandomColor";
 import { RandomColorContextProvider } from "../../contexts/RandomColorContext";
 // import { ApolloClient } from "apollo-boost";
 
-const StyledModalBase = styled.div`
+const StyledModalBase = styled.div<any>`
    background: #fff;
    height: 75vh;
    overflow: auto;
@@ -19,7 +19,7 @@ const StyledModalBase = styled.div`
    }
 
    @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
-      box-shadow: ${props => `10px 10px 0${props.shadowColor}`};
+      box-shadow: ${(props) => `10px 10px 0${props.shadowColor}`};
    }
 
    @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {
@@ -43,10 +43,10 @@ export interface ModalBaseProps {
 
 const ModalBaseDefaultProps: ModalBaseProps = {};
 
-const ModalBase: React.FC<ModalBaseProps> = props => {
+const ModalBase: React.FC<ModalBaseProps> = (props) => {
    const { children } = {
       ...ModalBaseDefaultProps,
-      ...props
+      ...props,
    };
    const { randomColor, randomDarkenedColor, rerandomizeColors } = useRandomColor();
 

@@ -7,7 +7,7 @@ import { ThemeContainer } from "../themes/common";
 import StyledSocialAndCredits from "../components/Styled/StyledSocialAndCredits";
 import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
-const StyledHomeUserActions = styled.div`
+const StyledHomeUserActions = styled.div<any>`
    display: flex;
    flex-direction: column;
    flex-wrap: nowrap;
@@ -16,6 +16,8 @@ const StyledHomeUserActions = styled.div`
    width: 100%;
    padding: 40px 40px;
    background-color: ${({ theme }: ThemeContainer) => theme.VARIABLES.COLORS.LightBlue};
+
+   transform: translateY(-4px);
 
    @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
       flex-direction: column;
@@ -26,7 +28,7 @@ const StyledHomeUserActions = styled.div`
    }
 `;
 
-const StyledButton = styled.div`
+const StyledButton = styled.div<any>`
    display: flex;
    justify-content: center;
    order: 3;
@@ -40,7 +42,7 @@ const StyledButton = styled.div`
    }
 
    @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.MEDIUM}) {
-      order: ${props => props.order};
+      order: ${(props) => props.order};
    }
 
    @media (min-width: ${({ theme }: ThemeContainer) => theme.VARIABLES.BREAK_POINTS.LARGE}) {

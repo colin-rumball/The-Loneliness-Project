@@ -1,3 +1,4 @@
+import React from "react";
 import ModalBase, { ModalBaseProps } from "../containers/modals/ModalBase";
 
 function withModalBase<T extends ModalBaseProps>(Modal: React.FC) {
