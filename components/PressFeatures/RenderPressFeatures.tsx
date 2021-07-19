@@ -6,14 +6,14 @@ interface RenderPressFeaturesProps {
 }
 
 const RenderPressFeaturesDefaultProps: RenderPressFeaturesProps = {
-   features: []
+   features: [],
 };
 
-const RenderPressFeatures: React.FC<RenderPressFeaturesProps> = props => {
+const RenderPressFeatures: React.FC<RenderPressFeaturesProps> = (props) => {
    const { features } = { ...RenderPressFeaturesDefaultProps, ...props };
    return (
       <>
-         {features.map(feature => (
+         {features.map((feature) => (
             <PressFeature info={feature} key={feature.alt} />
          ))}
       </>

@@ -72,7 +72,7 @@ const StyledPressFeature = styled.div<any>`
 export interface FeatureInfo {
    alt: string;
    class: string;
-   src: string;
+   src: StaticImageData;
 }
 
 interface PressFeatureProps {
@@ -80,7 +80,7 @@ interface PressFeatureProps {
 }
 
 const PressFeatureDefaultProps: PressFeatureProps = {
-   info: { alt: "", class: "", src: "" },
+   info: { alt: "", class: "", src: null },
 };
 
 const PressFeature: React.FC<PressFeatureProps> = (props) => {
@@ -89,12 +89,7 @@ const PressFeature: React.FC<PressFeatureProps> = (props) => {
    return (
       <StyledPressFeature>
          <div className={`press-image ${info.class}`}>
-            <Image
-               src={`/press/${info.src}`}
-               layout="fill"
-               alt={`${info.alt}`}
-               objectFit="scale-down"
-            />
+            <Image src={info.src} layout="fill" alt={`${info.alt}`} objectFit="scale-down" />
          </div>
       </StyledPressFeature>
    );
