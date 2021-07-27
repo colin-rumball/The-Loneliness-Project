@@ -45,7 +45,7 @@ const InternalStyledApartmentDetails = styled.div<any>`
          font-weight: 400;
          margin-bottom: 25px;
          letter-spacing: 0.4px;
-         line-height: 1.28em;
+         line-height: 1.3em;
       }
 
       .details-header {
