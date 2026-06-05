@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"description": "Sharing stories and starting a conversation about loneliness. Become part of our community of people who are not as alone as they think.",
 	"scripts": {
-		"dev": "set NODE_OPTIONS=--openssl-legacy-provider && next",
-		"build": "set NODE_OPTIONS=--openssl-legacy-provider && next build",
+		"dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider next",
+		"build": "cross-env NODE_OPTIONS=--openssl-legacy-provider next build",
 		"start": "next start"
 	},
 	"dependencies": {
@@ -36,6 +36,7 @@
 		"@types/react": "^16.14.8",
 		"@types/styled-components": "^5.1.10",
 		"babel-plugin-styled-components": "^1.12.0",
+		"cross-env": "^10.1.0",
 		"dotenv": "^8.6.0",
 		"dotenv-load": "^2.0.0",
 		"env-cmd": "^9.0.3",
