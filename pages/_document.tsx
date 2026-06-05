@@ -38,6 +38,7 @@ export default class AppDocument extends Document {
                />
                <meta name="keywords" content="Loneliness" />
                <meta name="author" content="Colin Rumball & Marissa Korda" />
+               <link rel="stylesheet" href="https://use.typekit.net/cwm7cxm.css" />
                <link
                   href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900&display=swap"
                   rel="stylesheet"

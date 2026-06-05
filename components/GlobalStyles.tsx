@@ -1,11 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-	@font-face {
-   font-family: "freight-display-pro";
-   src: url("/fonts/Freight Disp Light.otf") format("opentype");
-}
-
 * {
    box-sizing: border-box;
 }
