@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"description": "Sharing stories and starting a conversation about loneliness. Become part of our community of people who are not as alone as they think.",
 	"scripts": {
-		"dev": "next",
-		"build": "next build",
+		"dev": "set NODE_OPTIONS=--openssl-legacy-provider && next",
+		"build": "set NODE_OPTIONS=--openssl-legacy-provider && next build",
 		"start": "next start"
 	},
 	"dependencies": {
