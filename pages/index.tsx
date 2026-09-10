@@ -10,7 +10,6 @@ import ApartmentDetailsModal from "../containers/modals/ApartmentDetailsModal";
 import PressFeatures from "../containers/PressFeatures";
 import { Controller } from "../contexts/ControllerContext";
 import InteractionController from "../components/InteractionController";
-import useAudio from "../hooks/useAudio";
 import useModalSystemHelper from "../hooks/useModalSystemHelper";
 
 const StyledHomePage = styled.div<any>`
@@ -21,7 +20,6 @@ const StyledHomePage = styled.div<any>`
 const HomePage = ({ apolloClient }) => {
    const router = useRouter();
    const { pushModal } = useModalSystemHelper();
-   const { play: playAudio } = useAudio("/audio/cityscapes_short.mp3");
 
    // query url param for apartment
    useEffect(() => {
@@ -41,7 +39,7 @@ const HomePage = ({ apolloClient }) => {
    }, []);
 
    return (
-      <InteractionController controller={Controller.MAIN} onClick={() => playAudio()}>
+      <InteractionController controller={Controller.MAIN}>
          <StyledHomePage>
             <CornerIcons />
             <CloudAnimation />
